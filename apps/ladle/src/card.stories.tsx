@@ -15,7 +15,7 @@ export default {
 };
 
 export const Default: Story = () => (
-  <Card className="w-[350px]">
+  <Card className="w-90">
     <CardHeader>
       <CardTitle>Card Title</CardTitle>
       <CardDescription>Card description goes here.</CardDescription>
@@ -30,7 +30,7 @@ export const Default: Story = () => (
 );
 
 export const SimpleCard: Story = () => (
-  <Card className="w-[350px]">
+  <Card className="w-90">
     <CardContent className="pt-6">
       <p>A simple card with just content.</p>
     </CardContent>
@@ -38,7 +38,7 @@ export const SimpleCard: Story = () => (
 );
 
 export const WithoutFooter: Story = () => (
-  <Card className="w-[350px]">
+  <Card className="w-90">
     <CardHeader>
       <CardTitle>Repository Analysis</CardTitle>
       <CardDescription>facebook/react</CardDescription>

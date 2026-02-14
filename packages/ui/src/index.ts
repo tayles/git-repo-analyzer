@@ -1,5 +1,5 @@
 // Components
-export { Button, buttonVariants, type ButtonProps } from './components/button';
+export { Button, buttonVariants } from './components/ui/button';
 export {
   Card,
   CardHeader,
@@ -7,8 +7,8 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-} from './components/card';
-export { Input, type InputProps } from './components/input';
+} from './components/ui/card';
+export { Input } from './components/ui/input';
 
 // Utilities
 export { cn } from './lib/utils';

@@ -7,10 +7,15 @@
     "config": "",
     "css": "src/globals.css",
     "baseColor": "neutral",
-    "cssVariables": true
+    "cssVariables": true,
+    "prefix": ""
   },
   "aliases": {
-    "components": "@git-repo-analyzer/ui/components",
-    "utils": "@git-repo-analyzer/ui/lib/utils"
-  }
+    "components": "src/components/ui",
+    "utils": "src/lib/utils",
+    "ui": "src/components/ui",
+    "lib": "src/lib",
+    "hooks": "src/hooks"
+  },
+  "iconLibrary": "lucide"
 }
