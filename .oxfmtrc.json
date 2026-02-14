@@ -1,13 +1,15 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "printWidth": 100,
-  "tabWidth": 2,
-  "useTabs": false,
   "semi": true,
   "singleQuote": true,
-  "trailingComma": "es5",
-  "bracketSpacing": true,
-  "jsxSingleQuote": false,
-  "arrowParens": "always",
-  "proseWrap": "preserve",
-  "endOfLine": "lf"
+  "arrowParens": "avoid",
+  "trailingComma": "all",
+  "quoteProps": "as-needed",
+  "experimentalSortImports": {
+    "enabled": true
+  },
+  "experimentalTailwindcss": {
+    "enabled": true
+  }
 }
