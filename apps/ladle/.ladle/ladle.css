@@ -1,0 +1,2 @@
+@import 'tailwindcss' source('../src/');
+@import '../../../packages/ui//src/globals.css';

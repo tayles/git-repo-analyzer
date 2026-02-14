@@ -1,7 +1,6 @@
 import type { Story } from '@ladle/react';
 
-import { Button } from './button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@git-repo-analyzer/ui';
 
 export default {
   title: 'Components/Card',

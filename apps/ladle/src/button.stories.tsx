@@ -1,6 +1,6 @@
 import type { Story } from '@ladle/react';
 
-import { Button } from './button';
+import { Button } from '@git-repo-analyzer/ui';
 
 export default {
   title: 'Components/Button',
