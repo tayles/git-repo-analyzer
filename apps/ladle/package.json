@@ -7,8 +7,6 @@
     "dev": "ladle serve",
     "build": "ladle build",
     "preview": "ladle preview",
-    "lint": "oxlint src/",
-    "typecheck": "tsc --noEmit",
     "clean": "rm -rf build"
   },
   "dependencies": {

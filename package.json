@@ -6,11 +6,19 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
-    "lint": "turbo run lint",
-    "format": "oxfmt --write .",
-    "format:check": "oxfmt --check .",
-    "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+
+
+    "test:coverage": "bun test --coverage",
+    "test:ci": "bun test --coverage --coverage-reporter=lcov",
+    "test:watch": "bun test --watch",
+    "lint": "oxlint --type-aware --type-check",
+    "lint:fix": "bun run lint --fix",
+    "fmt": "oxfmt --check",
+    "fmt:fix": "oxfmt",
+    "check": "bun run fmt && bun run lint",
+    "check:ci": "bun run fmt && bun run lint --format=github",
+    "fix": "bun run fmt:fix && bun run lint:fix"
   },
   "devDependencies": {
     "oxfmt": "^0.32.0",

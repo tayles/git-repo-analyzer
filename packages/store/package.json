@@ -14,8 +14,6 @@
   "scripts": {
     "build": "tsc --noEmit",
     "test": "bun test",
-    "lint": "oxlint src/",
-    "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {

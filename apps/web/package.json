@@ -8,8 +8,6 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "bun test || echo 'No tests yet'",
-    "lint": "oxlint src/",
-    "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {

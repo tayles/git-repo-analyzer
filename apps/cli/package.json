@@ -33,8 +33,6 @@
     "build": "bunup",
     "test": "bun test",
     "release": "bumpp --commit --push --tag",
-    "lint": "oxlint src/",
-    "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {
