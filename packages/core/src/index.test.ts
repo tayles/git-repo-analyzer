@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'bun:test';
-import { analyzeGitRepository } from './index';
+
 import type { ProgressUpdate } from './types';
+
+import { analyzeGitRepository } from './index';
 
 describe('analyzeGitRepository', () => {
   it('should analyze a repository in owner/repo format', async () => {
@@ -28,7 +30,7 @@ describe('analyzeGitRepository', () => {
   it('should call the progress callback with updates', async () => {
     const progressUpdates: ProgressUpdate[] = [];
 
-    await analyzeGitRepository('facebook/react', undefined, (update) => {
+    await analyzeGitRepository('facebook/react', undefined, update => {
       progressUpdates.push(update);
     });
 
@@ -45,9 +47,7 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should throw an error for invalid repository format', async () => {
-    expect(analyzeGitRepository('invalid-format')).rejects.toThrow(
-      'Invalid repository format'
-    );
+    expect(analyzeGitRepository('invalid-format')).rejects.toThrow('Invalid repository format');
   });
 
   it('should include timing information in the result', async () => {

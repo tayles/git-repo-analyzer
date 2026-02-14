@@ -1,4 +1,5 @@
 import type { Story } from '@ladle/react';
+
 import { Button } from './button';
 
 export default {
@@ -7,17 +8,11 @@ export default {
 
 export const Default: Story = () => <Button>Default Button</Button>;
 
-export const Secondary: Story = () => (
-  <Button variant="secondary">Secondary Button</Button>
-);
+export const Secondary: Story = () => <Button variant="secondary">Secondary Button</Button>;
 
-export const Destructive: Story = () => (
-  <Button variant="destructive">Destructive Button</Button>
-);
+export const Destructive: Story = () => <Button variant="destructive">Destructive Button</Button>;
 
-export const Outline: Story = () => (
-  <Button variant="outline">Outline Button</Button>
-);
+export const Outline: Story = () => <Button variant="outline">Outline Button</Button>;
 
 export const Ghost: Story = () => <Button variant="ghost">Ghost Button</Button>;
 

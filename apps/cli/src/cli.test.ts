@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'bun:test';
-import { formatResult, formatResultJson } from './index';
 import type { AnalysisResult } from '@git-repo-analyzer/core';
+
+import { describe, expect, it } from 'bun:test';
+
+import { formatResult, formatResultJson } from './index';
 
 describe('CLI utilities', () => {
   const mockResult: AnalysisResult = {

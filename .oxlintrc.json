@@ -1,11 +1,16 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "jsdoc", "node", "promise","react", "react-perf"],
-  "ignorePatterns": [
-    "node_modules",
-    "dist",
-    "build",
-    ".turbo",
-    "coverage"
-  ]
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "jsdoc",
+    "node",
+    "promise",
+    "react",
+    "react-perf"
+  ],
+  "ignorePatterns": ["node_modules", "dist", "build", ".turbo", "coverage"]
 }

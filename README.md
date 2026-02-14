@@ -61,10 +61,10 @@ The `git-repo-analyzer` package exports:
 
 ```typescript
 export async function analyzeGitRepository(
-  repo: string,           // "owner/repo" or full GitHub URL
-  token?: string,         // Optional GitHub token
-  callback?: (result: ProgressUpdate) => void
-): Promise<AnalysisResult>
+  repo: string, // "owner/repo" or full GitHub URL
+  token?: string, // Optional GitHub token
+  callback?: (result: ProgressUpdate) => void,
+): Promise<AnalysisResult>;
 ```
 
 Example usage:

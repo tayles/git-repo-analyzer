@@ -44,7 +44,7 @@ export function formatResult(result: AnalysisResult): string {
 
   for (const lang of result.languages) {
     lines.push(
-      `  ${lang.language}: ${lang.percentage}% (${lang.linesOfCode.toLocaleString()} lines)`
+      `  ${lang.language}: ${lang.percentage}% (${lang.linesOfCode.toLocaleString()} lines)`,
     );
   }
 

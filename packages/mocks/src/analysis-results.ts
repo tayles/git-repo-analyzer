@@ -68,7 +68,7 @@ export const mockLanguages: LanguageBreakdown[] = [
  */
 export function createMockAnalysisResult(
   repository: string = 'test-org/test-repo',
-  overrides: Partial<AnalysisResult> = {}
+  overrides: Partial<AnalysisResult> = {},
 ): AnalysisResult {
   return {
     repository,
@@ -92,7 +92,9 @@ export function createMockAnalysisResult(
 /**
  * Create a mock analysis result with minimal data
  */
-export function createMinimalMockAnalysisResult(repository: string = 'minimal/repo'): AnalysisResult {
+export function createMinimalMockAnalysisResult(
+  repository: string = 'minimal/repo',
+): AnalysisResult {
   return {
     repository,
     analyzedAt: new Date(),

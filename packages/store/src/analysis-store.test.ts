@@ -1,6 +1,8 @@
-import { describe, expect, it, beforeEach } from 'bun:test';
-import { useAnalysisStore } from './analysis-store';
 import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
+
+import { describe, expect, it, beforeEach } from 'bun:test';
+
+import { useAnalysisStore } from './analysis-store';
 
 describe('useAnalysisStore', () => {
   beforeEach(() => {

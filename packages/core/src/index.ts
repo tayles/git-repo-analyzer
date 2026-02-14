@@ -55,7 +55,7 @@ function parseRepository(repo: string): { owner: string; repo: string } {
 export async function analyzeGitRepository(
   repo: string,
   token?: string,
-  callback?: (result: ProgressUpdate) => void
+  callback?: (result: ProgressUpdate) => void,
 ): Promise<AnalysisResult> {
   const startTime = Date.now();
   const { owner, repo: repoName } = parseRepository(repo);

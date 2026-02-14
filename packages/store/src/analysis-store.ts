@@ -1,6 +1,7 @@
+import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
+
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
 
 /**
  * State for the analysis store
@@ -79,9 +80,7 @@ export const useAnalysisStore = create<AnalysisStore>()(
       completeAnalysis: (result: AnalysisResult) => {
         const { history } = get();
         // Remove existing entry for same repository if exists
-        const filteredHistory = history.filter(
-          (item) => item.repository !== result.repository
-        );
+        const filteredHistory = history.filter(item => item.repository !== result.repository);
         // Add new result to beginning of history
         set({
           result,
@@ -116,18 +115,18 @@ export const useAnalysisStore = create<AnalysisStore>()(
       removeFromHistory: (repository: string) => {
         const { history } = get();
         set({
-          history: history.filter((item) => item.repository !== repository),
+          history: history.filter(item => item.repository !== repository),
         });
       },
     }),
     {
       name: 'git-repo-analyzer-storage',
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({
+      partialize: state => ({
         history: state.history,
       }),
-    }
-  )
+    },
+  ),
 );
 
 /**

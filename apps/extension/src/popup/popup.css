@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@git-repo-analyzer/ui/globals.css";
+@import 'tailwindcss';
+@import '@git-repo-analyzer/ui/globals.css';
 
 body {
   width: 400px;

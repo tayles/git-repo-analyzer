@@ -24,7 +24,8 @@ export const mockRepositories = {
     owner: 'facebook',
     name: 'react',
     fullName: 'facebook/react',
-    description: 'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
+    description:
+      'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
     stars: 220000,
     forks: 45000,
     language: 'JavaScript',

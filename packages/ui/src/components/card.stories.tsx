@@ -1,13 +1,7 @@
 import type { Story } from '@ladle/react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from './card';
+
 import { Button } from './button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 
 export default {
   title: 'Components/Card',

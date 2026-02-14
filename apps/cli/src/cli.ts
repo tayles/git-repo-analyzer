@@ -14,6 +14,7 @@
  */
 
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
+
 import { formatResult, formatResultJson } from './index';
 
 interface CliOptions {
@@ -100,15 +101,11 @@ async function main() {
   try {
     console.error(`Analyzing ${options.repository}...`);
 
-    const result = await analyzeGitRepository(
-      options.repository,
-      options.token,
-      (progress) => {
-        if (!options.json) {
-          process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
-        }
+    const result = await analyzeGitRepository(options.repository, options.token, progress => {
+      if (!options.json) {
+        process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
       }
-    );
+    });
 
     if (!options.json) {
       process.stderr.write('\r' + ' '.repeat(60) + '\r');
@@ -120,10 +117,7 @@ async function main() {
       console.log(formatResult(result));
     }
   } catch (error) {
-    console.error(
-      'Error:',
-      error instanceof Error ? error.message : 'Unknown error'
-    );
+    console.error('Error:', error instanceof Error ? error.message : 'Unknown error');
     process.exit(1);
   }
 }
