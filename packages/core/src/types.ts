@@ -8,8 +8,6 @@ export interface ProgressUpdate {
   progress: number;
   /** Human-readable message describing current status */
   message: string;
-  /** Optional partial results available at this stage */
-  partialResult?: Partial<AnalysisResult>;
 }
 
 /**

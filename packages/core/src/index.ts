@@ -139,7 +139,6 @@ export async function analyzeGitRepository(
     phase: 'complete',
     progress: 100,
     message: 'Analysis complete!',
-    partialResult: result,
   });
 
   // Log token usage status (for debugging purposes)

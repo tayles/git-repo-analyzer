@@ -9,6 +9,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
+  InputForm,
 } from '@git-repo-analyzer/ui';
 import { useState } from 'react';
 
@@ -47,6 +48,8 @@ function App() {
             Analyze GitHub repositories and get comprehensive statistics
           </p>
         </div>
+
+        <InputForm/>
 
         <Card>
           <CardHeader>

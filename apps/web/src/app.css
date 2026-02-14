@@ -1,2 +1,5 @@
-@import 'tailwindcss';
-@import '@git-repo-analyzer/ui/globals.css';
+/* @import 'tailwindcss';
+@import '@git-repo-analyzer/ui/globals.css'; */
+
+@import 'tailwindcss' ;
+@import '../../../packages/ui//src/globals.css';
