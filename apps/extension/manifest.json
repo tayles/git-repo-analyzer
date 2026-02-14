@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Git Repo Analyzer",
+  "version": "0.0.1",
+  "description": "Analyze GitHub repositories directly from your browser",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["https://github.com/*"],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_title": "Git Repo Analyzer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["src/content/main.ts"]
+    }
+  ]
+}

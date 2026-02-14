@@ -1,0 +1,41 @@
+{
+  "name": "git-repo-analyzer-cli",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "CLI tool and TypeScript library for analyzing GitHub repositories",
+  "keywords": ["github", "repository", "analyzer", "cli", "typescript"],
+  "license": "MIT",
+  "author": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "git-repo-analyzer": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "bunup --watch",
+    "build": "bunup && tsc",
+    "test": "bun test",
+    "lint": "oxlint src/",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@git-repo-analyzer/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@git-repo-analyzer/typescript-config": "workspace:*",
+    "@types/bun": "^1.2.0",
+    "bunup": "^0.7.0",
+    "typescript": "^5.7.0"
+  }
+}

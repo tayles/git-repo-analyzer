@@ -1,0 +1,12 @@
+{
+  "extends": "@git-repo-analyzer/typescript-config/react.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", ".ladle/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
+}
