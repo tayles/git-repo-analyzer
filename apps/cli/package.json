@@ -1,12 +1,16 @@
 {
   "name": "git-repo-analyzer-cli",
   "version": "0.0.1",
+  "private": true,
   "type": "module",
   "description": "CLI tool and TypeScript library for analyzing GitHub repositories",
   "keywords": ["github", "repository", "analyzer", "cli", "typescript"],
   "license": "MIT",
-  "author": "",
-  "main": "./dist/index.js",
+  "author": "tayles",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tayles/git-repo-analyzer.git"
+  },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
@@ -14,28 +18,42 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "bunup --watch",
-    "build": "bunup && tsc",
+    "build": "bunup",
     "test": "bun test",
+    "release": "bumpp --commit --push --tag",
     "lint": "oxlint src/",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@git-repo-analyzer/core": "workspace:*"
+    "@git-repo-analyzer/core": "workspace:*",
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "@git-repo-analyzer/typescript-config": "workspace:*",
-    "@types/bun": "^1.2.0",
-    "bunup": "^0.7.0",
-    "typescript": "^5.7.0"
+    "@types/bun": "^1.3.9",
+    "bumpp": "^10.4.1",
+    "bunup": "^0.16.26",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }
