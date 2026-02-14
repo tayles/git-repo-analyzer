@@ -1,3 +1,7 @@
 {
-  "recommendations": ["oxc.oxc-vscode", "DavidAnson.vscode-markdownlint"]
+  "recommendations": [
+    "oxc.oxc-vscode",
+    "bradlc.vscode-tailwindcss",
+    "DavidAnson.vscode-markdownlint"
+  ]
 }

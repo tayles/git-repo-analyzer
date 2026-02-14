@@ -9,5 +9,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "always"
   },
-  "oxc.typeAware": true
+  "oxc.typeAware": true,
+
+  // tailwindcss
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
 }
