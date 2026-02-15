@@ -8,11 +8,11 @@ export default defineManifest({
   description: 'A Chrome extension to analyze Git repositories and provide insights',
   version: pkg.version,
   icons: {
-    48: 'public/icons/git-repo-analyzer-icon.svg',
+    512: 'public/icons/git-repo-analyzer-icon-512x512.png',
   },
   action: {
     default_icon: {
-      48: 'public/icons/git-repo-analyzer-icon.svg',
+      512: 'public/icons/git-repo-analyzer-icon-512x512.png',
     },
     default_title: 'Git Repo Analyzer',
   },
