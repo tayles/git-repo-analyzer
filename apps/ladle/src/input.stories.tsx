@@ -3,10 +3,10 @@ import type { Story } from '@ladle/react';
 import { Input } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components / Input',
+  title: 'Components',
 };
 
-export const AllVariants: Story = () => (
+export const Inputs: Story = () => (
   <div className="grid w-full max-w-sm items-center gap-4">
     <div className="grid w-full items-center gap-1.5">
       <label htmlFor="default" className="text-sm font-medium">

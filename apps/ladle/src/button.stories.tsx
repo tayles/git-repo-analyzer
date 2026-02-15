@@ -3,10 +3,10 @@ import type { Story } from '@ladle/react';
 import { Button } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components / Button',
+  title: 'Components',
 };
 
-export const AllVariants: Story = () => (
+export const Buttons: Story = () => (
   <div className="flex flex-col gap-4">
     <section>
       <h2 className="text-lg font-bold">All Variants</h2>

@@ -4,7 +4,7 @@ import { TOOL_REGISTRY } from '@git-repo-analyzer/core';
 import { ToolCard } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components / Tool Card',
+  title: 'Components',
 };
 
 const toolsByCategory = Object.values(TOOL_REGISTRY).reduce(
@@ -18,7 +18,7 @@ const toolsByCategory = Object.values(TOOL_REGISTRY).reduce(
   {} as Record<string, (typeof TOOL_REGISTRY)[keyof typeof TOOL_REGISTRY][]>,
 );
 
-export const All: Story = () => (
+export const ToolCards: Story = () => (
   <div className="flex flex-col gap-4">
     {Object.entries(toolsByCategory).map(([category, tools]) => (
       <div key={category}>

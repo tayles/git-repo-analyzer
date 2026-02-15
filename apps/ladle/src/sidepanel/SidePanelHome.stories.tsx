@@ -6,7 +6,7 @@ import { SidePanelHome } from '@git-repo-analyzer/ui';
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
 export default {
-  title: 'Side Panel / Home',
+  title: 'Side Panel',
   decorators: [
     Component => (
       <ChromeExtensionSidePanel>
@@ -16,4 +16,4 @@ export default {
   ],
 } satisfies StoryDefault;
 
-export const Default: Story = () => <SidePanelHome repo="facebook/react" />;
+export const Home: Story = () => <SidePanelHome repo="facebook/react" />;

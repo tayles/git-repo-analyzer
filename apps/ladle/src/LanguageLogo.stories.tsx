@@ -4,10 +4,10 @@ import { LANGUAGE_COLORS } from '@git-repo-analyzer/core';
 import { ToolLogo } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components / Language Logo',
+  title: 'Components',
 };
 
-export const All: Story = () => (
+export const LanguageLogos: Story = () => (
   <div className="flex flex-col gap-4">
     {Object.entries(LANGUAGE_COLORS).map(([language, color]) => (
       <div key={language} className="flex items-center gap-2">

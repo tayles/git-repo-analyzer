@@ -7,7 +7,7 @@ import { SidePanelRepoDetails } from '@git-repo-analyzer/ui';
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
 export default {
-  title: 'Side Panel / Repo Details',
+  title: 'Side Panel',
   decorators: [
     Component => (
       <ChromeExtensionSidePanel>
@@ -19,4 +19,4 @@ export default {
 
 const report = createMockAnalysisResult('facebook/react');
 
-export const Default: Story = () => <SidePanelRepoDetails report={report} />;
+export const RepoDetails: Story = () => <SidePanelRepoDetails report={report} />;
