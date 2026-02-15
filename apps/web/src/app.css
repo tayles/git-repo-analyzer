@@ -1,4 +1,4 @@
 @import 'tailwindcss';
-@import '../../../packages/ui/src/globals.css';
+@import '@git-repo-analyzer/ui/globals.css';
 
 @source '../../../packages/ui/src/';
