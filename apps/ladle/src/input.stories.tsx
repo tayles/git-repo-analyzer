@@ -6,27 +6,38 @@ export default {
   title: 'Components / Input',
 };
 
-export const Default: Story = () => <Input placeholder="Enter text..." />;
-
-export const WithLabel: Story = () => (
-  <div className="grid w-full max-w-sm items-center gap-1.5">
-    <label htmlFor="email" className="text-sm font-medium">
-      Email
-    </label>
-    <Input type="email" id="email" placeholder="Enter your email" />
-  </div>
-);
-
-export const Disabled: Story = () => <Input disabled placeholder="Disabled input" />;
-
-export const WithValue: Story = () => <Input defaultValue="facebook/react" />;
-
-export const Repository: Story = () => (
-  <div className="grid w-full max-w-sm items-center gap-1.5">
-    <label htmlFor="repo" className="text-sm font-medium">
-      Repository
-    </label>
-    <Input id="repo" placeholder="owner/repo or GitHub URL" />
-    <p className="text-muted-foreground text-xs">Enter a GitHub repository to analyze</p>
+export const AllVariants: Story = () => (
+  <div className="grid w-full max-w-sm items-center gap-4">
+    <div className="grid w-full items-center gap-1.5">
+      <label htmlFor="default" className="text-sm font-medium">
+        Default
+      </label>
+      <Input id="default" placeholder="Enter text..." />
+    </div>
+    <div className="grid w-full items-center gap-1.5">
+      <label htmlFor="with-label" className="text-sm font-medium">
+        With Label
+      </label>
+      <Input id="with-label" placeholder="Input with label" />
+    </div>
+    <div className="grid w-full items-center gap-1.5">
+      <label htmlFor="disabled" className="text-sm font-medium">
+        Disabled
+      </label>
+      <Input id="disabled" disabled placeholder="Disabled input" />
+    </div>
+    <div className="grid w-full items-center gap-1.5">
+      <label htmlFor="with-value" className="text-sm font-medium">
+        With Value
+      </label>
+      <Input id="with-value" defaultValue="facebook/react" />
+    </div>
+    <div className="grid w-full items-center gap-1.5">
+      <label htmlFor="repository" className="text-sm font-medium">
+        Repository
+      </label>
+      <Input id="repository" placeholder="owner/repo or GitHub URL" />
+      <p className="text-muted-foreground text-xs">Enter a GitHub repository to analyze</p>
+    </div>
   </div>
 );
