@@ -7,5 +7,5 @@ import './ladle.css';
  * This is where you add global styles, providers, etc.
  */
 export const Provider: GlobalProvider = ({ children }) => {
-  return <div className="p-4">{children}</div>;
+  return <div className="p-4"><h1 className='text-red-500'>Global Provider</h1>{children}</div>;
 };
