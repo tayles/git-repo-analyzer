@@ -10,5 +10,5 @@ export default {
 const report = createMockAnalysisResult('example/repo');
 
 export const AnalysisReportCards: Story = () => (
-  <AnalysisReportCard report={report} onDelete={() => {}} />
+  <AnalysisReportCard report={report} onClick={() => {}} onDelete={() => {}} />
 );

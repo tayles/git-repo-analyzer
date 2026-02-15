@@ -17,7 +17,7 @@ import type { ProgressUpdate, AnalysisResult } from './types';
 /**
  * Parse a repository string into owner/repo format
  */
-function parseRepository(repo: string): { owner: string; repo: string } {
+export function parseRepository(repo: string): { owner: string; repo: string } {
   // Handle full GitHub URLs
   const urlMatch = repo.match(/github\.com\/([^/]+)\/([^/]+)/);
   if (urlMatch) {
@@ -31,6 +31,10 @@ function parseRepository(repo: string): { owner: string; repo: string } {
   }
 
   throw new Error(`Invalid repository format: ${repo}. Expected "owner/repo" or full GitHub URL.`);
+}
+
+export async function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /**
@@ -73,12 +77,16 @@ export async function analyzeGitRepository(
     message: `Starting analysis of ${repository}...`,
   });
 
+  await delay(1000);
+
   // Simulate fetching phase
   callback?.({
     phase: 'fetching',
     progress: 25,
     message: `Fetching repository metadata for ${repository}...`,
   });
+
+  await delay(1000);
 
   // Simulate parsing phase
   callback?.({
@@ -87,12 +95,16 @@ export async function analyzeGitRepository(
     message: 'Parsing commit history...',
   });
 
+  await delay(1000);
+
   // Simulate analyzing phase
   callback?.({
     phase: 'analyzing',
     progress: 75,
     message: 'Analyzing code statistics...',
   });
+
+  await delay(1000);
 
   // Create stub result
   const result: AnalysisResult = {

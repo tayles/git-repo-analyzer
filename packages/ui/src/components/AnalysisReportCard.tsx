@@ -5,17 +5,24 @@ import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle }
 
 interface AnalysisReportCardProps {
   report: AnalysisResult;
+  onClick: () => void;
   onDelete: (repo: string) => void;
 }
 
-export function AnalysisReportCard({ report, onDelete }: AnalysisReportCardProps) {
+export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReportCardProps) {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <CardHeader>
         <CardTitle>{report.repository}</CardTitle>
         <CardDescription>{new Date(report.analyzedAt).toLocaleString()}</CardDescription>
         <CardAction>
-          <Button variant="link" onClick={() => onDelete(report.repository)}>
+          <Button
+            variant="link"
+            onClick={e => {
+              e.stopPropagation();
+              onDelete(report.repository);
+            }}
+          >
             Delete
           </Button>
         </CardAction>

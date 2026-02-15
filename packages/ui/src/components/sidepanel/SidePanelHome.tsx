@@ -44,7 +44,12 @@ export function SidePanelHome({
               Delete All Reports
             </Button>
             {history.map((result, index) => (
-              <AnalysisReportCard key={index} report={result} onDelete={onDeleteReport} />
+              <AnalysisReportCard
+                key={index}
+                report={result}
+                onClick={() => onAnalyze(result.repository)}
+                onDelete={onDeleteReport}
+              />
             ))}
           </div>
         )}

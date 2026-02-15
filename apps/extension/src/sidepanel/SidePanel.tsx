@@ -26,7 +26,9 @@ export default function SidePanel() {
 
   // Auto-detect GitHub repository from active tab on mount
   useEffect(() => {
+    console.log('SidePanel mounted, detecting active tab...');
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      console.log('Active tabs:', tabs);
       const tab = tabs[0];
       if (tab?.url) {
         // Extract repo: match github.com/owner/repo pattern
