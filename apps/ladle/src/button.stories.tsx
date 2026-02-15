@@ -3,7 +3,7 @@ import type { Story } from '@ladle/react';
 import { Button } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components / Button',
 };
 
 export const AllVariants: Story = () => (

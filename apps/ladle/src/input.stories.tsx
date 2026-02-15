@@ -3,7 +3,7 @@ import type { Story } from '@ladle/react';
 import { Input } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components/Input',
+  title: 'Components / Input',
 };
 
 export const Default: Story = () => <Input placeholder="Enter text..." />;

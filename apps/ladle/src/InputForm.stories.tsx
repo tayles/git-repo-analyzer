@@ -3,7 +3,7 @@ import type { Story } from '@ladle/react';
 import { InputForm } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components/InputForm',
+  title: 'Components / Input Form',
 };
 
 export const Default: Story = () => <InputForm />;

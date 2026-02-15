@@ -87,3 +87,30 @@ export interface AnalyzeOptions {
   /** Callback for progress updates */
   onProgress?: (update: ProgressUpdate) => void;
 }
+
+export const TOOL_CATEGORIES = [
+  'AI Tools',
+  'Package Managers',
+  'Frameworks',
+  'Testing',
+  'Linting & Formatting',
+  'Monorepo',
+  'CI/CD & Deployment',
+  'IDEs',
+] as const;
+
+export type ToolCategory = (typeof TOOL_CATEGORIES)[number];
+
+export type ToolName = string;
+
+export interface ToolMetaBasic {
+  logo: string | null;
+  url: string;
+  /** Glob patterns to match against file paths. Patterns ending with / match directories. */
+  files: string[];
+}
+
+export interface ToolMeta extends ToolMetaBasic {
+  name: string;
+  category: ToolCategory;
+}

@@ -1,7 +1,7 @@
-export { mockRepositories, getMockRepository } from './repositories';
+export { mockRepositories, getMockRepository } from './repos.mock';
 export {
   mockContributors,
   mockLanguages,
   createMockAnalysisResult,
   createMinimalMockAnalysisResult,
-} from './analysis-results';
+} from './analysis-results.mock';

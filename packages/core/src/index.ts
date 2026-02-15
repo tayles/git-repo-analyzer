@@ -5,7 +5,12 @@ export type {
   LanguageBreakdown,
   AnalysisResult,
   AnalyzeOptions,
+  ToolMeta,
+  ToolCategory,
+  ToolName
 } from './types';
+export { TOOL_REGISTRY } from './tool-registry';
+export { LANGUAGE_COLORS } from './languages';
 
 import type { ProgressUpdate, AnalysisResult } from './types';
 

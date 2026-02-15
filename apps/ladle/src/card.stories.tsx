@@ -11,7 +11,7 @@ import {
 } from '@git-repo-analyzer/ui';
 
 export default {
-  title: 'Components/Card',
+  title: 'Components / Card',
 };
 
 export const Default: Story = () => (
