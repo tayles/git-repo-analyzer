@@ -1,11 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import './popup.css';
-import Popup from './Popup';
+import './sidepanel.css';
+import SidePanel from './SidePanel';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Popup />
+    <SidePanel />
   </StrictMode>,
 );

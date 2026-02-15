@@ -1,24 +1,28 @@
 import { crx } from '@crxjs/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import path from 'node:path';
 import { defineConfig } from 'vite';
+import zip from 'vite-plugin-zip-pack';
 
-import manifest from './manifest.json';
+import manifest from './manifest.config.js';
+import { version } from './package.json';
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), crx({ manifest })],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': `${path.resolve(__dirname, 'src')}`,
     },
   },
-  build: {
-    outDir: 'dist',
-    rollupOptions: {
-      input: {
-        popup: 'src/popup/index.html',
-      },
+  plugins: [
+    react(),
+    tailwindcss(),
+    crx({ manifest }),
+    zip({ outDir: 'release', outFileName: `git-repo-analyzer-${version}.zip` }),
+  ],
+  server: {
+    cors: {
+      origin: [/chrome-extension:\/\//],
     },
   },
 });

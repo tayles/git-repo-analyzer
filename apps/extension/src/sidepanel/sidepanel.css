@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import '@git-repo-analyzer/ui/globals.css';
+
+@source '../../../../packages/ui/src/';
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
