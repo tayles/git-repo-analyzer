@@ -1,4 +1,4 @@
-import type { ToolCategory, ToolName, ToolMetaBasic, ToolMeta } from "./types";
+import type { ToolCategory, ToolName, ToolMetaBasic, ToolMeta } from './types';
 
 function flattenToolMeta(
   category: ToolCategory,

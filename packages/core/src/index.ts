@@ -7,7 +7,7 @@ export type {
   AnalyzeOptions,
   ToolMeta,
   ToolCategory,
-  ToolName
+  ToolName,
 } from './types';
 export { TOOL_REGISTRY } from './tool-registry';
 export { LANGUAGE_COLORS } from './languages';

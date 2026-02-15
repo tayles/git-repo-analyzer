@@ -1,7 +1,7 @@
 import type { Story } from '@ladle/react';
 
-import { ToolLogo } from '@git-repo-analyzer/ui';
 import { LANGUAGE_COLORS } from '@git-repo-analyzer/core';
+import { ToolLogo } from '@git-repo-analyzer/ui';
 
 export default {
   title: 'Components / Language Logo',
@@ -17,4 +17,4 @@ export const All: Story = () => (
       </div>
     ))}
   </div>
-)
+);

@@ -13,6 +13,8 @@ export { Label } from './components/ui/label';
 export { InputForm } from './components/InputForm';
 export { ToolCard } from './components/ToolCard';
 export { ToolLogo } from './components/ToolLogo';
+export { SidePanelHome } from './components/sidepanel/SidePanelHome';
+export { SidePanelRepoDetails } from './components/sidepanel/SidePanelRepoDetails';
 
 // Utilities
 export { cn } from './lib/utils';

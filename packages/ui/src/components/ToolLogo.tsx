@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Image } from 'lucide-react';
+import { useState } from 'react';
 
 interface ToolLogoProps {
   logo: string | null;
@@ -16,8 +16,8 @@ export function ToolLogo({ logo }: ToolLogoProps) {
   return (
     <div className="h-8 w-8 shrink-0 text-sm font-bold">
       {!imageLoaded && (
-        <div className="bg-primary/10 h-full w-full flex items-center justify-center rounded">
-        <Image className="h-5 w-5 text-muted-foreground" />
+        <div className="bg-primary/10 flex h-full w-full items-center justify-center rounded">
+          <Image className="text-muted-foreground h-5 w-5" />
         </div>
       )}
       <img
