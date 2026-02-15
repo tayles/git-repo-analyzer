@@ -49,7 +49,7 @@ function App() {
           </p>
         </div>
 
-        <InputForm />
+        <InputForm onAnalyze={handleAnalyze} />
 
         <Card>
           <CardHeader>

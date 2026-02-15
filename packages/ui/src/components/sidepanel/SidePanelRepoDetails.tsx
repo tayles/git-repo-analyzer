@@ -1,12 +1,18 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
 
+import { Button } from '../ui/button';
+
 interface SidePanelRepoDetailsProps {
   report: AnalysisResult;
+  onBack: () => void;
+  onRefresh: () => void;
 }
 
-export function SidePanelRepoDetails({ report }: SidePanelRepoDetailsProps) {
+export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRepoDetailsProps) {
   return (
     <div className="p-4">
+      <Button onClick={onBack}>Back</Button>
+      <Button onClick={onRefresh}>Refresh</Button>
       <h2 className="mb-2 text-lg font-semibold">Repository Details</h2>
       <div>
         <p>

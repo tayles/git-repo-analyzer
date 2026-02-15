@@ -1,56 +1,48 @@
+import { useCallback } from 'react';
+
 import { Button } from './ui/button';
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from './ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
-export function InputForm() {
+interface InputFormProps {
+  onAnalyze: (repo: string) => void;
+}
+
+export function InputForm({ onAnalyze }: InputFormProps) {
+  const handleAnalyze = useCallback(() => {
+    const input = document.getElementById('repo') as HTMLInputElement;
+    if (input && input.value) {
+      onAnalyze(input.value);
+    }
+  }, [onAnalyze]);
+
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>Enter your email below to login to your account</CardDescription>
-        <CardAction>
-          <Button variant="link">Sign Up</Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
-        <form>
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        handleAnalyze();
+      }}
+    >
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Analyze Repository</CardTitle>
+          <CardDescription>Enter your repository URL below to analyze it</CardDescription>
+        </CardHeader>
+        <CardContent>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-              <Input id="password" type="password" required />
+              <Label htmlFor="repo">Repo</Label>
+              <Input id="repo" type="text" placeholder="owner/repo or full GitHub URL" required />
             </div>
           </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Login
-        </Button>
-        <Button variant="outline" className="w-full">
-          Login with Google
-        </Button>
-      </CardFooter>
-    </Card>
+        </CardContent>
+        <CardFooter className="flex-col gap-2">
+          <Button type="submit" className="w-full">
+            Analyze Now
+          </Button>
+        </CardFooter>
+      </Card>
+    </form>
   );
 }
