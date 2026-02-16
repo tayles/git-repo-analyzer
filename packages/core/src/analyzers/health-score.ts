@@ -1,4 +1,10 @@
-import type { AnalysisResult, HealthCategory, HealthScore, HealthScoreAnalysis, HealthScoreDetail } from '../types';
+import type {
+  AnalysisResult,
+  HealthCategory,
+  HealthScore,
+  HealthScoreAnalysis,
+  HealthScoreDetail,
+} from '../types';
 
 type PartialAnalysisResult = Omit<AnalysisResult, 'healthScore' | 'generator'>;
 
@@ -197,7 +203,7 @@ function scoreSecurity(data: PartialAnalysisResult): HealthScore {
 
   if (data.tooling.categories.includes('Linting & Formatting')) {
     score += 3;
-    details.push({ message: 'Code quality checks', delta: 3 } );
+    details.push({ message: 'Code quality checks', delta: 3 });
   }
 
   if (data.tooling.tools.some(t => t.name === 'Docker' || t.name === 'Docker Compose')) {

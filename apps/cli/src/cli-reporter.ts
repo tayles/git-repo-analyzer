@@ -2,6 +2,7 @@ import {
   countryCodeToEmojiFlag,
   relativeDateLabel,
   type AnalysisResult,
+  type ToolMetaWithFileMatches,
 } from '@git-repo-analyzer/core';
 import pc from 'picocolors';
 
@@ -194,8 +195,23 @@ export function printReport(result: AnalysisResult): void {
   // Tooling
   if (result.tooling.tools.length > 0) {
     console.log(heading('Tooling'));
-    for (const tool of result.tooling.tools) {
-      console.log(`  ${pc.bold(tool.category)}: ${tool.name}`);
+    const byCategory: Record<string, ToolMetaWithFileMatches[]> = result.tooling.tools.reduce(
+      (acc, tool) => {
+        acc[tool.category] = acc[tool.category] || [];
+        acc[tool.category].push(tool);
+        return acc;
+      },
+      {} as Record<string, ToolMetaWithFileMatches[]>,
+    );
+
+    // for (const tool of result.tooling.tools) {
+    //   console.log(`  ${pc.bold(tool.category)}: ${tool.name}`);
+    // }
+    for (const [category, tools] of Object.entries(byCategory)) {
+      console.log(`  ${pc.dim(category)}`);
+      for (const tool of tools) {
+        console.log(`   ${pc.dim('-')} ${tool.name}`);
+      }
     }
   }
 

@@ -67,6 +67,12 @@ export async function analyzeGitRepository(
   // const rawData = await fetchRepositoryData(repo, token, callback);
   const rawData = GitHubRawDataJson as unknown as GitHubRawData;
 
+  callback?.({
+    phase: 'analyzing',
+    progress: 80,
+    message: 'Analyzing...',
+  });
+
   // console.log(rawData);
 
   // Process raw data to compute analysis result
@@ -75,6 +81,13 @@ export async function analyzeGitRepository(
   const commits = processCommits(rawData.commits, contributors);
   const pullRequests = processPullRequests(rawData.pullRequests);
   const languages = processLanguages(rawData.languages);
+
+  callback?.({
+    phase: 'analyzing',
+    progress: 90,
+    message: 'Detecting tooling...',
+  });
+
   const tooling = processTooling(rawData.files);
   const healthScore = processHealthScore({
     basicStats,

@@ -18,7 +18,7 @@ export interface ToolMetaBasic {
   logo: string | null;
   url: string;
   /** Glob patterns to match against file paths. Patterns ending with / match directories. */
-  files: string[];
+  globs: string[];
 }
 
 export interface ToolMeta extends ToolMetaBasic {
@@ -26,7 +26,7 @@ export interface ToolMeta extends ToolMetaBasic {
   category: ToolCategory;
 }
 
-export interface ToolMetaWithFileMatches extends Omit<ToolMeta, 'files'> {
+export interface ToolMetaWithFileMatches extends Omit<ToolMeta, 'globs'> {
   paths: string[];
 }
 
@@ -40,45 +40,45 @@ function flattenToolMeta(
 }
 
 const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  'AGENTS.md': {
+    logo: null,
+    url: 'https://agents.md',
+    globs: ['AGENTS.md'],
+  },
   'Claude Code': {
     logo: 'anthropic',
     url: 'https://docs.anthropic.com/en/docs/claude-code',
-    files: ['.claude/settings.json'],
-  },
-  'Claude Code (AGENTS.md)': {
-    logo: 'anthropic',
-    url: 'https://docs.anthropic.com/en/docs/claude-code',
-    files: ['AGENTS.md'],
-  },
-  'Claude Code (CLAUDE.md)': {
-    logo: 'anthropic',
-    url: 'https://docs.anthropic.com/en/docs/claude-code',
-    files: ['CLAUDE.md'],
+    globs: ['.claude', '.claudeignore', 'CLAUDE.md'],
   },
   'GitHub Copilot': {
     logo: 'githubcopilot',
     url: 'https://github.com/features/copilot',
-    files: ['.github/copilot-instructions.md', '.copilot-instructions.md'],
+    globs: ['.github/copilot-instructions.md', '.copilot-instructions.md'],
   },
   Cursor: {
     logo: 'cursor',
     url: 'https://cursor.com',
-    files: ['.cursorrules', '.cursorignore', '.cursor/'],
+    globs: ['.cursorrules', '.cursorignore', '.cursor'],
   },
   Aider: {
     logo: null,
     url: 'https://aider.chat',
-    files: ['.aider.conf.yml', '.aiderignore'],
+    globs: ['.aider.conf.yml', '.aiderignore'],
   },
   Cline: {
     logo: null,
     url: 'https://cline.bot',
-    files: ['cline_docs/'],
+    globs: ['cline_docs'],
+  },
+  Kiro: {
+    logo: 'kiro',
+    url: 'https://kiro.dev/',
+    globs: ['.kiro', 'product.md', 'tech.md', 'structure.md'],
   },
   Windsurf: {
     logo: null,
     url: 'https://windsurf.com',
-    files: ['.windsurfrules'],
+    globs: ['.windsurfrules'],
   },
 };
 
@@ -86,62 +86,62 @@ const PACKAGE_MANAGERS: Record<ToolName, ToolMetaBasic> = {
   Bun: {
     logo: 'bun',
     url: 'https://bun.sh',
-    files: ['bun.lockb', 'bunfig.toml'],
+    globs: ['bun.lockb', 'bun.lock', 'bunfig.toml'],
   },
   npm: {
     logo: 'npm',
     url: 'https://www.npmjs.com',
-    files: ['package-lock.json'],
+    globs: ['package-lock.json'],
   },
   Yarn: {
     logo: 'yarn',
     url: 'https://yarnpkg.com',
-    files: ['yarn.lock'],
+    globs: ['yarn.lock'],
   },
   pnpm: {
     logo: 'pnpm',
     url: 'https://pnpm.io',
-    files: ['pnpm-lock.yaml'],
+    globs: ['pnpm-lock.yaml'],
   },
   Cargo: {
     logo: 'rust',
     url: 'https://doc.rust-lang.org/cargo/',
-    files: ['Cargo.toml'],
+    globs: ['Cargo.toml'],
   },
   'Go Modules': {
     logo: 'go',
     url: 'https://go.dev',
-    files: ['go.mod'],
+    globs: ['go.mod'],
   },
   Bundler: {
     logo: 'rubygems',
     url: 'https://bundler.io',
-    files: ['Gemfile.lock'],
+    globs: ['Gemfile.lock'],
   },
   Poetry: {
     logo: 'poetry',
     url: 'https://python-poetry.org',
-    files: ['poetry.lock'],
+    globs: ['poetry.lock'],
   },
   Pipenv: {
     logo: 'python',
     url: 'https://pipenv.pypa.io',
-    files: ['Pipfile.lock'],
+    globs: ['Pipfile.lock'],
   },
   pip: {
     logo: 'pypi',
     url: 'https://pip.pypa.io',
-    files: ['requirements.txt'],
+    globs: ['requirements.txt'],
   },
   uv: {
     logo: 'uv',
     url: 'https://docs.astral.sh/uv',
-    files: ['uv.lock'],
+    globs: ['uv.lock'],
   },
   Composer: {
     logo: 'composer',
     url: 'https://getcomposer.org',
-    files: ['composer.lock'],
+    globs: ['composer.lock'],
   },
 };
 
@@ -149,62 +149,62 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
   'Next.js': {
     logo: 'nextdotjs',
     url: 'https://nextjs.org',
-    files: ['next.config.js', 'next.config.ts', 'next.config.mjs'],
+    globs: ['next.config.js', 'next.config.ts', 'next.config.mjs'],
   },
   Nuxt: {
     logo: 'nuxtdotjs',
     url: 'https://nuxt.com',
-    files: ['nuxt.config.ts', 'nuxt.config.js'],
+    globs: ['nuxt.config.ts', 'nuxt.config.js'],
   },
   SvelteKit: {
     logo: 'svelte',
     url: 'https://kit.svelte.dev',
-    files: ['svelte.config.js'],
+    globs: ['svelte.config.js'],
   },
   Astro: {
     logo: 'astro',
     url: 'https://astro.build',
-    files: ['astro.config.mjs', 'astro.config.ts'],
+    globs: ['astro.config.mjs', 'astro.config.ts'],
   },
   Angular: {
     logo: 'angular',
     url: 'https://angular.dev',
-    files: ['angular.json'],
+    globs: ['angular.json'],
   },
   Remix: {
     logo: 'remix',
     url: 'https://remix.run',
-    files: ['remix.config.js'],
+    globs: ['remix.config.js'],
   },
   Vite: {
     logo: 'vite',
     url: 'https://vitejs.dev',
-    files: ['vite.config.ts', 'vite.config.js'],
+    globs: ['vite.config.ts', 'vite.config.js'],
   },
   Webpack: {
     logo: 'webpack',
     url: 'https://webpack.js.org',
-    files: ['webpack.config.js'],
+    globs: ['webpack.config.js'],
   },
   'Tailwind CSS': {
     logo: 'tailwindcss',
     url: 'https://tailwindcss.com',
-    files: ['tailwind.config.js', 'tailwind.config.ts'],
+    globs: ['tailwind.config.(js|ts)'],
   },
   PostCSS: {
     logo: 'postcss',
     url: 'https://postcss.org',
-    files: ['postcss.config.js'],
+    globs: ['postcss.config.js'],
   },
   Django: {
     logo: 'django',
     url: 'https://www.djangoproject.com',
-    files: ['django/', 'manage.py'],
+    globs: ['django', 'manage.py'],
   },
   Rails: {
     logo: 'rubyonrails',
     url: 'https://rubyonrails.org',
-    files: ['Rakefile', 'config.ru'],
+    globs: ['Rakefile', 'config.ru'],
   },
 };
 
@@ -212,90 +212,102 @@ const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
   Jest: {
     logo: 'jest',
     url: 'https://jestjs.io',
-    files: ['jest.config.js', 'jest.config.ts'],
+    globs: ['jest.config.js', 'jest.config.ts'],
   },
   Vitest: {
     logo: 'vitest',
     url: 'https://vitest.dev',
-    files: ['vitest.config.ts', 'vitest.config.js'],
+    globs: ['vitest.config.ts', 'vitest.config.js'],
   },
   Cypress: {
     logo: 'cypress',
     url: 'https://www.cypress.io',
-    files: ['cypress.config.ts', 'cypress.config.js'],
+    globs: ['cypress.config.ts', 'cypress.config.js'],
   },
   Playwright: {
     logo: 'playwright',
     url: 'https://playwright.dev',
-    files: ['playwright.config.ts'],
+    globs: ['playwright.config.ts'],
   },
   Mocha: {
     logo: 'mocha',
     url: 'https://mochajs.org',
-    files: ['.mocharc.yml'],
+    globs: ['.mocharc.yml'],
   },
   pytest: {
     logo: 'pytest',
     url: 'https://pytest.org',
-    files: ['pytest.ini', 'setup.cfg'],
+    globs: ['pytest.ini', 'setup.cfg'],
   },
   PHPUnit: {
     logo: null,
     url: 'https://phpunit.de',
-    files: ['phpunit.xml'],
+    globs: ['phpunit.xml'],
   },
 };
 
 const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  EditorConfig: {
+    logo: 'editorconfig',
+    url: 'https://editorconfig.org',
+    globs: ['.editorconfig'],
+  },
   ESLint: {
     logo: 'eslint',
     url: 'https://eslint.org',
-    files: ['.eslintrc', '.eslintrc.js', '.eslintrc.json', 'eslint.config.js', 'eslint.config.mjs'],
+    globs: [
+      '.eslintignore',
+      '.eslintrc',
+      '.eslintrc.js',
+      '.eslintrc.json',
+      'eslint.config.js',
+      'eslint.config.mjs',
+    ],
   },
   oxlint: {
     logo: null,
     url: 'https://oxc.rs',
-    files: ['.oxlintrc.json'],
+    globs: ['.oxlintrc.json'],
   },
   Biome: {
     logo: 'biome',
     url: 'https://biomejs.dev',
-    files: ['biome.json'],
+    globs: ['biome.json'],
   },
   Prettier: {
     logo: 'prettier',
     url: 'https://prettier.io',
-    files: ['.prettierrc', '.prettierrc.json', 'prettier.config.js'],
+    globs: ['.prettierrc', '.prettierrc.json', 'prettier.config.js', '.prettierrc.js', '.prettierignore'],
   },
   oxfmt: {
     logo: null,
     url: 'https://oxc.rs',
-    files: ['.oxfmtrc.json'],
+    globs: ['.oxfmtrc.json'],
   },
   rustfmt: {
     logo: 'rust',
     url: 'https://github.com/rust-lang/rustfmt',
-    files: ['rustfmt.toml'],
+    globs: ['rustfmt.toml'],
   },
   'golangci-lint': {
     logo: 'go',
     url: 'https://golangci-lint.run',
-    files: ['.golangci.yml'],
+    globs: ['.golangci.yml'],
   },
   'Ruff/Black': {
     logo: 'ruff',
     url: 'https://docs.astral.sh/ruff/',
-    files: ['pyproject.toml'],
+    globs: ['pyproject.toml'],
   },
   RuboCop: {
     logo: 'rubocop',
     url: 'https://rubocop.org',
-    files: ['.rubocop.yml'],
+    globs: ['.rubocop.yml'],
   },
   Commitizen: {
     logo: 'commitizen',
     url: 'https://commitizen-tools.github.io/commitizen/',
-    files: ['.czrc', '.cz.toml', 'commitizen.yaml'],
+    globs: ['.czrc', '.cz.toml', 'commitizen.yaml'],
   },
 };
 
@@ -303,27 +315,27 @@ const MONOREPO_TOOLS: Record<ToolName, ToolMetaBasic> = {
   Lerna: {
     logo: 'lerna',
     url: 'https://lerna.js.org',
-    files: ['lerna.json'],
+    globs: ['lerna.json'],
   },
   Nx: {
     logo: 'nx',
     url: 'https://nx.dev',
-    files: ['nx.json'],
+    globs: ['nx.json'],
   },
   Turborepo: {
     logo: 'turborepo',
     url: 'https://turbo.build',
-    files: ['turbo.json'],
+    globs: ['turbo.json'],
   },
   'pnpm Workspaces': {
     logo: 'pnpm',
     url: 'https://pnpm.io/workspaces',
-    files: ['pnpm-workspace.yaml'],
+    globs: ['pnpm-workspace.yaml'],
   },
   Rush: {
     logo: null,
     url: 'https://rushjs.io',
-    files: ['rush.json'],
+    globs: ['rush.json'],
   },
 };
 
@@ -331,62 +343,62 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
   'GitHub Actions': {
     logo: 'githubactions',
     url: 'https://github.com/features/actions',
-    files: ['.github/workflows/'],
+    globs: ['.github/workflows'],
   },
   'GitLab CI': {
     logo: 'gitlab',
     url: 'https://docs.gitlab.com/ee/ci/',
-    files: ['.gitlab-ci.yml'],
+    globs: ['.gitlab-ci.yml'],
   },
   Jenkins: {
     logo: 'jenkins',
     url: 'https://www.jenkins.io',
-    files: ['Jenkinsfile'],
+    globs: ['Jenkinsfile'],
   },
   CircleCI: {
     logo: 'circleci',
     url: 'https://circleci.com',
-    files: ['.circleci/'],
+    globs: ['.circleci'],
   },
   'Travis CI': {
     logo: 'travisci',
     url: 'https://www.travis-ci.com',
-    files: ['.travis.yml'],
+    globs: ['.travis.yml'],
   },
   Docker: {
     logo: 'docker',
     url: 'https://www.docker.com',
-    files: ['Dockerfile', '.dockerignore'],
+    globs: ['Dockerfile', '.dockerignore'],
   },
   'Docker Compose': {
     logo: 'docker',
     url: 'https://docs.docker.com/compose/',
-    files: ['docker-compose.yml', 'docker-compose.yaml'],
+    globs: ['docker-compose.yml', 'docker-compose.yaml'],
   },
   Make: {
     logo: null,
     url: 'https://www.gnu.org/software/make/',
-    files: ['Makefile'],
+    globs: ['Makefile'],
   },
   Vercel: {
     logo: 'vercel',
     url: 'https://vercel.com',
-    files: ['vercel.json'],
+    globs: ['vercel.json'],
   },
   Netlify: {
     logo: 'netlify',
     url: 'https://www.netlify.com',
-    files: ['netlify.toml'],
+    globs: ['netlify.toml'],
   },
   'Fly.io': {
     logo: 'flydotio',
     url: 'https://fly.io',
-    files: ['fly.toml'],
+    globs: ['fly.toml'],
   },
   Render: {
     logo: 'render',
     url: 'https://render.com',
-    files: ['render.yaml'],
+    globs: ['render.yaml'],
   },
 };
 
@@ -394,42 +406,42 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
   'VS Code': {
     logo: 'visualstudiocode',
     url: 'https://code.visualstudio.com',
-    files: ['.vscode/'],
+    globs: ['.vscode'],
   },
   'JetBrains IDEs': {
     logo: 'jetbrains',
     url: 'https://www.jetbrains.com',
-    files: ['.idea/'],
+    globs: ['.idea'],
   },
   'Visual Studio': {
     logo: 'visualstudio',
     url: 'https://visualstudio.microsoft.com',
-    files: ['.vs/'],
+    globs: ['.vs'],
   },
   Fleet: {
     logo: 'fleet',
     url: 'https://www.jetbrains.com/fleet',
-    files: ['.fleet/'],
+    globs: ['.fleet'],
   },
   'Sublime Text': {
     logo: 'sublimetext',
     url: 'https://www.sublimetext.com',
-    files: ['.sublime-project', '.sublime-workspace'],
+    globs: ['.sublime-project', '.sublime-workspace'],
   },
   Vim: {
     logo: 'vim',
     url: 'https://www.vim.org',
-    files: ['.vimrc', '.vim/'],
+    globs: ['.vimrc', '.vim'],
   },
   Emacs: {
     logo: 'gnuemacs',
     url: 'https://www.gnu.org/software/emacs',
-    files: ['.emacs', '.emacs.d/'],
+    globs: ['.emacs', '.emacs.d'],
   },
   Zed: {
     logo: 'zedindustries',
     url: 'https://zed.dev',
-    files: ['.zed/'],
+    globs: ['.zed'],
   },
 };
 
@@ -437,27 +449,27 @@ const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
   'README.md': {
     logo: 'markdown',
     url: '',
-    files: ['README.md', 'README'],
+    globs: ['README.md', 'README'],
   },
   'SECURITY.md': {
     logo: 'markdown',
     url: '',
-    files: ['SECURITY.md', 'SECURITY'],
+    globs: ['SECURITY.md', 'SECURITY'],
   },
   'CONTRIBUTING.md': {
     logo: 'markdown',
     url: '',
-    files: ['CONTRIBUTING.md', 'CONTRIBUTING'],
+    globs: ['CONTRIBUTING.md', 'CONTRIBUTING'],
   },
   LICENSE: {
     logo: 'markdown',
     url: '',
-    files: ['LICENSE', 'LICENSE.md'],
+    globs: ['LICENSE', 'LICENSE.md'],
   },
   'CODE_OF_CONDUCT.md': {
     logo: 'markdown',
     url: '',
-    files: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
+    globs: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
   },
 };
 
