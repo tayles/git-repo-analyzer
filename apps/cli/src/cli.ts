@@ -15,7 +15,7 @@
 
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
 
-import { formatResult, formatResultJson } from './index';
+import { formatResultJson, formatResult } from './cli-utils';
 
 interface CliOptions {
   repository: string;

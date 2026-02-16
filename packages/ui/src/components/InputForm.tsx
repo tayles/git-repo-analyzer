@@ -33,7 +33,13 @@ export function InputForm({ onAnalyze }: InputFormProps) {
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="repo">Repo</Label>
-              <Input id="repo" type="text" placeholder="owner/repo or full GitHub URL" required />
+              <Input
+                id="repo"
+                type="text"
+                placeholder="owner/repo or full GitHub URL"
+                required
+                autoFocus
+              />
             </div>
           </div>
         </CardContent>

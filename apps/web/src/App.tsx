@@ -26,13 +26,13 @@ function App() {
     setError,
   } = useAnalysisStore();
 
-  const handleAnalyze = async () => {
-    if (!repository.trim()) return;
+  const handleAnalyze = async (repo: string) => {
+    if (!repo.trim()) return;
 
-    startAnalysis(repository);
+    startAnalysis(repo);
 
     try {
-      const analysisResult = await analyzeGitRepository(repository, undefined, updateProgress);
+      const analysisResult = await analyzeGitRepository(repo, undefined, updateProgress);
       completeAnalysis(analysisResult);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Analysis failed');
@@ -62,10 +62,10 @@ function App() {
                 placeholder="e.g., facebook/react or https://github.com/facebook/react"
                 value={repository}
                 onChange={e => setRepository(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
+                onKeyDown={e => e.key === 'Enter' && handleAnalyze(repository)}
                 disabled={isLoading}
               />
-              <Button onClick={handleAnalyze} disabled={isLoading}>
+              <Button onClick={() => handleAnalyze(repository)} disabled={isLoading}>
                 {isLoading ? 'Analyzing...' : 'Analyze'}
               </Button>
             </div>
@@ -94,57 +94,37 @@ function App() {
         {result && (
           <Card>
             <CardHeader>
-              <CardTitle>{result.repository}</CardTitle>
-              <CardDescription>Analyzed on {result.analyzedAt.toLocaleString()}</CardDescription>
+              <CardTitle>{result.basicStats.fullName}</CardTitle>
+              <CardDescription>
+                Analyzed on {result.generator.analyzedAt.toLocaleString()}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1">
                   <p className="text-muted-foreground text-sm">Total Commits</p>
-                  <p className="text-2xl font-bold">{result.stats.totalCommits.toLocaleString()}</p>
+                  <p className="text-2xl font-bold">
+                    {result.commits.totalCommits.toLocaleString()}
+                  </p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-muted-foreground text-sm">Contributors</p>
                   <p className="text-2xl font-bold">
-                    {result.stats.totalContributors.toLocaleString()}
+                    {result.contributors.totalContributors.toLocaleString()}
                   </p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-muted-foreground text-sm">Files</p>
-                  <p className="text-2xl font-bold">{result.stats.totalFiles.toLocaleString()}</p>
+                  <p className="text-2xl font-bold">{result.tooling.categories.length}</p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-muted-foreground text-sm">Lines of Code</p>
-                  <p className="text-2xl font-bold">
-                    {result.stats.totalLinesOfCode.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <h3 className="font-semibold">Languages</h3>
-                <div className="mt-2 space-y-2">
-                  {result.languages.map(lang => (
-                    <div key={lang.language} className="flex items-center gap-2">
-                      <div className="w-24 text-sm">{lang.language}</div>
-                      <div className="flex-1">
-                        <div className="bg-secondary h-2 overflow-hidden rounded-full">
-                          <div
-                            className="bg-primary h-full"
-                            style={{ width: `${lang.percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                      <div className="text-muted-foreground w-12 text-right text-sm">
-                        {lang.percentage}%
-                      </div>
-                    </div>
-                  ))}
+                  <p className="text-2xl font-bold">{result.tooling.tools.length}</p>
                 </div>
               </div>
             </CardContent>
             <CardFooter className="text-muted-foreground text-sm">
-              Analysis completed in {result.durationMs}ms
+              Analysis completed in {result.generator.durationMs}ms
             </CardFooter>
           </Card>
         )}

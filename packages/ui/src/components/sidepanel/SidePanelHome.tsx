@@ -6,6 +6,7 @@ import { Button } from '../ui/button';
 
 interface SidePanelHomeProps {
   repo: string;
+  errorMsg: string | null;
   history: AnalysisResult[];
   onAnalyze: (repo: string) => void;
   onDeleteReport: (repo: string) => void;
@@ -14,6 +15,7 @@ interface SidePanelHomeProps {
 
 export function SidePanelHome({
   repo,
+  errorMsg,
   history = [],
   onAnalyze,
   onDeleteReport,
@@ -30,6 +32,8 @@ export function SidePanelHome({
 
       <InputForm onAnalyze={onAnalyze} />
 
+      {errorMsg && <div className="text-destructive text-sm">{errorMsg}</div>}
+
       <section>
         <h2 className="text-md font-semibold">Previous Reports</h2>
 
@@ -40,14 +44,14 @@ export function SidePanelHome({
           </div>
         ) : (
           <div>
-            <Button variant="outline" size="sm" onClick={onDeleteAllReports} className="mb-4">
+            <Button variant="destructive" size="sm" onClick={onDeleteAllReports} className="mb-4">
               Delete All Reports
             </Button>
             {history.map((result, index) => (
               <AnalysisReportCard
                 key={index}
                 report={result}
-                onClick={() => onAnalyze(result.repository)}
+                onClick={() => onAnalyze(result.basicStats.fullName)}
                 onDelete={onDeleteReport}
               />
             ))}

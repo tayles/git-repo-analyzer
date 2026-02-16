@@ -1,0 +1,250 @@
+{
+  "generator": {
+    "name": "git-repo-analyzer",
+    "version": "1.0.0",
+    "analyzedAt": "2026-02-16T07:31:10.075Z",
+    "durationMs": 44
+  },
+  "basicStats": {
+    "name": "react",
+    "fullName": "facebook/react",
+    "htmlUrl": "https://github.com/facebook/react",
+    "description": "The library for web and native user interfaces.",
+    "stars": 243007,
+    "forks": 50584,
+    "openIssues": 1121,
+    "watchers": 6685,
+    "language": "JavaScript",
+    "license": "MIT",
+    "createdAt": "2013-05-24T16:15:54Z",
+    "updatedAt": "2026-02-16T05:13:28Z",
+    "pushedAt": "2026-02-16T00:04:12Z",
+    "defaultBranch": "main",
+    "size": 919204,
+    "hasWiki": false,
+    "hasPages": true,
+    "archived": false,
+    "topics": ["declarative", "frontend", "javascript", "library", "react", "ui"],
+    "homepage": "https://react.dev"
+  },
+  "contributors": {
+    "totalContributors": 300,
+    "teamSize": "large",
+    "busFactor": 1,
+    "primaryCountry": "United States of America",
+    "primaryCountryCode": "US",
+    "primaryTimezone": "America/Los_Angeles",
+    "topContributors": [
+      {
+        "login": "sebmarkbage",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/63648?v=4",
+        "contributions": 1939,
+        "htmlUrl": "https://github.com/sebmarkbage",
+        "location": "New York City",
+        "country": null,
+        "countryCode": null,
+        "flag": null,
+        "timezone": null,
+        "utcOffset": null
+      },
+      {
+        "login": "zpao",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8445?v=4",
+        "contributions": 1778,
+        "htmlUrl": "https://github.com/zpao",
+        "location": "Seattle, WA",
+        "country": "United States of America",
+        "countryCode": "US",
+        "flag": "🇺🇸",
+        "timezone": "America/Los_Angeles",
+        "utcOffset": -8
+      },
+      {
+        "login": "gaearon",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/810438?v=4",
+        "contributions": 1681,
+        "htmlUrl": "https://github.com/gaearon",
+        "location": null,
+        "country": null,
+        "countryCode": null,
+        "flag": null,
+        "timezone": null,
+        "utcOffset": null
+      },
+      {
+        "login": "acdlite",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3624098?v=4",
+        "contributions": 1419,
+        "htmlUrl": "https://github.com/acdlite",
+        "location": "New York",
+        "country": "United States of America",
+        "countryCode": "US",
+        "flag": "🇺🇸",
+        "timezone": "America/New_York",
+        "utcOffset": -5
+      },
+      {
+        "login": "sophiebits",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6820?v=4",
+        "contributions": 1291,
+        "htmlUrl": "https://github.com/sophiebits",
+        "location": "San Francisco, CA",
+        "country": "United States of America",
+        "countryCode": "US",
+        "flag": "🇺🇸",
+        "timezone": "America/Los_Angeles",
+        "utcOffset": -8
+      },
+      {
+        "login": "josephsavona",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6425824?v=4",
+        "contributions": 1145,
+        "htmlUrl": "https://github.com/josephsavona",
+        "location": "Seattle, WA",
+        "country": "United States of America",
+        "countryCode": "US",
+        "flag": "🇺🇸",
+        "timezone": "America/Los_Angeles",
+        "utcOffset": -8
+      },
+      {
+        "login": "poteto",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1390709?v=4",
+        "contributions": 809,
+        "htmlUrl": "https://github.com/poteto",
+        "location": "socal",
+        "country": null,
+        "countryCode": null,
+        "flag": null,
+        "timezone": null,
+        "utcOffset": null
+      },
+      {
+        "login": "jimfb",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9595985?v=4",
+        "contributions": 456,
+        "htmlUrl": "https://github.com/jimfb",
+        "location": null,
+        "country": null,
+        "countryCode": null,
+        "flag": null,
+        "timezone": null,
+        "utcOffset": null
+      },
+      {
+        "login": "trueadm",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1519870?v=4",
+        "contributions": 436,
+        "htmlUrl": "https://github.com/trueadm",
+        "location": "London, United Kingdom",
+        "country": "United Kingdom",
+        "countryCode": "GB",
+        "flag": "🇬🇧",
+        "timezone": "Europe/London",
+        "utcOffset": 0
+      },
+      {
+        "login": "eps1lon",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12292047?v=4",
+        "contributions": 418,
+        "htmlUrl": "https://github.com/eps1lon",
+        "location": "Berlin, Germany",
+        "country": "Germany",
+        "countryCode": "DE",
+        "flag": "🇩🇪",
+        "timezone": "Europe/Berlin",
+        "utcOffset": 1
+      }
+    ]
+  },
+  "commits": {
+    "totalCommits": 300,
+    "firstCommitDate": "2025-10-16T16:00:41Z",
+    "lastCommitDate": "2026-02-13T18:26:01Z",
+    "conventions": {
+      "conventionalCommits": true,
+      "gitmoji": false,
+      "prefixes": {
+        "fix": 2
+      }
+    },
+    "workPatterns": {
+      "classification": "hobbyist",
+      "workHoursPercent": 29,
+      "eveningsPercent": 64,
+      "weekendsPercent": 7
+    },
+    "activityHeatmap": {
+      "grid": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 3, 2, 3, 0, 1, 0],
+        [0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 3, 1, 1, 1, 0, 5, 1, 6, 5, 10, 19, 7, 3, 1],
+        [5, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 2, 4, 0, 2, 6, 6, 2, 3, 4, 3, 2, 3, 2],
+        [0, 1, 2, 3, 2, 0, 0, 0, 0, 3, 2, 2, 1, 1, 5, 3, 4, 6, 6, 7, 4, 2, 0, 0],
+        [0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 2, 1, 3, 1, 0, 3, 5, 6, 7, 3, 7, 0, 4, 5],
+        [1, 6, 1, 4, 0, 0, 2, 0, 0, 1, 1, 1, 2, 1, 3, 4, 5, 2, 9, 3, 3, 1, 8, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 1, 1, 0, 2, 1, 0, 0, 0, 0, 0]
+      ],
+      "maxValue": 19
+    }
+  },
+  "pullRequests": {
+    "totalOpen": 123,
+    "totalClosed": 64,
+    "totalMerged": 113,
+    "avgMergeTimeHours": null
+  },
+  "languages": {
+    "primaryLanguage": "JavaScript",
+    "langs": [
+      {
+        "name": "JavaScript",
+        "bytes": 5421356,
+        "percent": 66.8,
+        "color": "#f1e05a"
+      },
+      {
+        "name": "TypeScript",
+        "bytes": 2456981,
+        "percent": 30.3,
+        "color": "#3178c6"
+      },
+      {
+        "name": "HTML",
+        "bytes": 115354,
+        "percent": 1.4,
+        "color": "#e34c26"
+      },
+      {
+        "name": "CSS",
+        "bytes": 90463,
+        "percent": 1.1,
+        "color": "#563d7c"
+      },
+      {
+        "name": "CoffeeScript",
+        "bytes": 18691,
+        "percent": 0.2,
+        "color": "#8b8b8b"
+      },
+      {
+        "name": "Shell",
+        "bytes": 8899,
+        "percent": 0.1,
+        "color": "#89e051"
+      }
+    ]
+  },
+  "tooling": {
+    "tools": [
+      {
+        "name": "GitHub Actions",
+        "category": "CI/CD & Deployment",
+        "logo": "githubactions",
+        "url": "https://github.com/features/actions",
+        "files": [".github/workflows/"],
+        "paths": [".github/workflows"]
+      }
+    ],
+    "categories": ["CI/CD & Deployment"]
+  }
+}

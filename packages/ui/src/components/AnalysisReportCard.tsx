@@ -13,14 +13,14 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
   return (
     <Card onClick={onClick}>
       <CardHeader>
-        <CardTitle>{report.repository}</CardTitle>
-        <CardDescription>{new Date(report.analyzedAt).toLocaleString()}</CardDescription>
+        <CardTitle>{report.basicStats.fullName}</CardTitle>
+        <CardDescription>{new Date(report.generator.analyzedAt).toLocaleString()}</CardDescription>
         <CardAction>
           <Button
-            variant="link"
+            variant="destructive"
             onClick={e => {
               e.stopPropagation();
-              onDelete(report.repository);
+              onDelete(report.basicStats.fullName);
             }}
           >
             Delete
@@ -28,7 +28,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
         </CardAction>
       </CardHeader>
       <CardContent>
-        <p>{report.stats.primaryLanguage}</p>
+        <p>{report.languages.primaryLanguage}</p>
       </CardContent>
     </Card>
   );

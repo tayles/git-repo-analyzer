@@ -1,4 +1,34 @@
-import type { ToolCategory, ToolName, ToolMetaBasic, ToolMeta } from './types';
+export const TOOL_CATEGORIES = [
+  'AI Tools',
+  'Package Managers',
+  'Frameworks',
+  'Testing',
+  'Linting & Formatting',
+  'Monorepo',
+  'CI/CD & Deployment',
+  'IDEs',
+  'Documentation',
+] as const;
+
+export type ToolCategory = (typeof TOOL_CATEGORIES)[number];
+
+export type ToolName = string;
+
+export interface ToolMetaBasic {
+  logo: string | null;
+  url: string;
+  /** Glob patterns to match against file paths. Patterns ending with / match directories. */
+  files: string[];
+}
+
+export interface ToolMeta extends ToolMetaBasic {
+  name: string;
+  category: ToolCategory;
+}
+
+export interface ToolMetaWithFileMatches extends Omit<ToolMeta, 'files'> {
+  paths: string[];
+}
 
 function flattenToolMeta(
   category: ToolCategory,
@@ -403,6 +433,34 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
   },
 };
 
+const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  'README.md': {
+    logo: 'markdown',
+    url: '',
+    files: ['README.md', 'README'],
+  },
+  'SECURITY.md': {
+    logo: 'markdown',
+    url: '',
+    files: ['SECURITY.md', 'SECURITY'],
+  },
+  'CONTRIBUTING.md': {
+    logo: 'markdown',
+    url: '',
+    files: ['CONTRIBUTING.md', 'CONTRIBUTING'],
+  },
+  LICENSE: {
+    logo: 'markdown',
+    url: '',
+    files: ['LICENSE', 'LICENSE.md'],
+  },
+  'CODE_OF_CONDUCT.md': {
+    logo: 'markdown',
+    url: '',
+    files: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
+  },
+};
+
 /**
  * Static mapping of detected tool names to metadata.
  * Logos from cdn.simpleicons.org (SVG, no bundling needed).
@@ -416,6 +474,7 @@ export const TOOL_REGISTRY: Record<ToolName, ToolMeta> = {
   ...flattenToolMeta('Monorepo', MONOREPO_TOOLS),
   ...flattenToolMeta('CI/CD & Deployment', CICD_TOOLS),
   ...flattenToolMeta('IDEs', IDES),
+  ...flattenToolMeta('Documentation', DOCUMENTATION_TOOLS),
 };
 
 export function getToolMeta(name: string): ToolMeta | null {

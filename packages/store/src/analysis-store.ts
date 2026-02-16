@@ -80,7 +80,9 @@ export const useAnalysisStore = create<AnalysisStore>()(
       completeAnalysis: (result: AnalysisResult) => {
         const { history } = get();
         // Remove existing entry for same repository if exists
-        const filteredHistory = history.filter(item => item.repository !== result.repository);
+        const filteredHistory = history.filter(
+          item => item.basicStats.fullName !== result.basicStats.fullName,
+        );
         // Add new result to beginning of history
         set({
           result,
@@ -115,7 +117,7 @@ export const useAnalysisStore = create<AnalysisStore>()(
       removeFromHistory: (repository: string) => {
         const { history } = get();
         set({
-          history: history.filter(item => item.repository !== repository),
+          history: history.filter(item => item.basicStats.fullName !== repository),
         });
       },
     }),

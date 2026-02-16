@@ -16,6 +16,9 @@
     "test": "bun test",
     "clean": "rm -rf dist"
   },
+  "dependencies": {
+    "city-timezones": "^1.3.3"
+  },
   "devDependencies": {
     "@git-repo-analyzer/typescript-config": "workspace:*",
     "@types/bun": "^1.3.9",

@@ -22,5 +22,13 @@ export default defineManifest({
   side_panel: {
     default_path: 'src/sidepanel/index.html',
   },
-  permissions: ['activeTab', 'storage', 'sidePanel'],
+  permissions: ['activeTab', 'storage', 'sidePanel', 'contextMenus'],
+  commands: {
+    'get-repo-details': {
+      suggested_key: {
+        default: 'Alt+A',
+      },
+      description: 'Get repository details',
+    },
+  },
 });
