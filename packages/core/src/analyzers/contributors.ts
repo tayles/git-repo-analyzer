@@ -1,7 +1,7 @@
 import type { GitHubContributor, GitHubUserProfile } from '../client/github-types';
 import type { ContributorAnalysis, TeamSize } from '../types';
 
-import { countryCodeToFlag, parseLocation } from '../utils/location-utils';
+import { countryCodeToEmojiFlag, parseLocation } from '../utils/location-utils';
 import { getTimezoneOffset } from '../utils/timezone-utils';
 
 export function processContributors(
@@ -13,7 +13,7 @@ export function processContributors(
     const location = parseLocation(u.location);
     const country = location?.country ?? null;
     const countryCode = location?.iso2 ?? null;
-    const flag = countryCode ? countryCodeToFlag(countryCode) : null;
+    const flag = countryCode ? countryCodeToEmojiFlag(countryCode) : null;
     const timezone = location?.timezone ?? null;
     const utcOffset = timezone ? getTimezoneOffset(timezone) : null;
 

@@ -15,7 +15,8 @@
 
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
 
-import { formatResultJson, formatResult } from './cli-utils';
+import { formatResultJson } from './cli-formatter';
+import { printReport } from './cli-reporter';
 
 interface CliOptions {
   repository: string;
@@ -114,7 +115,7 @@ async function main() {
     if (options.json) {
       console.log(formatResultJson(result));
     } else {
-      console.log(formatResult(result));
+      printReport(result);
     }
   } catch (error) {
     console.error('Error:', error instanceof Error ? error.message : 'Unknown error');

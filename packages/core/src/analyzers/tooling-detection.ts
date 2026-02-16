@@ -22,7 +22,8 @@ function detectFromTree(files: GitHubFile[]): ToolMetaWithFileMatches[] {
         const prefix = pattern.slice(0, -1);
         for (const f of files) {
           if (f.path === prefix || f.path.startsWith(pattern)) {
-            found.add({ ...tool, paths: [f.path] });
+            const { files: _, ...rest } = tool;
+            found.add({ ...rest, paths: [f.path] });
             break;
           }
         }

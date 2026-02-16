@@ -1,4 +1,4 @@
-import type { ToolMetaWithFileMatches } from './tool-registry';
+import type { ToolCategory, ToolMetaWithFileMatches } from './tool-registry';
 
 export interface GeneratorInfo {
   name: string;
@@ -80,13 +80,16 @@ export interface WorkPatterns {
   weekendsPercent: number;
 }
 
+export type BucketByWeek = Record<string, number>; // e.g. { '2023-01-02': 5, '2023-01-09': 8 }
+
 export interface CommitAnalysis {
   totalCommits: number;
-  firstCommitDate: string;
-  lastCommitDate: string;
+  firstCommitDate: string | null;
+  lastCommitDate: string | null;
   conventions: CommitConventionsAnalysis;
   workPatterns: WorkPatterns;
   activityHeatmap: ActivityHeatmap;
+  byWeek: BucketByWeek;
 }
 
 export interface PullAnalysis {
@@ -94,6 +97,7 @@ export interface PullAnalysis {
   totalClosed: number;
   totalMerged: number;
   avgMergeTimeHours: number | null;
+  byWeek: BucketByWeek;
 }
 
 export interface LanguageAnalysis {
@@ -110,7 +114,25 @@ export interface LanguageDetails {
 
 export interface ToolAnalysis {
   tools: ToolMetaWithFileMatches[];
-  categories: string[];
+  categories: ToolCategory[];
+}
+
+export type HealthCategory =
+  | 'Maintenance'
+  | 'Documentation'
+  | 'Community'
+  | 'Code Quality'
+  | 'Security';
+
+export interface HealthScore {
+  score: number;
+  maxScore: number;
+  details: string[];
+}
+
+export interface HealthScoreAnalysis {
+  overall: number;
+  categories: Record<HealthCategory, HealthScore>;
 }
 
 export interface AnalysisResult {
@@ -121,6 +143,7 @@ export interface AnalysisResult {
   pullRequests: PullAnalysis;
   languages: LanguageAnalysis;
   tooling: ToolAnalysis;
+  healthScore: HealthScoreAnalysis;
 }
 
 /**

@@ -25,7 +25,7 @@ export function parseLocation(location: string | null): CityData | null {
     .replaceAll(/\./g, '')
     .trim();
 
-  console.log(`Normalized location: "${normalizedLocation}"`);
+  // console.log(`Normalized location: "${normalizedLocation}"`);
 
   if (specialCases[normalizedLocation]) {
     normalizedLocation = specialCases[normalizedLocation]!;
@@ -49,7 +49,7 @@ export function parseLocation(location: string | null): CityData | null {
  * @param countryCode Two-letter country code (e.g., 'US', 'GB', 'JP')
  * @returns Emoji flag string
  */
-export function countryCodeToFlag(countryCode: string): string {
+export function countryCodeToEmojiFlag(countryCode: string | null): string {
   if (!countryCode || countryCode.length !== 2) return '';
 
   const codePoints = countryCode

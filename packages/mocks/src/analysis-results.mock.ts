@@ -19,7 +19,7 @@ export const mockContributors: Contributor[] = [
   },
 ];
 
-export const mockResult: AnalysisResult = MockResultJson as AnalysisResult;
+export const mockResult: AnalysisResult = MockResultJson as unknown as AnalysisResult;
 
 /**
  * Create a mock analysis result

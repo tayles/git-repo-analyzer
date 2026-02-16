@@ -18,6 +18,7 @@ import GitHubRawDataJson from '../../mocks/src/github-api-raw.json';
 import { processBasicStats } from './analyzers/basic-stats';
 import { processCommits } from './analyzers/commits';
 import { processContributors } from './analyzers/contributors';
+import { processHealthScore } from './analyzers/health-score';
 import { processLanguages } from './analyzers/languages';
 import { processPullRequests } from './analyzers/pull-requests';
 import { processTooling } from './analyzers/tooling-detection';
@@ -75,6 +76,14 @@ export async function analyzeGitRepository(
   const pullRequests = processPullRequests(rawData.pullRequests);
   const languages = processLanguages(rawData.languages);
   const tooling = processTooling(rawData.files);
+  const healthScore = processHealthScore({
+    basicStats,
+    contributors,
+    commits,
+    pullRequests,
+    languages,
+    tooling,
+  });
 
   const durationMs = Date.now() - startTime;
 
@@ -92,6 +101,7 @@ export async function analyzeGitRepository(
     pullRequests,
     languages,
     tooling,
+    healthScore,
   };
 
   // console.log(result);

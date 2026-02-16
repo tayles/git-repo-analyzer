@@ -1,12 +1,14 @@
 import type { GitHubCommit } from '../client/github-types';
 import type {
   ActivityHeatmap,
+  BucketByWeek,
   CommitAnalysis,
   CommitConventionsAnalysis,
   ContributorAnalysis,
   WorkPatterns,
 } from '../types';
 
+import { weekStart } from '../utils/date-utils';
 import { getTimezoneOffset } from '../utils/timezone-utils';
 
 export function processCommits(
@@ -17,6 +19,11 @@ export function processCommits(
   const conventions = detectConventions(commits);
   const activityHeatmap = analyzeTimeOfDayWeek(commits, contributors);
   const workPatterns = analyzeWorkPatterns(activityHeatmap);
+  const byWeek = commits.reduce((acc, commit) => {
+    const weekStartDate = weekStart(commit.commit.author.date);
+    acc[weekStartDate] = (acc[weekStartDate] || 0) + 1;
+    return acc;
+  }, {} as BucketByWeek);
 
   return {
     totalCommits: commits.length,
@@ -25,6 +32,7 @@ export function processCommits(
     conventions,
     workPatterns,
     activityHeatmap,
+    byWeek,
   };
 }
 
