@@ -11,8 +11,11 @@ describe('analyzeGitRepository', () => {
     expect(result.basicStats.fullName).toBe('facebook/react');
     expect(result.basicStats).toBeDefined();
     expect(result.basicStats.stars).toBeGreaterThan(0);
-    expect(result.contributors).toBeInstanceOf(Array);
-    expect(result.languages).toBeInstanceOf(Array);
+    expect(result.contributors).toBeDefined();
+    expect(result.contributors.totalContributors).toBeGreaterThan(0);
+    expect(result.contributors.topContributors).toBeInstanceOf(Array);
+    expect(result.languages).toBeDefined();
+    expect(result.languages.langs).toBeInstanceOf(Array);
   });
 
   it('should analyze a repository from a full GitHub URL', async () => {

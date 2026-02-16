@@ -1,5 +1,6 @@
 import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
 
+import { mockResult } from '@git-repo-analyzer/mocks';
 import { describe, expect, it, beforeEach } from 'bun:test';
 
 import { useAnalysisStore } from './analysis-store';
@@ -55,22 +56,7 @@ describe('useAnalysisStore', () => {
 
   it('should complete analysis and add to history', () => {
     const { startAnalysis, completeAnalysis } = useAnalysisStore.getState();
-    const result: AnalysisResult = {
-      repository: 'facebook/react',
-      analyzedAt: new Date(),
-      stats: {
-        totalCommits: 1000,
-        totalContributors: 100,
-        totalFiles: 500,
-        totalLinesOfCode: 50000,
-        primaryLanguage: 'JavaScript',
-        firstCommitDate: new Date(),
-        lastCommitDate: new Date(),
-      },
-      contributors: [],
-      languages: [],
-      durationMs: 1000,
-    };
+    const result: AnalysisResult = mockResult;
 
     startAnalysis('facebook/react');
     completeAnalysis(result);
@@ -79,7 +65,7 @@ describe('useAnalysisStore', () => {
     expect(state.result).toEqual(result);
     expect(state.isLoading).toBe(false);
     expect(state.history).toHaveLength(1);
-    expect(state.history[0].repository).toBe('facebook/react');
+    expect(state.history[0].basicStats.fullName).toBe('facebook/react');
   });
 
   it('should set error correctly', () => {
@@ -106,22 +92,7 @@ describe('useAnalysisStore', () => {
 
   it('should clear history correctly', () => {
     const { completeAnalysis, clearHistory } = useAnalysisStore.getState();
-    const result: AnalysisResult = {
-      repository: 'test/repo',
-      analyzedAt: new Date(),
-      stats: {
-        totalCommits: 10,
-        totalContributors: 1,
-        totalFiles: 5,
-        totalLinesOfCode: 500,
-        primaryLanguage: 'TypeScript',
-        firstCommitDate: new Date(),
-        lastCommitDate: new Date(),
-      },
-      contributors: [],
-      languages: [],
-      durationMs: 100,
-    };
+    const result: AnalysisResult = mockResult;
 
     completeAnalysis(result);
     expect(useAnalysisStore.getState().history).toHaveLength(1);
@@ -133,26 +104,14 @@ describe('useAnalysisStore', () => {
   it('should remove specific item from history', () => {
     const { completeAnalysis, removeFromHistory } = useAnalysisStore.getState();
 
-    const result1: AnalysisResult = {
-      repository: 'repo/one',
-      analyzedAt: new Date(),
-      stats: {
-        totalCommits: 10,
-        totalContributors: 1,
-        totalFiles: 5,
-        totalLinesOfCode: 500,
-        primaryLanguage: 'TypeScript',
-        firstCommitDate: new Date(),
-        lastCommitDate: new Date(),
-      },
-      contributors: [],
-      languages: [],
-      durationMs: 100,
-    };
+    const result1: AnalysisResult = mockResult;
 
     const result2: AnalysisResult = {
       ...result1,
-      repository: 'repo/two',
+      basicStats: {
+        ...result1.basicStats,
+        fullName: 'repo/two',
+      },
     };
 
     completeAnalysis(result1);
@@ -160,10 +119,10 @@ describe('useAnalysisStore', () => {
 
     expect(useAnalysisStore.getState().history).toHaveLength(2);
 
-    removeFromHistory('repo/one');
+    removeFromHistory('facebook/react');
 
     const state = useAnalysisStore.getState();
     expect(state.history).toHaveLength(1);
-    expect(state.history[0].repository).toBe('repo/two');
+    expect(state.history[0].basicStats.fullName).toBe('repo/two');
   });
 });

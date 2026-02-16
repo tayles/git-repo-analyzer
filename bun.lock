@@ -138,6 +138,7 @@
         "zustand": "^5.0.11",
       },
       "devDependencies": {
+        "@git-repo-analyzer/mocks": "workspace:*",
         "@git-repo-analyzer/typescript-config": "workspace:*",
         "@types/bun": "^1.3.9",
         "typescript": "^5.9.3",

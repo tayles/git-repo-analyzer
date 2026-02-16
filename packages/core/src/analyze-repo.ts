@@ -66,7 +66,7 @@ export async function analyzeGitRepository(
   // const rawData = await fetchRepositoryData(repo, token, callback);
   const rawData = GitHubRawDataJson as unknown as GitHubRawData;
 
-  console.log(rawData);
+  // console.log(rawData);
 
   // Process raw data to compute analysis result
   const basicStats = processBasicStats(rawData.repoDetails);
@@ -94,7 +94,14 @@ export async function analyzeGitRepository(
     tooling,
   };
 
-  console.log(result);
+  // console.log(result);
+
+  // Report completion
+  callback?.({
+    phase: 'complete',
+    progress: 100,
+    message: 'Analysis complete!',
+  });
 
   return result;
 
