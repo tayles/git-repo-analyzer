@@ -124,10 +124,15 @@ export type HealthCategory =
   | 'Code Quality'
   | 'Security';
 
+  export interface HealthScoreDetail {
+    message: string;
+    delta: number;
+  }
+  
 export interface HealthScore {
   score: number;
   maxScore: number;
-  details: string[];
+  details: HealthScoreDetail[];
 }
 
 export interface HealthScoreAnalysis {

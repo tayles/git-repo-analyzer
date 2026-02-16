@@ -211,7 +211,9 @@ export function printReport(result: AnalysisResult): void {
   for (const [catName, score] of Object.entries(result.healthScore.categories)) {
     console.log(`  ${catName.padEnd(15)} ${progressBar(score.score, score.maxScore)}`);
     for (const detail of score.details) {
-      console.log(`    ${pc.dim('•')} ${pc.dim(detail)}`);
+      const color = detail.delta > 0 ? 'green' : detail.delta < 0 ? 'red' : 'dim';
+      const symbol = detail.delta > 0 ? '✓' : detail.delta < 0 ? '✗' : '-';
+      console.log(pc[color](`    ${pc.dim(symbol)} ${detail.message}`));
     }
   }
 

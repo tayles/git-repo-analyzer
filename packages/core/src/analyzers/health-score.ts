@@ -1,9 +1,9 @@
-import type { AnalysisResult, HealthCategory, HealthScore, HealthScoreAnalysis } from '../types';
+import type { AnalysisResult, HealthCategory, HealthScore, HealthScoreAnalysis, HealthScoreDetail } from '../types';
 
 type PartialAnalysisResult = Omit<AnalysisResult, 'healthScore' | 'generator'>;
 
 function scoreMaintenance(data: PartialAnalysisResult): HealthScore {
-  const details: string[] = [];
+  const details: HealthScoreDetail[] = [];
   let score = 0;
   const maxScore = 25;
 
@@ -13,133 +13,134 @@ function scoreMaintenance(data: PartialAnalysisResult): HealthScore {
   );
   if (daysSincePush < 30) {
     score += 10;
-    details.push('Active in last 30 days');
+    details.push({ message: 'Active in last 30 days', delta: 10 });
   } else if (daysSincePush < 180) {
     score += 5;
-    details.push('Active in last 6 months');
+    details.push({ message: 'Active in last 6 months', delta: 5 });
   } else {
-    details.push(`Inactive for ${daysSincePush} days`);
+    details.push({ message: `Inactive for ${daysSincePush} days`, delta: 0 });
   }
 
   // Commit frequency
   if (data.commits.totalCommits > 100) {
     score += 8;
-    details.push('High commit frequency');
+    details.push({ message: 'High commit frequency', delta: 8 });
   } else if (data.commits.totalCommits > 20) {
     score += 4;
-    details.push('Moderate commit frequency');
+    details.push({ message: 'Moderate commit frequency', delta: 4 });
   } else {
-    details.push('Low commit frequency');
+    details.push({ message: 'Low commit frequency', delta: 0 });
   }
 
   // Not archived
   if (!data.basicStats.archived) {
     score += 4;
   } else {
-    details.push('Repository is archived');
+    details.push({ message: 'Repository is archived', delta: 0 });
   }
 
   // Has CI/CD
   if (data.tooling.categories.includes('CI/CD & Deployment')) {
     score += 3;
-    details.push('CI/CD configured');
+    details.push({ message: 'CI/CD configured', delta: 3 });
   }
 
   return { score: Math.min(score, maxScore), maxScore, details };
 }
 
 function scoreDocumentation(data: PartialAnalysisResult): HealthScore {
-  const details: string[] = [];
+  const details: HealthScoreDetail[] = [];
   let score = 0;
   const maxScore = 20;
 
   if (data.basicStats.description) {
     score += 5;
-    details.push('Has description');
+    details.push({ message: 'Has description', delta: 5 });
   } else {
-    details.push('Missing description');
+    details.push({ message: 'Missing description', delta: 0 });
   }
 
   if (data.basicStats.license) {
     score += 5;
-    details.push(`License: ${data.basicStats.license}`);
+    details.push({ message: `License: ${data.basicStats.license}`, delta: 5 });
   } else {
-    details.push('No license');
+    details.push({ message: 'No license', delta: 0 });
   }
 
   if (data.basicStats.homepage) {
     score += 3;
-    details.push('Has homepage');
+    details.push({ message: 'Has homepage', delta: 3 });
   }
 
   if (data.basicStats.hasWiki) {
     score += 3;
-    details.push('Wiki enabled');
+    details.push({ message: 'Wiki enabled', delta: 3 });
   }
 
   if (data.basicStats.topics.length > 0) {
     score += 4;
-    details.push(`${data.basicStats.topics.length} topics`);
+    details.push({ message: `${data.basicStats.topics.length} topics`, delta: 4 });
   } else {
-    details.push('No topics');
+    details.push({ message: 'No topics', delta: 0 });
   }
 
   return { score: Math.min(score, maxScore), maxScore, details };
 }
 
 function scoreCommunity(data: PartialAnalysisResult): HealthScore {
-  const details: string[] = [];
+  const details: HealthScoreDetail[] = [];
   let score = 0;
   const maxScore = 25;
 
   // Stars
   if (data.basicStats.stars >= 1000) {
     score += 8;
-    details.push(`${data.basicStats.stars.toLocaleString()} stars`);
+    details.push({ message: `${data.basicStats.stars.toLocaleString()} stars`, delta: 8 });
   } else if (data.basicStats.stars >= 100) {
     score += 5;
-    details.push(`${data.basicStats.stars} stars`);
+    details.push({ message: `${data.basicStats.stars} stars`, delta: 5 });
   } else if (data.basicStats.stars >= 10) {
     score += 2;
-    details.push(`${data.basicStats.stars} stars`);
+    details.push({ message: `${data.basicStats.stars} stars`, delta: 2 });
   }
 
   // Contributors
   if (data.contributors.totalContributors >= 10) {
     score += 7;
-    details.push('Strong contributor base');
+    details.push({ message: 'Strong contributor base', delta: 7 });
   } else if (data.contributors.totalContributors >= 3) {
     score += 4;
-    details.push('Small contributor team');
+    details.push({ message: 'Small contributor team', delta: 4 });
   } else {
     score += 1;
-    details.push('Few contributors');
+    details.push({ message: 'Few contributors', delta: 1 });
   }
 
   // Bus factor
   if (data.contributors.busFactor >= 3) {
     score += 5;
-    details.push(`Bus factor: ${data.contributors.busFactor}`);
+    details.push({ message: `Bus factor: ${data.contributors.busFactor}`, delta: 5 });
   } else if (data.contributors.busFactor >= 2) {
     score += 3;
-    details.push(`Bus factor: ${data.contributors.busFactor}`);
+    details.push({ message: `Bus factor: ${data.contributors.busFactor}`, delta: 3 });
   } else {
-    details.push('Bus factor: 1 (high risk)');
+    details.push({ message: 'Bus factor: 1 (high risk)', delta: 0 });
   }
 
   // Forks
   if (data.basicStats.forks >= 100) {
     score += 5;
-    details.push(`${data.basicStats.forks} forks`);
+    details.push({ message: `${data.basicStats.forks} forks`, delta: 5 });
   } else if (data.basicStats.forks >= 10) {
     score += 3;
+    details.push({ message: `${data.basicStats.forks} forks`, delta: 3 });
   }
 
   return { score: Math.min(score, maxScore), maxScore, details };
 }
 
 function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
-  const details: string[] = [];
+  const details: HealthScoreDetail[] = [];
   let score = 0;
   const maxScore = 15;
 
@@ -149,9 +150,9 @@ function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
       .filter(t => t.category === 'Testing')
       .map(t => t.name)
       .join(', ');
-    details.push(`Testing: ${testingTools}`);
+    details.push({ message: `Testing: ${testingTools}`, delta: 5 });
   } else {
-    details.push('No testing framework detected');
+    details.push({ message: 'No testing framework detected', delta: 0 });
   }
 
   if (data.tooling.categories.includes('Linting & Formatting')) {
@@ -160,48 +161,48 @@ function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
       .filter(t => t.category === 'Linting & Formatting')
       .map(t => t.name)
       .join(', ');
-    details.push(`Linting & Formatting: ${lintingTools}`);
+    details.push({ message: `Linting & Formatting: ${lintingTools}`, delta: 5 });
   } else {
-    details.push('No linter detected');
+    details.push({ message: 'No linter detected', delta: 0 });
   }
 
   // PR workflow
   if (data.pullRequests.totalMerged > 10) {
     score += 5;
-    details.push('Active PR workflow');
+    details.push({ message: 'Active PR workflow', delta: 5 });
   } else if (data.pullRequests.totalMerged > 0) {
     score += 2;
-    details.push('Some PR activity');
+    details.push({ message: 'Some PR activity', delta: 2 });
   } else {
-    details.push('No PR activity');
+    details.push({ message: 'No PR activity', delta: 0 });
   }
 
   return { score: Math.min(score, maxScore), maxScore, details };
 }
 
 function scoreSecurity(data: PartialAnalysisResult): HealthScore {
-  const details: string[] = [];
+  const details: HealthScoreDetail[] = [];
   let score = 0;
   const maxScore = 15;
 
   if (data.basicStats.license) {
     score += 5;
-    details.push('Has license');
+    details.push({ message: 'Has license', delta: 5 });
   }
 
   if (data.tooling.categories.includes('CI/CD & Deployment')) {
     score += 5;
-    details.push('Automated CI pipeline');
+    details.push({ message: 'Automated CI pipeline', delta: 5 });
   }
 
   if (data.tooling.categories.includes('Linting & Formatting')) {
     score += 3;
-    details.push('Code quality checks');
+    details.push({ message: 'Code quality checks', delta: 3 } );
   }
 
   if (data.tooling.tools.some(t => t.name === 'Docker' || t.name === 'Docker Compose')) {
     score += 2;
-    details.push('Containerized');
+    details.push({ message: 'Containerized', delta: 2 });
   }
 
   return { score: Math.min(score, maxScore), maxScore, details };
