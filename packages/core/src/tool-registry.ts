@@ -309,6 +309,21 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://commitizen-tools.github.io/commitizen/',
     globs: ['.czrc', '.cz.toml', 'commitizen.yaml'],
   },
+  Husky: {
+    logo: 'husky',
+    url: 'https://typicode.github.io/husky',
+    globs: ['.husky'],
+  },
+  LintStaged: {
+    logo: 'lintstaged',
+    url: 'https://github.com/lint-staged/lint-staged',
+    globs: ['lint-staged.config.js', '.lintstagedrc', '.lintstagedrc.json'],
+  },
+  StyleLint: {
+    logo: 'stylelint',
+    url: 'https://stylelint.io',
+    globs: ['stylelint.config.js'],
+  }
 };
 
 const MONOREPO_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -443,6 +458,11 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
     url: 'https://zed.dev',
     globs: ['.zed'],
   },
+  DevContainer: {
+    logo: 'developmentcontainers',
+    url: 'https://containers.dev',
+    globs: ['.devcontainer', '.devcontainer.json'],
+  }
 };
 
 const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
