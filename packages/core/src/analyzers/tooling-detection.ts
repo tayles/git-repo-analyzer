@@ -1,3 +1,5 @@
+import { minimatch } from 'minimatch';
+
 import type { GitHubFile, GitHubFileTree } from '../client/github-types';
 import type { ToolAnalysis } from '../types';
 
@@ -15,19 +17,21 @@ export function processTooling(files: GitHubFileTree): ToolAnalysis {
 
 function detectFromTree(files: GitHubFile[]): ToolMetaWithFileMatches[] {
   const found = new Set<ToolMetaWithFileMatches>();
+  const filePaths = files.map(f => f.path);
+
   for (const tool of Object.values(TOOL_REGISTRY)) {
-    for (const pattern of tool.files) {
-      if (pattern.endsWith('/')) {
-        // directory prefix match
-        const prefix = pattern.slice(0, -1);
-        for (const f of files) {
-          if (f.path === prefix || f.path.startsWith(pattern)) {
-            const { files: _, ...rest } = tool;
-            found.add({ ...rest, paths: [f.path] });
-            break;
-          }
-        }
-      }
+    const { globs, ...rest } = tool;
+
+    // TODO: improve performance by pre-compiling globs and using a more efficient matching algorithm if needed
+    const matches = globs
+      .flatMap(glob => filePaths.filter(minimatch.filter(glob)))
+      .filter((v, i, arr) => arr.indexOf(v) === i);
+
+    if (matches.length > 0) {
+      found.add({
+        ...rest,
+        paths: matches,
+      });
     }
   }
   return [...found];
