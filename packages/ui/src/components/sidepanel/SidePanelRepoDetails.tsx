@@ -1,18 +1,29 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
 
-import { Calendar, ChevronLeft, CircleDot, Code, Eye, HardDrive, RefreshCw, Scale, Split, Star } from 'lucide-react';
+import {
+  Calendar,
+  ChevronLeft,
+  CircleDot,
+  Code,
+  Eye,
+  HardDrive,
+  RefreshCw,
+  Scale,
+  Split,
+  Star,
+} from 'lucide-react';
 
-import { Card, CardHeader, CardTitle } from '../ui/card';
-import { RepoName } from '../RepoName';
-import { Button } from '../ui/button';
-import { CardAction, CardContent } from '../ui/card';
-import { ToolCard } from '../ToolCard';
 import { ActivityHeatmapChart } from '../ActivityHeatmapChart';
 import { CommitChart } from '../CommitChart';
 import { ContributorsSection } from '../ContributorsSection';
-import { WorkPatternsCard } from '../WorkPatternsCard';
-import { PullRequestChart } from '../PullRequestChart';
 import { LanguageChart } from '../LanguageChart';
+import { PullRequestChart } from '../PullRequestChart';
+import { RepoName } from '../RepoName';
+import { ToolCard } from '../ToolCard';
+import { Button } from '../ui/button';
+import { Card, CardHeader, CardTitle } from '../ui/card';
+import { CardAction, CardContent } from '../ui/card';
+import { WorkPatternsCard } from '../WorkPatternsCard';
 
 interface SidePanelRepoDetailsProps {
   report: AnalysisResult;
@@ -51,7 +62,7 @@ export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRep
           <StatCard
             label="Forks"
             value={report.basicStats.forks}
-            icon={<Split  className="size-4" />}
+            icon={<Split className="size-4" />}
           />
           <StatCard
             label="Open Issues"
@@ -99,7 +110,7 @@ export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRep
       {/* Tools */}
       <section>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2">
-          {report.tooling.tools.map((tool) => (
+          {report.tooling.tools.map(tool => (
             <ToolCard key={tool.name} repo={report.basicStats.fullName} tool={tool} />
           ))}
         </div>

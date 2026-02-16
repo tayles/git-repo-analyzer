@@ -1,4 +1,4 @@
-import type {  ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 
 import { ToolLogo } from './ToolLogo';
 import { Button } from './ui/button';
@@ -11,11 +11,11 @@ interface ToolCardProps {
 
 export function ToolCard({ repo, tool }: ToolCardProps) {
   return (
-    <Card className="p-3 gap-2 bg-secondary overflow-hidden">
+    <Card className="bg-secondary gap-2 overflow-hidden p-3">
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2 text-sm font-normal">
-          <ToolLogo logo={tool.logo} className='size-4' />
-          <span className='truncate'>{tool.name}</span>
+          <ToolLogo logo={tool.logo} className="size-4" />
+          <span className="truncate">{tool.name}</span>
         </CardTitle>
         {/* {tool.url && <CardAction>
           <Button
@@ -28,20 +28,15 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
         </CardAction>} */}
       </CardHeader>
       <CardContent className="p-0">
-        {tool.paths.map((path) => {
+        {tool.paths.map(path => {
           const url = `https://github.com/${repo}/blob/main/${path}`;
-          
+
           return (
-          <Button
-          key={path}
-            variant="link"
-            size="xs"
-            asChild
-          >
-  <a href={url}>{path}</a>
-            
-          </Button>
-        )})}
+            <Button key={path} variant="link" size="xs" asChild>
+              <a href={url}>{path}</a>
+            </Button>
+          );
+        })}
       </CardContent>
     </Card>
   );

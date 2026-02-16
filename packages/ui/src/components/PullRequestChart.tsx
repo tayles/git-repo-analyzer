@@ -1,14 +1,8 @@
+import { formatWeekLabel, type PullAnalysis } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import { formatWeekLabel, type PullAnalysis } from '@git-repo-analyzer/core';
-
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from './ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 const chartConfig = {
   opened: {
@@ -37,10 +31,12 @@ interface PullRequestChartProps {
 }
 
 export function PullRequestChart({ data }: PullRequestChartProps) {
-  const displayData = Object.entries(data).slice(-12).map(([week, count]) => ({
-    week: formatWeekLabel(week),
-    count,
-  }));
+  const displayData = Object.entries(data)
+    .slice(-12)
+    .map(([week, count]) => ({
+      week: formatWeekLabel(week),
+      count,
+    }));
 
   return (
     <Card>
@@ -59,9 +55,7 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
           <p className="text-muted-foreground text-sm">No PR data available</p>
         ) : (
           <ChartContainer config={chartConfig} className="h-64 w-full">
-            <BarChart
-              data={displayData}
-            >
+            <BarChart data={displayData}>
               <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="week"

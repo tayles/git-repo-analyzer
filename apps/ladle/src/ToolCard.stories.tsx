@@ -1,6 +1,6 @@
 import type { Story } from '@ladle/react';
 
-import { TOOL_REGISTRY } from '@git-repo-analyzer/core';
+import { TOOL_REGISTRY, type ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 import { ToolCard } from '@git-repo-analyzer/ui';
 
 export default {
@@ -12,10 +12,11 @@ const toolsByCategory = Object.values(TOOL_REGISTRY).reduce(
     if (!acc[tool.category]) {
       acc[tool.category] = [];
     }
-    acc[tool.category].push(tool);
+    const toolWithPaths = { ...tool, paths: tool.globs };
+    acc[tool.category].push(toolWithPaths);
     return acc;
   },
-  {} as Record<string, (typeof TOOL_REGISTRY)[keyof typeof TOOL_REGISTRY][]>,
+  {} as Record<string, ToolMetaWithFileMatches[]>,
 );
 
 export const ToolCards: Story = () => (

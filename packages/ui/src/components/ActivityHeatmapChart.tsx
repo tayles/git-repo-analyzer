@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
-
 import type { ActivityHeatmap } from '@git-repo-analyzer/core';
+
+import { Fragment } from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
@@ -21,7 +21,7 @@ interface ActivityHeatmapChartProps {
   data: ActivityHeatmap;
 }
 
-export function ActivityHeatmapChart({ data}: ActivityHeatmapChartProps) {  
+export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
   return (
     <Card>
       <CardHeader>

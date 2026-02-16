@@ -1,14 +1,8 @@
+import { formatWeekLabel, type BucketByWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import { formatWeekLabel, type BucketByWeek } from '@git-repo-analyzer/core';
-
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from './ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 const chartConfig = {
   count: {
@@ -23,10 +17,12 @@ interface CommitChartProps {
 
 export function CommitChart({ data }: CommitChartProps) {
   // Show last 12 weeks for readability
-  const displayData = Object.entries(data).slice(-12).map(([week, count]) => ({
-    week: formatWeekLabel(week),
-    count,
-  }));
+  const displayData = Object.entries(data)
+    .slice(-12)
+    .map(([week, count]) => ({
+      week: formatWeekLabel(week),
+      count,
+    }));
 
   if (displayData.length === 0) {
     return (
