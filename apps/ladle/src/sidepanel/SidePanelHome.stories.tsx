@@ -8,24 +8,32 @@ import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
 export default {
   title: 'Side Panel',
-  decorators: [
-    Component => (
-      <ChromeExtensionSidePanel>
-        <Component />
-      </ChromeExtensionSidePanel>
-    ),
-  ],
 } satisfies StoryDefault;
 
 const history = [createMockAnalysisResult('facebook/react')];
 
 export const Home: Story = () => (
-  <SidePanelHome
-    repo="facebook/react"
-    errorMsg={null}
-    history={history}
-    onAnalyze={() => {}}
-    onDeleteReport={() => {}}
-    onDeleteAllReports={() => {}}
-  />
+  <div className="flex h-full flex-wrap items-stretch gap-12">
+    <ChromeExtensionSidePanel>
+      <SidePanelHome
+        repo=""
+        errorMsg={null}
+        history={[]}
+        onAnalyze={() => {}}
+        onDeleteReport={() => {}}
+        onDeleteAllReports={() => {}}
+      />
+    </ChromeExtensionSidePanel>
+
+    <ChromeExtensionSidePanel>
+      <SidePanelHome
+        repo="facebook/react"
+        errorMsg={null}
+        history={history}
+        onAnalyze={() => {}}
+        onDeleteReport={() => {}}
+        onDeleteAllReports={() => {}}
+      />
+    </ChromeExtensionSidePanel>
+  </div>
 );

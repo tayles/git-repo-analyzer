@@ -12,9 +12,9 @@ export function SidePanelAnalysisInProgress({
   onCancel,
 }: SidePanelAnalysisInProgressProps) {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-4 p-4 text-center">
+    <div className="flex h-full flex-col items-center justify-center gap-8 p-4 text-center">
       <h1 className="text-lg font-bold">Analyzing {repo}...</h1>
-      <p className="text-muted-foreground">{progress}</p>
+      <p className="text-muted-foreground text-sm">{progress}</p>
       <Button variant="outline" onClick={onCancel}>
         Cancel Analysis
       </Button>

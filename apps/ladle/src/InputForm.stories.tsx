@@ -6,4 +6,4 @@ export default {
   title: 'Components',
 };
 
-export const InputForms: Story = () => <InputForm onAnalyze={() => {}} />;
+export const InputForms: Story = () => <InputForm repo={null} onAnalyze={() => {}} />;

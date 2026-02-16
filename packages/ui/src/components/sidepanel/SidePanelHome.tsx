@@ -1,6 +1,9 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
 
+import { Trash } from 'lucide-react';
+
 import { AnalysisReportCard } from '../AnalysisReportCard';
+import { GettingStartedPlaceholder } from '../GettingStartedPlaceholder';
 import { InputForm } from '../InputForm';
 import { Button } from '../ui/button';
 
@@ -22,31 +25,35 @@ export function SidePanelHome({
   onDeleteAllReports,
 }: SidePanelHomeProps) {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-4 p-4 text-center">
-      <div>
-        <h1 className="text-lg font-bold">Git Repo Analyzer</h1>
-        <p className="text-muted-foreground">
+    <div className="flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
+      <div className="flex flex-col gap-2 text-center">
+        <h1 className="text-2xl font-bold">Git Repo Analyzer</h1>
+        <p className="text-muted-foreground text-sm">
           Analyze your GitHub repository with AI-powered insights
         </p>
       </div>
 
-      <InputForm onAnalyze={onAnalyze} />
+      <InputForm repo={repo} onAnalyze={onAnalyze} />
 
       {errorMsg && <div className="text-destructive text-sm">{errorMsg}</div>}
 
-      <section>
-        <h2 className="text-md font-semibold">Previous Reports</h2>
-
-        {history.length === 0 ? (
-          <div className="text-muted-foreground text-sm">
-            No reports generated yet for {repo}. Start by analyzing your repository to see insights
-            and recommendations here.
-          </div>
-        ) : (
-          <div>
-            <Button variant="destructive" size="sm" onClick={onDeleteAllReports} className="mb-4">
-              Delete All Reports
+      {history.length === 0 ? (
+        <GettingStartedPlaceholder onSelectExample={repo => onAnalyze(repo)} />
+      ) : (
+        <section className="flex flex-col gap-4">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-md font-semibold">Previous Reports</h2>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:bg-red-100 hover:text-red-600"
+              onClick={onDeleteAllReports}
+            >
+              <Trash />
+              Clear All
             </Button>
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
             {history.map((result, index) => (
               <AnalysisReportCard
                 key={index}
@@ -56,8 +63,8 @@ export function SidePanelHome({
               />
             ))}
           </div>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

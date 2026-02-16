@@ -49,7 +49,7 @@ function App() {
           </p>
         </div>
 
-        <InputForm onAnalyze={handleAnalyze} />
+        <InputForm repo={repository} onAnalyze={handleAnalyze} />
 
         <Card>
           <CardHeader>

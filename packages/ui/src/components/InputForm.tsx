@@ -1,15 +1,16 @@
 import { useCallback } from 'react';
 
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardFooter } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
 interface InputFormProps {
+  repo: string | null;
   onAnalyze: (repo: string) => void;
 }
 
-export function InputForm({ onAnalyze }: InputFormProps) {
+export function InputForm({ repo, onAnalyze }: InputFormProps) {
   const handleAnalyze = useCallback(() => {
     const input = document.getElementById('repo') as HTMLInputElement;
     if (input && input.value) {
@@ -24,11 +25,7 @@ export function InputForm({ onAnalyze }: InputFormProps) {
         handleAnalyze();
       }}
     >
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Analyze Repository</CardTitle>
-          <CardDescription>Enter your repository URL below to analyze it</CardDescription>
-        </CardHeader>
+      <Card>
         <CardContent>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
@@ -39,6 +36,7 @@ export function InputForm({ onAnalyze }: InputFormProps) {
                 placeholder="owner/repo or full GitHub URL"
                 required
                 autoFocus
+                defaultValue={repo ?? ''}
               />
             </div>
           </div>

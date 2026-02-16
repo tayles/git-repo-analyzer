@@ -23,5 +23,10 @@ export function processBasicStats(data: GitHubRepoDetails): BasicStats {
     archived: data.archived,
     topics: data.topics ?? [],
     homepage: data.homepage,
+    owner: {
+      login: data.owner.login,
+      id: data.owner.id,
+      avatarUrl: data.owner.avatar_url,
+    },
   };
 }

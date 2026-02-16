@@ -2,8 +2,8 @@
   "generator": {
     "name": "git-repo-analyzer",
     "version": "1.0.0",
-    "analyzedAt": "2026-02-16T07:31:10.075Z",
-    "durationMs": 44
+    "analyzedAt": "2026-02-16T19:54:21.199Z",
+    "durationMs": 1440
   },
   "basicStats": {
     "name": "react",
@@ -25,7 +25,12 @@
     "hasPages": true,
     "archived": false,
     "topics": ["declarative", "frontend", "javascript", "library", "react", "ui"],
-    "homepage": "https://react.dev"
+    "homepage": "https://react.dev",
+    "owner": {
+      "login": "facebook",
+      "id": 69631,
+      "avatarUrl": "https://avatars.githubusercontent.com/u/69631?v=4"
+    }
   },
   "contributors": {
     "totalContributors": 300,
@@ -185,13 +190,43 @@
         [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 1, 1, 0, 2, 1, 0, 0, 0, 0, 0]
       ],
       "maxValue": 19
+    },
+    "byWeek": {
+      "2026-02-08": 21,
+      "2026-02-01": 31,
+      "2026-01-25": 15,
+      "2026-01-18": 25,
+      "2026-01-11": 21,
+      "2026-01-04": 4,
+      "2025-12-14": 7,
+      "2025-12-07": 19,
+      "2025-11-30": 13,
+      "2025-11-23": 13,
+      "2025-11-16": 19,
+      "2025-11-09": 28,
+      "2025-11-02": 20,
+      "2025-10-26": 18,
+      "2025-10-19": 27,
+      "2025-10-12": 19
     }
   },
   "pullRequests": {
     "totalOpen": 123,
     "totalClosed": 64,
     "totalMerged": 113,
-    "avgMergeTimeHours": null
+    "avgMergeTimeHours": null,
+    "byWeek": {
+      "2026-02-15": 13,
+      "2026-02-08": 34,
+      "2026-02-01": 41,
+      "2026-01-25": 29,
+      "2026-01-18": 56,
+      "2026-01-11": 55,
+      "2026-01-04": 25,
+      "2025-12-28": 13,
+      "2025-12-21": 18,
+      "2025-12-14": 16
+    }
   },
   "languages": {
     "primaryLanguage": "JavaScript",
@@ -237,14 +272,192 @@
   "tooling": {
     "tools": [
       {
+        "name": "Claude Code",
+        "category": "AI Tools",
+        "logo": "anthropic",
+        "url": "https://docs.anthropic.com/en/docs/claude-code",
+        "paths": [".claude", "CLAUDE.md"]
+      },
+      {
+        "name": "Yarn",
+        "category": "Package Managers",
+        "logo": "yarn",
+        "url": "https://yarnpkg.com",
+        "paths": ["yarn.lock"]
+      },
+      {
+        "name": "EditorConfig",
+        "category": "Linting & Formatting",
+        "logo": "editorconfig",
+        "url": "https://editorconfig.org",
+        "paths": [".editorconfig"]
+      },
+      {
+        "name": "ESLint",
+        "category": "Linting & Formatting",
+        "logo": "eslint",
+        "url": "https://eslint.org",
+        "paths": [".eslintignore", ".eslintrc.js"]
+      },
+      {
+        "name": "Prettier",
+        "category": "Linting & Formatting",
+        "logo": "prettier",
+        "url": "https://prettier.io",
+        "paths": [".prettierrc.js", ".prettierignore"]
+      },
+      {
         "name": "GitHub Actions",
         "category": "CI/CD & Deployment",
         "logo": "githubactions",
         "url": "https://github.com/features/actions",
-        "files": [".github/workflows/"],
         "paths": [".github/workflows"]
+      },
+      {
+        "name": "README.md",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["README.md"]
+      },
+      {
+        "name": "SECURITY.md",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["SECURITY.md"]
+      },
+      {
+        "name": "CONTRIBUTING.md",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["CONTRIBUTING.md"]
+      },
+      {
+        "name": "LICENSE",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["LICENSE"]
+      },
+      {
+        "name": "CODE_OF_CONDUCT.md",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["CODE_OF_CONDUCT.md"]
       }
     ],
-    "categories": ["CI/CD & Deployment"]
+    "categories": [
+      "AI Tools",
+      "Package Managers",
+      "Linting & Formatting",
+      "CI/CD & Deployment",
+      "Documentation"
+    ]
+  },
+  "healthScore": {
+    "overall": 85,
+    "categories": {
+      "Maintenance": {
+        "score": 25,
+        "maxScore": 25,
+        "details": [
+          {
+            "message": "Active in last 30 days",
+            "delta": 10
+          },
+          {
+            "message": "High commit frequency",
+            "delta": 8
+          },
+          {
+            "message": "CI/CD configured",
+            "delta": 3
+          }
+        ]
+      },
+      "Documentation": {
+        "score": 17,
+        "maxScore": 20,
+        "details": [
+          {
+            "message": "Has description",
+            "delta": 5
+          },
+          {
+            "message": "License: MIT",
+            "delta": 5
+          },
+          {
+            "message": "Has homepage",
+            "delta": 3
+          },
+          {
+            "message": "6 topics",
+            "delta": 4
+          }
+        ]
+      },
+      "Community": {
+        "score": 20,
+        "maxScore": 25,
+        "details": [
+          {
+            "message": "243,007 stars",
+            "delta": 8
+          },
+          {
+            "message": "Strong contributor base",
+            "delta": 7
+          },
+          {
+            "message": "Bus factor: 1 (high risk)",
+            "delta": 0
+          },
+          {
+            "message": "50584 forks",
+            "delta": 5
+          }
+        ]
+      },
+      "Code Quality": {
+        "score": 10,
+        "maxScore": 15,
+        "details": [
+          {
+            "message": "No testing framework detected",
+            "delta": 0
+          },
+          {
+            "message": "Linting & Formatting: EditorConfig, ESLint, Prettier",
+            "delta": 5
+          },
+          {
+            "message": "Active PR workflow",
+            "delta": 5
+          }
+        ]
+      },
+      "Security": {
+        "score": 13,
+        "maxScore": 15,
+        "details": [
+          {
+            "message": "Has license",
+            "delta": 5
+          },
+          {
+            "message": "Automated CI pipeline",
+            "delta": 5
+          },
+          {
+            "message": "Code quality checks",
+            "delta": 3
+          }
+        ]
+      }
+    }
   }
 }

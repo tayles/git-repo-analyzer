@@ -28,6 +28,11 @@ export interface BasicStats {
   archived: boolean;
   topics: string[];
   homepage: string | null;
+  owner: {
+    login: string;
+    id: number;
+    avatarUrl: string;
+  };
 }
 
 export interface Contributor {

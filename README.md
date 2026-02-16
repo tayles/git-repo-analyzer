@@ -78,12 +78,12 @@ const report = await analyzeGitRepository('facebook/react');
 ## Contributing
 
 - `bun install` - Install dependencies
-- `bun run dev` - Start all dev servers
+- `bun dev` - Start all dev servers
 - `bun run build` - Build all packages
 - `bun run test` - Run tests with bun test
-- `bun run typecheck` - Type check all packages
-- `bun run lint` - Lint with oxlint
-- `bun run format` - Format with oxfmt
+- `bun fix` - Format, lint and type check all packages (and autofix where possible)
+- `bun lint:fix` - Lint with oxlint
+- `bun fmt:fix` - Format with oxfmt
 
 ## Resources
 

@@ -277,7 +277,13 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
   Prettier: {
     logo: 'prettier',
     url: 'https://prettier.io',
-    globs: ['.prettierrc', '.prettierrc.json', 'prettier.config.js', '.prettierrc.js', '.prettierignore'],
+    globs: [
+      '.prettierrc',
+      '.prettierrc.json',
+      'prettier.config.js',
+      '.prettierrc.js',
+      '.prettierignore',
+    ],
   },
   oxfmt: {
     logo: null,
@@ -323,7 +329,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     logo: 'stylelint',
     url: 'https://stylelint.io',
     globs: ['stylelint.config.js'],
-  }
+  },
 };
 
 const MONOREPO_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -462,7 +468,7 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
     logo: 'developmentcontainers',
     url: 'https://containers.dev',
     globs: ['.devcontainer', '.devcontainer.json'],
-  }
+  },
 };
 
 const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {

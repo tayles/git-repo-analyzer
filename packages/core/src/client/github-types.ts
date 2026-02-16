@@ -3,6 +3,12 @@ export interface GitHubRepoDetails {
   full_name: string;
   html_url: string;
   description: string | null;
+  owner: {
+    login: string;
+    id: number;
+    node_id: string;
+    avatar_url: string;
+  };
   stargazers_count: number;
   forks_count: number;
   open_issues_count: number;

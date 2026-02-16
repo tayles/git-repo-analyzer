@@ -117,7 +117,7 @@ export async function analyzeGitRepository(
     healthScore,
   };
 
-  // console.log(result);
+  console.log(result);
 
   // Report completion
   callback?.({
