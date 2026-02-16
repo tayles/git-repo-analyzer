@@ -7,6 +7,12 @@ import { RepoName } from '../RepoName';
 import { Button } from '../ui/button';
 import { CardAction, CardContent } from '../ui/card';
 import { ToolCard } from '../ToolCard';
+import { ActivityHeatmapChart } from '../ActivityHeatmapChart';
+import { CommitChart } from '../CommitChart';
+import { ContributorsSection } from '../ContributorsSection';
+import { WorkPatternsCard } from '../WorkPatternsCard';
+import { PullRequestChart } from '../PullRequestChart';
+import { LanguageChart } from '../LanguageChart';
 
 interface SidePanelRepoDetailsProps {
   report: AnalysisResult;
@@ -94,26 +100,22 @@ export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRep
       <section>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2">
           {report.tooling.tools.map((tool) => (
-            <ToolCard key={tool.name} tool={tool} />
+            <ToolCard key={tool.name} repo={report.basicStats.fullName} tool={tool} />
           ))}
         </div>
       </section>
 
-      <div>
-        <p>
-          <strong>Name:</strong> {report.basicStats.fullName}
-        </p>
-        <p>
-          <strong>Primary Language:</strong> {report.languages.primaryLanguage}
-        </p>
-        <p>
-          <strong>Total Commits:</strong> {report.commits.totalCommits}
-        </p>
-        <p>
-          <strong>Total Contributors:</strong> {report.contributors.totalContributors}
-        </p>
-        {/* Add more details as needed */}
-      </div>
+      <ActivityHeatmapChart data={report.commits.activityHeatmap} />
+
+      <CommitChart data={report.commits.byWeek} />
+
+      <ContributorsSection data={report.contributors} />
+
+      <WorkPatternsCard data={report.commits.workPatterns} />
+
+      <PullRequestChart data={report.pullRequests} />
+
+      <LanguageChart data={report.languages} />
     </div>
   );
 }

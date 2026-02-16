@@ -5,10 +5,11 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface ToolCardProps {
+  repo: string;
   tool: ToolMetaWithFileMatches;
 }
 
-export function ToolCard({ tool }: ToolCardProps) {
+export function ToolCard({ repo, tool }: ToolCardProps) {
   return (
     <Card className="p-3 gap-2 bg-secondary overflow-hidden">
       <CardHeader className="p-0">
@@ -27,15 +28,20 @@ export function ToolCard({ tool }: ToolCardProps) {
         </CardAction>} */}
       </CardHeader>
       <CardContent className="p-0">
-        {tool.paths.map((path) => (
+        {tool.paths.map((path) => {
+          const url = `https://github.com/${repo}/blob/main/${path}`;
+          
+          return (
           <Button
           key={path}
             variant="link"
             size="xs"
+            asChild
           >
-            {path}
+  <a href={url}>{path}</a>
+            
           </Button>
-        ))}
+        )})}
       </CardContent>
     </Card>
   );

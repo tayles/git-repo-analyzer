@@ -25,7 +25,7 @@ export const ToolCards: Story = () => (
         <h2 className="mb-2 text-lg font-bold">{category}</h2>
         <div className="flex flex-wrap gap-4">
           {tools.map(tool => (
-            <ToolCard key={tool.name} tool={tool} />
+            <ToolCard key={tool.name} repo="foo/bar" tool={tool} />
           ))}
         </div>
       </div>

@@ -8,3 +8,7 @@ export function relativeDateLabel(date: string): string {
 export function weekStart(date: string): string {
   return format(startOfWeek(parseISO(date)), 'yyyy-MM-dd');
 }
+
+export function formatWeekLabel(date: string): string {
+  return date;//format(parseISO(date), 'd MMM');
+}
