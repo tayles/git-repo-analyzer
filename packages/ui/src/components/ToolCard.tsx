@@ -1,12 +1,12 @@
+import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+
 import { ExternalLink } from 'lucide-react';
 
+import { ToolLogo } from './ToolLogo';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
-import { ToolLogo } from './ToolLogo';
-
-import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 
 interface ToolCardProps {
   repo: string;
@@ -18,7 +18,7 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Card className="group bg-muted/60 relative gap-2 overflow-hidden p-3 transition-colors hover:bg-muted lg:p-4">
+          <Card className="group bg-muted/60 hover:bg-muted relative gap-2 overflow-hidden p-3 transition-colors lg:p-4">
             <CardHeader className="p-0">
               <CardTitle className="flex items-center gap-2 text-sm font-normal">
                 <ToolLogo logo={tool.logo} className="size-4" />
@@ -33,7 +33,12 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
                     className="size-6 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
                     asChild
                   >
-                    <a href={tool.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => e.stopPropagation()}
+                    >
                       <ExternalLink className="size-3.5" />
                     </a>
                   </Button>
@@ -42,7 +47,10 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
             </CardHeader>
           </Card>
         </TooltipTrigger>
-        <TooltipContent side="bottom" className="bg-popover text-popover-foreground max-w-xs border p-2 shadow-md">
+        <TooltipContent
+          side="bottom"
+          className="bg-popover text-popover-foreground max-w-xs border p-2 shadow-md"
+        >
           <ul className="flex flex-col gap-0.5">
             {tool.paths.map(path => (
               <li key={path}>

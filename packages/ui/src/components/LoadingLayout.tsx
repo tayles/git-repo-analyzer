@@ -10,7 +10,12 @@ interface LoadingLayoutProps {
   onCancel: () => void;
 }
 
-export function LoadingLayout({ repo, progressMessage, progressValue, onCancel }: LoadingLayoutProps) {
+export function LoadingLayout({
+  repo,
+  progressMessage,
+  progressValue,
+  onCancel,
+}: LoadingLayoutProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-8 p-4 text-center">
       <Loader2 className="text-muted-foreground size-10 animate-spin" />

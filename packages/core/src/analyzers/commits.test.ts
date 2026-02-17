@@ -30,9 +30,7 @@ function makeCommit(
   };
 }
 
-function makeContributors(
-  overrides: Partial<ContributorAnalysis> = {},
-): ContributorAnalysis {
+function makeContributors(overrides: Partial<ContributorAnalysis> = {}): ContributorAnalysis {
   return {
     totalContributors: 1,
     teamSize: 'solo',
@@ -160,10 +158,7 @@ describe('analyzeTimeOfDayWeek', () => {
   });
 
   it('should skip commits with invalid dates', () => {
-    const commits = [
-      makeCommit('not-a-date'),
-      makeCommit('2024-01-15T10:00:00Z'),
-    ];
+    const commits = [makeCommit('not-a-date'), makeCommit('2024-01-15T10:00:00Z')];
     const contributors = makeContributors();
 
     const result = analyzeTimeOfDayWeek(commits, contributors);

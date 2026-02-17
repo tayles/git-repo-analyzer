@@ -1,3 +1,5 @@
+import { TZDate } from '@date-fns/tz';
+
 import type { GitHubCommit } from '../client/github-types';
 import type {
   ActivityHeatmap,
@@ -9,7 +11,6 @@ import type {
 } from '../types';
 
 import { weekStart } from '../utils/date-utils';
-import { TZDate } from '@date-fns/tz';
 
 export function processCommits(
   commits: GitHubCommit[],
