@@ -2,8 +2,3 @@
 @import '@git-repo-analyzer/ui/globals.css';
 
 @source '../../../packages/ui/src/';
-
-html,
-body {
-  @apply h-full;
-}
