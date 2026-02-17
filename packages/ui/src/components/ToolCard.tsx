@@ -17,50 +17,47 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Card className="group bg-muted/60 hover:bg-muted relative cursor-pointer gap-2 overflow-hidden p-3 transition-colors lg:p-4">
-          <CardHeader className="p-0">
-            <CardTitle className="flex items-center gap-2 text-sm font-normal">
-              <ToolLogo logo={tool.logo} className="size-4" />
-              <span className="truncate font-bold">{tool.name}</span>
+        <Card className="hover:bg-accent relative cursor-pointer gap-0 p-3 transition-colors lg:p-4">
+          <CardHeader className="gap-0 p-0">
+            <CardTitle className="flex items-center gap-2 overflow-hidden text-sm font-normal">
+              <ToolLogo logo={tool.logo} className="size-6" />
+              <span className="min-w-0 truncate text-lg font-bold">{tool.name}</span>
               <Badge variant="secondary" className="ml-auto text-xs tabular-nums">
                 {tool.paths.length}
               </Badge>
-              {tool.url && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="size-6 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-                  asChild
-                >
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                  >
-                    <ExternalLink className="size-3.5" />
-                  </a>
-                </Button>
-              )}
             </CardTitle>
           </CardHeader>
         </Card>
       </PopoverTrigger>
-      <PopoverContent side="bottom" align="start" className="w-auto max-w-md p-2">
-        <ul className="flex flex-col gap-0.5">
+      <PopoverContent side="bottom" align="center" className="w-auto max-w-md p-2 text-sm">
+        <p className="p-2">Files associated with this tool:</p>
+        <ul className="flex list-inside list-disc flex-col p-2">
           {tool.paths.map(path => (
             <li key={path}>
-              <a
-                href={`https://github.com/${repo}/blob/main/${path}`}
-                className="text-muted-foreground hover:text-foreground text-xs underline-offset-2 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {path}
-              </a>
+              <Button variant="link" size="sm" asChild>
+                <a
+                  href={`https://github.com/${repo}/blob/main/${path}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {path}
+                </a>
+              </Button>
             </li>
           ))}
         </ul>
+        <hr />
+        <Button variant="link" size="sm" asChild className="mt-2">
+          <a
+            href={tool.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={e => e.stopPropagation()}
+          >
+            Read the docs
+            <ExternalLink className="size-3.5" />
+          </a>
+        </Button>
       </PopoverContent>
     </Popover>
   );
