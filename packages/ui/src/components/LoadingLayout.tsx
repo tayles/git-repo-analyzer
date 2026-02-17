@@ -1,18 +1,14 @@
-import { Button } from '../ui/button';
+import { Button } from './ui/button';
 
-interface SidePanelAnalysisInProgressProps {
+interface LoadingLayoutProps {
   repo: string;
   progress: string;
   onCancel: () => void;
 }
 
-export function SidePanelAnalysisInProgress({
-  repo,
-  progress,
-  onCancel,
-}: SidePanelAnalysisInProgressProps) {
+export function LoadingLayout({ repo, progress, onCancel }: LoadingLayoutProps) {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8 p-4 text-center">
+    <div className="flex flex-col items-center justify-center gap-8 p-4 text-center">
       <h1 className="text-lg font-bold">Analyzing {repo}...</h1>
       <p className="text-muted-foreground text-sm">{progress}</p>
       <Button variant="outline" onClick={onCancel}>

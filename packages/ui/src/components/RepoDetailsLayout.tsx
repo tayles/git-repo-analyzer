@@ -13,25 +13,24 @@ import {
   Star,
 } from 'lucide-react';
 
-import { ActivityHeatmapChart } from '../ActivityHeatmapChart';
-import { CommitChart } from '../CommitChart';
-import { ContributorsSection } from '../ContributorsSection';
-import { LanguageChart } from '../LanguageChart';
-import { PullRequestChart } from '../PullRequestChart';
-import { RepoName } from '../RepoName';
-import { ToolCard } from '../ToolCard';
-import { Button } from '../ui/button';
-import { Card, CardHeader, CardTitle } from '../ui/card';
-import { CardAction, CardContent } from '../ui/card';
-import { WorkPatternsCard } from '../WorkPatternsCard';
+import { ActivityHeatmapChart } from './ActivityHeatmapChart';
+import { CommitChart } from './CommitChart';
+import { ContributorsSection } from './ContributorsSection';
+import { LanguageChart } from './LanguageChart';
+import { PullRequestChart } from './PullRequestChart';
+import { RepoName } from './RepoName';
+import { StatCard } from './StatCard';
+import { ToolCard } from './ToolCard';
+import { Button } from './ui/button';
+import { WorkPatternsCard } from './WorkPatternsCard';
 
-interface SidePanelRepoDetailsProps {
+interface RepoDetailsLayoutProps {
   report: AnalysisResult;
   onBack: () => void;
   onRefresh: () => void;
 }
 
-export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRepoDetailsProps) {
+export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
   return (
     <div className="flex h-full flex-col justify-start gap-2 p-2">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -128,22 +127,5 @@ export function SidePanelRepoDetails({ report, onBack, onRefresh }: SidePanelRep
 
       <LanguageChart data={report.languages} />
     </div>
-  );
-}
-
-interface StatCardProps {
-  label: string;
-  value: string | number | null;
-  icon?: React.ReactNode;
-}
-export function StatCard({ label, value, icon }: StatCardProps) {
-  return (
-    <Card className="gap-0 p-2">
-      <CardHeader className="p-0">
-        <CardTitle className="text-muted-foreground text-xs font-normal">{label}</CardTitle>
-        <CardAction className="text-muted-foreground">{icon}</CardAction>
-      </CardHeader>
-      <CardContent className="p-0 text-xl font-bold">{value}</CardContent>
-    </Card>
   );
 }

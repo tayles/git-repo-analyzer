@@ -1,7 +1,7 @@
 import type { Story } from '@ladle/react';
 import type { StoryDefault } from '@ladle/react';
 
-import { SidePanelAnalysisInProgress } from '@git-repo-analyzer/ui';
+import { SidePanelLoadingPage } from '@git-repo-analyzer/ui';
 
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
@@ -18,6 +18,6 @@ export default {
 
 const progress = 'Analyzing code structure (1/4)';
 
-export const AnalysisInProgress: Story = () => (
-  <SidePanelAnalysisInProgress repo="facebook/react" onCancel={() => {}} progress={progress} />
+export const LoadingPage: Story = () => (
+  <SidePanelLoadingPage repo="facebook/react" onCancel={() => {}} progress={progress} />
 );

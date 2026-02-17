@@ -2,7 +2,7 @@ import type { Story } from '@ladle/react';
 import type { StoryDefault } from '@ladle/react';
 
 import { createMockAnalysisResult } from '@git-repo-analyzer/mocks';
-import { SidePanelRepoDetails } from '@git-repo-analyzer/ui';
+import { SidePanelRepoDetailsPage } from '@git-repo-analyzer/ui';
 
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
@@ -19,6 +19,6 @@ export default {
 
 const report = createMockAnalysisResult('facebook/react');
 
-export const RepoDetails: Story = () => (
-  <SidePanelRepoDetails report={report} onBack={() => {}} onRefresh={() => {}} />
+export const RepoDetailsPage: Story = () => (
+  <SidePanelRepoDetailsPage report={report} onBack={() => {}} onRefresh={() => {}} />
 );

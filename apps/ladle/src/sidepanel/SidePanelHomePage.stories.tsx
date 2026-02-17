@@ -2,7 +2,7 @@ import type { Story } from '@ladle/react';
 import type { StoryDefault } from '@ladle/react';
 
 import { createMockAnalysisResult } from '@git-repo-analyzer/mocks';
-import { SidePanelHome } from '@git-repo-analyzer/ui';
+import { SidePanelHomePage } from '@git-repo-analyzer/ui';
 
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 
@@ -12,10 +12,10 @@ export default {
 
 const history = [createMockAnalysisResult('facebook/react')];
 
-export const Home: Story = () => (
+export const HomePage: Story = () => (
   <div className="flex h-full flex-wrap items-stretch gap-12">
     <ChromeExtensionSidePanel>
-      <SidePanelHome
+      <SidePanelHomePage
         repo=""
         errorMsg={null}
         history={[]}
@@ -26,7 +26,7 @@ export const Home: Story = () => (
     </ChromeExtensionSidePanel>
 
     <ChromeExtensionSidePanel>
-      <SidePanelHome
+      <SidePanelHomePage
         repo="facebook/react"
         errorMsg={null}
         history={history}

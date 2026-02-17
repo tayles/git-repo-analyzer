@@ -20,7 +20,7 @@ const examples = [
 
 export function GettingStartedPlaceholder({ onSelectExample }: GettingStartedPlaceholderProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-4">
       <p className="text-muted-foreground text-center text-sm">
         To get started, enter a repository URL above, or try an example below:
       </p>

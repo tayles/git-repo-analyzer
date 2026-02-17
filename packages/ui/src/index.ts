@@ -16,11 +16,15 @@ export { AnalysisReportCard } from './components/AnalysisReportCard';
 export { EmptyStatePlaceholder } from './components/EmptyStatePlaceholder';
 export { GettingStartedPlaceholder } from './components/GettingStartedPlaceholder';
 export { InputForm } from './components/InputForm';
-export { SidePanelAnalysisInProgress } from './components/sidepanel/SidePanelAnalysisInProgress';
-export { SidePanelHome } from './components/sidepanel/SidePanelHome';
-export { SidePanelRepoDetails } from './components/sidepanel/SidePanelRepoDetails';
+export { SidePanelLoadingPage } from './components/sidepanel/SidePanelLoadingPage';
+export { SidePanelHomePage } from './components/sidepanel/SidePanelHomePage';
+export { SidePanelRepoDetailsPage } from './components/sidepanel/SidePanelRepoDetailsPage';
+export { AppLoadingPage } from './components/app/AppLoadingPage';
+export { AppHomePage } from './components/app/AppHomePage';
+export { AppRepoDetailsPage } from './components/app/AppRepoDetailsPage';
 export { ToolCard } from './components/ToolCard';
 export { ToolLogo } from './components/ToolLogo';
+export { AnalyzerLogo } from './components/AnalyzerLogo';
 
 // Utilities
 export { cn } from './lib/utils';

@@ -25,7 +25,7 @@ export function InputForm({ repo, onAnalyze }: InputFormProps) {
         handleAnalyze();
       }}
     >
-      <Card>
+      <Card className="mx-auto max-w-2xl">
         <CardContent>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">

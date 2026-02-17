@@ -1,9 +1,9 @@
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
 import { useAnalysisStore } from '@git-repo-analyzer/store';
 import {
-  SidePanelHome,
-  SidePanelAnalysisInProgress,
-  SidePanelRepoDetails,
+  SidePanelHomePage,
+  SidePanelLoadingPage,
+  SidePanelRepoDetailsPage,
 } from '@git-repo-analyzer/ui';
 import { useCallback, useEffect } from 'react';
 
@@ -99,7 +99,7 @@ export default function SidePanel() {
   // View routing based on store state
   if (isLoading) {
     return (
-      <SidePanelAnalysisInProgress
+      <SidePanelLoadingPage
         repo={currentRepository || ''}
         progress={progress?.message || 'Starting analysis...'}
         onCancel={handleCancel}
@@ -108,11 +108,13 @@ export default function SidePanel() {
   }
 
   if (result && !error) {
-    return <SidePanelRepoDetails report={result} onBack={handleBack} onRefresh={handleRefresh} />;
+    return (
+      <SidePanelRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
+    );
   }
 
   return (
-    <SidePanelHome
+    <SidePanelHomePage
       repo={currentRepository || ''}
       errorMsg={error}
       history={history}

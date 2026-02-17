@@ -2,12 +2,12 @@ import type { AnalysisResult } from '@git-repo-analyzer/core';
 
 import { Trash } from 'lucide-react';
 
-import { AnalysisReportCard } from '../AnalysisReportCard';
-import { GettingStartedPlaceholder } from '../GettingStartedPlaceholder';
-import { InputForm } from '../InputForm';
-import { Button } from '../ui/button';
+import { AnalysisReportCard } from './AnalysisReportCard';
+import { GettingStartedPlaceholder } from './GettingStartedPlaceholder';
+import { InputForm } from './InputForm';
+import { Button } from './ui/button';
 
-interface SidePanelHomeProps {
+interface HomeLayoutProps {
   repo: string;
   errorMsg: string | null;
   history: AnalysisResult[];
@@ -16,23 +16,16 @@ interface SidePanelHomeProps {
   onDeleteAllReports: () => void;
 }
 
-export function SidePanelHome({
+export function HomeLayout({
   repo,
   errorMsg,
   history = [],
   onAnalyze,
   onDeleteReport,
   onDeleteAllReports,
-}: SidePanelHomeProps) {
+}: HomeLayoutProps) {
   return (
-    <div className="flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
-      <div className="flex flex-col gap-2 text-center">
-        <h1 className="text-2xl font-bold">Git Repo Analyzer</h1>
-        <p className="text-muted-foreground text-sm">
-          Analyze your GitHub repository with AI-powered insights
-        </p>
-      </div>
-
+    <div className="flex flex-col items-stretch justify-start gap-12">
       <InputForm repo={repo} onAnalyze={onAnalyze} />
 
       {errorMsg && <div className="text-destructive text-sm">{errorMsg}</div>}
