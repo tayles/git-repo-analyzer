@@ -1,5 +1,5 @@
 {
-  "name": "git-repo-analyzer-cli",
+  "name": "git-repo-analyzer",
   "version": "0.0.1",
   "description": "CLI tool and TypeScript library to view the tech stack, health and other insights of any GitHub repository",
   "keywords": [
