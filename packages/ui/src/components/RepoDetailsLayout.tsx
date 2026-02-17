@@ -16,6 +16,7 @@ import {
 import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
 import { ContributorsSection } from './ContributorsSection';
+import { HealthScoreCard } from './HealthScoreCard';
 import { LanguageChart } from './LanguageChart';
 import { PullRequestChart } from './PullRequestChart';
 import { RepoName } from './RepoName';
@@ -23,7 +24,6 @@ import { StatCard } from './StatCard';
 import { ToolCard } from './ToolCard';
 import { Button } from './ui/button';
 import { WorkPatternsCard } from './WorkPatternsCard';
-import { HealthScoreCard } from './HealthScoreCard';
 
 interface RepoDetailsLayoutProps {
   report: AnalysisResult;
@@ -40,7 +40,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           <span className="inline sm:hidden sm:inline">Back</span>
         </Button>
 
-        <h2 className="text-lg order-3 w-full truncate overflow-hidden font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
+        <h2 className="order-3 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
         </h2>
 
@@ -120,7 +120,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </div>
       </section>
 
-      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))] gap-4 p-2">
+      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]">
         <ActivityHeatmapChart data={report.commits.activityHeatmap} />
 
         <WorkPatternsCard data={report.commits.workPatterns} />

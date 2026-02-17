@@ -1,16 +1,11 @@
-import { Cell, Pie, PieChart } from 'recharts';
-
 import type { HealthScore, HealthScoreAnalysis } from '@git-repo-analyzer/core';
 
+import { Cell, Pie, PieChart } from 'recharts';
+
+import { cn } from '../lib/utils';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from './ui/chart';
-import { cn } from '../lib/utils';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 function getScoreColor(score: number, max: number): string {
   const pct = (score / max) * 100;
@@ -107,13 +102,14 @@ function CategoryDonut({
             <div
               key={idx}
               className={cn(
-                  'bg-muted/50 flex items-start gap-2 rounded-md px-3 py-2 text-sm leading-snug font-medium',
-                  detail.delta > 0 && 'text-green-700 dark:text-green-400',
-                  detail.delta < 0 && 'text-red-700 dark:text-red-400',
-                  detail.delta === 0 && 'text-muted-foreground'
-                )}>
-                  <span className='w-3'>{detail.delta > 0 ? '✓' : detail.delta < 0 ? '✗' : '•'}</span>
-                  <span>{detail.message}</span>
+                'bg-muted/50 flex items-start gap-2 rounded-md px-3 py-2 text-sm leading-snug font-medium',
+                detail.delta > 0 && 'text-green-700 dark:text-green-400',
+                detail.delta < 0 && 'text-red-700 dark:text-red-400',
+                detail.delta === 0 && 'text-muted-foreground',
+              )}
+            >
+              <span className="w-3">{detail.delta > 0 ? '✓' : detail.delta < 0 ? '✗' : '•'}</span>
+              <span>{detail.message}</span>
             </div>
           ))}
         </div>
