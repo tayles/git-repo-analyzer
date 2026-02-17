@@ -1,7 +1,7 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
 import { useEffect, useRef } from 'react';
 
-interface UseUrlSyncOptions {
+export interface UseUrlSyncOptions {
   currentRepository: string | null;
   result: AnalysisResult | null;
   isLoading: boolean;
