@@ -4,7 +4,7 @@
 
 A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git repositories.
 
-- 🌐 **[Online Tool](#online-tool)** _(Try it now!)_
+- 🌐 **[Online Tool](https://tayles.github.io/git-repo-analyzer)** _(Try it now!)_
 - 🧩 **[Chrome Extension](#chrome-extension)**
 - 💻 **[CLI Tool](#cli)**
 - 🧑‍💻 **[TypeScript Library](#typescript-api)**
