@@ -26,6 +26,17 @@ export { ToolCard } from './components/ToolCard';
 export { ToolLogo } from './components/ToolLogo';
 export { AnalyzerLogo } from './components/AnalyzerLogo';
 export { ThemeToggle } from './components/ThemeToggle';
+export { StatCard } from './components/StatCard';
+export { ErrorAlert } from './components/ErrorAlert';
+export { LoadingLayout } from './components/LoadingLayout';
+export { RepoName } from './components/RepoName';
+export { ActivityHeatmapChart } from './components/ActivityHeatmapChart';
+export { CommitChart } from './components/CommitChart';
+export { ContributorsSection } from './components/ContributorsSection';
+export { HealthScoreCard } from './components/HealthScoreCard';
+export { LanguageChart } from './components/LanguageChart';
+export { PullRequestChart } from './components/PullRequestChart';
+export { WorkPatternsCard } from './components/WorkPatternsCard';
 
 // Utilities
 export { cn } from './lib/utils';
