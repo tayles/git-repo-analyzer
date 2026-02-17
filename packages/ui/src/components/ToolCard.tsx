@@ -3,7 +3,6 @@ import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 import { ExternalLink } from 'lucide-react';
 
 import { ToolLogo } from './ToolLogo';
-import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card, CardHeader, CardTitle } from './ui/card';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
@@ -22,9 +21,6 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
             <CardTitle className="flex items-center gap-2 overflow-hidden text-sm font-normal">
               <ToolLogo logo={tool.logo} className="size-6" />
               <span className="min-w-0 truncate text-lg font-bold">{tool.name}</span>
-              <Badge variant="secondary" className="ml-auto text-xs tabular-nums">
-                {tool.paths.length}
-              </Badge>
             </CardTitle>
           </CardHeader>
         </Card>

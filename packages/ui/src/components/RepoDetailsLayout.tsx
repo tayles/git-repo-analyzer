@@ -183,7 +183,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
       {/* Tools */}
       <section>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
           {report.tooling.tools.map((tool, i) => (
             <motion.div
               key={tool.name}
