@@ -8,6 +8,7 @@ import {
 } from '@git-repo-analyzer/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useRef } from 'react';
+import { useUrlSync } from './hooks';
 
 function App() {
   const currentRepository = useAnalysisStore(state => state.currentRepository);
@@ -77,6 +78,13 @@ function App() {
     },
     [result, handleBack, removeFromHistory],
   );
+
+  useUrlSync({
+    currentRepository,
+    result,
+    isLoading,
+    onAnalyze: handleAnalyze,
+  });
 
   return (
     <main className="bg-background min-h-screen">
