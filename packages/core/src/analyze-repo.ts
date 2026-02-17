@@ -22,6 +22,7 @@ import { processLanguages } from './analyzers/languages';
 import { processPullRequests } from './analyzers/pull-requests';
 import { processTooling } from './analyzers/tooling-detection';
 import { GitHubAPI } from './client/github-api';
+import { delay } from './utils/async-utils';
 import { parseRepository } from './utils/parse-utils';
 
 /**
@@ -85,6 +86,8 @@ export async function analyzeGitRepository(
     message: 'Detecting tooling...',
   });
 
+  await delay(1); // Yield to allow progress update to render
+
   const tooling = processTooling(rawData.files);
   const healthScore = processHealthScore({
     basicStats,
@@ -119,6 +122,8 @@ export async function analyzeGitRepository(
     progress: 100,
     message: 'Analysis complete!',
   });
+
+  await delay(1); // Yield to allow progress update to render
 
   return result;
 }

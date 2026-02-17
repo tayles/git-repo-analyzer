@@ -48,6 +48,7 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
               style={{ gridTemplateColumns: `auto repeat(24, 1fr)` }}
             >
               {/* Hour labels */}
+              <div />
               {Array.from({ length: 24 }, (_, h) => (
                 <div key={h} className="text-muted-foreground text-center text-[10px]">
                   {h % 3 === 0 ? h : ''}

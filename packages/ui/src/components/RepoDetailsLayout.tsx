@@ -19,6 +19,7 @@ import { CommitChart } from './CommitChart';
 import { ContributorsSection } from './ContributorsSection';
 import { HealthScoreCard } from './HealthScoreCard';
 import { LanguageChart } from './LanguageChart';
+import { LanguageLogo } from './LanguageLogo';
 import { PullRequestChart } from './PullRequestChart';
 import { RepoName } from './RepoName';
 import { StatCard } from './StatCard';
@@ -36,7 +37,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
   const baseUrl = report.basicStats.htmlUrl;
   return (
     <div className="flex h-full flex-col justify-start gap-2">
-      <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-4">
+      <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-2 md:py-4">
         <Button variant="ghost" onClick={onBack} className="order-1" title="Go back">
           <ChevronLeft />
           <span className="inline sm:hidden sm:inline">Back</span>
@@ -117,8 +118,9 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               label="Language"
               value={report.basicStats.language}
               icon={<Code className="size-4" />}
-              href={baseUrl}
-            />
+            >
+              <LanguageLogo language={report.basicStats.language} className="size-6" />
+            </StatCard>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -141,7 +143,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               label="Size"
               value={report.basicStats.size}
               icon={<HardDrive className="size-4" />}
-              href={baseUrl}
             />
           </motion.div>
           <motion.div
@@ -153,7 +154,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               label="Created"
               value={report.basicStats.createdAt.split('T')[0]}
               icon={<Calendar className="size-4" />}
-              href={baseUrl}
             />
           </motion.div>
           <motion.div
@@ -165,7 +165,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               label="Updated"
               value={report.basicStats.updatedAt.split('T')[0]}
               icon={<Calendar className="size-4" />}
-              href={baseUrl}
             />
           </motion.div>
           <motion.div
@@ -177,7 +176,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               label="Pushed"
               value={report.basicStats.pushedAt.split('T')[0]}
               icon={<Calendar className="size-4" />}
-              href={baseUrl}
             />
           </motion.div>
         </div>
@@ -199,63 +197,21 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </div>
       </section>
 
-      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-        >
-          <ActivityHeatmapChart data={report.commits.activityHeatmap} />
-        </motion.div>
+      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
+        <ActivityHeatmapChart data={report.commits.activityHeatmap} />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.25 }}
-        >
-          <WorkPatternsCard data={report.commits.workPatterns} />
-        </motion.div>
+        <WorkPatternsCard data={report.commits.workPatterns} />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          <ContributorsSection data={report.contributors} />
-        </motion.div>
+        <ContributorsSection data={report.contributors} />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.35 }}
-        >
-          <LanguageChart data={report.languages} />
-        </motion.div>
+        <LanguageChart data={report.languages} />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
-        >
-          <CommitChart data={report.commits.byWeek} />
-        </motion.div>
+        <CommitChart data={report.commits.byWeek} />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.45 }}
-        >
-          <PullRequestChart data={report.pullRequests} />
-        </motion.div>
+        <PullRequestChart data={report.pullRequests} />
       </section>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.5 }}
-      >
-        <HealthScoreCard health={report.healthScore} />
-      </motion.div>
+      <HealthScoreCard health={report.healthScore} />
     </div>
   );
 }

@@ -7,9 +7,10 @@ interface StatCardProps {
   value: string | number | null;
   icon?: React.ReactNode;
   href?: string;
+  children?: React.ReactNode;
 }
 
-export function StatCard({ label, value, icon, href }: StatCardProps) {
+export function StatCard({ label, value, icon, href, children }: StatCardProps) {
   let formattedValue: string | number | null = value;
   if (typeof value === 'number') {
     formattedValue = formatNumber(value);
@@ -21,7 +22,10 @@ export function StatCard({ label, value, icon, href }: StatCardProps) {
         <CardTitle className="text-muted-foreground text-xs font-normal">{label}</CardTitle>
         <CardAction className="text-muted-foreground">{icon}</CardAction>
       </CardHeader>
-      <CardContent className="p-0 text-lg font-bold lg:text-xl">{formattedValue}</CardContent>
+      <CardContent className="flex items-center justify-between gap-2 p-0 text-lg font-bold lg:text-xl">
+        {formattedValue}
+        {children}
+      </CardContent>
     </Card>
   );
 

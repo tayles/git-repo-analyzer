@@ -15,7 +15,7 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2 text-sm font-normal">
           <ToolLogo logo={tool.logo} className="size-4" />
-          <span className="truncate">{tool.name}</span>
+          <span className="truncate font-bold">{tool.name}</span>
         </CardTitle>
         {/* {tool.url && <CardAction>
           <Button
