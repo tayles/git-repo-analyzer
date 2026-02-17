@@ -58,41 +58,6 @@ export function formatDuration(hours: number): string {
   return `${days}d`;
 }
 
-export function formatNumber(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return String(n);
-}
-
-/**
- * Format YYYY-MM date to human-readable month label
- * @param dateStr - Date string in YYYY-MM format
- * @returns Formatted month like "Jan '24" or "Dec '25"
- */
-export function formatMonthLabel(dateStr: string): string {
-  const [year, month] = dateStr.split('-');
-  if (!year || !month) return dateStr;
-
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const monthIdx = parseInt(month, 10) - 1;
-  const shortYear = year.slice(-2);
-
-  return `${monthNames[monthIdx] ?? '???'} '${shortYear}`;
-}
-
 /**
  * Format an analysis result as JSON
  */

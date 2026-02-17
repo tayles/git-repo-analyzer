@@ -14,7 +14,7 @@ import type {
 } from './client/github-types';
 import type { ProgressUpdate, AnalysisResult } from './types';
 
-import GitHubRawDataJson from '../../mocks/src/github-api-raw.json';
+// import GitHubRawDataJson from '../../mocks/src/github-api-raw.json';
 import { processBasicStats } from './analyzers/basic-stats';
 import { processCommits } from './analyzers/commits';
 import { processContributors } from './analyzers/contributors';
@@ -51,7 +51,7 @@ import { parseRepository } from './utils/parse-utils';
  */
 export async function analyzeGitRepository(
   repoNameOrUrl: string,
-  _token?: string,
+  token?: string,
   callback?: (result: ProgressUpdate) => void,
 ): Promise<AnalysisResult> {
   const startTime = Date.now();
@@ -64,8 +64,8 @@ export async function analyzeGitRepository(
     message: `Fetching data for ${repo}...`,
   });
 
-  // const rawData = await fetchRepositoryData(repo, token, callback);
-  const rawData = GitHubRawDataJson as unknown as GitHubRawData;
+  const rawData = await fetchRepositoryData(repo, token, callback);
+  // const rawData = GitHubRawDataJson as unknown as GitHubRawData;
 
   callback?.({
     phase: 'analyzing',

@@ -5,7 +5,7 @@ import pkg from './package.json';
 export default defineManifest({
   manifest_version: 3,
   name: 'Git Repo Analyzer',
-  description: 'A Chrome extension to analyze Git repositories and provide insights',
+  description: 'View the tech stack, health and other insights of any GitHub repository',
   version: pkg.version,
   icons: {
     512: 'public/icons/git-repo-analyzer-icon-512x512.png',

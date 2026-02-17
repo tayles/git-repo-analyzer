@@ -33,7 +33,7 @@ export function InputForm({ repo, onAnalyze }: InputFormProps) {
               <Input
                 id="repo"
                 type="text"
-                placeholder="owner/repo or full GitHub URL"
+                placeholder="https://github.com/owner/repo or owner/repo"
                 required
                 autoFocus
                 defaultValue={repo ?? ''}

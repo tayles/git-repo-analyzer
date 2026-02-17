@@ -27,7 +27,7 @@ export function GettingStartedPlaceholder({ onSelectExample }: GettingStartedPla
 
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
         {examples.map(example => (
-          <li key={example.uid} className="text-left">
+          <li key={example.name} className="text-left">
             <Button variant="link" onClick={() => onSelectExample(example.name)}>
               <GitHubUserAvatar uid={example.uid} />
               <span>{example.name}</span>

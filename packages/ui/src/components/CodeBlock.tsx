@@ -2,15 +2,18 @@ import { Check, Copy } from 'lucide-react';
 
 import { useCopyToClipboard } from '../hooks/use-copy-to-clipboard';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './ui/input-group';
+import { cn } from '../lib/utils';
 
 interface CodeBlockProps {
   code: string;
+  className?: string;
 }
-export function CodeBlock({ code }: CodeBlockProps) {
+
+export function CodeBlock({ code, className }: CodeBlockProps) {
   const [copy, isCopied] = useCopyToClipboard();
 
   return (
-    <InputGroup className='min-w-[260px]'>
+    <InputGroup className={cn('min-w-[260px]', className)}>
       <InputGroupInput placeholder={code} readOnly />
       <InputGroupAddon align="inline-end">
         <InputGroupButton aria-label="Copy" title="Copy" size="icon-xs" onClick={() => copy(code)}>

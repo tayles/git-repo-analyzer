@@ -6,11 +6,13 @@ export function AppHeader() {
   return (
     <header className="flex flex-wrap items-center justify-between gap-2">
       <h1 className="flex items-center gap-2 text-xl font-bold">
-        <AnalyzerLogo className="size-6" />
+        <AnalyzerLogo className="size-12" />
         Git Repo Analyzer
       </h1>
+      
       <nav className="flex items-center gap-4">
-        <CodeBlock code="npm install -g git-repo-analyzer" />
+        <CodeBlock code="npm install -g git-repo-analyzer" className="hidden lg:flex mr-2" />
+
         <Button variant="ghost" size="icon-lg" asChild title="View on GitHub">
           <a
             href="https://github.com/tayles/git-repo-analyzer"
@@ -39,7 +41,7 @@ export function AppHeader() {
           </a>
         </Button>
 
-        <Button variant="ghost" size="icon-lg" asChild title="View on Chrome Web Store">
+        <Button variant="ghost" size="lg" asChild title="View on Chrome Web Store">
           <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 223" className="size-6">
               <defs>
@@ -114,6 +116,7 @@ export function AppHeader() {
                 opacity={0.1}
               ></path>
             </svg>
+            <span className="hidden md:block">Get the Chrome Extension</span>
           </a>
         </Button>
       </nav>

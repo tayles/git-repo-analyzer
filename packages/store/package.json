@@ -1,5 +1,6 @@
 {
   "name": "@git-repo-analyzer/store",
+  "description": "State management for git-repo-analyzer",
   "version": "0.0.1",
   "private": true,
   "type": "module",

@@ -24,9 +24,8 @@ export function AppHomePage({
     <div className="container mx-auto flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
       <AppHeader />
       <div className="flex flex-col gap-2 text-center">
-        <h1 className="text-2xl font-bold">Git Repo Analyzer</h1>
-        <p className="text-muted-foreground text-sm">
-          Analyze your GitHub repository with AI-powered insights
+        <p className="text-muted-foreground text-md">
+          View the tech stack, health and other insights of any GitHub repository
         </p>
       </div>
 

@@ -1,5 +1,6 @@
 {
   "name": "@git-repo-analyzer/mocks",
+  "description": "Mock data for git-repo-analyzer",
   "version": "0.0.1",
   "private": true,
   "type": "module",

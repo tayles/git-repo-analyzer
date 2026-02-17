@@ -14,3 +14,4 @@ export { LANGUAGE_COLORS } from './utils/language-utils';
 export { countryCodeToEmojiFlag } from './utils/location-utils';
 export { relativeDateLabel, formatWeekLabel } from './utils/date-utils';
 export { analyzeGitRepository } from './analyze-repo';
+export { formatNumber } from './utils/format-utils';
