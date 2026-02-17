@@ -6,7 +6,7 @@ interface ToolLogoProps {
 }
 
 export function ToolLogo({ logo, className }: ToolLogoProps) {
-  if (!logo?.startsWith('http')) {
+  if (logo && !logo.startsWith('http')) {
     // assume simpleicons
     logo = `https://cdn.simpleicons.org/${logo}`;
   }

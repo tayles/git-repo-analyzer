@@ -71,7 +71,7 @@ const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
     globs: ['cline_docs'],
   },
   Kiro: {
-    logo: 'kiro',
+    logo: null,
     url: 'https://kiro.dev/',
     globs: ['.kiro', 'product.md', 'tech.md', 'structure.md'],
   },
@@ -152,7 +152,7 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
     globs: ['next.config.js', 'next.config.ts', 'next.config.mjs'],
   },
   Nuxt: {
-    logo: 'nuxtdotjs',
+    logo: 'nuxt',
     url: 'https://nuxt.com',
     globs: ['nuxt.config.ts', 'nuxt.config.js'],
   },
@@ -225,7 +225,7 @@ const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     globs: ['cypress.config.ts', 'cypress.config.js'],
   },
   Playwright: {
-    logo: 'playwright',
+    logo: null,
     url: 'https://playwright.dev',
     globs: ['playwright.config.ts'],
   },
@@ -311,17 +311,17 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     globs: ['.rubocop.yml'],
   },
   Commitizen: {
-    logo: 'commitizen',
+    logo: null,
     url: 'https://commitizen-tools.github.io/commitizen/',
     globs: ['.czrc', '.cz.toml', 'commitizen.yaml'],
   },
   Husky: {
-    logo: 'husky',
+    logo: null,
     url: 'https://typicode.github.io/husky',
     globs: ['.husky'],
   },
   LintStaged: {
-    logo: 'lintstaged',
+    logo: null,
     url: 'https://github.com/lint-staged/lint-staged',
     globs: ['lint-staged.config.js', '.lintstagedrc', '.lintstagedrc.json'],
   },
@@ -425,7 +425,7 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
 
 const IDES: Record<ToolName, ToolMetaBasic> = {
   'VS Code': {
-    logo: 'visualstudiocode',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg',
     url: 'https://code.visualstudio.com',
     globs: ['.vscode'],
   },
@@ -435,12 +435,12 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
     globs: ['.idea'],
   },
   'Visual Studio': {
-    logo: 'visualstudio',
+    logo: null,
     url: 'https://visualstudio.microsoft.com',
     globs: ['.vs'],
   },
   Fleet: {
-    logo: 'fleet',
+    logo: null,
     url: 'https://www.jetbrains.com/fleet',
     globs: ['.fleet'],
   },

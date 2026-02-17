@@ -19,14 +19,16 @@ export function IconWithFallback({ url, alt, className }: IconWithFallbackProps)
           <Image className="text-muted-foreground h-[80%] w-[80%]" />
         </div>
       )}
-      <img
-        src={url ?? undefined}
-        alt={alt}
-        className="h-full w-full"
-        style={imageLoaded ? { objectFit: 'contain' } : { visibility: 'hidden' }}
-        loading="lazy"
-        onLoad={() => setImageLoaded(true)}
-      />
+      {url && (
+        <img
+          src={url}
+          alt={alt}
+          className="h-full w-full"
+          style={imageLoaded ? { objectFit: 'contain' } : { visibility: 'hidden' }}
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+        />
+      )}
     </div>
   );
 }
