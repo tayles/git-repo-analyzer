@@ -33,9 +33,11 @@ describe('analyzeGitRepository', () => {
   it('should call the progress callback with updates', async () => {
     const progressUpdates: ProgressUpdate[] = [];
 
-    await analyzeGitRepository('facebook/react', { onProgress: (update) => {
-      progressUpdates.push(update);
-    } });
+    await analyzeGitRepository('facebook/react', {
+      onProgress: update => {
+        progressUpdates.push(update);
+      },
+    });
 
     expect(progressUpdates.length).toBeGreaterThan(0);
     expect(progressUpdates[0].phase).toBe('fetching');

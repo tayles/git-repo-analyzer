@@ -6,6 +6,7 @@ import {
   AppRepoDetailsPage,
   ThemeToggle,
 } from '@git-repo-analyzer/ui';
+import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useRef } from 'react';
 
 function App() {
@@ -26,14 +27,16 @@ function App() {
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const handleAnalyze = useCallback(
-    async (repo: string) => {
+    async (repo: string, useCache = true) => {
       if (!repo.trim()) return;
 
       abortControllerRef.current?.abort();
+
+      const usedCache = startAnalysis(repo, useCache);
+      if (usedCache) return;
+
       const controller = new AbortController();
       abortControllerRef.current = controller;
-
-      startAnalysis(repo);
 
       try {
         const analysisResult = await analyzeGitRepository(repo, {
@@ -61,7 +64,7 @@ function App() {
 
   const handleRefresh = useCallback(() => {
     if (result) {
-      void handleAnalyze(result.basicStats.fullName);
+      void handleAnalyze(result.basicStats.fullName, false);
     }
   }, [result, handleAnalyze]);
 
@@ -77,25 +80,51 @@ function App() {
 
   return (
     <main className="bg-background min-h-screen">
-      {isLoading ? (
-        <AppLoadingPage
-          repo={currentRepository || ''}
-          progress={progress?.message || 'Starting analysis...'}
-          onCancel={handleCancel}
-        />
-      ) : result ? (
-        <AppRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
-      ) : (
-        <AppHomePage
-          repo={currentRepository || ''}
-          errorMsg={error}
-          history={history}
-          onAnalyze={handleAnalyze}
-          onDeleteReport={handleDeleteReport}
-          onDeleteAllReports={clearHistory}
-          onCancel={handleCancel}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <AppLoadingPage
+              repo={currentRepository || ''}
+              progress={progress?.message || 'Starting analysis...'}
+              onCancel={handleCancel}
+            />
+          </motion.div>
+        ) : result ? (
+          <motion.div
+            key="details"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <AppRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="home"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <AppHomePage
+              repo={currentRepository || ''}
+              errorMsg={error}
+              history={history}
+              onAnalyze={handleAnalyze}
+              onDeleteReport={handleDeleteReport}
+              onDeleteAllReports={clearHistory}
+              onCancel={handleCancel}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <ThemeToggle />
     </main>
   );

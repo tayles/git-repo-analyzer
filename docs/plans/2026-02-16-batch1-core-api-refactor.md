@@ -15,6 +15,7 @@
 ### Task 1: Add `AnalyzeOptions` type
 
 **Files:**
+
 - Modify: `packages/core/src/types.ts:169` (append after ProgressUpdate)
 - Modify: `packages/core/src/index.ts:1` (add to exports)
 
@@ -75,6 +76,7 @@ feat(core): Add AnalyzeOptions type
 ### Task 2: Refactor `GitHubAPI` — options constructor, signal, verbose logging
 
 **Files:**
+
 - Modify: `packages/core/src/client/github-api.ts`
 
 **Step 1: Refactor constructor to accept options object**
@@ -180,6 +182,7 @@ feat(core): Add signal, verbose, and rate limit logging to GitHubAPI
 ### Task 3: Refactor `analyzeGitRepository` signature and `fetchRepositoryData`
 
 **Files:**
+
 - Modify: `packages/core/src/analyze-repo.ts`
 
 **Step 1: Update imports**
@@ -339,6 +342,7 @@ feat(core): Refactor analyzeGitRepository to options object with progress tracki
 ### Task 4: Update tests
 
 **Files:**
+
 - Modify: `packages/core/src/analyze-repo.test.ts`
 
 **Step 1: Update all test call sites**
@@ -382,7 +386,7 @@ describe('analyzeGitRepository', () => {
     const progressUpdates: ProgressUpdate[] = [];
 
     await analyzeGitRepository('facebook/react', {
-      onProgress: (update) => {
+      onProgress: update => {
         progressUpdates.push(update);
       },
     });
@@ -430,6 +434,7 @@ test(core): Update tests for new analyzeGitRepository options signature
 ### Task 5: Update web app caller (App.tsx)
 
 **Files:**
+
 - Modify: `apps/web/src/App.tsx`
 
 **Step 1: Add useRef import and AbortController**
@@ -559,6 +564,7 @@ feat(web): Use options API with AbortController for cancellation
 ### Task 6: Update extension caller (SidePanel.tsx)
 
 **Files:**
+
 - Modify: `apps/extension/src/sidepanel/SidePanel.tsx`
 
 **Step 1: Add useRef import and AbortController pattern**
@@ -572,42 +578,42 @@ import { useCallback, useEffect, useRef } from 'react';
 Add after `removeFromHistory` selector (line 24):
 
 ```ts
-  const abortControllerRef = useRef<AbortController | null>(null);
+const abortControllerRef = useRef<AbortController | null>(null);
 ```
 
 Replace `handleAnalyze` (lines 26-37):
 
 ```ts
-  const handleAnalyze = useCallback(
-    async (repo: string) => {
-      abortControllerRef.current?.abort();
-      const controller = new AbortController();
-      abortControllerRef.current = controller;
+const handleAnalyze = useCallback(
+  async (repo: string) => {
+    abortControllerRef.current?.abort();
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
 
-      try {
-        startAnalysis(repo);
-        const result = await analyzeGitRepository(repo, {
-          signal: controller.signal,
-          onProgress: updateProgress,
-        });
-        completeAnalysis(result);
-      } catch (err) {
-        if (err instanceof DOMException && err.name === 'AbortError') return;
-        setError(err instanceof Error ? err.message : 'Analysis failed');
-      }
-    },
-    [startAnalysis, updateProgress, completeAnalysis, setError],
-  );
+    try {
+      startAnalysis(repo);
+      const result = await analyzeGitRepository(repo, {
+        signal: controller.signal,
+        onProgress: updateProgress,
+      });
+      completeAnalysis(result);
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      setError(err instanceof Error ? err.message : 'Analysis failed');
+    }
+  },
+  [startAnalysis, updateProgress, completeAnalysis, setError],
+);
 ```
 
 Replace `handleCancel` (lines 75-77):
 
 ```ts
-  const handleCancel = useCallback(() => {
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = null;
-    clearAnalysis();
-  }, [clearAnalysis]);
+const handleCancel = useCallback(() => {
+  abortControllerRef.current?.abort();
+  abortControllerRef.current = null;
+  clearAnalysis();
+}, [clearAnalysis]);
 ```
 
 **Step 2: Verify extension builds**
@@ -626,6 +632,7 @@ feat(extension): Use options API with AbortController for cancellation
 ### Task 7: Update CLI caller
 
 **Files:**
+
 - Modify: `apps/cli/src/cli.ts`
 
 **Step 1: Update the analyzeGitRepository call**
@@ -633,16 +640,16 @@ feat(extension): Use options API with AbortController for cancellation
 Replace lines 105-111:
 
 ```ts
-    const result = await analyzeGitRepository(options.repository, {
-      token: options.token,
-      verbose: true,
-      onProgress: (progress) => {
-        if (!options.json) {
-          process.stderr.write('\r' + ' '.repeat(60) + '\r');
-          process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
-        }
-      },
-    });
+const result = await analyzeGitRepository(options.repository, {
+  token: options.token,
+  verbose: true,
+  onProgress: progress => {
+    if (!options.json) {
+      process.stderr.write('\r' + ' '.repeat(60) + '\r');
+      process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
+    }
+  },
+});
 ```
 
 **Step 2: Verify CLI builds**

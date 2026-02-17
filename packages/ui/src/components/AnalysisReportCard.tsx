@@ -7,6 +7,12 @@ import { ToolLogo } from './ToolLogo';
 import { Button } from './ui/button';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 
+function healthScoreColor(score: number): string {
+  if (score >= 70) return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
+  if (score >= 40) return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
+  return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+}
+
 interface AnalysisReportCardProps {
   report: AnalysisResult;
   onClick: () => void;
@@ -14,6 +20,8 @@ interface AnalysisReportCardProps {
 }
 
 export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReportCardProps) {
+  const healthPercent = Math.round(report.healthScore.overall);
+
   return (
     <Card
       onClick={onClick}
@@ -22,6 +30,11 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-medium ${healthScoreColor(report.healthScore.overall)}`}
+          >
+            {healthPercent}%
+          </span>
         </CardTitle>
         <CardAction>
           <Button

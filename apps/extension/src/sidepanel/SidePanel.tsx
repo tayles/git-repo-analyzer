@@ -26,13 +26,16 @@ export default function SidePanel() {
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const handleAnalyze = useCallback(
-    async (repo: string) => {
+    async (repo: string, useCache = true) => {
       abortControllerRef.current?.abort();
+
+      const usedCache = startAnalysis(repo, useCache);
+      if (usedCache) return;
+
       const controller = new AbortController();
       abortControllerRef.current = controller;
 
       try {
-        startAnalysis(repo);
         const result = await analyzeGitRepository(repo, {
           signal: controller.signal,
           onProgress: updateProgress,
@@ -94,7 +97,7 @@ export default function SidePanel() {
 
   const handleRefresh = useCallback(() => {
     if (currentRepository) {
-      void handleAnalyze(currentRepository);
+      void handleAnalyze(currentRepository, false);
     }
   }, [currentRepository, handleAnalyze]);
 

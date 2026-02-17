@@ -21,7 +21,7 @@ export interface AnalyzeOptions {
 export async function analyzeGitRepository(
   repoNameOrUrl: string,
   options?: AnalyzeOptions,
-): Promise<AnalysisResult>
+): Promise<AnalysisResult>;
 ```
 
 This is a breaking change. All callers must update.
@@ -97,20 +97,21 @@ Messages will read: `"Completed 3 of 6: Commits"`
 
 ## Files to Change
 
-| File | Change |
-|------|--------|
-| `packages/core/src/types.ts` | Add `AnalyzeOptions` interface |
-| `packages/core/src/client/github-api.ts` | Accept signal + verbose in constructor, pass signal to fetch, conditional logging, rate limit logging |
-| `packages/core/src/analyze-repo.ts` | New signature, destructure options, pass signal/verbose to GitHubAPI, completion tracking in fetchRepositoryData, remove stray console.log |
-| `packages/core/src/index.ts` | Export `AnalyzeOptions` type |
-| `apps/web/src/App.tsx` | Create AbortController, store ref, pass signal + onProgress, abort on cancel |
-| `apps/extension/src/sidepanel/SidePanel.tsx` | Same AbortController pattern as web |
-| `apps/cli/src/cli.ts` | Update to new signature with options object |
-| `packages/core/src/analyze-repo.test.ts` | Update all call signatures to use options object |
+| File                                         | Change                                                                                                                                     |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `packages/core/src/types.ts`                 | Add `AnalyzeOptions` interface                                                                                                             |
+| `packages/core/src/client/github-api.ts`     | Accept signal + verbose in constructor, pass signal to fetch, conditional logging, rate limit logging                                      |
+| `packages/core/src/analyze-repo.ts`          | New signature, destructure options, pass signal/verbose to GitHubAPI, completion tracking in fetchRepositoryData, remove stray console.log |
+| `packages/core/src/index.ts`                 | Export `AnalyzeOptions` type                                                                                                               |
+| `apps/web/src/App.tsx`                       | Create AbortController, store ref, pass signal + onProgress, abort on cancel                                                               |
+| `apps/extension/src/sidepanel/SidePanel.tsx` | Same AbortController pattern as web                                                                                                        |
+| `apps/cli/src/cli.ts`                        | Update to new signature with options object                                                                                                |
+| `packages/core/src/analyze-repo.test.ts`     | Update all call signatures to use options object                                                                                           |
 
 ## Caller Migration Examples
 
 ### Web App (App.tsx)
+
 ```tsx
 const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -139,11 +140,12 @@ const handleCancel = useCallback(() => {
 ```
 
 ### CLI (cli.ts)
+
 ```ts
 const result = await analyzeGitRepository(options.repository, {
   token: options.token,
   verbose: true,
-  onProgress: (progress) => {
+  onProgress: progress => {
     if (!options.json) {
       process.stderr.write('\r' + ' '.repeat(60) + '\r');
       process.stderr.write(`\r${progress.message} (${progress.progress}%)`);

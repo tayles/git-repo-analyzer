@@ -13,6 +13,8 @@ import {
   Star,
 } from 'lucide-react';
 
+import { motion } from 'motion/react';
+
 import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
 import { ContributorsSection } from './ContributorsSection';
@@ -32,6 +34,7 @@ interface RepoDetailsLayoutProps {
 }
 
 export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
+  const baseUrl = report.basicStats.htmlUrl;
   return (
     <div className="flex h-full flex-col justify-start gap-2">
       <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-4">
@@ -58,83 +61,174 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
       {/* Stats */}
       <section>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
-          <StatCard
-            label="Stars"
-            value={report.basicStats.stars}
-            icon={<Star className="size-4" />}
-          />
-          <StatCard
-            label="Forks"
-            value={report.basicStats.forks}
-            icon={<Split className="size-4" />}
-          />
-          <StatCard
-            label="Open Issues"
-            value={report.basicStats.openIssues}
-            icon={<CircleDot className="size-4" />}
-          />
-          <StatCard
-            label="Watchers"
-            value={report.basicStats.watchers}
-            icon={<Eye className="size-4" />}
-          />
-          <StatCard
-            label="Language"
-            value={report.basicStats.language}
-            icon={<Code className="size-4" />}
-          />
-          <StatCard
-            label="License"
-            value={report.basicStats.license}
-            icon={<Scale className="size-4" />}
-          />
-          <StatCard
-            label="Size"
-            value={report.basicStats.size}
-            icon={<HardDrive className="size-4" />}
-          />
-          <StatCard
-            label="Created"
-            value={report.basicStats.createdAt.split('T')[0]}
-            icon={<Calendar className="size-4" />}
-          />
-          <StatCard
-            label="Updated"
-            value={report.basicStats.updatedAt.split('T')[0]}
-            icon={<Calendar className="size-4" />}
-          />
-          <StatCard
-            label="Pushed"
-            value={report.basicStats.pushedAt.split('T')[0]}
-            icon={<Calendar className="size-4" />}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <StatCard
+              label="Stars"
+              value={report.basicStats.stars}
+              icon={<Star className="size-4" />}
+              href={`${baseUrl}/stargazers`}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 1 * 0.03 }}
+          >
+            <StatCard
+              label="Forks"
+              value={report.basicStats.forks}
+              icon={<Split className="size-4" />}
+              href={`${baseUrl}/forks`}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 2 * 0.03 }}
+          >
+            <StatCard
+              label="Open Issues"
+              value={report.basicStats.openIssues}
+              icon={<CircleDot className="size-4" />}
+              href={`${baseUrl}/issues`}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 3 * 0.03 }}
+          >
+            <StatCard
+              label="Watchers"
+              value={report.basicStats.watchers}
+              icon={<Eye className="size-4" />}
+              href={`${baseUrl}/watchers`}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 4 * 0.03 }}
+          >
+            <StatCard
+              label="Language"
+              value={report.basicStats.language}
+              icon={<Code className="size-4" />}
+              href={baseUrl}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 5 * 0.03 }}
+          >
+            <StatCard
+              label="License"
+              value={report.basicStats.license}
+              icon={<Scale className="size-4" />}
+              href={`${baseUrl}/blob/${report.basicStats.defaultBranch}/LICENSE`}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 6 * 0.03 }}
+          >
+            <StatCard
+              label="Size"
+              value={report.basicStats.size}
+              icon={<HardDrive className="size-4" />}
+              href={baseUrl}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 7 * 0.03 }}
+          >
+            <StatCard
+              label="Created"
+              value={report.basicStats.createdAt.split('T')[0]}
+              icon={<Calendar className="size-4" />}
+              href={baseUrl}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 8 * 0.03 }}
+          >
+            <StatCard
+              label="Updated"
+              value={report.basicStats.updatedAt.split('T')[0]}
+              icon={<Calendar className="size-4" />}
+              href={baseUrl}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 9 * 0.03 }}
+          >
+            <StatCard
+              label="Pushed"
+              value={report.basicStats.pushedAt.split('T')[0]}
+              icon={<Calendar className="size-4" />}
+              href={baseUrl}
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* Tools */}
       <section>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
-          {report.tooling.tools.map(tool => (
-            <ToolCard key={tool.name} repo={report.basicStats.fullName} tool={tool} />
+          {report.tooling.tools.map((tool, i) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: i * 0.03 }}
+            >
+              <ToolCard repo={report.basicStats.fullName} tool={tool} />
+            </motion.div>
           ))}
         </div>
       </section>
 
       <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]">
-        <ActivityHeatmapChart data={report.commits.activityHeatmap} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.2 }}>
+          <ActivityHeatmapChart data={report.commits.activityHeatmap} />
+        </motion.div>
 
-        <WorkPatternsCard data={report.commits.workPatterns} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.25 }}>
+          <WorkPatternsCard data={report.commits.workPatterns} />
+        </motion.div>
 
-        <ContributorsSection data={report.contributors} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.3 }}>
+          <ContributorsSection data={report.contributors} />
+        </motion.div>
 
-        <LanguageChart data={report.languages} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.35 }}>
+          <LanguageChart data={report.languages} />
+        </motion.div>
 
-        <CommitChart data={report.commits.byWeek} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.4 }}>
+          <CommitChart data={report.commits.byWeek} />
+        </motion.div>
 
-        <PullRequestChart data={report.pullRequests} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.45 }}>
+          <PullRequestChart data={report.pullRequests} />
+        </motion.div>
       </section>
 
-      <HealthScoreCard health={report.healthScore} />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.5 }}>
+        <HealthScoreCard health={report.healthScore} />
+      </motion.div>
     </div>
   );
 }

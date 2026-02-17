@@ -1,6 +1,7 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
 
 import { Trash } from 'lucide-react';
+import { motion } from 'motion/react';
 
 import { AnalysisReportCard } from './AnalysisReportCard';
 import { ErrorAlert } from './ErrorAlert';
@@ -49,12 +50,18 @@ export function HomeLayout({
           </div>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
             {history.map((result, index) => (
-              <AnalysisReportCard
-                key={index}
-                report={result}
-                onClick={() => onAnalyze(result.basicStats.fullName)}
-                onDelete={onDeleteReport}
-              />
+              <motion.div
+                key={result.basicStats.fullName}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
+              >
+                <AnalysisReportCard
+                  report={result}
+                  onClick={() => onAnalyze(result.basicStats.fullName)}
+                  onDelete={onDeleteReport}
+                />
+              </motion.div>
             ))}
           </div>
         </section>

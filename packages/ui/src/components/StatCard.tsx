@@ -6,15 +6,17 @@ interface StatCardProps {
   label: string;
   value: string | number | null;
   icon?: React.ReactNode;
+  href?: string;
 }
-export function StatCard({ label, value, icon }: StatCardProps) {
+
+export function StatCard({ label, value, icon, href }: StatCardProps) {
   let formattedValue: string | number | null = value;
   if (typeof value === 'number') {
     formattedValue = formatNumber(value);
   }
 
-  return (
-    <Card className="gap-0 p-2 lg:p-4">
+  const card = (
+    <Card className={`gap-0 p-2 lg:p-4 ${href ? 'hover:bg-accent transition-colors' : ''}`}>
       <CardHeader className="p-0">
         <CardTitle className="text-muted-foreground text-xs font-normal">{label}</CardTitle>
         <CardAction className="text-muted-foreground">{icon}</CardAction>
@@ -22,4 +24,14 @@ export function StatCard({ label, value, icon }: StatCardProps) {
       <CardContent className="p-0 text-lg font-bold lg:text-xl">{formattedValue}</CardContent>
     </Card>
   );
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className="no-underline">
+        {card}
+      </a>
+    );
+  }
+
+  return card;
 }

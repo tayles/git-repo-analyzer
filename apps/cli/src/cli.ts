@@ -105,7 +105,7 @@ async function main() {
     const result = await analyzeGitRepository(options.repository, {
       token: options.token,
       verbose: true,
-      onProgress: (progress) => {
+      onProgress: progress => {
         if (!options.json) {
           process.stderr.write('\r' + ' '.repeat(60) + '\r');
           process.stderr.write(`\r${progress.message} (${progress.progress}%)`);

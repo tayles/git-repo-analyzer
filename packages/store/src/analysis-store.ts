@@ -26,7 +26,7 @@ export interface AnalysisState {
  */
 export interface AnalysisActions {
   /** Start analyzing a repository */
-  startAnalysis: (repository: string) => void;
+  startAnalysis: (repository: string, useCache?: boolean) => boolean;
   /** Update progress during analysis */
   updateProgress: (progress: ProgressUpdate) => void;
   /** Complete analysis with result */
@@ -63,7 +63,23 @@ export const useAnalysisStore = create<AnalysisStore>()(
     (set, get) => ({
       ...initialState,
 
-      startAnalysis: (repository: string) => {
+      startAnalysis: (repository: string, useCache = true) => {
+        if (useCache) {
+          const { history } = get();
+          const cached = history.find(item => item.basicStats.fullName === repository);
+          if (cached) {
+            const filteredHistory = history.filter(item => item.basicStats.fullName !== repository);
+            set({
+              currentRepository: repository,
+              result: cached,
+              isLoading: false,
+              progress: null,
+              error: null,
+              history: [cached, ...filteredHistory].slice(0, 10),
+            });
+            return true;
+          }
+        }
         set({
           currentRepository: repository,
           result: null,
@@ -71,6 +87,7 @@ export const useAnalysisStore = create<AnalysisStore>()(
           progress: null,
           error: null,
         });
+        return false;
       },
 
       updateProgress: (progress: ProgressUpdate) => {
