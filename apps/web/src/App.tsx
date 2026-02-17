@@ -8,6 +8,7 @@ import {
 } from '@git-repo-analyzer/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useRef } from 'react';
+
 import { useUrlSync } from './hooks';
 
 function App() {

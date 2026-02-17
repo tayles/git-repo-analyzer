@@ -1,6 +1,7 @@
-import { describe, expect, it, beforeEach, mock } from 'bun:test';
-import { renderHook } from '@testing-library/react';
 import type { AnalysisResult } from '@git-repo-analyzer/core';
+
+import { renderHook } from '@testing-library/react';
+import { describe, expect, it, beforeEach, mock } from 'bun:test';
 
 describe('useUrlSync', () => {
   beforeEach(() => {
@@ -72,17 +73,14 @@ describe('useUrlSync', () => {
     } as AnalysisResult;
 
     const { useUrlSync } = await import('./useUrlSync');
-    const { rerender } = renderHook(
-      (props) => useUrlSync(props),
-      {
-        initialProps: {
-          currentRepository: null as string | null,
-          result: null as AnalysisResult | null,
-          isLoading: false,
-          onAnalyze,
-        },
-      }
-    );
+    const { rerender } = renderHook(props => useUrlSync(props), {
+      initialProps: {
+        currentRepository: null as string | null,
+        result: null as AnalysisResult | null,
+        isLoading: false,
+        onAnalyze,
+      },
+    });
 
     rerender({
       currentRepository: 'facebook/react',
@@ -98,17 +96,14 @@ describe('useUrlSync', () => {
     const onAnalyze = mock(() => {});
 
     const { useUrlSync } = await import('./useUrlSync');
-    const { rerender } = renderHook(
-      (props) => useUrlSync(props),
-      {
-        initialProps: {
-          currentRepository: null as string | null,
-          result: null as AnalysisResult | null,
-          isLoading: false,
-          onAnalyze,
-        },
-      }
-    );
+    const { rerender } = renderHook(props => useUrlSync(props), {
+      initialProps: {
+        currentRepository: null as string | null,
+        result: null as AnalysisResult | null,
+        isLoading: false,
+        onAnalyze,
+      },
+    });
 
     rerender({
       currentRepository: 'vercel/next.js',
@@ -129,17 +124,14 @@ describe('useUrlSync', () => {
     } as AnalysisResult;
 
     const { useUrlSync } = await import('./useUrlSync');
-    const { rerender } = renderHook(
-      (props) => useUrlSync(props),
-      {
-        initialProps: {
-          currentRepository: 'facebook/react' as string | null,
-          result: mockResult as AnalysisResult | null,
-          isLoading: false,
-          onAnalyze,
-        },
-      }
-    );
+    const { rerender } = renderHook(props => useUrlSync(props), {
+      initialProps: {
+        currentRepository: 'facebook/react' as string | null,
+        result: mockResult as AnalysisResult | null,
+        isLoading: false,
+        onAnalyze,
+      },
+    });
 
     rerender({
       currentRepository: null,
@@ -155,17 +147,14 @@ describe('useUrlSync', () => {
     const onAnalyze = mock(() => {});
 
     const { useUrlSync } = await import('./useUrlSync');
-    renderHook(
-      (props) => useUrlSync(props),
-      {
-        initialProps: {
-          currentRepository: 'facebook/react',
-          result: { basicStats: { fullName: 'facebook/react' } } as AnalysisResult,
-          isLoading: false,
-          onAnalyze,
-        },
-      }
-    );
+    renderHook(props => useUrlSync(props), {
+      initialProps: {
+        currentRepository: 'facebook/react',
+        result: { basicStats: { fullName: 'facebook/react' } } as AnalysisResult,
+        isLoading: false,
+        onAnalyze,
+      },
+    });
 
     expect(onAnalyze).toHaveBeenCalledTimes(0);
   });
