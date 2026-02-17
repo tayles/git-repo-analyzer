@@ -5,9 +5,14 @@ on:
     branches:
       - main
 
-# concurrency:
-#   group: ${{ github.workflow }}-${{ github.ref }}
-#   cancel-in-progress: true
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -32,4 +37,22 @@ jobs:
       - name: Build
         run: bun run build
 
-      # TODO Deploy to GitHub Pages
+      - name: Test
+        run: bun run test:ci
+
+      - name: Coverage Summary
+        uses: livewing/lcov-job-summary@v1.2.0
+        with:
+          lcov: coverage/lcov.info
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './apps/web/dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
