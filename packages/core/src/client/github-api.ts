@@ -18,10 +18,25 @@ export class GitHubAPIError extends Error {
 
 export class GitHubAPI {
   private token: string | undefined;
+  private signal: AbortSignal | undefined;
+  private verbose: boolean;
   rateLimit: RateLimitInfo | null = null;
 
-  constructor(token?: string) {
-    this.token = token;
+  constructor(options?: { token?: string; signal?: AbortSignal; verbose?: boolean }) {
+    this.token = options?.token;
+    this.signal = options?.signal;
+    this.verbose = options?.verbose ?? false;
+  }
+
+  private log(...args: unknown[]) {
+    if (this.verbose) console.log(...args);
+  }
+
+  private logRateLimit() {
+    if (this.verbose && this.rateLimit) {
+      const { remaining, limit, resetAt } = this.rateLimit;
+      this.log(`[Rate Limit] ${remaining}/${limit}, resets at ${resetAt.toLocaleTimeString()}`);
+    }
   }
 
   private headers(): Record<string, string> {
@@ -49,9 +64,10 @@ export class GitHubAPI {
 
   async fetch<T>(path: string): Promise<T> {
     const url = path.startsWith('http') ? path : `${BASE_URL}${path}`;
-    console.log(`[GitHub API] GET ${url}`);
-    const response = await fetch(url, { headers: this.headers() });
+    this.log(`[GitHub API] GET ${url}`);
+    const response = await fetch(url, { headers: this.headers(), signal: this.signal });
     this.updateRateLimit(response);
+    this.logRateLimit();
 
     if (!response.ok) {
       if (response.status === 404) {
@@ -69,12 +85,13 @@ export class GitHubAPI {
   async fetchPaginated<T>(path: string, maxPages = 3): Promise<T[]> {
     const items: T[] = [];
     let url: string | null = `${BASE_URL}${path}${path.includes('?') ? '&' : '?'}per_page=100`;
-    console.log(`[GitHub API] GET ${url} (paginated, max ${maxPages} pages)`);
+    this.log(`[GitHub API] GET ${url} (paginated, max ${maxPages} pages)`);
 
     for (let page = 0; page < maxPages && url; page++) {
-      if (page > 0) console.log(`[GitHub API] Fetching page ${page + 1}/${maxPages}: ${url}`);
-      const response = await fetch(url, { headers: this.headers() });
+      if (page > 0) this.log(`[GitHub API] Fetching page ${page + 1}/${maxPages}: ${url}`);
+      const response = await fetch(url, { headers: this.headers(), signal: this.signal });
       this.updateRateLimit(response);
+      this.logRateLimit();
 
       if (!response.ok) {
         if (response.status === 409) return items; // empty repo

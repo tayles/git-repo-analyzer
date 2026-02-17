@@ -6,7 +6,7 @@ import {
   SidePanelRepoDetailsPage,
   ThemeToggle,
 } from '@git-repo-analyzer/ui';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 export default function SidePanel() {
   const currentRepository = useAnalysisStore(state => state.currentRepository);
@@ -23,13 +23,23 @@ export default function SidePanel() {
   const clearHistory = useAnalysisStore(state => state.clearHistory);
   const removeFromHistory = useAnalysisStore(state => state.removeFromHistory);
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+
   const handleAnalyze = useCallback(
     async (repo: string) => {
+      abortControllerRef.current?.abort();
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
       try {
         startAnalysis(repo);
-        const result = await analyzeGitRepository(repo, undefined, updateProgress);
+        const result = await analyzeGitRepository(repo, {
+          signal: controller.signal,
+          onProgress: updateProgress,
+        });
         completeAnalysis(result);
       } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
         setError(err instanceof Error ? err.message : 'Analysis failed');
       }
     },
@@ -73,6 +83,8 @@ export default function SidePanel() {
   }, [handleAnalyze]);
 
   const handleCancel = useCallback(() => {
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
     clearAnalysis();
   }, [clearAnalysis]);
 

@@ -102,12 +102,15 @@ async function main() {
   try {
     console.error(`Analyzing ${options.repository}...`);
 
-    const result = await analyzeGitRepository(options.repository, options.token, progress => {
-      if (!options.json) {
-        // Clear the line and print progress message
-        process.stderr.write('\r' + ' '.repeat(60) + '\r');
-        process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
-      }
+    const result = await analyzeGitRepository(options.repository, {
+      token: options.token,
+      verbose: true,
+      onProgress: (progress) => {
+        if (!options.json) {
+          process.stderr.write('\r' + ' '.repeat(60) + '\r');
+          process.stderr.write(`\r${progress.message} (${progress.progress}%)`);
+        }
+      },
     });
 
     if (options.json) {

@@ -10,6 +10,7 @@ export type {
   WorkPatterns,
   HealthScoreAnalysis,
   HealthScore,
+  AnalyzeOptions,
 } from './types';
 export { TOOL_REGISTRY, type ToolMeta, type ToolMetaWithFileMatches } from './tool-registry';
 export { LANGUAGE_COLORS } from './utils/language-utils';

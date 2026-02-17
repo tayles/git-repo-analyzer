@@ -33,9 +33,9 @@ describe('analyzeGitRepository', () => {
   it('should call the progress callback with updates', async () => {
     const progressUpdates: ProgressUpdate[] = [];
 
-    await analyzeGitRepository('facebook/react', undefined, update => {
+    await analyzeGitRepository('facebook/react', { onProgress: (update) => {
       progressUpdates.push(update);
-    });
+    } });
 
     expect(progressUpdates.length).toBeGreaterThan(0);
     expect(progressUpdates[0].phase).toBe('fetching');
@@ -44,7 +44,7 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should accept an optional token', async () => {
-    const result = await analyzeGitRepository('facebook/react', 'test-token');
+    const result = await analyzeGitRepository('facebook/react', { token: 'test-token' });
 
     expect(result.basicStats.fullName).toBe('facebook/react');
   });

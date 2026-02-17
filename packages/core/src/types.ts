@@ -167,3 +167,17 @@ export interface ProgressUpdate {
   /** Human-readable message describing current status */
   message: string;
 }
+
+/**
+ * Options for analyzeGitRepository
+ */
+export interface AnalyzeOptions {
+  /** GitHub token for authenticated requests and higher rate limits */
+  token?: string;
+  /** AbortSignal for cancelling in-progress analysis */
+  signal?: AbortSignal;
+  /** Enable verbose console logging (API calls, rate limits) */
+  verbose?: boolean;
+  /** Callback for progress updates during analysis */
+  onProgress?: (update: ProgressUpdate) => void;
+}

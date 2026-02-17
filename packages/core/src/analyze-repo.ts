@@ -12,9 +12,8 @@ import type {
   GitHubRepoDetails,
   GitHubUserProfile,
 } from './client/github-types';
-import type { ProgressUpdate, AnalysisResult } from './types';
+import type { AnalysisResult, AnalyzeOptions } from './types';
 
-// import GitHubRawDataJson from '../../mocks/src/github-api-raw.json';
 import { processBasicStats } from './analyzers/basic-stats';
 import { processCommits } from './analyzers/commits';
 import { processContributors } from './analyzers/contributors';
@@ -28,52 +27,50 @@ import { parseRepository } from './utils/parse-utils';
 /**
  * Analyze a GitHub repository and return comprehensive statistics
  *
- * @param repo - GitHub repository in the format "owner/repo" or full URL
- * @param token - Optional GitHub token for authenticated requests and higher rate limits
- * @param callback - Optional callback to receive intermediate status updates
+ * @param repoNameOrUrl - GitHub repository in the format "owner/repo" or full URL
+ * @param options - Optional configuration for the analysis
  * @returns Promise resolving to the complete analysis result
  *
  * @example
  * ```typescript
  * const result = await analyzeGitRepository('facebook/react');
- * console.log(result.stats.totalCommits);
+ * console.log(result.basicStats.totalCommits);
  * ```
  *
  * @example
  * ```typescript
- * // With progress callback
- * const result = await analyzeGitRepository(
- *   'facebook/react',
- *   process.env.GITHUB_TOKEN,
- *   (progress) => console.log(`${progress.phase}: ${progress.progress}%`)
- * );
+ * // With options
+ * const controller = new AbortController();
+ * const result = await analyzeGitRepository('facebook/react', {
+ *   token: process.env.GITHUB_TOKEN,
+ *   signal: controller.signal,
+ *   verbose: true,
+ *   onProgress: (progress) => console.log(`${progress.phase}: ${progress.progress}%`),
+ * });
  * ```
  */
 export async function analyzeGitRepository(
   repoNameOrUrl: string,
-  token?: string,
-  callback?: (result: ProgressUpdate) => void,
+  options?: AnalyzeOptions,
 ): Promise<AnalysisResult> {
+  const { token, signal, verbose, onProgress } = options ?? {};
   const startTime = Date.now();
   const repo = parseRepository(repoNameOrUrl);
 
   // Report initial progress
-  callback?.({
+  onProgress?.({
     phase: 'fetching',
     progress: 0,
     message: `Fetching data for ${repo}...`,
   });
 
-  const rawData = await fetchRepositoryData(repo, token, callback);
-  // const rawData = GitHubRawDataJson as unknown as GitHubRawData;
+  const rawData = await fetchRepositoryData(repo, { token, signal, verbose, onProgress });
 
-  callback?.({
+  onProgress?.({
     phase: 'analyzing',
     progress: 80,
     message: 'Analyzing...',
   });
-
-  // console.log(rawData);
 
   // Process raw data to compute analysis result
   const basicStats = processBasicStats(rawData.repoDetails);
@@ -82,7 +79,7 @@ export async function analyzeGitRepository(
   const pullRequests = processPullRequests(rawData.pullRequests);
   const languages = processLanguages(rawData.languages);
 
-  callback?.({
+  onProgress?.({
     phase: 'analyzing',
     progress: 90,
     message: 'Detecting tooling...',
@@ -100,7 +97,6 @@ export async function analyzeGitRepository(
 
   const durationMs = Date.now() - startTime;
 
-  // Combine all processed data into final result
   const result: AnalysisResult = {
     generator: {
       name: 'git-repo-analyzer',
@@ -117,126 +113,46 @@ export async function analyzeGitRepository(
     healthScore,
   };
 
-  console.log(result);
-
   // Report completion
-  callback?.({
+  onProgress?.({
     phase: 'complete',
     progress: 100,
     message: 'Analysis complete!',
   });
 
   return result;
-
-  // await delay(500);
-
-  // // Simulate fetching phase
-  // callback?.({
-  //   phase: 'fetching',
-  //   progress: 25,
-  //   message: `Fetching repository metadata for ${repository}...`,
-  // });
-
-  // await delay(500);
-
-  // // Simulate parsing phase
-  // callback?.({
-  //   phase: 'parsing',
-  //   progress: 50,
-  //   message: 'Parsing commit history...',
-  // });
-
-  // await delay(500);
-
-  // // Simulate analyzing phase
-  // callback?.({
-  //   phase: 'analyzing',
-  //   progress: 75,
-  //   message: 'Analyzing code statistics...',
-  // });
-
-  // await delay(500);
-
-  // const durationMs = Date.now() - startTime;
-
-  // // Create stub result
-  // const result: AnalysisResult = {
-  //   generator: {
-  //     name: 'git-repo-analyzer',
-  //     version: '1.0.0',
-  //     analyzedAt: new Date().toISOString(),
-  //     durationMs
-  //   },
-  //   basicStats: {
-  //     name: repoName,
-  //       fullName: repository,
-  // htmlUrl: `https://github.com/${repository}`,
-  // description: `Description for ${repository}`,
-  // stars: 0,
-  // forks: 0,
-  // openIssues: 0,
-  // watchers: 0,
-  // language: null,
-  // license: 'MIT',
-  // createdAt: new Date().toISOString(),
-  // updatedAt: new Date().toISOString(),
-  // pushedAt: new Date().toISOString(),
-  // defaultBranch: 'main',
-  // size: 0,
-  // hasWiki: false,
-  // hasPages: false,
-  // archived: false,
-  // topics: [],
-  // homepage: null,
-  //   },
-  //   contributors: [
-  //     {
-  //       name: 'Example Contributor',
-  //       email: 'alice@example.com',
-  //       commitCount: 100,
-  //       linesAdded: 5000,
-  //       linesDeleted: 2000,
-  //     },
-  //   ],
-  //   commits: {
-  //     commits: [],
-
-  //   },
-  //   pullRequests: {
-  //     pulls: [],
-  //   },
-  // };
-
-  // // Report completion
-  // callback?.({
-  //   phase: 'complete',
-  //   progress: 100,
-  //   message: 'Analysis complete!',
-  // });
-
-  // // Log token usage status (for debugging purposes)
-  // if (token) {
-  //   // Token provided - would use for authenticated requests
-  // }
-
-  // return result;
 }
 
 export async function fetchRepositoryData(
   repo: string,
-  token?: string,
-  _callback?: (result: ProgressUpdate) => void,
+  options?: AnalyzeOptions,
 ): Promise<GitHubRawData> {
-  const api = new GitHubAPI(token);
+  const { token, signal, verbose, onProgress } = options ?? {};
+  const api = new GitHubAPI({ token, signal, verbose });
+
+  let completed = 0;
+  const totalSteps = 6;
+
+  function trackCompletion<T>(label: string): (result: T) => T {
+    return (result: T) => {
+      completed++;
+      onProgress?.({
+        phase: 'fetching',
+        progress: Math.round((completed / totalSteps) * 80),
+        message: `Completed ${completed} of ${totalSteps}: ${label}`,
+      });
+      return result;
+    };
+  }
 
   const [repoDetails, { contributors, userProfiles }, commits, pullRequests, languages, files] =
     await Promise.all([
-      fetchRepoDetails(api, repo),
-      fetchContributors(api, repo),
-      fetchCommits(api, repo),
-      fetchPullRequests(api, repo),
-      fetchLanguages(api, repo),
-      fetchRepoFiles(api, repo),
+      fetchRepoDetails(api, repo).then(trackCompletion('Repository details')),
+      fetchContributors(api, repo).then(trackCompletion('Contributors & profiles')),
+      fetchCommits(api, repo).then(trackCompletion('Commits')),
+      fetchPullRequests(api, repo).then(trackCompletion('Pull requests')),
+      fetchLanguages(api, repo).then(trackCompletion('Languages')),
+      fetchRepoFiles(api, repo).then(trackCompletion('File tree')),
     ]);
 
   return {

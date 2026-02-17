@@ -6,7 +6,7 @@ import {
   AppRepoDetailsPage,
   ThemeToggle,
 } from '@git-repo-analyzer/ui';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
 function App() {
   const currentRepository = useAnalysisStore(state => state.currentRepository);
@@ -23,16 +23,26 @@ function App() {
   const clearHistory = useAnalysisStore(state => state.clearHistory);
   const removeFromHistory = useAnalysisStore(state => state.removeFromHistory);
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+
   const handleAnalyze = useCallback(
     async (repo: string) => {
       if (!repo.trim()) return;
 
+      abortControllerRef.current?.abort();
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
       startAnalysis(repo);
 
       try {
-        const analysisResult = await analyzeGitRepository(repo, undefined, updateProgress);
+        const analysisResult = await analyzeGitRepository(repo, {
+          signal: controller.signal,
+          onProgress: updateProgress,
+        });
         completeAnalysis(analysisResult);
       } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
         setError(err instanceof Error ? err.message : 'Analysis failed');
       }
     },
@@ -40,6 +50,8 @@ function App() {
   );
 
   const handleCancel = useCallback(() => {
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
     clearAnalysis();
   }, [clearAnalysis]);
 
