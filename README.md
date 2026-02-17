@@ -1,6 +1,68 @@
 # Git Repo Analyzer
 
+![git-repo-analyzer Logo](https://raw.githubusercontent.com/tayles/ai-sprite-image-generator/main/docs/git-repo-analyzer-logo.png)
+
 A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git repositories.
+
+- 🌐 **[Online Tool](#online-tool)** _(Try it now!)_
+- 🧩 **[Chrome Extension](#chrome-extension)**
+- 💻 **[CLI Tool](#cli)**
+- 🧑‍💻 **[TypeScript Library](#typescript-api)**
+
+## Online Tool
+
+Try it now at **[tayles.github.io/git-repo-analyzer](https://tayles.github.io/git-repo-analyzer)**
+
+## Chrome Extension
+
+View details for any GitHub repo in a side panel.
+
+Get it now on the **[Chrome Web Store](https://chromewebstore.google.com/detail/git-repo-analyzer/lohfeibjkcdoadkbdooliabaafagbfek)**
+
+## CLI
+
+Find it on npm at **[git-repo-analyzer](https://www.npmjs.com/package/git-repo-analyzer)**.
+
+Install with:
+
+```shell
+npm install -g git-repo-analyzer
+```
+
+Run with:
+
+```shell
+git-repo-analyzer 'facebook/react'
+```
+
+Export in structured JSON format:
+
+```shell
+git-repo-analyzer 'facebook/react' --json
+```
+
+## TypeScript API
+
+The `git-repo-analyzer` package exports:
+
+```typescript
+export async analyzeGitRepository(
+  repoNameOrUrl,        // "owner/repo" or full GitHub URL
+  {
+    token?: string;     // Optional GitHub token for higher rate limits
+    verbose?: boolean;  // Verbose console logging (default false)
+    onProgress?: (update: ProgressUpdate) => void; // Callback for progress updates during analysis
+  }
+): Promise<AnalysisResult>;
+```
+
+Example usage:
+
+```typescript
+import { analyzeGitRepository } from 'git-repo-analyzer';
+
+const report = await analyzeGitRepository('facebook/react');
+```
 
 ## Project Structure
 
@@ -35,46 +97,6 @@ git-repo-analyzer/
 - **Ladle** for component documentation/stories
 - **oxfmt + oxlint** for formatting and linting
 
-## CLI
-
-Install with:
-
-```shell
-npm install -g git-repo-analyzer
-```
-
-Run with:
-
-```shell
-git-repo-analyzer 'facebook/react'
-```
-
-Export in structured JSON format:
-
-```shell
-git-repo-analyzer 'facebook/react' --json
-```
-
-## TypeScript API
-
-The `git-repo-analyzer` package exports:
-
-```typescript
-export async function analyzeGitRepository(
-  repo: string, // "owner/repo" or full GitHub URL
-  token?: string, // Optional GitHub token
-  callback?: (result: ProgressUpdate) => void,
-): Promise<AnalysisResult>;
-```
-
-Example usage:
-
-```typescript
-import { analyzeGitRepository } from 'git-repo-analyzer';
-
-const report = await analyzeGitRepository('facebook/react');
-```
-
 ## Contributing
 
 - `bun install` - Install dependencies
@@ -87,11 +109,11 @@ const report = await analyzeGitRepository('facebook/react');
 
 ## Resources
 
-- [Turborepo docs](https://turborepo.dev/docs/crafting-your-repository/structuring-a-repository)
+- [Turborepo](https://turborepo.dev)
 - [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4)
-- [CRXJS Vite Plugin](https://github.com/crxjs/chrome-extension-tools)
-- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html)
+- [CRXJS Vite Plugin](https://crxjs.dev)
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter)
 - [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
-- [Bunup](https://bunup.dev/)
-- [Ladle](https://ladle.dev/)
+- [Bunup](https://bunup.dev)
+- [Ladle](https://ladle.dev)
 - [shadcn/ui Monorepo](https://ui.shadcn.com/docs/monorepo)
