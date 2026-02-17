@@ -1,8 +1,8 @@
 import { Check, Copy } from 'lucide-react';
 
 import { useCopyToClipboard } from '../hooks/use-copy-to-clipboard';
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './ui/input-group';
 import { cn } from '../lib/utils';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './ui/input-group';
 
 interface CodeBlockProps {
   code: string;

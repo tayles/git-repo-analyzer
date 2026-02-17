@@ -1,8 +1,8 @@
 {
   "name": "@git-repo-analyzer/ladle",
-  "description": "Component library for git-repo-analyzer",
   "version": "0.0.1",
   "private": true,
+  "description": "Component library for git-repo-analyzer",
   "type": "module",
   "scripts": {
     "dev": "ladle serve",

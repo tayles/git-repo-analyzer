@@ -32,27 +32,31 @@ interface RepoDetailsLayoutProps {
 
 export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
   return (
-    <div className="flex h-full flex-col justify-start gap-2 p-2">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <Button variant="ghost" onClick={onBack}>
+    <div className="flex h-full flex-col justify-start gap-2">
+      <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-4">
+        <Button variant="ghost" onClick={onBack} className="order-1" title="Go back">
           <ChevronLeft />
-          Back
+          <span className="hidden xl:inline">Back</span>
         </Button>
-        <Button variant="ghost" onClick={onRefresh}>
-          <RefreshCw />
-          Refresh
-        </Button>
-      </div>
 
-      <div className="flex h-full flex-col justify-start gap-2 p-2">
-        <h2 className="mb-2 text-xl font-semibold">
+        <h2 className="text-md order-2 min-w-80 flex-1 truncate overflow-hidden font-semibold whitespace-nowrap sm:order-3 sm:text-xl">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
         </h2>
+
+        <Button
+          variant="ghost"
+          onClick={onRefresh}
+          className="order-3 sm:order-2"
+          title="Refresh data"
+        >
+          <RefreshCw />
+          <span className="hidden sm:inline">Refresh</span>
+        </Button>
       </div>
 
       {/* Stats */}
       <section>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4 p-2">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
           <StatCard
             label="Stars"
             value={report.basicStats.stars}
@@ -108,24 +112,26 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
       {/* Tools */}
       <section>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
           {report.tooling.tools.map(tool => (
             <ToolCard key={tool.name} repo={report.basicStats.fullName} tool={tool} />
           ))}
         </div>
       </section>
 
-      <ActivityHeatmapChart data={report.commits.activityHeatmap} />
+      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2">
+        <ActivityHeatmapChart data={report.commits.activityHeatmap} />
 
-      <CommitChart data={report.commits.byWeek} />
+        <WorkPatternsCard data={report.commits.workPatterns} />
 
-      <ContributorsSection data={report.contributors} />
+        <ContributorsSection data={report.contributors} />
 
-      <WorkPatternsCard data={report.commits.workPatterns} />
+        <LanguageChart data={report.languages} />
 
-      <PullRequestChart data={report.pullRequests} />
+        <CommitChart data={report.commits.byWeek} />
 
-      <LanguageChart data={report.languages} />
+        <PullRequestChart data={report.pullRequests} />
+      </section>
     </div>
   );
 }

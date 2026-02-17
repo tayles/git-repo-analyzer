@@ -3,10 +3,10 @@ import type { AnalysisResult } from '@git-repo-analyzer/core';
 import { Trash } from 'lucide-react';
 
 import { AnalysisReportCard } from './AnalysisReportCard';
+import { ErrorAlert } from './ErrorAlert';
 import { GettingStartedPlaceholder } from './GettingStartedPlaceholder';
 import { InputForm } from './InputForm';
 import { Button } from './ui/button';
-import { ErrorAlert } from './ErrorAlert';
 
 interface HomeLayoutProps {
   repo: string;
@@ -34,7 +34,7 @@ export function HomeLayout({
       <GettingStartedPlaceholder onSelectExample={repo => onAnalyze(repo)} />
 
       {history.length > 0 && (
-        <section className="flex flex-col gap-4  max-w-5xl mx-auto">
+        <section className="mx-auto flex max-w-5xl flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-md font-semibold">Previous Reports</h2>
             <Button

@@ -15,7 +15,10 @@ interface AnalysisReportCardProps {
 
 export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReportCardProps) {
   return (
-    <Card onClick={onClick} className="cursor-pointer gap-0 p-2 hover:bg-gray-50">
+    <Card
+      onClick={onClick}
+      className="cursor-pointer gap-0 p-2 hover:bg-gray-50 dark:hover:bg-gray-800"
+    >
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
@@ -25,6 +28,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
             variant="ghost"
             size="icon"
             className="text-muted-foreground hover:bg-red-100 hover:text-red-600"
+            title="Clear report"
             onClick={e => {
               e.stopPropagation();
               onDelete(report.basicStats.fullName);

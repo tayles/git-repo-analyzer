@@ -2,16 +2,20 @@ import { AnalyzerLogo } from '../AnalyzerLogo';
 import { CodeBlock } from '../CodeBlock';
 import { Button } from '../ui/button';
 
-export function AppHeader() {
+interface AppHeaderProps {
+  onClick?: () => void;
+}
+
+export function AppHeader({ onClick }: AppHeaderProps) {
   return (
     <header className="flex flex-wrap items-center justify-between gap-2">
-      <h1 className="flex items-center gap-2 text-xl font-bold">
+      <h1 className="flex cursor-pointer items-center gap-2 text-xl font-bold" onClick={onClick}>
         <AnalyzerLogo className="size-12" />
         Git Repo Analyzer
       </h1>
-      
+
       <nav className="flex items-center gap-4">
-        <CodeBlock code="npm install -g git-repo-analyzer" className="hidden lg:flex mr-2" />
+        <CodeBlock code="npm install -g git-repo-analyzer" className="mr-2 hidden lg:flex" />
 
         <Button variant="ghost" size="icon-lg" asChild title="View on GitHub">
           <a

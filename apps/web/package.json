@@ -1,8 +1,8 @@
 {
   "name": "@git-repo-analyzer/web",
-  "description": "Web app for git-repo-analyzer",
   "version": "0.0.1",
   "private": true,
+  "description": "Web app for git-repo-analyzer",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -25,6 +25,7 @@ export { AppRepoDetailsPage } from './components/app/AppRepoDetailsPage';
 export { ToolCard } from './components/ToolCard';
 export { ToolLogo } from './components/ToolLogo';
 export { AnalyzerLogo } from './components/AnalyzerLogo';
+export { ThemeToggle } from './components/ThemeToggle';
 
 // Utilities
 export { cn } from './lib/utils';

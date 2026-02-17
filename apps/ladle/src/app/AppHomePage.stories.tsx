@@ -27,5 +27,6 @@ export const HomePage: Story = () => (
     onAnalyze={() => {}}
     onDeleteReport={() => {}}
     onDeleteAllReports={() => {}}
+    onCancel={() => {}}
   />
 );

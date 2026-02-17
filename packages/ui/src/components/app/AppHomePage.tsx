@@ -10,6 +10,7 @@ interface AppHomePageProps {
   onAnalyze: (repo: string) => void;
   onDeleteReport: (repo: string) => void;
   onDeleteAllReports: () => void;
+  onCancel: () => void;
 }
 
 export function AppHomePage({
@@ -19,10 +20,11 @@ export function AppHomePage({
   onAnalyze,
   onDeleteReport,
   onDeleteAllReports,
+  onCancel,
 }: AppHomePageProps) {
   return (
     <div className="container mx-auto flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
-      <AppHeader />
+      <AppHeader onClick={onCancel} />
       <div className="flex flex-col gap-2 text-center">
         <p className="text-muted-foreground text-md">
           View the tech stack, health and other insights of any GitHub repository

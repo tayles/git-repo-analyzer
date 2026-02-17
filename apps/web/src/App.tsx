@@ -4,6 +4,7 @@ import {
   AppHomePage,
   AppLoadingPage,
   AppRepoDetailsPage,
+  ThemeToggle,
 } from '@git-repo-analyzer/ui';
 import { useCallback } from 'react';
 
@@ -22,18 +23,21 @@ function App() {
   const clearHistory = useAnalysisStore(state => state.clearHistory);
   const removeFromHistory = useAnalysisStore(state => state.removeFromHistory);
 
-  const handleAnalyze = useCallback(async (repo: string) => {
-    if (!repo.trim()) return;
+  const handleAnalyze = useCallback(
+    async (repo: string) => {
+      if (!repo.trim()) return;
 
-    startAnalysis(repo);
+      startAnalysis(repo);
 
-    try {
-      const analysisResult = await analyzeGitRepository(repo, undefined, updateProgress);
-      completeAnalysis(analysisResult);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Analysis failed');
-    }
-  }, [startAnalysis, updateProgress, completeAnalysis, setError]);
+      try {
+        const analysisResult = await analyzeGitRepository(repo, undefined, updateProgress);
+        completeAnalysis(analysisResult);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Analysis failed');
+      }
+    },
+    [startAnalysis, updateProgress, completeAnalysis, setError],
+  );
 
   const handleCancel = useCallback(() => {
     clearAnalysis();
@@ -49,12 +53,15 @@ function App() {
     }
   }, [result, handleAnalyze]);
 
-  const handleDeleteReport = useCallback((repo: string) => {
-    removeFromHistory(repo);
-    if (result?.basicStats.fullName === repo) {
-      handleBack();
-    }
-  }, [result, handleBack, removeFromHistory]);
+  const handleDeleteReport = useCallback(
+    (repo: string) => {
+      removeFromHistory(repo);
+      if (result?.basicStats.fullName === repo) {
+        handleBack();
+      }
+    },
+    [result, handleBack, removeFromHistory],
+  );
 
   return (
     <main className="bg-background min-h-screen">
@@ -65,11 +72,7 @@ function App() {
           onCancel={handleCancel}
         />
       ) : result ? (
-        <AppRepoDetailsPage
-          report={result}
-          onBack={handleBack}
-          onRefresh={handleRefresh}
-        />
+        <AppRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
       ) : (
         <AppHomePage
           repo={currentRepository || ''}
@@ -78,8 +81,10 @@ function App() {
           onAnalyze={handleAnalyze}
           onDeleteReport={handleDeleteReport}
           onDeleteAllReports={clearHistory}
+          onCancel={handleCancel}
         />
       )}
+      <ThemeToggle />
     </main>
   );
 }

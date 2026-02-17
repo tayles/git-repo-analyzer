@@ -4,6 +4,7 @@ import {
   SidePanelHomePage,
   SidePanelLoadingPage,
   SidePanelRepoDetailsPage,
+  ThemeToggle,
 } from '@git-repo-analyzer/ui';
 import { useCallback, useEffect } from 'react';
 
@@ -114,13 +115,27 @@ export default function SidePanel() {
   }
 
   return (
-    <SidePanelHomePage
-      repo={currentRepository || ''}
-      errorMsg={error}
-      history={history}
-      onAnalyze={handleAnalyze}
-      onDeleteReport={handleDeleteReport}
-      onDeleteAllReports={handleClearHistory}
-    />
+    <main className="bg-background min-h-screen">
+      {isLoading ? (
+        <SidePanelLoadingPage
+          repo={currentRepository || ''}
+          progress={progress?.message || 'Starting analysis...'}
+          onCancel={handleCancel}
+        />
+      ) : result ? (
+        <SidePanelRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
+      ) : (
+        <SidePanelHomePage
+          repo={currentRepository || ''}
+          errorMsg={error}
+          history={history}
+          onAnalyze={handleAnalyze}
+          onDeleteReport={handleDeleteReport}
+          onDeleteAllReports={handleClearHistory}
+        />
+      )}
+
+      <ThemeToggle />
+    </main>
   );
 }

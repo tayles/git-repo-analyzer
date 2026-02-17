@@ -1,7 +1,7 @@
 {
   "name": "git-repo-analyzer",
-  "description": "View the tech stack, health and other insights of any GitHub repository",
   "private": true,
+  "description": "View the tech stack, health and other insights of any GitHub repository",
   "workspaces": [
     "apps/*",
     "packages/*"

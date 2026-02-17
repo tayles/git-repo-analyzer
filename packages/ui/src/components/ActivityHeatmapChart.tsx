@@ -8,13 +8,13 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function getIntensityColor(value: number, max: number): string {
-  if (max === 0 || value === 0) return 'oklch(0.3 0 0)';
+  if (max === 0 || value === 0) return 'oklch(0.96 0.01 0)';
   const ratio = value / max;
   // oklch green scale
-  if (ratio < 0.25) return 'oklch(0.45 0.12 145)';
-  if (ratio < 0.5) return 'oklch(0.55 0.16 145)';
-  if (ratio < 0.75) return 'oklch(0.65 0.2 145)';
-  return 'oklch(0.75 0.22 145)';
+  if (ratio < 0.25) return 'oklch(0.89 0.1 151.09)';
+  if (ratio < 0.5) return 'oklch(0.73 0.16 149.44)';
+  if (ratio < 0.75) return 'oklch(0.63 0.16 148.38)';
+  return 'oklch(0.44 0.12 148.06)';
 }
 
 interface ActivityHeatmapChartProps {
@@ -23,11 +23,11 @@ interface ActivityHeatmapChartProps {
 
 export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <CardHeader>
         <CardTitle>Activity Heatmap</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="mx-auto">
         <TooltipProvider>
           <div className="overflow-x-auto">
             <div
@@ -35,7 +35,6 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
               style={{ gridTemplateColumns: `auto repeat(24, 1fr)` }}
             >
               {/* Hour labels */}
-              <div />
               {Array.from({ length: 24 }, (_, h) => (
                 <div key={h} className="text-muted-foreground text-center text-[10px]">
                   {h % 3 === 0 ? h : ''}

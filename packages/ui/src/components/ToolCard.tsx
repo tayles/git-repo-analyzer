@@ -11,7 +11,7 @@ interface ToolCardProps {
 
 export function ToolCard({ repo, tool }: ToolCardProps) {
   return (
-    <Card className="bg-secondary gap-2 overflow-hidden p-3">
+    <Card className="bg-muted/60 gap-2 overflow-hidden p-3 lg:p-4">
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2 text-sm font-normal">
           <ToolLogo logo={tool.logo} className="size-4" />

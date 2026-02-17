@@ -1,5 +1,6 @@
 import {
   countryCodeToEmojiFlag,
+  formatNumber,
   relativeDateLabel,
   type AnalysisResult,
   type ToolMetaWithFileMatches,
@@ -10,7 +11,6 @@ import {
   badge,
   barChart,
   formatDuration,
-  formatNumber,
   heading,
   heatmapRow,
   metric,
