@@ -104,7 +104,7 @@ async function main() {
 
     const result = await analyzeGitRepository(options.repository, {
       token: options.token,
-      verbose: true,
+      verbose: false,
       onProgress: progress => {
         if (!options.json) {
           process.stderr.write('\r' + ' '.repeat(60) + '\r');
@@ -120,6 +120,7 @@ async function main() {
       printReport(result);
     }
   } catch (error) {
+    process.stderr.write('\r' + ' '.repeat(60) + '\r');
     console.error('Error:', error instanceof Error ? error.message : 'Unknown error');
     process.exit(1);
   }
