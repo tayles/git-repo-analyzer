@@ -80,20 +80,23 @@ const originalFetch = globalThis.fetch;
  * Call `restoreFetch()` to restore the original fetch.
  */
 export function installMockFetch(): void {
-  const mockFetch = mock((input: string | URL | Request, _init?: RequestInit): Promise<Response> => {
-    const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
-    const response = matchUrl(url);
-    if (response) {
-      return Promise.resolve(response);
-    }
-    // Fail loudly for unmatched URLs so tests don't silently hit the network
-    return Promise.resolve(
-      new Response(JSON.stringify({ message: `Mock: unmatched URL ${url}` }), {
-        status: 404,
-        headers: RATE_LIMIT_HEADERS,
-      }),
-    );
-  });
+  const mockFetch = mock(
+    (input: string | URL | Request, _init?: RequestInit): Promise<Response> => {
+      const url =
+        typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
+      const response = matchUrl(url);
+      if (response) {
+        return Promise.resolve(response);
+      }
+      // Fail loudly for unmatched URLs so tests don't silently hit the network
+      return Promise.resolve(
+        new Response(JSON.stringify({ message: `Mock: unmatched URL ${url}` }), {
+          status: 404,
+          headers: RATE_LIMIT_HEADERS,
+        }),
+      );
+    },
+  );
   globalThis.fetch = mockFetch as unknown as typeof fetch;
 }
 

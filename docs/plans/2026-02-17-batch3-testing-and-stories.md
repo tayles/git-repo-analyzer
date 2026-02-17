@@ -222,8 +222,18 @@ export default {
 
 export const StatCards: Story = () => (
   <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-4">
-    <StatCard label="Stars" value={231456} icon={<Star className="size-4" />} href="https://github.com" />
-    <StatCard label="Forks" value={48200} icon={<Split className="size-4" />} href="https://github.com" />
+    <StatCard
+      label="Stars"
+      value={231456}
+      icon={<Star className="size-4" />}
+      href="https://github.com"
+    />
+    <StatCard
+      label="Forks"
+      value={48200}
+      icon={<Split className="size-4" />}
+      href="https://github.com"
+    />
     <StatCard label="Watchers" value={6700} icon={<Eye className="size-4" />} />
     <StatCard label="Language" value="TypeScript" icon={<Code className="size-4" />} />
     <StatCard label="License" value="MIT" icon={<Scale className="size-4" />} />
