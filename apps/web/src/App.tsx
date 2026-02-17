@@ -91,7 +91,8 @@ function App() {
           >
             <AppLoadingPage
               repo={currentRepository || ''}
-              progress={progress?.message || 'Starting analysis...'}
+              progressMessage={progress?.message || 'Starting analysis...'}
+              progressValue={progress?.progress ?? 0}
               onCancel={handleCancel}
             />
           </motion.div>

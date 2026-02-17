@@ -16,8 +16,6 @@ export default {
   ],
 } satisfies StoryDefault;
 
-const progress = 'Analyzing code structure (1/4)';
-
 export const LoadingPage: Story = () => (
-  <AppLoadingPage repo="facebook/react" onCancel={() => {}} progress={progress} />
+  <AppLoadingPage repo="facebook/react" onCancel={() => {}} progressMessage="Analyzing code structure (1/4)" progressValue={25} />
 );

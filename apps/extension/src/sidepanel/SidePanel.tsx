@@ -117,7 +117,8 @@ export default function SidePanel() {
     return (
       <SidePanelLoadingPage
         repo={currentRepository || ''}
-        progress={progress?.message || 'Starting analysis...'}
+        progressMessage={progress?.message || 'Starting analysis...'}
+        progressValue={progress?.progress ?? 0}
         onCancel={handleCancel}
       />
     );
@@ -134,7 +135,8 @@ export default function SidePanel() {
       {isLoading ? (
         <SidePanelLoadingPage
           repo={currentRepository || ''}
-          progress={progress?.message || 'Starting analysis...'}
+          progressMessage={progress?.message || 'Starting analysis...'}
+          progressValue={progress?.progress ?? 0}
           onCancel={handleCancel}
         />
       ) : result ? (

@@ -16,8 +16,6 @@ export default {
   ],
 } satisfies StoryDefault;
 
-const progress = 'Analyzing code structure (1/4)';
-
 export const LoadingPage: Story = () => (
-  <SidePanelLoadingPage repo="facebook/react" onCancel={() => {}} progress={progress} />
+  <SidePanelLoadingPage repo="facebook/react" onCancel={() => {}} progressMessage="Analyzing code structure (1/4)" progressValue={25} />
 );

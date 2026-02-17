@@ -7,5 +7,5 @@ export default {
 };
 
 export const LoadingLayouts: Story = () => (
-  <LoadingLayout repo="facebook/react" progress="Completed 3 of 6: Commits" onCancel={() => {}} />
+  <LoadingLayout repo="facebook/react" progressMessage="Completed 3 of 6: Commits" progressValue={50} onCancel={() => {}} />
 );
