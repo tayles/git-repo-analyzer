@@ -16,4 +16,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  base: '/git-repo-analyzer/',
 });
