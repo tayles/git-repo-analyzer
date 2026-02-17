@@ -1,6 +1,6 @@
 # Git Repo Analyzer
 
-![git-repo-analyzer Logo](https://raw.githubusercontent.com/tayles/ai-sprite-image-generator/main/docs/git-repo-analyzer-logo.png)
+![git-repo-analyzer Logo](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/git-repo-analyzer-logo.png)
 
 A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git repositories.
 
