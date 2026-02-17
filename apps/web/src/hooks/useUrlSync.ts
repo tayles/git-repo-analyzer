@@ -1,16 +1,12 @@
-import type { AnalysisResult } from '@git-repo-analyzer/core';
-
 import { useEffect, useRef } from 'react';
 
 export interface UseUrlSyncOptions {
   currentRepository: string | null;
-  result: AnalysisResult | null;
-  isLoading: boolean;
   onAnalyze: (repo: string) => void;
 }
 
 export function useUrlSync(options: UseUrlSyncOptions): void {
-  const { currentRepository, result, isLoading, onAnalyze } = options;
+  const { currentRepository, onAnalyze } = options;
   const hasReadInitialUrl = useRef(false);
 
   // Read URL param on mount
@@ -35,11 +31,7 @@ export function useUrlSync(options: UseUrlSyncOptions): void {
     let newUrl = '/';
 
     // Determine what URL should be based on state
-    if (result) {
-      // Viewing results
-      const repo = encodeURIComponent(result.basicStats.fullName);
-      newUrl = `/?repo=${repo}`;
-    } else if (isLoading && currentRepository) {
+    if (currentRepository) {
       // Loading
       const repo = encodeURIComponent(currentRepository);
       newUrl = `/?repo=${repo}`;
@@ -51,5 +43,5 @@ export function useUrlSync(options: UseUrlSyncOptions): void {
     if (currentPath !== newUrl) {
       window.history.replaceState(null, '', newUrl);
     }
-  }, [result, isLoading, currentRepository]);
+  }, [currentRepository]);
 }

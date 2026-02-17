@@ -80,12 +80,8 @@ function App() {
     [result, handleBack, removeFromHistory],
   );
 
-  useUrlSync({
-    currentRepository,
-    result,
-    isLoading,
-    onAnalyze: handleAnalyze,
-  });
+  // Sync URL with state
+  useUrlSync({ currentRepository, onAnalyze: handleAnalyze });
 
   return (
     <main className="bg-background min-h-screen">
