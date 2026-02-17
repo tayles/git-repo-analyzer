@@ -17,7 +17,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
   return (
     <Card
       onClick={onClick}
-      className="cursor-pointer gap-0 p-2 hover:bg-gray-50 dark:hover:bg-gray-800"
+      className="cursor-pointer gap-0 p-2 lg:p-4 hover:bg-gray-50 dark:hover:bg-gray-800"
     >
       <CardHeader className="p-0">
         <CardTitle className="flex items-center gap-2">
@@ -26,7 +26,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
         <CardAction>
           <Button
             variant="ghost"
-            size="icon"
+            size="icon-sm"
             className="text-muted-foreground hover:bg-red-100 hover:text-red-600"
             title="Clear report"
             onClick={e => {
@@ -40,7 +40,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
       </CardHeader>
       <CardContent className="p-2">
         <div className="flex flex-wrap gap-2">
-          {report.tooling.tools.map(tool => (
+          {report.tooling.tools.filter(tool => tool.category !== 'Documentation').map(tool => (
             <div key={tool.name} className="flex items-center gap-2 text-xs">
               <ToolLogo logo={tool.logo} className="size-4" />
               {tool.name}
