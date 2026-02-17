@@ -64,4 +64,109 @@ describe('useUrlSync', () => {
 
     expect(onAnalyze).toHaveBeenCalledWith('facebook/react');
   });
+
+  it('should update URL when result is set', async () => {
+    const onAnalyze = mock(() => {});
+    const mockResult = {
+      basicStats: { fullName: 'facebook/react' },
+    } as AnalysisResult;
+
+    const { useUrlSync } = await import('./useUrlSync');
+    const { rerender } = renderHook(
+      (props) => useUrlSync(props),
+      {
+        initialProps: {
+          currentRepository: null as string | null,
+          result: null as AnalysisResult | null,
+          isLoading: false,
+          onAnalyze,
+        },
+      }
+    );
+
+    rerender({
+      currentRepository: 'facebook/react',
+      result: mockResult,
+      isLoading: false,
+      onAnalyze,
+    });
+
+    expect(window.location.search).toBe('?repo=facebook%2Freact');
+  });
+
+  it('should update URL when loading starts', async () => {
+    const onAnalyze = mock(() => {});
+
+    const { useUrlSync } = await import('./useUrlSync');
+    const { rerender } = renderHook(
+      (props) => useUrlSync(props),
+      {
+        initialProps: {
+          currentRepository: null as string | null,
+          result: null as AnalysisResult | null,
+          isLoading: false,
+          onAnalyze,
+        },
+      }
+    );
+
+    rerender({
+      currentRepository: 'vercel/next.js',
+      result: null,
+      isLoading: true,
+      onAnalyze,
+    });
+
+    expect(window.location.search).toBe('?repo=vercel%2Fnext.js');
+  });
+
+  it('should clear URL when returning to home', async () => {
+    window.history.replaceState(null, '', '/?repo=facebook/react');
+
+    const onAnalyze = mock(() => {});
+    const mockResult = {
+      basicStats: { fullName: 'facebook/react' },
+    } as AnalysisResult;
+
+    const { useUrlSync } = await import('./useUrlSync');
+    const { rerender } = renderHook(
+      (props) => useUrlSync(props),
+      {
+        initialProps: {
+          currentRepository: 'facebook/react' as string | null,
+          result: mockResult as AnalysisResult | null,
+          isLoading: false,
+          onAnalyze,
+        },
+      }
+    );
+
+    rerender({
+      currentRepository: null,
+      result: null,
+      isLoading: false,
+      onAnalyze,
+    });
+
+    expect(window.location.search).toBe('');
+  });
+
+  it('should not trigger onAnalyze when URL is updated by the hook itself', async () => {
+    const onAnalyze = mock(() => {});
+
+    const { useUrlSync } = await import('./useUrlSync');
+    renderHook(
+      (props) => useUrlSync(props),
+      {
+        initialProps: {
+          currentRepository: 'facebook/react',
+          result: { basicStats: { fullName: 'facebook/react' } } as AnalysisResult,
+          isLoading: false,
+          onAnalyze,
+        },
+      }
+    );
+
+    expect(onAnalyze).toHaveBeenCalledTimes(0);
+  });
 });
