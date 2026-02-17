@@ -9,7 +9,7 @@ import type {
 } from '../types';
 
 import { weekStart } from '../utils/date-utils';
-import { getTimezoneOffset } from '../utils/timezone-utils';
+import { TZDate } from '@date-fns/tz';
 
 export function processCommits(
   commits: GitHubCommit[],
@@ -64,12 +64,17 @@ export function analyzeTimeOfDayWeek(
       const contributor = contributors.topContributors.find(c => c.login === author);
       const timezone = contributor?.timezone ?? contributors.primaryTimezone;
 
-      // Convert to contributor's local time if timezone is available
-      const timezoneOffset = getTimezoneOffset(timezone) ?? 0;
-      const localDate = new Date(date.getTime() + timezoneOffset * 60 * 1000);
-
-      const day = localDate.getUTCDay();
-      const hour = localDate.getUTCHours();
+      // Convert to contributor's local time using TZDate for correct DST handling
+      let day: number;
+      let hour: number;
+      if (timezone) {
+        const localDate = new TZDate(date.getTime(), timezone);
+        day = localDate.getDay();
+        hour = localDate.getHours();
+      } else {
+        day = date.getUTCDay();
+        hour = date.getUTCHours();
+      }
       heatmap.grid[day]![hour]!++;
       if (heatmap.grid[day]![hour]! > heatmap.maxValue) {
         heatmap.maxValue = heatmap.grid[day]![hour]!;
