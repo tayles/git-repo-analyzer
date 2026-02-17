@@ -17,7 +17,7 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Card className="group bg-muted/60 hover:bg-muted relative gap-2 overflow-hidden p-3 transition-colors lg:p-4 cursor-pointer">
+        <Card className="group bg-muted/60 hover:bg-muted relative cursor-pointer gap-2 overflow-hidden p-3 transition-colors lg:p-4">
           <CardHeader className="p-0">
             <CardTitle className="flex items-center gap-2 text-sm font-normal">
               <ToolLogo logo={tool.logo} className="size-4" />

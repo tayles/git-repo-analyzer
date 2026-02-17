@@ -71,7 +71,6 @@ describe('analyzeTimeOfDayWeek', () => {
           countryCode: null,
           flag: null,
           timezone: 'America/New_York',
-          utcOffset: -5,
         },
       ],
     });
@@ -99,7 +98,6 @@ describe('analyzeTimeOfDayWeek', () => {
           countryCode: null,
           flag: null,
           timezone: 'America/New_York',
-          utcOffset: -5,
         },
       ],
     });
@@ -128,7 +126,6 @@ describe('analyzeTimeOfDayWeek', () => {
           countryCode: null,
           flag: null,
           timezone: 'Asia/Kolkata',
-          utcOffset: 5.5,
         },
       ],
     });

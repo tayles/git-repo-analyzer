@@ -49,8 +49,7 @@
         "country": null,
         "countryCode": null,
         "flag": null,
-        "timezone": null,
-        "utcOffset": null
+        "timezone": null
       },
       {
         "login": "zpao",
@@ -61,8 +60,7 @@
         "country": "United States of America",
         "countryCode": "US",
         "flag": "🇺🇸",
-        "timezone": "America/Los_Angeles",
-        "utcOffset": -8
+        "timezone": "America/Los_Angeles"
       },
       {
         "login": "gaearon",
@@ -73,8 +71,7 @@
         "country": null,
         "countryCode": null,
         "flag": null,
-        "timezone": null,
-        "utcOffset": null
+        "timezone": null
       },
       {
         "login": "acdlite",
@@ -85,8 +82,7 @@
         "country": "United States of America",
         "countryCode": "US",
         "flag": "🇺🇸",
-        "timezone": "America/New_York",
-        "utcOffset": -5
+        "timezone": "America/New_York"
       },
       {
         "login": "sophiebits",
@@ -97,8 +93,7 @@
         "country": "United States of America",
         "countryCode": "US",
         "flag": "🇺🇸",
-        "timezone": "America/Los_Angeles",
-        "utcOffset": -8
+        "timezone": "America/Los_Angeles"
       },
       {
         "login": "josephsavona",
@@ -109,8 +104,7 @@
         "country": "United States of America",
         "countryCode": "US",
         "flag": "🇺🇸",
-        "timezone": "America/Los_Angeles",
-        "utcOffset": -8
+        "timezone": "America/Los_Angeles"
       },
       {
         "login": "poteto",
@@ -121,8 +115,7 @@
         "country": null,
         "countryCode": null,
         "flag": null,
-        "timezone": null,
-        "utcOffset": null
+        "timezone": null
       },
       {
         "login": "jimfb",
@@ -133,8 +126,7 @@
         "country": null,
         "countryCode": null,
         "flag": null,
-        "timezone": null,
-        "utcOffset": null
+        "timezone": null
       },
       {
         "login": "trueadm",
@@ -145,8 +137,7 @@
         "country": "United Kingdom",
         "countryCode": "GB",
         "flag": "🇬🇧",
-        "timezone": "Europe/London",
-        "utcOffset": 0
+        "timezone": "Europe/London"
       },
       {
         "login": "eps1lon",
@@ -157,8 +148,7 @@
         "country": "Germany",
         "countryCode": "DE",
         "flag": "🇩🇪",
-        "timezone": "Europe/Berlin",
-        "utcOffset": 1
+        "timezone": "Europe/Berlin"
       }
     ]
   },

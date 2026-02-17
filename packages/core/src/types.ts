@@ -45,7 +45,6 @@ export interface Contributor {
   countryCode: string | null;
   flag: string | null;
   timezone: string | null;
-  utcOffset: number | null;
 }
 
 export type TeamSize = 'solo' | 'small' | 'medium' | 'large';

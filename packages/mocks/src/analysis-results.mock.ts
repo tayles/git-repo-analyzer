@@ -15,7 +15,6 @@ export const mockContributors: Contributor[] = [
     countryCode: 'US',
     flag: '🇺🇸',
     timezone: 'America/Los_Angeles',
-    utcOffset: -480,
   },
 ];
 
