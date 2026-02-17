@@ -4,17 +4,28 @@ import { Fragment } from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
+import { useTheme } from '../hooks/use-theme';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function getIntensityColor(value: number, max: number): string {
-  if (max === 0 || value === 0) return 'oklch(0.96 0.01 0)';
-  const ratio = value / max;
-  // oklch green scale
-  if (ratio < 0.25) return 'oklch(0.89 0.1 151.09)';
-  if (ratio < 0.5) return 'oklch(0.73 0.16 149.44)';
-  if (ratio < 0.75) return 'oklch(0.63 0.16 148.38)';
-  return 'oklch(0.44 0.12 148.06)';
+function getIntensityColor(value: number, max: number, theme: 'light' | 'dark'): string {
+    const ratio = value / max;
+
+switch (theme) {
+  case 'light':
+    if (max === 0 || value === 0) return 'oklch(0.96 0.01 0)';
+    // oklch green scale
+    if (ratio < 0.25) return 'oklch(0.89 0.1 151.09)';
+    if (ratio < 0.5) return 'oklch(0.73 0.16 149.44)';
+    if (ratio < 0.75) return 'oklch(0.63 0.16 148.38)';
+    else return 'oklch(0.44 0.12 148.06)';
+  case 'dark':  
+      if (max === 0 || value === 0) return 'oklch(0.3 0 0)';
+  if (ratio < 0.25) return 'oklch(0.45 0.12 145)';
+  if (ratio < 0.5) return 'oklch(0.55 0.16 145)';
+  if (ratio < 0.75) return 'oklch(0.65 0.2 145)';
+  return 'oklch(0.75 0.22 145)';
+}
 }
 
 interface ActivityHeatmapChartProps {
@@ -22,6 +33,8 @@ interface ActivityHeatmapChartProps {
 }
 
 export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
+  const theme = useTheme();
+
   return (
     <Card className="overflow-hidden">
       <CardHeader>
@@ -54,7 +67,7 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
                         <TooltipTrigger asChild>
                           <div
                             className="h-4 w-4 rounded-sm"
-                            style={{ backgroundColor: getIntensityColor(value, data.maxValue) }}
+                            style={{ backgroundColor: getIntensityColor(value, data.maxValue, theme) }}
                           />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -80,6 +93,7 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
                     backgroundColor: getIntensityColor(
                       ratio * (data.maxValue || 1),
                       data.maxValue || 1,
+                      theme
                     ),
                   }}
                 />
