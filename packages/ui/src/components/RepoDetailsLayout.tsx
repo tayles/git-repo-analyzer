@@ -36,21 +36,21 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
       <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-4">
         <Button variant="ghost" onClick={onBack} className="order-1" title="Go back">
           <ChevronLeft />
-          <span className="hidden xl:inline">Back</span>
+          <span className="inline sm:hidden sm:inline">Back</span>
         </Button>
 
-        <h2 className="text-md order-2 min-w-80 flex-1 truncate overflow-hidden font-semibold whitespace-nowrap sm:order-3 sm:text-xl">
+        <h2 className="text-lg order-3 w-full truncate overflow-hidden font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
         </h2>
 
         <Button
           variant="ghost"
           onClick={onRefresh}
-          className="order-3 sm:order-2"
+          className="order-2 ml-auto sm:order-3"
           title="Refresh data"
         >
           <RefreshCw />
-          <span className="hidden sm:inline">Refresh</span>
+          <span className="inline sm:hidden sm:inline">Refresh</span>
         </Button>
       </div>
 
@@ -119,7 +119,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </div>
       </section>
 
-      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 p-2">
+      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))] gap-4 p-2">
         <ActivityHeatmapChart data={report.commits.activityHeatmap} />
 
         <WorkPatternsCard data={report.commits.workPatterns} />
