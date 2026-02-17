@@ -2,7 +2,8 @@ import { describe, expect, it, beforeEach, mock } from 'bun:test';
 
 describe('useUrlSync', () => {
   beforeEach(() => {
-    // Reset URL (will add window.history.replaceState when DOM is configured)
+    // Reset URL
+    window.history.replaceState(null, '', '/');
   });
 
   it('should be defined', () => {
