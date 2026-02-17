@@ -23,6 +23,7 @@ import { StatCard } from './StatCard';
 import { ToolCard } from './ToolCard';
 import { Button } from './ui/button';
 import { WorkPatternsCard } from './WorkPatternsCard';
+import { HealthScoreCard } from './HealthScoreCard';
 
 interface RepoDetailsLayoutProps {
   report: AnalysisResult;
@@ -132,6 +133,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
         <PullRequestChart data={report.pullRequests} />
       </section>
+
+      <HealthScoreCard health={report.healthScore} />
     </div>
   );
 }
