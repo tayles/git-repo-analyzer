@@ -6,7 +6,7 @@ import {
   SidePanelRepoDetailsPage,
   ThemeToggle,
 } from '@git-repo-analyzer/ui';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function SidePanel() {
   const currentRepository = useAnalysisStore(state => state.currentRepository);
@@ -24,6 +24,8 @@ export default function SidePanel() {
   const removeFromHistory = useAnalysisStore(state => state.removeFromHistory);
 
   const abortControllerRef = useRef<AbortController | null>(null);
+  const [token, setToken] = useState('');
+  const [isTokenSectionOpen, setIsTokenSectionOpen] = useState(false);
 
   const handleAnalyze = useCallback(
     async (repo: string, useCache = true) => {
@@ -37,6 +39,7 @@ export default function SidePanel() {
 
       try {
         const result = await analyzeGitRepository(repo, {
+          token,
           signal: controller.signal,
           onProgress: updateProgress,
         });
@@ -46,7 +49,7 @@ export default function SidePanel() {
         setError(err instanceof Error ? err.message : 'Analysis failed');
       }
     },
-    [startAnalysis, updateProgress, completeAnalysis, setError],
+    [startAnalysis, updateProgress, completeAnalysis, setError, token],
   );
 
   // Auto-detect GitHub repository from active tab on mount
@@ -146,9 +149,13 @@ export default function SidePanel() {
           repo={currentRepository || ''}
           errorMsg={error}
           history={history}
+          token={token}
+          isTokenSectionOpen={isTokenSectionOpen}
           onAnalyze={handleAnalyze}
           onDeleteReport={handleDeleteReport}
           onDeleteAllReports={handleClearHistory}
+          onTokenChange={setToken}
+          onTokenSectionOpenChange={setIsTokenSectionOpen}
         />
       )}
 

@@ -27,5 +27,9 @@ export const HomePage: Story = () => (
     onDeleteReport={() => {}}
     onDeleteAllReports={() => {}}
     onCancel={() => {}}
+    token=""
+    isTokenSectionOpen={false}
+    onTokenChange={() => {}}
+    onTokenSectionOpenChange={() => {}}
   />
 );

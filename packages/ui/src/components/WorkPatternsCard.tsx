@@ -1,5 +1,6 @@
 import type { WorkPatterns } from '@git-repo-analyzer/core';
 
+import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Progress } from './ui/progress';
@@ -24,6 +25,13 @@ export function WorkPatternsCard({ data }: WorkPatternsCardProps) {
           <span>Work Patterns</span>
           <Badge variant={config.variant}>{config.label}</Badge>
         </CardTitle>
+        <InfoButton title="Work Patterns">
+          <p className="font-medium"></p>
+          <p className="text-muted-foreground mt-1">
+            Analyzes commit times to classify the project as Professional (mostly 9-5), Hobbyist
+            (evenings/weekends), or Mixed. Helps understand the development culture of a project.
+          </p>
+        </InfoButton>
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="space-y-1.5">

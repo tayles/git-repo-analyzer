@@ -6,18 +6,26 @@ interface SidePanelHomePageProps {
   repo: string;
   errorMsg: string | null;
   history: AnalysisResult[];
+  token: string;
+  isTokenSectionOpen: boolean;
   onAnalyze: (repo: string) => void;
   onDeleteReport: (repo: string) => void;
   onDeleteAllReports: () => void;
+  onTokenChange: (token: string) => void;
+  onTokenSectionOpenChange: (open: boolean) => void;
 }
 
 export function SidePanelHomePage({
   repo,
   errorMsg,
   history = [],
+  token,
+  isTokenSectionOpen,
   onAnalyze,
   onDeleteReport,
   onDeleteAllReports,
+  onTokenChange,
+  onTokenSectionOpenChange,
 }: SidePanelHomePageProps) {
   return (
     <div className="flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
@@ -32,9 +40,13 @@ export function SidePanelHomePage({
         repo={repo}
         errorMsg={errorMsg}
         history={history}
+        token={token}
+        isTokenSectionOpen={isTokenSectionOpen}
         onAnalyze={onAnalyze}
         onDeleteReport={onDeleteReport}
         onDeleteAllReports={onDeleteAllReports}
+        onTokenChange={onTokenChange}
+        onTokenSectionOpenChange={onTokenSectionOpenChange}
       />
     </div>
   );

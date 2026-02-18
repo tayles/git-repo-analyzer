@@ -12,7 +12,7 @@ interface AppRepoDetailsPageProps {
 export function AppRepoDetailsPage({ report, onBack, onRefresh }: AppRepoDetailsPageProps) {
   return (
     <div className="container mx-auto flex h-full flex-col justify-start gap-2 p-2">
-      <AppHeader />
+      <AppHeader onClick={onBack} />
       <RepoDetailsLayout report={report} onBack={onBack} onRefresh={onRefresh} />
     </div>
   );

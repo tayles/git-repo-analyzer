@@ -7,7 +7,7 @@ import {
   ThemeToggle,
 } from '@git-repo-analyzer/ui';
 import { AnimatePresence, motion } from 'motion/react';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { useUrlSync } from './hooks';
 
@@ -27,6 +27,8 @@ function App() {
   const removeFromHistory = useAnalysisStore(state => state.removeFromHistory);
 
   const abortControllerRef = useRef<AbortController | null>(null);
+  const [token, setToken] = useState('');
+  const [isTokenSectionOpen, setIsTokenSectionOpen] = useState(false);
 
   const handleAnalyze = useCallback(
     async (repo: string, useCache = true) => {
@@ -42,6 +44,7 @@ function App() {
 
       try {
         const analysisResult = await analyzeGitRepository(repo, {
+          token: token || undefined,
           signal: controller.signal,
           onProgress: updateProgress,
         });
@@ -51,7 +54,7 @@ function App() {
         setError(err instanceof Error ? err.message : 'Analysis failed');
       }
     },
-    [startAnalysis, updateProgress, completeAnalysis, setError],
+    [startAnalysis, updateProgress, completeAnalysis, setError, token],
   );
 
   const handleCancel = useCallback(() => {
@@ -123,10 +126,14 @@ function App() {
               repo={currentRepository || ''}
               errorMsg={error}
               history={history}
+              token={token}
+              isTokenSectionOpen={isTokenSectionOpen}
               onAnalyze={handleAnalyze}
               onDeleteReport={handleDeleteReport}
               onDeleteAllReports={clearHistory}
               onCancel={handleCancel}
+              onTokenChange={setToken}
+              onTokenSectionOpenChange={setIsTokenSectionOpen}
             />
           </motion.div>
         )}

@@ -10,6 +10,7 @@ export class GitHubAPIError extends Error {
   constructor(
     public status: number,
     message: string,
+    public mayRequireToken: boolean = false,
   ) {
     super(message);
     this.name = 'GitHubAPIError';
@@ -70,13 +71,7 @@ export class GitHubAPI {
     this.logRateLimit();
 
     if (!response.ok) {
-      if (response.status === 404) {
-        throw new GitHubAPIError(404, 'Repository not found');
-      }
-      if (response.status === 403 && this.rateLimit?.remaining === 0) {
-        throw new GitHubAPIError(403, 'GitHub API rate limit exceeded');
-      }
-      throw new GitHubAPIError(response.status, `GitHub API error: ${response.statusText}`);
+      this.handleErrorResponse(response);
     }
 
     return response.json() as Promise<T>;
@@ -94,8 +89,13 @@ export class GitHubAPI {
       this.logRateLimit();
 
       if (!response.ok) {
+        this.handleErrorResponse(response);
+      }
+
+      if (!response.ok) {
         if (response.status === 409) return items; // empty repo
-        throw new GitHubAPIError(response.status, `GitHub API error: ${response.statusText}`);
+
+        this.handleErrorResponse(response);
       }
 
       const data = (await response.json()) as T[];
@@ -112,5 +112,25 @@ export class GitHubAPI {
     if (!link) return null;
     const match = link.match(/<([^>]+)>;\s*rel="next"/);
     return match?.[1] ?? null;
+  }
+
+  private handleErrorResponse(response: Response): never {
+    if (response.status === 404) {
+      throw new GitHubAPIError(
+        404,
+        'Repository not found. If this is a private repository, enter a GitHub Personal Access Token to be able to view it',
+        true,
+      );
+    }
+    if (response.status === 403 && this.rateLimit?.remaining === 0) {
+      throw new GitHubAPIError(
+        403,
+        'GitHub API rate limit exceeded. Add a GitHub Personal Access Token to increase your rate limit',
+        true,
+      );
+    }
+
+    const message = response.statusText || 'An unknown error occurred';
+    throw new GitHubAPIError(response.status, `GitHub API error: ${response.status} ${message}`);
   }
 }

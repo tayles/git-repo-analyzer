@@ -24,6 +24,7 @@ export { EmptyStatePlaceholder } from './components/EmptyStatePlaceholder';
 export { ErrorAlert } from './components/ErrorAlert';
 export { GettingStartedPlaceholder } from './components/GettingStartedPlaceholder';
 export { HealthScoreCard } from './components/HealthScoreCard';
+export { InfoButton } from './components/InfoButton';
 export { InputForm } from './components/InputForm';
 export { LanguageChart } from './components/LanguageChart';
 export { LanguageLogo } from './components/LanguageLogo';

@@ -12,24 +12,43 @@ interface HomeLayoutProps {
   repo: string;
   errorMsg: string | null;
   history: AnalysisResult[];
+  token: string;
+  isTokenSectionOpen: boolean;
   onAnalyze: (repo: string) => void;
   onDeleteReport: (repo: string) => void;
   onDeleteAllReports: () => void;
+  onTokenChange: (token: string) => void;
+  onTokenSectionOpenChange: (open: boolean) => void;
 }
 
 export function HomeLayout({
   repo,
   errorMsg,
   history = [],
+  token,
+  isTokenSectionOpen,
   onAnalyze,
   onDeleteReport,
   onDeleteAllReports,
+  onTokenChange,
+  onTokenSectionOpenChange,
 }: HomeLayoutProps) {
+  const hasErrorThatMayRequireToken = errorMsg?.includes('Access Token') ?? false;
+
+  const expandedTokenSection = isTokenSectionOpen || hasErrorThatMayRequireToken;
+
   return (
     <div className="flex flex-col items-stretch justify-start gap-12">
-      <InputForm repo={repo} onAnalyze={onAnalyze} />
-
       {errorMsg && <ErrorAlert message={errorMsg} />}
+
+      <InputForm
+        repo={repo}
+        token={token}
+        isTokenSectionOpen={expandedTokenSection}
+        onAnalyze={onAnalyze}
+        onTokenChange={onTokenChange}
+        onTokenSectionOpenChange={onTokenSectionOpenChange}
+      />
 
       <GettingStartedPlaceholder onSelectExample={repo => onAnalyze(repo)} />
 

@@ -3,7 +3,8 @@ import { Fragment } from 'react';
 
 import { useTheme } from '../hooks/use-theme';
 import { cn } from '../lib/utils';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { InfoButton } from './InfoButton';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -45,6 +46,14 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
     <Card className="overflow-hidden">
       <CardHeader>
         <CardTitle>Activity Heatmap</CardTitle>
+        <CardAction>
+          <InfoButton title="Activity Heatmap">
+            <p className="text-muted-foreground mt-1">
+              Shows when commits happen throughout the week. Each cell represents an hour of a day,
+              with darker colors indicating more commit activity during that time.
+            </p>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
       <CardContent className="mx-auto">
         <TooltipProvider>

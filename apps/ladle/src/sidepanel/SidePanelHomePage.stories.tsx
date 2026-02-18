@@ -21,6 +21,10 @@ export const HomePage: Story = () => (
         onAnalyze={() => {}}
         onDeleteReport={() => {}}
         onDeleteAllReports={() => {}}
+        token=""
+        isTokenSectionOpen={false}
+        onTokenChange={() => {}}
+        onTokenSectionOpenChange={() => {}}
       />
     </ChromeExtensionSidePanel>
 
@@ -32,6 +36,10 @@ export const HomePage: Story = () => (
         onAnalyze={() => {}}
         onDeleteReport={() => {}}
         onDeleteAllReports={() => {}}
+        token=""
+        isTokenSectionOpen={false}
+        onTokenChange={() => {}}
+        onTokenSectionOpenChange={() => {}}
       />
     </ChromeExtensionSidePanel>
   </div>

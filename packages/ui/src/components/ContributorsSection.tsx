@@ -1,5 +1,6 @@
 import type { ContributorAnalysis } from '@git-repo-analyzer/core';
 
+import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
@@ -25,6 +26,13 @@ export function ContributorsSection({ data }: ContributorsSectionProps) {
             {data.totalContributors} total / bus factor: {data.busFactor}
           </span>
         </CardTitle>
+        <InfoButton title="Contributors">
+          <p className="text-muted-foreground mt-1">
+            Shows top contributors by commit count. Bus factor indicates how many key developers the
+            project depends on — a higher number means knowledge is better distributed across the
+            team.
+          </p>
+        </InfoButton>
       </CardHeader>
       <CardContent>
         <div className="grid gap-3 sm:grid-cols-2">
