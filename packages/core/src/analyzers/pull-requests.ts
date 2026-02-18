@@ -1,6 +1,5 @@
 import type { GitHubPullRequest } from '../client/github-types';
 import type { BucketByWeek, PullAnalysis } from '../types';
-
 import { weekStart } from '../utils/date-utils';
 
 export function processPullRequests(pullRequests: GitHubPullRequest[]): PullAnalysis {

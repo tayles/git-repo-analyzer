@@ -1,7 +1,6 @@
-import type { Story } from '@ladle/react';
-
 import { TOOL_REGISTRY, type ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 import { ToolCard } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
 
 export default {
   title: 'Components',

@@ -1,8 +1,7 @@
-import type { Story } from '@ladle/react';
-import type { StoryDefault } from '@ladle/react';
-
 import { createMockAnalysisResult } from '@git-repo-analyzer/mocks';
 import { SidePanelRepoDetailsPage } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
+import type { StoryDefault } from '@ladle/react';
 
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 

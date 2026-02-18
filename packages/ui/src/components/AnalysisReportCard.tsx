@@ -1,5 +1,4 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
-
 import { X } from 'lucide-react';
 
 import { RepoName } from './RepoName';

@@ -1,8 +1,7 @@
 import { mock } from 'bun:test';
 
-import type { GitHubRawData } from './client/github-types';
-
 import mockRawData from '../../mocks/src/github-api-raw.json';
+import type { GitHubRawData } from './client/github-types';
 
 const rawData = mockRawData as unknown as GitHubRawData;
 

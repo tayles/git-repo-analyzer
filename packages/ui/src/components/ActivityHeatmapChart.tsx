@@ -1,5 +1,4 @@
 import type { ActivityHeatmap } from '@git-repo-analyzer/core';
-
 import { Fragment } from 'react';
 
 import { useTheme } from '../hooks/use-theme';

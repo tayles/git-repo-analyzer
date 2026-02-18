@@ -1,5 +1,4 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
-
 import { Trash } from 'lucide-react';
 import { motion } from 'motion/react';
 

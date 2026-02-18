@@ -1,7 +1,6 @@
+import { AppLoadingPage } from '@git-repo-analyzer/ui';
 import type { Story } from '@ladle/react';
 import type { StoryDefault } from '@ladle/react';
-
-import { AppLoadingPage } from '@git-repo-analyzer/ui';
 
 import { WebBrowser } from './wrappers/WebBrowser';
 

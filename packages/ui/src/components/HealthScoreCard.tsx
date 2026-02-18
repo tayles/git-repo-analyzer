@@ -1,5 +1,4 @@
 import type { HealthScore, HealthScoreAnalysis } from '@git-repo-analyzer/core';
-
 import { Cell, Pie, PieChart } from 'recharts';
 
 import { cn } from '../lib/utils';

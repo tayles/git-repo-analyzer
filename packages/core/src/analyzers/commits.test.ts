@@ -2,7 +2,6 @@ import { describe, expect, it } from 'bun:test';
 
 import type { GitHubCommit } from '../client/github-types';
 import type { ContributorAnalysis } from '../types';
-
 import { analyzeTimeOfDayWeek, detectConventions } from './commits';
 
 function makeCommit(

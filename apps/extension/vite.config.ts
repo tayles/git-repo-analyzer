@@ -1,7 +1,8 @@
+import path from 'node:path';
+
 import { crx } from '@crxjs/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'node:path';
 import { defineConfig } from 'vite';
 import zip from 'vite-plugin-zip-pack';
 

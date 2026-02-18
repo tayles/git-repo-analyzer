@@ -1,6 +1,5 @@
 import type { GitHubLanguage } from '../client/github-types';
 import type { LanguageAnalysis } from '../types';
-
 import { LANGUAGE_COLORS } from '../utils/language-utils';
 
 export function processLanguages(languages: GitHubLanguage): LanguageAnalysis {

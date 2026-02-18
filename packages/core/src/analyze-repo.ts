@@ -2,6 +2,14 @@ export type { ProgressUpdate, Contributor, AnalysisResult } from './types';
 export { TOOL_REGISTRY } from './tool-registry';
 export { LANGUAGE_COLORS } from './utils/language-utils';
 
+import { processBasicStats } from './analyzers/basic-stats';
+import { processCommits } from './analyzers/commits';
+import { processContributors } from './analyzers/contributors';
+import { processHealthScore } from './analyzers/health-score';
+import { processLanguages } from './analyzers/languages';
+import { processPullRequests } from './analyzers/pull-requests';
+import { processTooling } from './analyzers/tooling-detection';
+import { GitHubAPI } from './client/github-api';
 import type {
   GitHubCommit,
   GitHubContributor,
@@ -13,15 +21,6 @@ import type {
   GitHubUserProfile,
 } from './client/github-types';
 import type { AnalysisResult, AnalyzeOptions } from './types';
-
-import { processBasicStats } from './analyzers/basic-stats';
-import { processCommits } from './analyzers/commits';
-import { processContributors } from './analyzers/contributors';
-import { processHealthScore } from './analyzers/health-score';
-import { processLanguages } from './analyzers/languages';
-import { processPullRequests } from './analyzers/pull-requests';
-import { processTooling } from './analyzers/tooling-detection';
-import { GitHubAPI } from './client/github-api';
 import { delay } from './utils/async-utils';
 import { parseRepository } from './utils/parse-utils';
 

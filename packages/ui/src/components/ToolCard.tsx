@@ -1,5 +1,4 @@
 import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
-
 import { ExternalLink } from 'lucide-react';
 
 import { ToolLogo } from './ToolLogo';

@@ -1,9 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test';
 
-import type { ProgressUpdate } from './types';
-
 import { analyzeGitRepository } from './index';
 import { installMockFetch, restoreFetch } from './test-utils';
+import type { ProgressUpdate } from './types';
 
 beforeAll(() => {
   installMockFetch();

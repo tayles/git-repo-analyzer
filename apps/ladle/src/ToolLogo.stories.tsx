@@ -1,7 +1,6 @@
-import type { Story } from '@ladle/react';
-
 import { TOOL_REGISTRY } from '@git-repo-analyzer/core';
 import { ToolLogo } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
 
 export default {
   title: 'Components',

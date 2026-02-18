@@ -1,8 +1,7 @@
-import type { Story } from '@ladle/react';
-import type { StoryDefault } from '@ladle/react';
-
 // import { createMockAnalysisResult } from '@git-repo-analyzer/mocks';
 import { AppHomePage } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
+import type { StoryDefault } from '@ladle/react';
 
 import { WebBrowser } from './wrappers/WebBrowser';
 

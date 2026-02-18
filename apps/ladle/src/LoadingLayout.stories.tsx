@@ -1,6 +1,5 @@
-import type { Story } from '@ladle/react';
-
 import { LoadingLayout } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
 
 export default {
   title: 'Components',

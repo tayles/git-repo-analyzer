@@ -1,7 +1,7 @@
-import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
-
-import { mockResult } from '@git-repo-analyzer/mocks';
 import { describe, expect, it, beforeEach } from 'bun:test';
+
+import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
+import { mockResult } from '@git-repo-analyzer/mocks';
 
 import { useAnalysisStore } from './analysis-store';
 

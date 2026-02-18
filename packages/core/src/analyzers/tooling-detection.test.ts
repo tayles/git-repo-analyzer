@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'bun:test';
 
 import type { GitHubFileTree } from '../client/github-types';
-
 import { processTooling } from './tooling-detection';
 
 function makeFileTree(paths: string[]): GitHubFileTree {

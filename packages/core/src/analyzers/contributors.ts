@@ -1,6 +1,5 @@
 import type { GitHubContributor, GitHubUserProfile } from '../client/github-types';
 import type { ContributorAnalysis, TeamSize } from '../types';
-
 import { countryCodeToEmojiFlag, parseLocation } from '../utils/location-utils';
 
 export function processContributors(

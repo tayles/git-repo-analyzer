@@ -1,5 +1,6 @@
-import { mockResult } from '@git-repo-analyzer/mocks';
 import { describe, test, expect } from 'bun:test';
+
+import { mockResult } from '@git-repo-analyzer/mocks';
 
 import { badge, formatResultJson, heading, metric } from './cli-formatter';
 

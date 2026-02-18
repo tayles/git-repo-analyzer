@@ -1,5 +1,4 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
-
 import pc from 'picocolors';
 
 export function heading(text: string): string {

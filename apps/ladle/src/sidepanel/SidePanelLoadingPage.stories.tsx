@@ -1,7 +1,6 @@
+import { SidePanelLoadingPage } from '@git-repo-analyzer/ui';
 import type { Story } from '@ladle/react';
 import type { StoryDefault } from '@ladle/react';
-
-import { SidePanelLoadingPage } from '@git-repo-analyzer/ui';
 
 import { ChromeExtensionSidePanel } from './wrappers/ChromeExtensionSidePanel';
 

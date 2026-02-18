@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react';
 import { describe, expect, it, beforeEach, mock } from 'bun:test';
+
+import { renderHook } from '@testing-library/react';
 
 describe('useUrlSync', () => {
   beforeEach(() => {

@@ -1,5 +1,4 @@
 import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
-
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 

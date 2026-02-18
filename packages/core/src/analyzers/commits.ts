@@ -9,7 +9,6 @@ import type {
   ContributorAnalysis,
   WorkPatterns,
 } from '../types';
-
 import { weekStart } from '../utils/date-utils';
 
 export function processCommits(

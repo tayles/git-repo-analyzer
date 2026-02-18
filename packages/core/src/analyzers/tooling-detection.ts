@@ -1,9 +1,8 @@
 import picomatch from 'picomatch';
 
 import type { GitHubFile, GitHubFileTree } from '../client/github-types';
-import type { ToolAnalysis } from '../types';
-
 import { type ToolMetaWithFileMatches, TOOL_REGISTRY } from '../tool-registry';
+import type { ToolAnalysis } from '../types';
 
 export function processTooling(files: GitHubFileTree): ToolAnalysis {
   const tools = detectFromTree(files.tree);

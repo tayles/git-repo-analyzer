@@ -1,7 +1,6 @@
-import type { Story } from '@ladle/react';
-
 import { LANGUAGE_COLORS } from '@git-repo-analyzer/core';
 import { LanguageLogo } from '@git-repo-analyzer/ui';
+import type { Story } from '@ladle/react';
 
 export default {
   title: 'Components',
