@@ -9,6 +9,15 @@ A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git re
 - 💻 **[CLI Tool](#cli)**
 - 🧑‍💻 **[TypeScript Library](#typescript-api)**
 
+## Screenshots
+
+|                                                                                                                                                                   |                                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chrome Extension<br/>(Light Theme)                                                                                                                                | Chrome Extension<br/>(Dark Theme)                                                                                                                               |
+| ![Report (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-light.png) | ![Report (Dark)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-dark.png) |
+| Web App                                                                                                                                                           | CLI Output                                                                                                                                                      |
+| ![Web App](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-web-screenshot.png)                                 | ![Home (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-cli-screenshot.png)                          |
+
 ## Online Tool
 
 Try it now at **[tayles.github.io/git-repo-analyzer](https://tayles.github.io/git-repo-analyzer)**
@@ -21,7 +30,7 @@ Get it now on the **[Chrome Web Store](https://chromewebstore.google.com/detail/
 
 ## CLI
 
-Find it on npm at **[git-repo-analyzer](https://www.npmjs.com/package/git-repo-analyzer)**.
+Find it on npm at **[git-repo-analyzer](https://www.npmjs.com/package/git-repo-analyzer)**
 
 Install with:
 
@@ -90,8 +99,8 @@ git-repo-analyzer/
 - **Turborepo** for monorepo orchestration with task caching
 - **Bun** as package manager and test runner
 - **Tailwind CSS v4** with `@tailwindcss/vite` plugin (CSS-first config)
-- **shadcn/ui** components (Button, Card, Input) in the ui package
-- **Zustand v5** with persist middleware for state management
+- **shadcn/ui** base components
+- **Zustand** with persist middleware for state management
 - **CRXJS** for Chrome extension with hot reload support
 - **Bunup** for building the CLI/library package
 - **Ladle** for component documentation/stories
@@ -103,7 +112,7 @@ git-repo-analyzer/
 - `bun dev` - Start all dev servers
 - `bun run build` - Build all packages
 - `bun run test` - Run tests with bun test
-- `bun fix` - Format, lint and type check all packages (and autofix where possible)
+- `bun fix` - Format, lint and type check all files (and autofix where possible)
 - `bun lint:fix` - Lint with oxlint
 - `bun fmt:fix` - Format with oxfmt
 
