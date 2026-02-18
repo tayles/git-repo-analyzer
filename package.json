@@ -20,7 +20,8 @@
     "fmt:fix": "oxfmt",
     "check": "bun run fmt && bun run lint",
     "check:ci": "bun run fmt && bun run lint --format=github",
-    "fix": "bun run fmt:fix && bun run lint:fix"
+    "fix": "bun run fmt:fix && bun run lint:fix",
+    "shadcn": "cd packages/ui && bunx --bun shadcn@latest add"
   },
   "devDependencies": {
     "oxfmt": "^0.33.0",
