@@ -14,7 +14,7 @@ describe('useUrlSync', () => {
 
   it('should call onAnalyze when repo param exists on mount', async () => {
     // Set URL with repo param
-    window.history.replaceState(null, '', '/?repo=facebook/react');
+    window.history.replaceState(null, '', '/git-repo-analyzer/?repo=facebook/react');
 
     const onAnalyze = mock(() => {});
     const options = {
@@ -44,7 +44,7 @@ describe('useUrlSync', () => {
   });
 
   it('should decode URI component in repo param', async () => {
-    window.history.replaceState(null, '', '/?repo=facebook%2Freact');
+    window.history.replaceState(null, '', '/git-repo-analyzer/?repo=facebook%2Freact');
 
     const onAnalyze = mock(() => {});
     const options = {
@@ -59,7 +59,7 @@ describe('useUrlSync', () => {
   });
 
   it('should clear URL when returning to home', async () => {
-    window.history.replaceState(null, '', '/?repo=facebook/react');
+    window.history.replaceState(null, '', '/git-repo-analyzer/?repo=facebook/react');
 
     const onAnalyze = mock(() => {});
 

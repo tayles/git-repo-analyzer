@@ -5,6 +5,8 @@ export interface UseUrlSyncOptions {
   onAnalyze: (repo: string) => void;
 }
 
+const BASE_URL = '/git-repo-analyzer/';
+
 export function useUrlSync(options: UseUrlSyncOptions): void {
   const { currentRepository, onAnalyze } = options;
   const hasReadInitialUrl = useRef(false);
@@ -28,13 +30,13 @@ export function useUrlSync(options: UseUrlSyncOptions): void {
     // Skip if we're handling initial URL read
     if (!hasReadInitialUrl.current) return;
 
-    let newUrl = '/';
+    let newUrl = BASE_URL;
 
     // Determine what URL should be based on state
     if (currentRepository) {
       // Loading
       const repo = encodeURIComponent(currentRepository);
-      newUrl = `/?repo=${repo}`;
+      newUrl = `${BASE_URL}?repo=${repo}`;
     }
     // else: home page, newUrl = '/'
 
