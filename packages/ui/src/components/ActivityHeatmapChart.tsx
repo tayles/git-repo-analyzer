@@ -3,10 +3,17 @@ import type { ActivityHeatmap } from '@git-repo-analyzer/core';
 import { Fragment } from 'react';
 
 import { useTheme } from '../hooks/use-theme';
+import { cn } from '../lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+const TIME_PERIODS = [
+  { label: 'Morning', start: 0, end: 8 },
+  { label: 'Daytime', start: 9, end: 17 },
+  { label: 'Evening', start: 18, end: 23 },
+] as const;
 
 function getIntensityColor(value: number, max: number, theme: 'light' | 'dark'): string {
   const ratio = value / max;
@@ -82,6 +89,23 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
                     );
                   })}
                 </Fragment>
+              ))}
+
+              <div />
+              {TIME_PERIODS.map(period => (
+                <div
+                  key={period.label}
+                  className={cn(
+                    'text-muted-foreground text-center text-[10px]',
+                    period.label === 'Daytime' && 'border-x',
+                  )}
+                  role="note"
+                  style={{
+                    gridColumn: `${period.start + 2} / span ${period.end - period.start + 1}`,
+                  }}
+                >
+                  {period.label}
+                </div>
               ))}
             </div>
 
