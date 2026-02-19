@@ -217,7 +217,7 @@ const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
   Vitest: {
     logo: 'vitest',
     url: 'https://vitest.dev',
-    globs: ['vitest.config.ts', 'vitest.config.js'],
+    globs: ['vitest.config.*'],
   },
   Cypress: {
     logo: 'cypress',
@@ -244,9 +244,34 @@ const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://phpunit.de',
     globs: ['phpunit.xml'],
   },
+  Istanbul: {
+    logo: 'istanbul',
+    url: 'https://istanbul.js.org',
+    globs: ['.nycrc', '.nycrc.*', 'nyc.config.js'],
+  },
+  Codecov: {
+    logo: 'codecov',
+    url: 'hhttps://about.codecov.io',
+    globs: ['codecov.yml'],
+  },
+  'Coverage.py': {
+    logo: 'coveragepy',
+    url: 'https://coverage.readthedocs.io',
+    globs: ['.coveragerc'],
+  },
 };
 
 const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  Clang: {
+    logo: 'clang',
+    url: 'https://clang.llvm.org',
+    globs: ['.clang-format', '.clang-tidy'],
+  },
+  cpplint: {
+    logo: null,
+    url: 'https://github.com/cpplint/cpplint',
+    globs: ['.cpplint'],
+  },
   EditorConfig: {
     logo: 'editorconfig',
     url: 'https://editorconfig.org',
@@ -300,9 +325,14 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://golangci-lint.run',
     globs: ['.golangci.yml'],
   },
-  'Ruff/Black': {
+  Ruff: {
     logo: 'ruff',
     url: 'https://docs.astral.sh/ruff/',
+    globs: ['ruff.toml', '.ruff.toml'],
+  },
+  Black: {
+    logo: 'black',
+    url: 'https://black.readthedocs.io',
     globs: ['pyproject.toml'],
   },
   RuboCop: {
@@ -329,6 +359,11 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     logo: 'stylelint',
     url: 'https://stylelint.io',
     globs: ['stylelint.config.js'],
+  },
+  'YAML Lint': {
+    logo: null,
+    url: 'https://yamllint.readthedocs.io',
+    globs: ['.yamllint', '.yamllint.yaml', '.yamllint.yml'],
   },
 };
 
@@ -370,6 +405,11 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
     logo: 'gitlab',
     url: 'https://docs.gitlab.com/ee/ci/',
     globs: ['.gitlab-ci.yml'],
+  },
+  Gulp: {
+    logo: 'gulp',
+    url: 'https://gulpjs.com',
+    globs: ['gulpfile.*'],
   },
   Jenkins: {
     logo: 'jenkins',
@@ -469,6 +509,11 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
     url: 'https://containers.dev',
     globs: ['.devcontainer', '.devcontainer.json'],
   },
+  gitpod: {
+    logo: 'gitpod',
+    url: 'https://ona.io',
+    globs: ['.gitpod.yml'],
+  },
 };
 
 const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -496,6 +541,11 @@ const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
     logo: 'markdown',
     url: '',
     globs: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
+  },
+  'Read the Docs': {
+    logo: 'readthedocs',
+    url: 'https://readthedocs.org',
+    globs: ['.readthedocs.yml'],
   },
 };
 
