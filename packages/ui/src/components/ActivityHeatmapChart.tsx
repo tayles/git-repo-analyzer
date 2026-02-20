@@ -65,11 +65,13 @@ export function ActivityHeatmapChart({
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-2 select-text">
           <span className="flex-1">Activity Heatmap</span>
-          <ContributorCombobox
-            contributors={contributors}
-            selectedContributor={selectedContributor}
-            onContributorChange={onContributorChange}
-          />
+          {contributors.length > 1 && (
+            <ContributorCombobox
+              contributors={contributors}
+              selectedContributor={selectedContributor}
+              onContributorChange={onContributorChange}
+            />
+          )}
 
           <InfoButton title="Activity Heatmap">
             <p className="text-muted-foreground mt-1">
