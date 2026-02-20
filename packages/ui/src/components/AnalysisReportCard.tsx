@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 
 import { RepoName } from './RepoName';
 import { ToolLogo } from './ToolLogo';
+import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 
@@ -27,13 +28,9 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
       className="cursor-pointer gap-0 p-2 hover:bg-gray-50 lg:p-4 dark:hover:bg-gray-800"
     >
       <CardHeader className="p-0">
-        <CardTitle className="flex items-center gap-2">
+        <CardTitle className="flex items-center gap-2 overflow-hidden text-sm font-medium">
           <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
-          <span
-            className={`rounded-full px-2 py-0.5 text-xs font-medium ${healthScoreColor(report.healthScore.overall)}`}
-          >
-            {healthPercent}%
-          </span>
+          <Badge className={healthScoreColor(report.healthScore.overall)}>{healthPercent}%</Badge>
         </CardTitle>
         <CardAction>
           <Button
