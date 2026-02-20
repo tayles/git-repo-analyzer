@@ -44,7 +44,14 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </Button>
 
         <h2 className="order-3 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
-          <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
+          <a
+            href={report.basicStats.htmlUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors hover:underline"
+          >
+            <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
+          </a>
         </h2>
 
         <Button
