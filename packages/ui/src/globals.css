@@ -135,10 +135,12 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html {
+  html,
+  body,
+  #root {
     @apply h-full;
   }
   body {
-    @apply bg-background text-foreground select-none h-full;
+    @apply bg-background text-foreground select-none;
   }
 }
