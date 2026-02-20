@@ -61,6 +61,8 @@ describe('analyzeTimeOfDayWeek', () => {
     const contributors = makeContributors({
       topContributors: [
         {
+          id: 123,
+          name: 'Alice Smith',
           login: 'alice',
           avatarUrl: '',
           contributions: 10,
@@ -88,6 +90,8 @@ describe('analyzeTimeOfDayWeek', () => {
     const contributors = makeContributors({
       topContributors: [
         {
+          id: 123,
+          name: 'Alice Smith',
           login: 'alice',
           avatarUrl: '',
           contributions: 10,
@@ -116,6 +120,8 @@ describe('analyzeTimeOfDayWeek', () => {
     const contributors = makeContributors({
       topContributors: [
         {
+          id: 456,
+          name: 'Bob Bacon',
           login: 'bob',
           avatarUrl: '',
           contributions: 5,

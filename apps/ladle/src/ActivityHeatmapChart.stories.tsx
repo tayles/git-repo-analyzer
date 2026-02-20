@@ -15,21 +15,27 @@ export const AllVariants: Story = () => (
     <h3 className="text-sm font-medium">Default (all contributors)</h3>
     <ActivityHeatmapChart
       data={report.commits.activityHeatmap}
-      contributor={null}
+      contributors={mockContributors}
+      selectedContributor={null}
+      onContributorChange={() => {}}
       primaryTimezone={null}
     />
 
     <h3 className="text-sm font-medium">Filtered by contributor (with timezone)</h3>
     <ActivityHeatmapChart
       data={report.commits.activityHeatmap}
-      contributor={selectedContributor}
+      contributors={mockContributors}
+      selectedContributor={selectedContributor}
       primaryTimezone={selectedContributor.timezone}
+      onContributorChange={() => {}}
     />
 
     <h3 className="text-sm font-medium">Filtered by contributor (UTC fallback)</h3>
     <ActivityHeatmapChart
       data={report.commits.activityHeatmap}
-      contributor={selectedContributor}
+      contributors={mockContributors}
+      selectedContributor={selectedContributor}
+      onContributorChange={() => {}}
       primaryTimezone={null}
     />
   </div>

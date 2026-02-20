@@ -8,10 +8,8 @@ import { Fragment } from 'react';
 import { useTheme } from '../hooks/use-theme';
 import { cn } from '../lib/utils';
 import { ContributorCombobox } from './ContributorCombobox';
-import { GitHubUserAvatar } from './GitHubUserAvatar';
 import { InfoButton } from './InfoButton';
-import { Badge } from './ui/badge';
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
