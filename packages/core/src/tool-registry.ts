@@ -8,6 +8,7 @@ export const TOOL_CATEGORIES = [
   'CI/CD & Deployment',
   'IDEs',
   'Documentation',
+  'Community',
 ] as const;
 
 export type ToolCategory = (typeof TOOL_CATEGORIES)[number];
@@ -517,17 +518,25 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
 };
 
 const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
-  'README.md': {
+  README: {
     logo: 'markdown',
     url: '',
     globs: ['README.md', 'README'],
   },
-  'SECURITY.md': {
+  'Read the Docs': {
+    logo: 'readthedocs',
+    url: 'https://readthedocs.org',
+    globs: ['.readthedocs.yml'],
+  },
+};
+
+const COMMUNITY_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  SECURITY: {
     logo: 'markdown',
     url: '',
     globs: ['SECURITY.md', 'SECURITY'],
   },
-  'CONTRIBUTING.md': {
+  CONTRIBUTING: {
     logo: 'markdown',
     url: '',
     globs: ['CONTRIBUTING.md', 'CONTRIBUTING'],
@@ -537,15 +546,10 @@ const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: '',
     globs: ['LICENSE', 'LICENSE.md'],
   },
-  'CODE_OF_CONDUCT.md': {
+  CODE_OF_CONDUCT: {
     logo: 'markdown',
     url: '',
     globs: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
-  },
-  'Read the Docs': {
-    logo: 'readthedocs',
-    url: 'https://readthedocs.org',
-    globs: ['.readthedocs.yml'],
   },
 };
 
@@ -563,6 +567,7 @@ export const TOOL_REGISTRY: Record<ToolName, ToolMeta> = {
   ...flattenToolMeta('CI/CD & Deployment', CICD_TOOLS),
   ...flattenToolMeta('IDEs', IDES),
   ...flattenToolMeta('Documentation', DOCUMENTATION_TOOLS),
+  ...flattenToolMeta('Community', COMMUNITY_TOOLS),
 };
 
 export function getToolMeta(name: string): ToolMeta | null {
