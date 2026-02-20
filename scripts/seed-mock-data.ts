@@ -8,4 +8,4 @@ import { $ } from 'bun';
 
 const repo = `facebook/docusaurus`;
 
-await $`bun run apps/cli/src/cli.ts ${repo} --json --raw > packages/mocks/src/mock-data/${repo.replace('/', '__')}.json`;
+await $`bun run apps/cli/src/cli.ts ${repo} --json > packages/mocks/data/${repo.replace('/', '__')}.json`;
