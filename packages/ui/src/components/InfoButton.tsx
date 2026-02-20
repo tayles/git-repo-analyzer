@@ -13,7 +13,7 @@ export function InfoButton({ title, className, children }: InfoButtonProps) {
     <Popover>
       <PopoverTrigger asChild>
         <button type="button" className={className} aria-label="More information">
-          <Info className="text-muted-foreground hover:text-foreground h-4 w-4 transition-colors" />
+          <Info className="text-muted-foreground hover:text-foreground h-4 w-4 cursor-pointer transition-colors" />
         </button>
       </PopoverTrigger>
       <PopoverContent className="text-sm">

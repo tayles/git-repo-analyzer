@@ -13,7 +13,7 @@ export function CodeBlock({ code, className }: CodeBlockProps) {
   const [copy, isCopied] = useCopyToClipboard();
 
   return (
-    <InputGroup className={cn('min-w-[260px]', className)}>
+    <InputGroup className={cn('min-w-[260px]  select-text', className)}>
       <InputGroupInput placeholder={code} readOnly />
       <InputGroupAddon align="inline-end">
         <InputGroupButton aria-label="Copy" title="Copy" size="icon-xs" onClick={() => copy(code)}>

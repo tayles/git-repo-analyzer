@@ -1,4 +1,5 @@
 import type { ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+
 import { ExternalLink } from 'lucide-react';
 
 import { ToolLogo } from './ToolLogo';
@@ -19,7 +20,7 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
           <CardHeader className="gap-0 p-0">
             <CardTitle className="flex items-center gap-2 overflow-hidden text-sm font-normal">
               <ToolLogo logo={tool.logo} className="size-6" />
-              <span className="min-w-0 truncate text-lg font-bold">{tool.name}</span>
+              <span className="min-w-0 truncate text-lg font-bold select-text">{tool.name}</span>
             </CardTitle>
           </CardHeader>
         </Card>

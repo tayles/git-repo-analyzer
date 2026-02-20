@@ -30,8 +30,8 @@ export function SidePanelHomePage({
   return (
     <div className="flex h-full flex-col items-stretch justify-start gap-12 p-4 pt-12">
       <div className="flex flex-col gap-2 text-center">
-        <h1 className="text-2xl font-bold">Git Repo Analyzer</h1>
-        <p className="text-muted-foreground text-sm">
+        <h1 className="text-2xl font-bold select-text">Git Repo Analyzer</h1>
+        <p className="text-muted-foreground text-sm select-text">
           View the tech stack, health and other insights of any GitHub repository
         </p>
       </div>

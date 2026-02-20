@@ -28,10 +28,10 @@ export function CommitChart({ data }: CommitChartProps) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Commit Activity</CardTitle>
+          <CardTitle className="select-text">Commit Activity</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-sm">No commit data available</p>
+          <p className="text-muted-foreground text-sm select-text">No commit data available</p>
         </CardContent>
       </Card>
     );
@@ -40,7 +40,7 @@ export function CommitChart({ data }: CommitChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>
+        <CardTitle className="select-text">
           Commit Activity
           <span className="text-muted-foreground ml-2 text-sm font-normal">
             {data.totalCommits} total

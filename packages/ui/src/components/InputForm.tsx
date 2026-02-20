@@ -83,7 +83,7 @@ export function InputForm({
                 value={token}
                 onChange={e => onTokenChange(e.target.value)}
               />
-              <p className="text-muted-foreground text-xs">
+              <p className="text-muted-foreground text-xs select-text">
                 Create a token at{' '}
                 <a
                   href="https://github.com/settings/tokens"

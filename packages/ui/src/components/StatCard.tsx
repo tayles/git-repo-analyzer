@@ -17,7 +17,9 @@ export function StatCard({ label, value, icon, href, children }: StatCardProps) 
   }
 
   const card = (
-    <Card className={`gap-0 p-2 lg:p-4 ${href ? 'hover:bg-accent transition-colors' : ''}`}>
+    <Card
+      className={`gap-0 p-2 select-text lg:p-4 ${href ? 'hover:bg-accent transition-colors' : ''}`}
+    >
       <CardHeader className="p-0">
         <CardTitle className="text-muted-foreground text-xs font-normal">{label}</CardTitle>
         <CardAction className="text-muted-foreground">{icon}</CardAction>

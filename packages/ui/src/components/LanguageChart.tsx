@@ -1,4 +1,5 @@
 import type { LanguageAnalysis } from '@git-repo-analyzer/core';
+
 import { Cell, Pie, PieChart } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -13,10 +14,10 @@ export function LanguageChart({ data }: LanguageChartProps) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Languages</CardTitle>
+          <CardTitle className="select-text">Languages</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-sm">No language data available</p>
+          <p className="text-muted-foreground text-sm select-text">No language data available</p>
         </CardContent>
       </Card>
     );
@@ -35,7 +36,7 @@ export function LanguageChart({ data }: LanguageChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Languages</CardTitle>
+        <CardTitle className="select-text">Languages</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col items-center gap-4 md:flex-row">
@@ -57,7 +58,7 @@ export function LanguageChart({ data }: LanguageChartProps) {
               </Pie>
             </PieChart>
           </ChartContainer>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 select-text">
             {data.langs.slice(0, 8).map(lang => (
               <div key={lang.name} className="flex items-center gap-1.5 text-sm">
                 <div className="h-3 w-3 rounded-full" style={{ backgroundColor: lang.color }} />

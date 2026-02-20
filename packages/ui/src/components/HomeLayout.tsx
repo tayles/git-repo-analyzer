@@ -1,4 +1,5 @@
 import type { AnalysisResult } from '@git-repo-analyzer/core';
+
 import { Trash } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -55,7 +56,7 @@ export function HomeLayout({
       {history.length > 0 && (
         <section className="mx-auto flex max-w-5xl flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
-            <h2 className="text-md font-semibold">Previous Reports</h2>
+            <h2 className="text-md font-semibold select-text">Previous Reports</h2>
             <Button
               variant="ghost"
               size="sm"

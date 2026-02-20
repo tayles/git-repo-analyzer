@@ -1,4 +1,5 @@
 import type { ActivityHeatmap } from '@git-repo-analyzer/core';
+
 import { Fragment } from 'react';
 
 import { useTheme } from '../hooks/use-theme';
@@ -45,7 +46,7 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
   return (
     <Card className="overflow-hidden">
       <CardHeader>
-        <CardTitle>Activity Heatmap</CardTitle>
+        <CardTitle className="select-text">Activity Heatmap</CardTitle>
         <CardAction>
           <InfoButton title="Activity Heatmap">
             <p className="text-muted-foreground mt-1">

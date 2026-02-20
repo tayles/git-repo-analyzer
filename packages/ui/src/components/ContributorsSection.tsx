@@ -2,7 +2,7 @@ import type { ContributorAnalysis } from '@git-repo-analyzer/core';
 
 import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 
 const TEAM_SIZE_LABELS = {
   solo: 'Solo Developer',
@@ -19,20 +19,22 @@ export function ContributorsSection({ data }: ContributorsSectionProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-3">
+        <CardTitle className="flex items-center gap-3 select-text">
           <span>Contributors</span>
           <Badge variant="secondary">{TEAM_SIZE_LABELS[data.teamSize]}</Badge>
           <span className="text-muted-foreground text-sm font-normal">
             {data.totalContributors} total / bus factor: {data.busFactor}
           </span>
         </CardTitle>
-        <InfoButton title="Contributors">
-          <p className="text-muted-foreground mt-1">
-            Shows top contributors by commit count. Bus factor indicates how many key developers the
-            project depends on — a higher number means knowledge is better distributed across the
-            team.
-          </p>
-        </InfoButton>
+        <CardAction>
+          <InfoButton title="Contributors">
+            <p className="text-muted-foreground mt-1">
+              Shows top contributors by commit count. Bus factor indicates how many key developers
+              the project depends on — a higher number means knowledge is better distributed across
+              the team.
+            </p>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
       <CardContent>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -50,7 +52,7 @@ export function ContributorsSection({ data }: ContributorsSectionProps) {
                 className="h-8 w-8 rounded-full"
                 loading="lazy"
               />
-              <div className="min-w-0 flex-1">
+              <div className="min-w-0 flex-1 select-text">
                 <div className="flex items-center gap-1.5">
                   <p className="truncate text-sm font-medium">{c.login}</p>
                   {c.flag && (

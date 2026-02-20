@@ -2,7 +2,7 @@ import type { WorkPatterns } from '@git-repo-analyzer/core';
 
 import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Progress } from './ui/progress';
 
 const CLASSIFICATION_LABELS = {
@@ -21,19 +21,21 @@ export function WorkPatternsCard({ data }: WorkPatternsCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-3">
+        <CardTitle className="flex items-center gap-3 select-text">
           <span>Work Patterns</span>
           <Badge variant={config.variant}>{config.label}</Badge>
         </CardTitle>
-        <InfoButton title="Work Patterns">
-          <p className="font-medium"></p>
-          <p className="text-muted-foreground mt-1">
-            Analyzes commit times to classify the project as Professional (mostly 9-5), Hobbyist
-            (evenings/weekends), or Mixed. Helps understand the development culture of a project.
-          </p>
-        </InfoButton>
+        <CardAction>
+          <InfoButton title="Work Patterns">
+            <p className="font-medium"></p>
+            <p className="text-muted-foreground mt-1">
+              Analyzes commit times to classify the project as Professional (mostly 9-5), Hobbyist
+              (evenings/weekends), or Mixed. Helps understand the development culture of a project.
+            </p>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 select-text">
         <div className="space-y-1.5">
           <div className="flex justify-between text-sm">
             <span>Work Hours (9-5 weekdays)</span>

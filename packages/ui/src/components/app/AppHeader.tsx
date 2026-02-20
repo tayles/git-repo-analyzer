@@ -9,7 +9,10 @@ interface AppHeaderProps {
 export function AppHeader({ onClick }: AppHeaderProps) {
   return (
     <header className="flex flex-wrap items-center justify-between gap-2">
-      <h1 className="flex cursor-pointer items-center gap-2 text-xl font-bold" onClick={onClick}>
+      <h1
+        className="flex cursor-pointer items-center gap-2 text-xl font-bold select-text"
+        onClick={onClick}
+      >
         <AnalyzerLogo className="size-12" />
         Git Repo Analyzer
       </h1>

@@ -41,7 +41,7 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>
+        <CardTitle className="select-text">
           Pull Requests
           <span className="text-muted-foreground ml-2 text-sm font-normal">
             {data.totalOpen} open / {data.totalMerged} merged

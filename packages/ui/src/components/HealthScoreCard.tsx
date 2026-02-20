@@ -1,4 +1,5 @@
 import type { HealthScore, HealthScoreAnalysis } from '@git-repo-analyzer/core';
+
 import { Cell, Pie, PieChart } from 'recharts';
 
 import { cn } from '../lib/utils';
@@ -43,7 +44,7 @@ function CategoryDonut({
   };
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col select-text">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center justify-between text-base">
           <span>{name}</span>
@@ -138,7 +139,7 @@ export function HealthScoreCard({ health }: HealthScoreCardProps) {
   return (
     <div className="space-y-6">
       {/* Overall Score */}
-      <Card>
+      <Card className="select-text">
         <CardHeader>
           <CardTitle className="text-center">Overall Health Score</CardTitle>
         </CardHeader>

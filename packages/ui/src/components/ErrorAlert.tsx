@@ -10,7 +10,7 @@ interface ErrorAlertProps {
 
 export function ErrorAlert({ message, className }: ErrorAlertProps) {
   return (
-    <Alert variant="destructive" className={cn('max-w-xl mx-auto', className)}>
+    <Alert variant="destructive" className={cn('max-w-xl mx-auto select-text', className)}>
       <AlertCircleIcon />
       <AlertTitle>Analysis Failed</AlertTitle>
       <AlertDescription>{message}</AlertDescription>

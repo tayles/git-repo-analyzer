@@ -9,7 +9,7 @@ export function RepoName({ fullName, uid }: RepoNameProps) {
   return (
     <div className="flex items-center gap-2">
       {uid && <GitHubUserAvatar uid={uid} />}
-      <span className="truncate">{fullName}</span>
+      <span className="truncate select-text">{fullName}</span>
     </div>
   );
 }

@@ -21,7 +21,7 @@ const examples = [
 export function GettingStartedPlaceholder({ onSelectExample }: GettingStartedPlaceholderProps) {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-4">
-      <p className="text-muted-foreground text-center text-sm">
+      <p className="text-muted-foreground text-center text-sm select-text">
         To get started, enter a repository URL above, or try an example below:
       </p>
 
@@ -30,7 +30,7 @@ export function GettingStartedPlaceholder({ onSelectExample }: GettingStartedPla
           <li key={example.name} className="text-left">
             <Button variant="link" onClick={() => onSelectExample(example.name)}>
               <GitHubUserAvatar uid={example.uid} />
-              <span>{example.name}</span>
+              <span className="select-text">{example.name}</span>
             </Button>
           </li>
         ))}
