@@ -39,7 +39,7 @@ export function LanguageChart({ data }: LanguageChartProps) {
         <CardTitle className="select-text">Languages</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col items-center gap-4 md:flex-row">
+        <div className="flex flex-col flex-wrap items-center gap-4 md:flex-row">
           <ChartContainer config={chartConfig} className="h-48 w-48">
             <PieChart>
               <ChartTooltip content={<ChartTooltipContent />} />

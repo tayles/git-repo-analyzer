@@ -47,7 +47,7 @@ export function CommitChart({ data }: CommitChartProps) {
           </span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-auto">
         <ChartContainer config={chartConfig} className="h-64 w-full">
           <BarChart data={displayData}>
             <CartesianGrid vertical={false} />

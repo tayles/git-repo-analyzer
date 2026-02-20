@@ -19,7 +19,7 @@ export function ContributorsSection({ data }: ContributorsSectionProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-3 select-text">
+        <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>
           <Badge variant="secondary">{TEAM_SIZE_LABELS[data.teamSize]}</Badge>
           <span className="text-muted-foreground text-sm font-normal">
@@ -37,7 +37,7 @@ export function ContributorsSection({ data }: ContributorsSectionProps) {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
           {data.topContributors.map(c => (
             <a
               key={c.login}

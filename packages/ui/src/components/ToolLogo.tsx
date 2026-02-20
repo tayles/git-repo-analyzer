@@ -11,5 +11,5 @@ export function ToolLogo({ logo, className }: ToolLogoProps) {
     logo = `https://cdn.simpleicons.org/${logo}`;
   }
 
-  return <IconWithFallback url={logo} alt="Tool logo" className={className} />;
+  return <IconWithFallback url={logo} alt="Tool logo" className={className} hideOnError />;
 }

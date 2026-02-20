@@ -7,10 +7,21 @@ interface IconWithFallbackProps {
   url: string | null;
   alt?: string;
   className?: string;
+  hideOnError?: boolean;
 }
 
-export function IconWithFallback({ url, alt, className }: IconWithFallbackProps) {
+export function IconWithFallback({
+  url,
+  alt,
+  className,
+  hideOnError = false,
+}: IconWithFallbackProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  if (hideOnError && (imageError || !url)) {
+    return null;
+  }
 
   return (
     <div className={cn('size-8 shrink-0 text-sm font-bold', className)}>
@@ -27,6 +38,7 @@ export function IconWithFallback({ url, alt, className }: IconWithFallbackProps)
           style={imageLoaded ? { objectFit: 'contain' } : { visibility: 'hidden' }}
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
+          onError={() => setImageError(true)}
         />
       )}
     </div>

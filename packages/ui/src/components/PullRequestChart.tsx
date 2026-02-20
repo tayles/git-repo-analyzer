@@ -50,7 +50,7 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
           </span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-hidden">
         {Object.keys(data.byWeek).length === 0 ? (
           <p className="text-muted-foreground text-sm">No PR data available</p>
         ) : (

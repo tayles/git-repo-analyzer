@@ -44,7 +44,7 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
   const theme = useTheme();
 
   return (
-    <Card className="overflow-hidden">
+    <Card>
       <CardHeader>
         <CardTitle className="select-text">Activity Heatmap</CardTitle>
         <CardAction>
@@ -56,9 +56,9 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
           </InfoButton>
         </CardAction>
       </CardHeader>
-      <CardContent className="mx-auto">
+      <CardContent className="overflow-auto">
         <TooltipProvider>
-          <div className="overflow-x-auto">
+          <div>
             <div
               className="inline-grid gap-[2px]"
               style={{ gridTemplateColumns: `auto repeat(24, 1fr)` }}
