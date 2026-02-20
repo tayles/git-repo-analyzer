@@ -207,6 +207,11 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://rubyonrails.org',
     globs: ['Rakefile', 'config.ru'],
   },
+  Rust: {
+    logo: 'rust',
+    url: 'https://www.rust-lang.org',
+    globs: ['rust-toolchain', 'rust-toolchain.toml'],
+  },
 };
 
 const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -366,6 +371,11 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://yamllint.readthedocs.io',
     globs: ['.yamllint', '.yamllint.yaml', '.yamllint.yml'],
   },
+  'pre-commit': {
+    logo: null,
+    url: 'https://pre-commit.com',
+    globs: ['.pre-commit-config.yaml'],
+  },
 };
 
 const MONOREPO_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -430,17 +440,32 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
   Docker: {
     logo: 'docker',
     url: 'https://www.docker.com',
-    globs: ['Dockerfile', '.dockerignore'],
+    globs: ['Dockerfile', '.dockerignore', 'docker-compose.yml', 'docker-compose.yaml'],
   },
-  'Docker Compose': {
-    logo: 'docker',
-    url: 'https://docs.docker.com/compose/',
-    globs: ['docker-compose.yml', 'docker-compose.yaml'],
+  DevContainer: {
+    logo: 'developmentcontainers',
+    url: 'https://containers.dev',
+    globs: ['.devcontainer', '.devcontainer.json'],
+  },
+  gitpod: {
+    logo: 'gitpod',
+    url: 'https://ona.io',
+    globs: ['.gitpod.yml'],
+  },
+  kubernetes: {
+    logo: 'kubernetes',
+    url: 'https://kubernetes.io',
+    globs: ['.k8s', '.kubernetes', 'k8s.yaml', 'k8s.yml', 'kubernetes.*', 'kustomization.yaml'],
   },
   Make: {
     logo: null,
     url: 'https://www.gnu.org/software/make/',
     globs: ['Makefile'],
+  },
+  Just: {
+    logo: 'just',
+    url: 'https://just.systems',
+    globs: ['justfile'],
   },
   Vercel: {
     logo: 'vercel',
@@ -462,11 +487,36 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://render.com',
     globs: ['render.yaml'],
   },
+  'AWS CodeBuild': {
+    logo: 'aws',
+    url: 'https://aws.amazon.com/codebuild/',
+    globs: ['buildspec.yml'],
+  },
+  Ansible: {
+    logo: 'ansible',
+    url: 'https://www.ansible.com',
+    globs: ['ansible', 'playbook.yml', 'playbook.yaml'],
+  },
+  Terraform: {
+    logo: 'terraform',
+    url: 'https://www.terraform.io',
+    globs: ['.terraform', '*.tf', '*.tfvars'],
+  },
+  Tilt: {
+    logo: null,
+    url: 'https://tilt.dev',
+    globs: ['Tiltfile'],
+  },
+  SOPS: {
+    logo: null,
+    url: 'https://getsops.io',
+    globs: ['.sops.yaml'],
+  },
 };
 
 const IDES: Record<ToolName, ToolMetaBasic> = {
   'VS Code': {
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg',
+    logo: 'https://upload.wiimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg',
     url: 'https://code.visualstudio.com',
     globs: ['.vscode'],
   },
@@ -504,16 +554,6 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
     logo: 'zedindustries',
     url: 'https://zed.dev',
     globs: ['.zed'],
-  },
-  DevContainer: {
-    logo: 'developmentcontainers',
-    url: 'https://containers.dev',
-    globs: ['.devcontainer', '.devcontainer.json'],
-  },
-  gitpod: {
-    logo: 'gitpod',
-    url: 'https://ona.io',
-    globs: ['.gitpod.yml'],
   },
 };
 
