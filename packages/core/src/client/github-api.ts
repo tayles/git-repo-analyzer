@@ -125,7 +125,7 @@ export class GitHubAPI {
     if (response.status === 403 && this.rateLimit?.remaining === 0) {
       throw new GitHubAPIError(
         403,
-        'GitHub API rate limit exceeded. Add a GitHub Personal Access Token to increase your rate limit',
+        'GitHub API rate limit exceeded. Wait a few minutes and try again, or add a GitHub Personal Access Token to increase your rate limit',
         true,
       );
     }
