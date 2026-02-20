@@ -1,5 +1,4 @@
 import type { LanguageAnalysis } from '@git-repo-analyzer/core';
-
 import { Cell, Pie, PieChart } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';

@@ -1,5 +1,4 @@
 import type { AnalysisResult, ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
-
 import {
   Calendar,
   ChevronLeft,
