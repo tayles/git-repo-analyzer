@@ -291,7 +291,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     ],
   },
   oxlint: {
-    logo: null,
+    logo: 'oxc',
     url: 'https://oxc.rs',
     globs: ['.oxlintrc.json'],
   },
@@ -312,7 +312,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     ],
   },
   oxfmt: {
-    logo: null,
+    logo: 'oxc',
     url: 'https://oxc.rs',
     globs: ['.oxfmtrc.json'],
   },
