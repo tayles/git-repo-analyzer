@@ -16,7 +16,7 @@ export default {
   ],
 } satisfies StoryDefault;
 
-// const history = [createMockAnalysisResult('facebook/react')];
+// const history = [createMockAnalysisResult('facebook/docusaurus')];
 
 export const HomePage: Story = () => (
   <AppHomePage

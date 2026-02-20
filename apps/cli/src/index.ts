@@ -8,7 +8,7 @@
  * ```typescript
  * import { analyzeGitRepository } from 'git-repo-analyzer';
  *
- * const result = await analyzeGitRepository('facebook/react');
+ * const result = await analyzeGitRepository('facebook/docusaurus');
  * console.log(result);
  * ```
  */

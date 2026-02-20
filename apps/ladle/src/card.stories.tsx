@@ -40,7 +40,7 @@ export const WithoutFooter: Story = () => (
   <Card className="w-90">
     <CardHeader>
       <CardTitle>Repository Analysis</CardTitle>
-      <CardDescription>facebook/react</CardDescription>
+      <CardDescription>facebook/docusaurus</CardDescription>
     </CardHeader>
     <CardContent>
       <div className="space-y-2">

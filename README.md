@@ -41,13 +41,13 @@ npm install -g git-repo-analyzer
 Run with:
 
 ```shell
-git-repo-analyzer 'facebook/react'
+git-repo-analyzer 'facebook/docusaurus'
 ```
 
 Export in structured JSON format:
 
 ```shell
-git-repo-analyzer 'facebook/react' --json
+git-repo-analyzer 'facebook/docusaurus' --json
 ```
 
 ## TypeScript API
@@ -70,7 +70,7 @@ Example usage:
 ```typescript
 import { analyzeGitRepository } from 'git-repo-analyzer';
 
-const report = await analyzeGitRepository('facebook/react');
+const report = await analyzeGitRepository('facebook/docusaurus');
 ```
 
 ## Project Structure

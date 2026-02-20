@@ -32,10 +32,10 @@ describe('useAnalysisStore', () => {
   it('should start analysis correctly', () => {
     const { startAnalysis } = useAnalysisStore.getState();
 
-    startAnalysis('facebook/react');
+    startAnalysis('facebook/docusaurus');
 
     const state = useAnalysisStore.getState();
-    expect(state.currentRepository).toBe('facebook/react');
+    expect(state.currentRepository).toBe('facebook/docusaurus');
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -58,14 +58,14 @@ describe('useAnalysisStore', () => {
     const { startAnalysis, completeAnalysis } = useAnalysisStore.getState();
     const result: AnalysisResult = mockResult;
 
-    startAnalysis('facebook/react');
+    startAnalysis('facebook/docusaurus');
     completeAnalysis(result);
 
     const state = useAnalysisStore.getState();
     expect(state.result).toEqual(result);
     expect(state.isLoading).toBe(false);
     expect(state.history).toHaveLength(1);
-    expect(state.history[0].basicStats.fullName).toBe('facebook/react');
+    expect(state.history[0].basicStats.fullName).toBe('facebook/docusaurus');
   });
 
   it('should set error correctly', () => {
@@ -82,7 +82,7 @@ describe('useAnalysisStore', () => {
   it('should clear analysis correctly', () => {
     const { startAnalysis, clearAnalysis } = useAnalysisStore.getState();
 
-    startAnalysis('facebook/react');
+    startAnalysis('facebook/docusaurus');
     clearAnalysis();
 
     const state = useAnalysisStore.getState();
@@ -119,7 +119,7 @@ describe('useAnalysisStore', () => {
 
     expect(useAnalysisStore.getState().history).toHaveLength(2);
 
-    removeFromHistory('facebook/react');
+    removeFromHistory('facebook/docusaurus');
 
     const state = useAnalysisStore.getState();
     expect(state.history).toHaveLength(1);

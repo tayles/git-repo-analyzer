@@ -6,7 +6,7 @@ export default {
   title: 'Components',
 };
 
-const report = createMockAnalysisResult('facebook/react');
+const report = createMockAnalysisResult('facebook/docusaurus');
 
 const selectedContributor = mockContributors[0];
 

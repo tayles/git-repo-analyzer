@@ -28,7 +28,7 @@ export const InputFormWithTokenExpanded: Story = () => {
 
   return (
     <InputForm
-      repo="facebook/react"
+      repo="facebook/docusaurus"
       token={token}
       isTokenSectionOpen={isTokenSectionOpen}
       onAnalyze={() => {}}

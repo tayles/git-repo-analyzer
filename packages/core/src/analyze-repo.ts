@@ -33,7 +33,7 @@ import { parseRepository } from './utils/parse-utils';
  *
  * @example
  * ```typescript
- * const result = await analyzeGitRepository('facebook/react');
+ * const result = await analyzeGitRepository('facebook/docusaurus');
  * console.log(result.basicStats.totalCommits);
  * ```
  *
@@ -41,7 +41,7 @@ import { parseRepository } from './utils/parse-utils';
  * ```typescript
  * // With options
  * const controller = new AbortController();
- * const result = await analyzeGitRepository('facebook/react', {
+ * const result = await analyzeGitRepository('facebook/docusaurus', {
  *   token: process.env.GITHUB_TOKEN,
  *   signal: controller.signal,
  *   verbose: true,

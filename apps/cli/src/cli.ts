@@ -8,9 +8,9 @@
  *   git-repo-analyzer <repository> [options]
  *
  * Examples:
- *   git-repo-analyzer facebook/react
- *   git-repo-analyzer https://github.com/facebook/react --json
- *   git-repo-analyzer facebook/react --token $GITHUB_TOKEN
+ *   git-repo-analyzer facebook/docusaurus
+ *   git-repo-analyzer https://github.com/facebook/docusaurus --json
+ *   git-repo-analyzer facebook/docusaurus --token $GITHUB_TOKEN
  */
 
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
@@ -46,9 +46,9 @@ Options:
   --version, -v Show version number
 
 Examples:
-  git-repo-analyzer facebook/react
-  git-repo-analyzer https://github.com/facebook/react --json
-  git-repo-analyzer facebook/react --token ghp_xxxx
+  git-repo-analyzer facebook/docusaurus
+  git-repo-analyzer https://github.com/facebook/docusaurus --json
+  git-repo-analyzer facebook/docusaurus --token ghp_xxxx
 `.trim();
 
 function parseArgs(args: string[]): CliOptions {

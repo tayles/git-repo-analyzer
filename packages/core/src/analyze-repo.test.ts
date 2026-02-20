@@ -14,9 +14,9 @@ afterAll(() => {
 
 describe('analyzeGitRepository', () => {
   it('should analyze a repository in owner/repo format', async () => {
-    const result = await analyzeGitRepository('facebook/react');
+    const result = await analyzeGitRepository('facebook/docusaurus');
 
-    expect(result.basicStats.fullName).toBe('facebook/react');
+    expect(result.basicStats.fullName).toBe('facebook/docusaurus');
     expect(result.basicStats).toBeDefined();
     expect(result.basicStats.stars).toBeGreaterThan(0);
     expect(result.contributors).toBeDefined();
@@ -27,21 +27,21 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should analyze a repository from a full GitHub URL', async () => {
-    const result = await analyzeGitRepository('https://github.com/facebook/react');
+    const result = await analyzeGitRepository('https://github.com/facebook/docusaurus');
 
-    expect(result.basicStats.fullName).toBe('facebook/react');
+    expect(result.basicStats.fullName).toBe('facebook/docusaurus');
   });
 
   it('should handle URLs with .git suffix', async () => {
-    const result = await analyzeGitRepository('https://github.com/facebook/react.git');
+    const result = await analyzeGitRepository('https://github.com/facebook/docusaurus.git');
 
-    expect(result.basicStats.fullName).toBe('facebook/react');
+    expect(result.basicStats.fullName).toBe('facebook/docusaurus');
   });
 
   it('should call the progress callback with updates', async () => {
     const progressUpdates: ProgressUpdate[] = [];
 
-    await analyzeGitRepository('facebook/react', {
+    await analyzeGitRepository('facebook/docusaurus', {
       onProgress: update => {
         progressUpdates.push(update);
       },
@@ -54,9 +54,9 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should accept an optional token', async () => {
-    const result = await analyzeGitRepository('facebook/react', { token: 'test-token' });
+    const result = await analyzeGitRepository('facebook/docusaurus', { token: 'test-token' });
 
-    expect(result.basicStats.fullName).toBe('facebook/react');
+    expect(result.basicStats.fullName).toBe('facebook/docusaurus');
   });
 
   it('should throw an error for invalid repository format', async () => {
@@ -64,14 +64,14 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should include timing information in the result', async () => {
-    const result = await analyzeGitRepository('facebook/react');
+    const result = await analyzeGitRepository('facebook/docusaurus');
 
     expect(result.generator.durationMs).toBeGreaterThanOrEqual(0);
     expect(typeof result.generator.analyzedAt).toBe('string');
   });
 
   it('should compute a health score with categories', async () => {
-    const result = await analyzeGitRepository('facebook/react');
+    const result = await analyzeGitRepository('facebook/docusaurus');
 
     expect(result.healthScore).toBeDefined();
     expect(result.healthScore.overall).toBeGreaterThanOrEqual(0);
@@ -94,7 +94,7 @@ describe('analyzeGitRepository', () => {
   });
 
   it('should detect tooling from the file tree', async () => {
-    const result = await analyzeGitRepository('facebook/react');
+    const result = await analyzeGitRepository('facebook/docusaurus');
 
     expect(result.tooling).toBeDefined();
     expect(result.tooling.tools).toBeInstanceOf(Array);

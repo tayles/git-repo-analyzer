@@ -6,7 +6,7 @@ export default {
   title: 'Components',
 };
 
-const report = createMockAnalysisResult('facebook/react');
+const report = createMockAnalysisResult('facebook/docusaurus');
 
 export const PullRequestCharts: Story = () => (
   <div className="max-w-2xl p-4">

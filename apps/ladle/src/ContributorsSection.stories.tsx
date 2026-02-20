@@ -8,7 +8,7 @@ export default {
   title: 'Components',
 };
 
-const report = createMockAnalysisResult('facebook/react');
+const report = createMockAnalysisResult('facebook/docusaurus');
 
 export const Contributors: Story = () => {
   const [selected, setSelected] = useState<Contributor | null>(null);

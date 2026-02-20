@@ -7,7 +7,7 @@ export default {
 
 export const LoadingLayouts: Story = () => (
   <LoadingLayout
-    repo="facebook/react"
+    repo="facebook/docusaurus"
     progressMessage="Completed 3 of 6: Commits"
     progressValue={50}
     onCancel={() => {}}

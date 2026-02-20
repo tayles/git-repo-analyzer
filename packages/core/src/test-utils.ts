@@ -28,7 +28,7 @@ function jsonResponse(body: unknown, status = 200): Response {
  */
 function matchUrl(url: string): Response | null {
   const parsed = new URL(url);
-  const path = parsed.pathname; // e.g. /repos/facebook/react
+  const path = parsed.pathname; // e.g. /repos/facebook/docusaurus
 
   // /repos/{owner}/{repo} — exact match (not /repos/owner/repo/something)
   const repoMatch = path.match(/^\/repos\/([^/]+)\/([^/]+)$/);

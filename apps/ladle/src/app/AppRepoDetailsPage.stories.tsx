@@ -16,7 +16,7 @@ export default {
   ],
 } satisfies StoryDefault;
 
-const report = createMockAnalysisResult('facebook/react');
+const report = createMockAnalysisResult('facebook/docusaurus');
 
 export const RepoDetailsPage: Story = () => (
   <AppRepoDetailsPage report={report} onBack={() => {}} onRefresh={() => {}} />

@@ -6,13 +6,13 @@ import { badge, formatResultJson, heading, metric } from './cli-formatter';
 
 describe('CLI Formatter', () => {
   test('should format result as JSON', () => {
-    expect(formatResultJson(mockResult)).toContain('"fullName": "facebook/react"');
+    expect(formatResultJson(mockResult)).toContain('"fullName": "facebook/docusaurus"');
   });
 
   test('should produce valid parseable JSON with correct fullName', () => {
     const json = formatResultJson(mockResult);
     const parsed = JSON.parse(json);
-    expect(parsed.basicStats.fullName).toBe('facebook/react');
+    expect(parsed.basicStats.fullName).toBe('facebook/docusaurus');
   });
 
   test('heading should include the provided text', () => {

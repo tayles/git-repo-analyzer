@@ -9,7 +9,7 @@ export default {
   title: 'Side Panel',
 } satisfies StoryDefault;
 
-const history = [createMockAnalysisResult('facebook/react')];
+const history = [createMockAnalysisResult('facebook/docusaurus')];
 
 export const HomePage: Story = () => (
   <div className="flex h-full flex-wrap items-stretch gap-12">
@@ -30,7 +30,7 @@ export const HomePage: Story = () => (
 
     <ChromeExtensionSidePanel>
       <SidePanelHomePage
-        repo="facebook/react"
+        repo="facebook/docusaurus"
         errorMsg={null}
         history={history}
         onAnalyze={() => {}}

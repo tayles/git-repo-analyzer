@@ -17,7 +17,7 @@ export default {
 
 export const LoadingPage: Story = () => (
   <AppLoadingPage
-    repo="facebook/react"
+    repo="facebook/docusaurus"
     onCancel={() => {}}
     progressMessage="Analyzing code structure (1/4)"
     progressValue={25}

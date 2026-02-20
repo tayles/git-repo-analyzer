@@ -29,7 +29,7 @@ export const Inputs: Story = () => (
       <label htmlFor="with-value" className="text-sm font-medium">
         With Value
       </label>
-      <Input id="with-value" defaultValue="facebook/react" />
+      <Input id="with-value" defaultValue="facebook/docusaurus" />
     </div>
     <div className="grid w-full items-center gap-1.5">
       <label htmlFor="repository" className="text-sm font-medium">
