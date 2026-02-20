@@ -14,6 +14,7 @@
  */
 
 import { analyzeGitRepository } from '@git-repo-analyzer/core';
+import pc from 'picocolors';
 
 import { formatResultJson } from './cli-formatter';
 import { printReport } from './cli-reporter';
@@ -127,7 +128,7 @@ async function main() {
     }
   } catch (error) {
     process.stderr.write('\r' + ' '.repeat(60) + '\r');
-    console.error('Error:', error instanceof Error ? error.message : 'Unknown error');
+    console.error(pc.red(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));
     process.exit(1);
   }
 }
