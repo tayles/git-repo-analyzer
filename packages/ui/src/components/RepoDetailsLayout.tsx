@@ -155,7 +155,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
       <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
         <ActivityHeatmapChart
           data={heatmapData}
-          contributors={report.contributors.topContributors}
+          contributors={report.contributors.recentContributors}
           selectedContributor={contributor}
           onContributorChange={handleSelectContributor}
           primaryTimezone={report.contributors.primaryTimezone}

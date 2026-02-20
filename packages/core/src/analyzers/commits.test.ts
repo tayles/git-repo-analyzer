@@ -38,6 +38,7 @@ function makeContributors(overrides: Partial<ContributorAnalysis> = {}): Contrib
     primaryCountryCode: null,
     primaryTimezone: null,
     topContributors: [],
+    recentContributors: [],
     ...overrides,
   };
 }

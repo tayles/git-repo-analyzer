@@ -82,7 +82,11 @@ export async function analyzeGitRepository(
 
   // Process raw data to compute analysis result
   const basicStats = processBasicStats(rawData.repoDetails);
-  const contributors = processContributors(rawData.contributors, rawData.userProfiles);
+  const contributors = processContributors(
+    rawData.contributors,
+    rawData.commits,
+    rawData.userProfiles,
+  );
   const commits = processCommits(rawData.commits, contributors);
   const pullRequests = processPullRequests(rawData.pullRequests);
   const languages = processLanguages(rawData.languages);
@@ -144,7 +148,7 @@ export async function fetchRepositoryData(
   const api = new GitHubAPI({ token, signal, verbose });
 
   let completed = 0;
-  const totalSteps = 6;
+  const totalSteps = 7;
 
   function trackCompletion<T>(label: string): (result: T) => T {
     return (result: T) => {
@@ -158,15 +162,30 @@ export async function fetchRepositoryData(
     };
   }
 
-  const [repoDetails, { contributors, userProfiles }, commits, pullRequests, languages, files] =
-    await Promise.all([
-      fetchRepoDetails(api, repo).then(trackCompletion('Repository details')),
-      fetchContributors(api, repo).then(trackCompletion('Contributors & profiles')),
-      fetchCommits(api, repo).then(trackCompletion('Commits')),
-      fetchPullRequests(api, repo).then(trackCompletion('Pull requests')),
-      fetchLanguages(api, repo).then(trackCompletion('Languages')),
-      fetchRepoFiles(api, repo).then(trackCompletion('File tree')),
-    ]);
+  // Phase 1: Fetch raw data in parallel
+  const [repoDetails, contributors, commits, pullRequests, languages, files] = await Promise.all([
+    fetchRepoDetails(api, repo).then(trackCompletion('Repository details')),
+    fetchContributors(api, repo).then(trackCompletion('Contributors')),
+    fetchCommits(api, repo).then(trackCompletion('Commits')),
+    fetchPullRequests(api, repo).then(trackCompletion('Pull requests')),
+    fetchLanguages(api, repo).then(trackCompletion('Languages')),
+    fetchRepoFiles(api, repo).then(trackCompletion('File tree')),
+  ]);
+
+  // Phase 2: Determine which user profiles we need (top + recent contributors, deduplicated)
+  const topLogins = contributors
+    .filter(c => !c.login.toLowerCase().includes('[bot]'))
+    .sort((a, b) => b.contributions - a.contributions)
+    .slice(0, 10)
+    .map(c => c.login);
+
+  const recentLogins = extractRecentContributorLogins(commits);
+
+  // Merge both lists, preserving order but deduplicating
+  const allLogins = [...new Set([...topLogins, ...recentLogins])];
+
+  const userProfiles = await fetchUserProfiles(api, allLogins);
+  trackCompletion('User profiles')(userProfiles);
 
   return {
     repoDetails,
@@ -179,6 +198,33 @@ export async function fetchRepositoryData(
   };
 }
 
+/**
+ * Extract the top 10 recent contributor logins from commits, sorted by commit count.
+ * Filters out bots and returns unique logins.
+ */
+export function extractRecentContributorLogins(commits: GitHubCommit[]): string[] {
+  const counts = new Map<string, { login: string; count: number }>();
+
+  for (const commit of commits) {
+    const login = commit.author?.login;
+    if (!login) continue;
+    if (commit.author?.type === 'Bot') continue;
+    if (login.toLowerCase().includes('[bot]')) continue;
+
+    const existing = counts.get(login);
+    if (existing) {
+      existing.count++;
+    } else {
+      counts.set(login, { login, count: 1 });
+    }
+  }
+
+  return [...counts.values()]
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 10)
+    .map(e => e.login);
+}
+
 export async function fetchRepoDetails(api: GitHubAPI, repo: string): Promise<GitHubRepoDetails> {
   return await api.fetch<GitHubRepoDetails>(`/repos/${repo}`);
 }
@@ -186,24 +232,40 @@ export async function fetchRepoDetails(api: GitHubAPI, repo: string): Promise<Gi
 export async function fetchContributors(
   api: GitHubAPI,
   repo: string,
-): Promise<{ contributors: GitHubContributor[]; userProfiles: GitHubUserProfile[] }> {
-  const contributors = await api.fetchPaginated<GitHubContributor>(
-    `/repos/${repo}/contributors`,
-    1,
+): Promise<GitHubContributor[]> {
+  return await api.fetchPaginated<GitHubContributor>(`/repos/${repo}/contributors`, 1);
+}
+
+/**
+ * Fetch user profiles for a list of logins, deduplicating requests.
+ * Uses a cache to avoid fetching the same user twice.
+ */
+export async function fetchUserProfiles(
+  api: GitHubAPI,
+  logins: string[],
+): Promise<GitHubUserProfile[]> {
+  return await Promise.all(
+    logins.map(async login => {
+      return await api.fetch<GitHubUserProfile>(`/users/${login}`);
+    }),
   );
+}
+
+/** @deprecated Use fetchContributors + fetchUserProfiles instead */
+export async function fetchTopContributors(
+  api: GitHubAPI,
+  repo: string,
+): Promise<{ contributors: GitHubContributor[]; userProfiles: GitHubUserProfile[] }> {
+  const contributors = await fetchContributors(api, repo);
 
   const top10 = contributors
-    // Filter out bots
     .filter(c => !c.login.toLowerCase().includes('[bot]'))
-    // Sort by contributions
     .sort((a, b) => b.contributions - a.contributions)
-    // Take top 10
     .slice(0, 10);
 
-  const userProfiles = await Promise.all(
-    top10.map(async c => {
-      return await api.fetch<GitHubUserProfile>(`/users/${c.login}`);
-    }),
+  const userProfiles = await fetchUserProfiles(
+    api,
+    top10.map(c => c.login),
   );
 
   return { contributors, userProfiles };

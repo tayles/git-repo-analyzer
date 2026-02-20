@@ -60,6 +60,7 @@ export interface ContributorAnalysis {
   primaryCountryCode: string | null;
   primaryTimezone: string | null;
   topContributors: Contributor[];
+  recentContributors: Contributor[];
 }
 
 /**

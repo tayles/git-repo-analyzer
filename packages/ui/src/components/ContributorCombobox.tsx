@@ -45,7 +45,7 @@ export function ContributorCombobox({
         <ComboboxEmpty>No contributors found</ComboboxEmpty>
         <ComboboxList>
           {c => (
-            <ComboboxItem key={c?.id} value={c}>
+            <ComboboxItem key={c?.id} value={c} onMouseEnter={() => onContributorChange(c)}>
               {c ? (
                 <>
                   <GitHubUserAvatar uid={c.id} className="size-4" />

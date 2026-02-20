@@ -6,6 +6,7 @@ import { GitHubUserAvatar } from './GitHubUserAvatar';
 import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 const TEAM_SIZE_LABELS = {
   solo: 'Solo Developer',
@@ -21,6 +22,63 @@ interface ContributorsSectionProps {
   /** Called when a contributor is clicked. Pass the contributor to select, or null to deselect. */
   onSelectContributor: (contributor: Contributor | null) => void;
   onHoverContributor: (contributor: Contributor | null) => void;
+}
+
+function ContributorGrid({
+  contributors,
+  selectedContributor,
+  onSelectContributor,
+  onHoverContributor,
+}: {
+  contributors: Contributor[];
+  selectedContributor: Contributor | null;
+  onSelectContributor: (contributor: Contributor | null) => void;
+  onHoverContributor: (contributor: Contributor | null) => void;
+}) {
+  return (
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
+      {contributors.map(c => {
+        const isSelected = selectedContributor?.login === c.login;
+        return (
+          <a
+            key={c.login}
+            href={c.htmlUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
+              isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
+            )}
+            onClick={() => onSelectContributor(isSelected ? null : c)}
+            onMouseEnter={() => onHoverContributor(c)}
+            onMouseLeave={() => onHoverContributor(null)}
+          >
+            <GitHubUserAvatar uid={c.id} />
+
+            <div className="min-w-0 flex-1 select-text">
+              <div className="flex items-center gap-1.5">
+                <p className="truncate text-sm font-medium">{c.login}</p>
+                {c.flag && (
+                  <span className="text-base leading-none" title={c.country ?? undefined}>
+                    {c.flag}
+                  </span>
+                )}
+              </div>
+              <p className="text-muted-foreground text-xs">
+                {c.contributions.toLocaleString()} commits
+                {c.location && (
+                  <>
+                    {' · '}
+                    <span title={c.timezone ?? undefined}>{c.location}</span>
+                  </>
+                )}
+              </p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  );
 }
 
 export function ContributorsSection({
@@ -60,48 +118,28 @@ export function ContributorsSection({
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
-          {data.topContributors.map(c => {
-            const isSelected = selectedContributor?.login === c.login;
-            return (
-              <a
-                key={c.login}
-                href={c.htmlUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
-                  isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
-                )}
-                onClick={() => handleSelectContributor(isSelected ? null : c)}
-                onMouseEnter={() => onHoverContributor(c)}
-                onMouseLeave={() => onHoverContributor(null)}
-              >
-                <GitHubUserAvatar uid={c.id} />
-
-                <div className="min-w-0 flex-1 select-text">
-                  <div className="flex items-center gap-1.5">
-                    <p className="truncate text-sm font-medium">{c.login}</p>
-                    {c.flag && (
-                      <span className="text-base leading-none" title={c.country ?? undefined}>
-                        {c.flag}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-muted-foreground text-xs">
-                    {c.contributions.toLocaleString()} commits
-                    {c.location && (
-                      <>
-                        {' · '}
-                        <span title={c.timezone ?? undefined}>{c.location}</span>
-                      </>
-                    )}
-                  </p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+        <Tabs defaultValue="recent">
+          <TabsList>
+            <TabsTrigger value="recent">Recent</TabsTrigger>
+            <TabsTrigger value="top">Top</TabsTrigger>
+          </TabsList>
+          <TabsContent value="recent">
+            <ContributorGrid
+              contributors={data.recentContributors}
+              selectedContributor={selectedContributor}
+              onSelectContributor={handleSelectContributor}
+              onHoverContributor={onHoverContributor}
+            />
+          </TabsContent>
+          <TabsContent value="top">
+            <ContributorGrid
+              contributors={data.topContributors}
+              selectedContributor={selectedContributor}
+              onSelectContributor={handleSelectContributor}
+              onHoverContributor={onHoverContributor}
+            />
+          </TabsContent>
+        </Tabs>
       </CardContent>
     </Card>
   );
