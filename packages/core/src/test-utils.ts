@@ -31,8 +31,16 @@ function matchUrl(url: string): Response | null {
   const path = parsed.pathname; // e.g. /repos/facebook/react
 
   // /repos/{owner}/{repo} — exact match (not /repos/owner/repo/something)
-  if (/^\/repos\/[^/]+\/[^/]+$/.test(path)) {
-    return jsonResponse(mockRawData.repoDetails);
+  const repoMatch = path.match(/^\/repos\/([^/]+)\/([^/]+)$/);
+  if (repoMatch) {
+    const owner = repoMatch[1]!;
+    const repo = repoMatch[2]!;
+    return jsonResponse({
+      ...mockRawData.repoDetails,
+      name: repo,
+      full_name: `${owner}/${repo}`,
+      owner: { ...mockRawData.repoDetails.owner, login: owner },
+    });
   }
 
   // /repos/{owner}/{repo}/contributors
