@@ -17,3 +17,16 @@ export function processPullRequests(pullRequests: GitHubPullRequest[]): PullAnal
     byWeek,
   };
 }
+
+/**
+ * Compute PullAnalysis for a specific contributor (by login).
+ */
+export function computePullsForContributor(
+  pullRequests: GitHubPullRequest[],
+  contributorLogin: string,
+): PullAnalysis {
+  const filtered = pullRequests.filter(
+    pr => pr.user.login.toLowerCase() === contributorLogin.toLowerCase(),
+  );
+  return processPullRequests(filtered);
+}

@@ -15,6 +15,8 @@ export function processContributors(
     const timezone = location?.timezone ?? null;
 
     return {
+      id: u.id,
+      name: u.name ?? null,
       login: u.login,
       avatarUrl: u.avatar_url,
       contributions,

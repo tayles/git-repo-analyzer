@@ -99,6 +99,8 @@ export const useAnalysisStore = create<AnalysisStore>()(
         const filteredHistory = history.filter(
           item => item.basicStats.fullName !== result.basicStats.fullName,
         );
+        // Strip raw data from history entries to avoid bloating localStorage
+        // const { raw: _raw, ...resultWithoutRaw } = result;
         // Add new result to beginning of history
         set({
           result,

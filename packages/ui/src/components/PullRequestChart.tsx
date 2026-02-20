@@ -31,7 +31,7 @@ interface PullRequestChartProps {
 }
 
 export function PullRequestChart({ data }: PullRequestChartProps) {
-  const displayData = Object.entries(data)
+  const displayData = Object.entries(data.byWeek)
     .slice(-12)
     .map(([week, count]) => ({
       week: formatWeekLabel(week),
@@ -41,8 +41,8 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="select-text">
-          Pull Requests
+        <CardTitle className="flex items-center gap-2 select-text">
+          <span>Pull Requests</span>
           <span className="text-muted-foreground ml-2 text-sm font-normal">
             {data.totalOpen} open / {data.totalMerged} merged
             {data.avgMergeTimeHours != null &&
@@ -52,7 +52,9 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
       </CardHeader>
       <CardContent className="overflow-hidden">
         {Object.keys(data.byWeek).length === 0 ? (
-          <p className="text-muted-foreground text-sm">No PR data available</p>
+          <div className="text-muted-foreground flex h-64 items-center justify-center text-sm select-text">
+            No pull requests during this period
+          </div>
         ) : (
           <ChartContainer config={chartConfig} className="h-64 w-full">
             <BarChart data={displayData}>
@@ -67,8 +69,8 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
               <YAxis tickLine={false} axisLine={false} fontSize={10} />
               <ChartTooltip content={<ChartTooltipContent />} />
               <Bar dataKey="count" fill="var(--color-opened)" radius={[2, 2, 0, 0]} stackId="a" />
-              <Bar dataKey="merged" fill="var(--color-merged)" radius={[2, 2, 0, 0]} stackId="b" />
-              <Bar dataKey="closed" fill="var(--color-closed)" radius={[2, 2, 0, 0]} stackId="c" />
+              {/* <Bar dataKey="merged" fill="var(--color-merged)" radius={[2, 2, 0, 0]} stackId="b" />
+              <Bar dataKey="closed" fill="var(--color-closed)" radius={[2, 2, 0, 0]} stackId="c" /> */}
             </BarChart>
           </ChartContainer>
         )}

@@ -20,7 +20,7 @@ import type {
   GitHubRepoDetails,
   GitHubUserProfile,
 } from './client/github-types';
-import type { AnalysisResult, AnalyzeOptions } from './types';
+import type { AnalysisResult, AnalysisResultWithRaw, AnalyzeOptions } from './types';
 import { delay } from './utils/async-utils';
 import { parseRepository } from './utils/parse-utils';
 
@@ -51,9 +51,17 @@ import { parseRepository } from './utils/parse-utils';
  */
 export async function analyzeGitRepository(
   repoNameOrUrl: string,
+  options: AnalyzeOptions & { includeRawData: true },
+): Promise<AnalysisResultWithRaw>;
+export async function analyzeGitRepository(
+  repoNameOrUrl: string,
+  options?: AnalyzeOptions,
+): Promise<AnalysisResult>;
+export async function analyzeGitRepository(
+  repoNameOrUrl: string,
   options?: AnalyzeOptions,
 ): Promise<AnalysisResult> {
-  const { token, signal, verbose, onProgress } = options ?? {};
+  const { token, signal, verbose, onProgress, includeRawData } = options ?? {};
   const startTime = Date.now();
   const repo = parseRepository(repoNameOrUrl);
 
@@ -113,6 +121,7 @@ export async function analyzeGitRepository(
     languages,
     tooling,
     healthScore,
+    ...(includeRawData ? { raw: rawData } : {}),
   };
 
   // Report completion

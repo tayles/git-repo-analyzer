@@ -12,6 +12,7 @@ interface StatCardProps {
 
 export function StatCard({ label, value, icon, href, children }: StatCardProps) {
   let formattedValue: string | number | null = value;
+
   if (typeof value === 'number') {
     formattedValue = formatNumber(value);
   }
@@ -24,7 +25,7 @@ export function StatCard({ label, value, icon, href, children }: StatCardProps) 
         <CardTitle className="text-muted-foreground text-xs font-normal">{label}</CardTitle>
         <CardAction className="text-muted-foreground">{icon}</CardAction>
       </CardHeader>
-      <CardContent className="flex items-center justify-between gap-2 p-0 text-lg font-bold lg:text-xl">
+      <CardContent className="flex flex-wrap items-center justify-between gap-2 p-0 text-lg font-bold lg:text-xl">
         {formattedValue}
         {children}
       </CardContent>

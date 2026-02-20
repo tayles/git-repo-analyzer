@@ -162,3 +162,84 @@ export function detectConventions(commits: GitHubCommit[]): CommitConventionsAna
     prefixes,
   };
 }
+
+/**
+ * Compute a heatmap for a specific contributor, converting commit times to their local timezone.
+ * Defaults to UTC if the contributor has no timezone set.
+ */
+export function computeHeatmapForContributor(
+  commits: GitHubCommit[],
+  contributorLogin: string,
+  timezone: string | null,
+): ActivityHeatmap {
+  const tz = timezone ?? 'UTC';
+  const filtered = commits.filter(
+    c => c.author?.login?.toLowerCase() === contributorLogin.toLowerCase(),
+  );
+
+  return filtered.reduce(
+    (heatmap, commit) => {
+      const dateStr = commit.commit.author.date;
+      if (!dateStr || typeof dateStr !== 'string') return heatmap;
+
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return heatmap;
+
+      const localDate = new TZDate(date.getTime(), tz);
+      const day = localDate.getDay();
+      const hour = localDate.getHours();
+
+      heatmap.grid[day]![hour]!++;
+      if (heatmap.grid[day]![hour]! > heatmap.maxValue) {
+        heatmap.maxValue = heatmap.grid[day]![hour]!;
+      }
+
+      return heatmap;
+    },
+    {
+      grid: Array.from({ length: 7 }, () => Array.from<number>({ length: 24 }).fill(0)),
+      maxValue: 0,
+    } as ActivityHeatmap,
+  );
+}
+
+/**
+ * Format a timezone identifier as a UTC offset string (e.g. "UTC+5:30", "UTC-8", "UTC").
+ * Returns "UTC" if timezone is null/undefined or the offset cannot be determined.
+ */
+export function formatTimezoneOffset(timezone: string | null | undefined): string {
+  if (!timezone) return 'UTC';
+
+  try {
+    const now = new TZDate(Date.now(), timezone);
+    const offsetMinutes = -now.getTimezoneOffset();
+    if (offsetMinutes === 0) return 'UTC';
+
+    const sign = offsetMinutes > 0 ? '+' : '-';
+    const absMinutes = Math.abs(offsetMinutes);
+    const hours = Math.floor(absMinutes / 60);
+    const minutes = absMinutes % 60;
+
+    return minutes === 0
+      ? `UTC${sign}${hours}`
+      : `UTC${sign}${hours}:${String(minutes).padStart(2, '0')}`;
+  } catch {
+    return 'UTC';
+  }
+}
+
+/**
+ * Compute commit-by-week buckets for a specific contributor.
+ */
+export function computeByWeekForContributor(
+  commits: GitHubCommit[],
+  contributorLogin: string,
+): BucketByWeek {
+  return commits
+    .filter(c => c.author?.login?.toLowerCase() === contributorLogin.toLowerCase())
+    .reduce((acc, commit) => {
+      const weekStartDate = weekStart(commit.commit.author.date);
+      acc[weekStartDate] = (acc[weekStartDate] || 0) + 1;
+      return acc;
+    }, {} as BucketByWeek);
+}

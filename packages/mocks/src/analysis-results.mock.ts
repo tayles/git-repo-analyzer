@@ -1,11 +1,19 @@
-import type { AnalysisResult, Contributor } from '@git-repo-analyzer/core';
+import type {
+  AnalysisResult,
+  AnalysisResultWithRaw,
+  Contributor,
+  GitHubRawData,
+} from '@git-repo-analyzer/core';
 
-import MockResultJson from './analysis-result.json';
+import MockResultFacebookDocusaurusJson from '../data/facebook__docusaurus.json';
+
 /**
  * Mock contributors for testing
  */
 export const mockContributors: Contributor[] = [
   {
+    id: 123,
+    name: 'Alice Smith',
     login: 'alice',
     avatarUrl: 'https://avatars.githubusercontent.com/u/1?v=4',
     contributions: 150,
@@ -18,14 +26,20 @@ export const mockContributors: Contributor[] = [
   },
 ];
 
-export const mockResult: AnalysisResult = MockResultJson as unknown as AnalysisResult;
+export const mockResultWithRawData: AnalysisResultWithRaw =
+  MockResultFacebookDocusaurusJson as unknown as AnalysisResultWithRaw;
+
+const { raw: rawData, ...rest } = mockResultWithRawData;
+
+export const mockRawData: GitHubRawData = rawData;
+export const mockResult: AnalysisResult = rest;
 
 /**
  * Create a mock analysis result
  */
 export function createMockAnalysisResult(
   _repository: string = 'test-org/test-repo',
-  overrides: Partial<AnalysisResult> = {},
-): AnalysisResult {
-  return { ...mockResult, ...overrides };
+  overrides: Partial<AnalysisResultWithRaw> = {},
+): AnalysisResultWithRaw {
+  return { ...mockResultWithRawData, ...overrides };
 }

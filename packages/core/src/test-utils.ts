@@ -1,9 +1,12 @@
 import { mock } from 'bun:test';
 
-import mockRawData from '../../mocks/src/github-api-raw.json';
+import MockResultFacebookDocusaurusJson from '../../mocks/data/facebook__docusaurus.json';
 import type { GitHubRawData } from './client/github-types';
+import type { AnalysisResultWithRaw } from './types';
 
-const rawData = mockRawData as unknown as GitHubRawData;
+const mockRawData: GitHubRawData = (
+  MockResultFacebookDocusaurusJson as unknown as AnalysisResultWithRaw
+).raw;
 
 const RATE_LIMIT_HEADERS: Record<string, string> = {
   'x-ratelimit-remaining': '4999',
@@ -29,39 +32,39 @@ function matchUrl(url: string): Response | null {
 
   // /repos/{owner}/{repo} — exact match (not /repos/owner/repo/something)
   if (/^\/repos\/[^/]+\/[^/]+$/.test(path)) {
-    return jsonResponse(rawData.repoDetails);
+    return jsonResponse(mockRawData.repoDetails);
   }
 
   // /repos/{owner}/{repo}/contributors
   if (/^\/repos\/[^/]+\/[^/]+\/contributors$/.test(path)) {
-    return jsonResponse(rawData.contributors);
+    return jsonResponse(mockRawData.contributors);
   }
 
   // /repos/{owner}/{repo}/commits
   if (/^\/repos\/[^/]+\/[^/]+\/commits$/.test(path)) {
-    return jsonResponse(rawData.commits);
+    return jsonResponse(mockRawData.commits);
   }
 
   // /repos/{owner}/{repo}/pulls
   if (/^\/repos\/[^/]+\/[^/]+\/pulls$/.test(path)) {
-    return jsonResponse(rawData.pullRequests);
+    return jsonResponse(mockRawData.pullRequests);
   }
 
   // /repos/{owner}/{repo}/languages
   if (/^\/repos\/[^/]+\/[^/]+\/languages$/.test(path)) {
-    return jsonResponse(rawData.languages);
+    return jsonResponse(mockRawData.languages);
   }
 
   // /repos/{owner}/{repo}/git/trees/{ref}
   if (/^\/repos\/[^/]+\/[^/]+\/git\/trees\//.test(path)) {
-    return jsonResponse(rawData.files);
+    return jsonResponse(mockRawData.files);
   }
 
   // /users/{login}
   const userMatch = path.match(/^\/users\/([^/]+)$/);
   if (userMatch) {
     const login = userMatch[1];
-    const profile = rawData.userProfiles.find(p => p.login === login);
+    const profile = mockRawData.userProfiles.find(p => p.login === login);
     if (profile) {
       return jsonResponse(profile);
     }

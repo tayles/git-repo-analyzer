@@ -1,1 +1,7 @@
-export { mockContributors, mockResult, createMockAnalysisResult } from './analysis-results.mock';
+export {
+  mockContributors,
+  mockResult,
+  mockResultWithRawData,
+  mockRawData,
+  createMockAnalysisResult,
+} from './analysis-results.mock';

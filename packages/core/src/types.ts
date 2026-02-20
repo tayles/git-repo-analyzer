@@ -1,3 +1,4 @@
+import type { GitHubRawData } from './client/github-types';
 import type { ToolCategory, ToolMetaWithFileMatches } from './tool-registry';
 
 export interface GeneratorInfo {
@@ -36,6 +37,8 @@ export interface BasicStats {
 }
 
 export interface Contributor {
+  id: number;
+  name: string | null;
   login: string;
   avatarUrl: string;
   contributions: number;
@@ -153,6 +156,13 @@ export interface AnalysisResult {
   languages: LanguageAnalysis;
   tooling: ToolAnalysis;
   healthScore: HealthScoreAnalysis;
+  /** Raw GitHub API data, only present when `includeRawData: true` is passed */
+  raw?: GitHubRawData;
+}
+
+/** Analysis result that is guaranteed to include raw GitHub API data */
+export interface AnalysisResultWithRaw extends AnalysisResult {
+  raw: GitHubRawData;
 }
 
 /**
@@ -179,4 +189,6 @@ export interface AnalyzeOptions {
   verbose?: boolean;
   /** Callback for progress updates during analysis */
   onProgress?: (update: ProgressUpdate) => void;
+  /** Include raw GitHub API data in the result (default: false) */
+  includeRawData?: boolean;
 }

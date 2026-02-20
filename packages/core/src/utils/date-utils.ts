@@ -10,5 +10,9 @@ export function weekStart(date: string): string {
 }
 
 export function formatWeekLabel(date: string): string {
-  return date; //format(parseISO(date), 'd MMM');
+  return format(parseISO(date), 'LLL d');
+}
+
+export function formatDate(date: string): string {
+  return format(parseISO(date), 'PP');
 }

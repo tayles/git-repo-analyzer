@@ -1,9 +1,16 @@
-import type { ActivityHeatmap } from '@git-repo-analyzer/core';
+import {
+  formatTimezoneOffset,
+  type ActivityHeatmap,
+  type Contributor,
+} from '@git-repo-analyzer/core';
 import { Fragment } from 'react';
 
 import { useTheme } from '../hooks/use-theme';
 import { cn } from '../lib/utils';
+import { ContributorCombobox } from './ContributorCombobox';
+import { GitHubUserAvatar } from './GitHubUserAvatar';
 import { InfoButton } from './InfoButton';
+import { Badge } from './ui/badge';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
@@ -37,23 +44,42 @@ function getIntensityColor(value: number, max: number, theme: 'light' | 'dark'):
 
 interface ActivityHeatmapChartProps {
   data: ActivityHeatmap;
+  primaryTimezone: string | null;
+  contributors: Contributor[];
+  /** When set, indicates the heatmap is filtered for a specific contributor */
+  selectedContributor: Contributor | null;
+  onContributorChange: (contributor: Contributor | null) => void;
 }
 
-export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
+export function ActivityHeatmapChart({
+  data,
+  contributors,
+  selectedContributor,
+  primaryTimezone,
+  onContributorChange,
+}: ActivityHeatmapChartProps) {
   const theme = useTheme();
+
+  const timezoneLabel = formatTimezoneOffset(selectedContributor?.timezone ?? primaryTimezone);
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="select-text">Activity Heatmap</CardTitle>
-        <CardAction>
+        <CardTitle className="flex flex-wrap items-center gap-2 select-text">
+          <span className="flex-1">Activity Heatmap</span>
+          <ContributorCombobox
+            contributors={contributors}
+            selectedContributor={selectedContributor}
+            onContributorChange={onContributorChange}
+          />
+
           <InfoButton title="Activity Heatmap">
             <p className="text-muted-foreground mt-1">
               Shows when commits happen throughout the week. Each cell represents an hour of a day,
               with darker colors indicating more commit activity during that time.
             </p>
           </InfoButton>
-        </CardAction>
+        </CardTitle>
       </CardHeader>
       <CardContent className="overflow-auto">
         <TooltipProvider>
@@ -134,6 +160,10 @@ export function ActivityHeatmapChart({ data }: ActivityHeatmapChartProps) {
                 />
               ))}
               <span className="text-muted-foreground">More</span>
+
+              <span className="text-muted-foreground flex-1 text-right text-xs">
+                All times in {timezoneLabel}
+              </span>
             </div>
           </div>
         </TooltipProvider>

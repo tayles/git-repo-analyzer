@@ -1,4 +1,12 @@
-import type { AnalysisResult, ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+import type { AnalysisResult, Contributor, ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+import {
+  analyzeWorkPatterns,
+  computeByWeekForContributor,
+  computeHeatmapForContributor,
+  computePullsForContributor,
+  formatDate,
+  relativeDateLabel,
+} from '@git-repo-analyzer/core';
 import {
   Calendar,
   ChevronLeft,
@@ -12,6 +20,7 @@ import {
   Star,
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
@@ -34,6 +43,50 @@ interface RepoDetailsLayoutProps {
 
 export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
   const baseUrl = report.basicStats.htmlUrl;
+  const [selectedContributor, setSelectedContributor] = useState<Contributor | null>(null);
+  const [hoveredContributor, setHoveredContributor] = useState<Contributor | null>(null);
+
+  const handleSelectContributor = useCallback((contributor: Contributor | null) => {
+    setSelectedContributor(contributor);
+  }, []);
+
+  const handleHoverContributor = useCallback((contributor: Contributor | null) => {
+    setHoveredContributor(contributor);
+  }, []);
+
+  const contributor = hoveredContributor || selectedContributor;
+
+  const heatmapData = useMemo(() => {
+    if (!contributor || !report.raw) {
+      return report.commits.activityHeatmap;
+    }
+    return computeHeatmapForContributor(
+      report.raw.commits,
+      contributor.login,
+      contributor.timezone,
+    );
+  }, [contributor, report.raw, report.commits.activityHeatmap]);
+
+  const workPatternsData = useMemo(() => {
+    if (!contributor || !report.raw) {
+      return report.commits.workPatterns;
+    }
+    return analyzeWorkPatterns(heatmapData);
+  }, [contributor, report.raw, report.commits.workPatterns, heatmapData]);
+
+  const commitByWeekData = useMemo(() => {
+    if (!contributor || !report.raw) {
+      return report.commits.byWeek;
+    }
+    return computeByWeekForContributor(report.raw.commits, contributor.login);
+  }, [contributor, report.raw, report.commits.byWeek]);
+
+  const pullRequestsData = useMemo(() => {
+    if (!contributor || !report.raw) {
+      return report.pullRequests;
+    }
+    return computePullsForContributor(report.raw.pullRequests, contributor.login);
+  }, [contributor, report.raw, report.pullRequests]);
 
   const toolsByCategory = Object.entries(
     report.tooling.tools.reduce(
@@ -78,9 +131,127 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </Button>
       </div>
 
+      {/* Tools */}
+      <section>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] items-end gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+          {toolsByCategory.map(([category, tools], categoryIndex) =>
+            tools.map((tool, toolIndex) => (
+              <motion.div
+                key={tool.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: (categoryIndex + toolIndex) * 0.03 }}
+              >
+                {toolIndex === 0 && (
+                  <h3 className="text-muted-foreground mb-3 text-sm font-semibold">{category}</h3>
+                )}
+                <ToolCard repo={report.basicStats.fullName} tool={tool} />
+              </motion.div>
+            )),
+          )}
+        </div>
+      </section>
+
+      <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
+        <ActivityHeatmapChart
+          data={heatmapData}
+          contributors={report.contributors.topContributors}
+          selectedContributor={contributor}
+          onContributorChange={handleSelectContributor}
+          primaryTimezone={report.contributors.primaryTimezone}
+        />
+
+        <WorkPatternsCard data={workPatternsData} />
+
+        <ContributorsSection
+          data={report.contributors}
+          selectedContributor={selectedContributor}
+          onSelectContributor={handleSelectContributor}
+          onHoverContributor={handleHoverContributor}
+        />
+
+        <CommitChart data={commitByWeekData} />
+
+        <PullRequestChart data={pullRequestsData} />
+
+        <LanguageChart data={report.languages} />
+      </section>
+
+      <HealthScoreCard health={report.healthScore} />
+
       {/* Stats */}
       <section>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 4 * 0.03 }}
+          >
+            <StatCard
+              label="Language"
+              value={report.basicStats.language}
+              icon={<Code className="size-4" />}
+            >
+              <LanguageLogo language={report.basicStats.language} className="size-6" />
+            </StatCard>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 6 * 0.03 }}
+          >
+            <StatCard
+              label="Size"
+              value={report.basicStats.size}
+              icon={<HardDrive className="size-4" />}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 7 * 0.03 }}
+          >
+            <StatCard
+              label="Created"
+              value={formatDate(report.basicStats.createdAt)}
+              icon={<Calendar className="size-4" />}
+            >
+              <span className="text-muted-foreground text-xs font-normal">
+                {relativeDateLabel(report.basicStats.createdAt)}
+              </span>
+            </StatCard>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 8 * 0.03 }}
+          >
+            <StatCard
+              label="Updated"
+              value={formatDate(report.basicStats.updatedAt)}
+              icon={<Calendar className="size-4" />}
+            >
+              <span className="text-muted-foreground text-xs font-normal">
+                {relativeDateLabel(report.basicStats.updatedAt)}
+              </span>
+            </StatCard>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 9 * 0.03 }}
+          >
+            <StatCard
+              label="Last Push"
+              value={formatDate(report.basicStats.pushedAt)}
+              icon={<Calendar className="size-4" />}
+            >
+              <span className="text-muted-foreground text-xs font-normal">
+                {relativeDateLabel(report.basicStats.pushedAt)}
+              </span>
+            </StatCard>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,19 +303,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 4 * 0.03 }}
-          >
-            <StatCard
-              label="Language"
-              value={report.basicStats.language}
-              icon={<Code className="size-4" />}
-            >
-              <LanguageLogo language={report.basicStats.language} className="size-6" />
-            </StatCard>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 5 * 0.03 }}
           >
             <StatCard
@@ -154,89 +312,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               href={`${baseUrl}/blob/${report.basicStats.defaultBranch}/LICENSE`}
             />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 6 * 0.03 }}
-          >
-            <StatCard
-              label="Size"
-              value={report.basicStats.size}
-              icon={<HardDrive className="size-4" />}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 7 * 0.03 }}
-          >
-            <StatCard
-              label="Created"
-              value={report.basicStats.createdAt.split('T')[0]}
-              icon={<Calendar className="size-4" />}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 8 * 0.03 }}
-          >
-            <StatCard
-              label="Updated"
-              value={report.basicStats.updatedAt.split('T')[0]}
-              icon={<Calendar className="size-4" />}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 9 * 0.03 }}
-          >
-            <StatCard
-              label="Pushed"
-              value={report.basicStats.pushedAt.split('T')[0]}
-              icon={<Calendar className="size-4" />}
-            />
-          </motion.div>
         </div>
       </section>
-
-      {/* Tools */}
-      <section>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] items-end gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
-          {toolsByCategory.map(([category, tools], categoryIndex) =>
-            tools.map((tool, toolIndex) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, delay: (categoryIndex + toolIndex) * 0.03 }}
-              >
-                {toolIndex === 0 && (
-                  <h3 className="text-muted-foreground mb-3 text-sm font-semibold">{category}</h3>
-                )}
-                <ToolCard repo={report.basicStats.fullName} tool={tool} />
-              </motion.div>
-            )),
-          )}
-        </div>
-      </section>
-
-      <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
-        <ActivityHeatmapChart data={report.commits.activityHeatmap} />
-
-        <WorkPatternsCard data={report.commits.workPatterns} />
-
-        <ContributorsSection data={report.contributors} />
-
-        <LanguageChart data={report.languages} />
-
-        <CommitChart data={report.commits.byWeek} />
-
-        <PullRequestChart data={report.pullRequests} />
-      </section>
-
-      <HealthScoreCard health={report.healthScore} />
     </div>
   );
 }

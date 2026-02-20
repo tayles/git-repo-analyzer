@@ -559,13 +559,13 @@ const COMMUNITY_TOOLS: Record<ToolName, ToolMetaBasic> = {
  */
 export const TOOL_REGISTRY: Record<ToolName, ToolMeta> = {
   ...flattenToolMeta('AI Tools', AI_TOOLS),
+  ...flattenToolMeta('IDEs', IDES),
+  ...flattenToolMeta('Monorepo', MONOREPO_TOOLS),
   ...flattenToolMeta('Package Managers', PACKAGE_MANAGERS),
   ...flattenToolMeta('Frameworks', FRAMEWORKS),
-  ...flattenToolMeta('Testing', TESTING_TOOLS),
   ...flattenToolMeta('Linting & Formatting', LINTING_AND_FORMATTING_TOOLS),
-  ...flattenToolMeta('Monorepo', MONOREPO_TOOLS),
   ...flattenToolMeta('CI/CD & Deployment', CICD_TOOLS),
-  ...flattenToolMeta('IDEs', IDES),
+  ...flattenToolMeta('Testing', TESTING_TOOLS),
   ...flattenToolMeta('Documentation', DOCUMENTATION_TOOLS),
   ...flattenToolMeta('Community', COMMUNITY_TOOLS),
 };

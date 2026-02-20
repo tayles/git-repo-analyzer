@@ -22,6 +22,7 @@ interface CliOptions {
   repository: string;
   token?: string;
   json: boolean;
+  raw: boolean;
   help: boolean;
   version: boolean;
 }
@@ -40,6 +41,7 @@ Arguments:
 Options:
   --token, -t   GitHub token for authenticated requests
   --json, -j    Output result as JSON
+  --raw, -r     Include raw data in JSON output
   --help, -h    Show this help message
   --version, -v Show version number
 
@@ -54,6 +56,7 @@ function parseArgs(args: string[]): CliOptions {
     repository: '',
     token: undefined,
     json: false,
+    raw: false,
     help: false,
     version: false,
   };
@@ -67,6 +70,8 @@ function parseArgs(args: string[]): CliOptions {
       options.version = true;
     } else if (arg === '--json' || arg === '-j') {
       options.json = true;
+    } else if (arg === '--raw' || arg === '-r') {
+      options.raw = true;
     } else if (arg === '--token' || arg === '-t') {
       options.token = args[++i];
     } else if (!arg.startsWith('-') && !options.repository) {
@@ -105,6 +110,7 @@ async function main() {
     const result = await analyzeGitRepository(options.repository, {
       token: options.token,
       verbose: false,
+      includeRawData: options.raw,
       onProgress: progress => {
         if (!options.json) {
           process.stderr.write('\r' + ' '.repeat(60) + '\r');
