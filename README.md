@@ -50,7 +50,7 @@ Export in structured JSON format:
 git-repo-analyzer 'facebook/docusaurus' --json
 ```
 
-_See example JSON output here: [`facebook__docusaurus.json`](packages/mocks/data/facebook__docusaurus.json)._
+_See example JSON output here: [`facebook__docusaurus.report.json`](packages/mocks/data/facebook__docusaurus.report.json)._
 
 ## TypeScript API
 
