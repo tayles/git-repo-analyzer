@@ -57,7 +57,7 @@ export function ContributorsSection({
   });
 
   return (
-    <Card className="col-span-2">
+    <Card className="md:col-span-2">
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>
