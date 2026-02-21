@@ -14,6 +14,7 @@ export type {
   AnalyzeOptions,
   CommitsPerWeek,
   PullsPerWeek,
+  PullStatus,
 } from './types';
 export type { GitHubRawData, GitHubCommit, GitHubPullRequest } from './client/github-types';
 export { TOOL_REGISTRY, type ToolMeta, type ToolMetaWithFileMatches } from './tool-registry';

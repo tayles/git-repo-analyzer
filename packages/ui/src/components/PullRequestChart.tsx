@@ -11,14 +11,6 @@ import {
   type ChartConfig,
 } from './ui/chart';
 
-const CHART_COLORS = [
-  'var(--chart-1)',
-  'var(--chart-2)',
-  'var(--chart-3)',
-  'var(--chart-4)',
-  'var(--chart-5)',
-];
-
 interface PullRequestChartProps {
   pulls: PullAnalysis;
   data: PullsPerWeek;
@@ -29,20 +21,16 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
     .slice(-12)
     .map(([week, v]) => ({
       week: formatWeekLabel(week),
-      ...v.byType,
+      ...v.byStatus,
     }));
 
-  // Collect all unique commit types across visible weeks
-  const allTypes = Array.from(
-    new Set(displayData.flatMap(v => Object.keys(v).filter(key => key !== 'week'))),
-  ).sort();
+  const STATUS_KEYS = ['open', 'merged', 'closed'] as const;
 
-  const chartConfig = Object.fromEntries(
-    allTypes.map((type, i) => [
-      type,
-      { label: type, color: CHART_COLORS[i % CHART_COLORS.length] },
-    ]),
-  ) satisfies ChartConfig;
+  const chartConfig = {
+    open: { label: 'Opened' },
+    merged: { label: 'Merged' },
+    closed: { label: 'Closed' },
+  } satisfies ChartConfig;
 
   return (
     <Card>
@@ -73,13 +61,13 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
               <YAxis tickLine={false} axisLine={false} fontSize={10} />
               <ChartTooltip content={<ChartTooltipContent />} />
               <ChartLegend content={<ChartLegendContent />} />
-              {allTypes.map((type, i) => (
+              {STATUS_KEYS.map((status, i) => (
                 <Bar
-                  key={type}
-                  dataKey={type}
+                  key={status}
+                  dataKey={status}
                   stackId="a"
-                  fill={`var(--color-${type})`}
-                  radius={i === allTypes.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
+                  fill={`var(--chart-${i + 1})`}
+                  radius={i === STATUS_KEYS.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
                 />
               ))}
             </BarChart>

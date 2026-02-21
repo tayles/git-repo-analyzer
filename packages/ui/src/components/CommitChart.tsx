@@ -57,7 +57,7 @@ export function CommitChart({ data }: CommitChartProps) {
               />
               <YAxis tickLine={false} axisLine={false} fontSize={10} />
               <ChartTooltip content={<ChartTooltipContent />} />
-              <Bar dataKey="total" stackId="a" fill={`var(--chart-1)`} radius={[0, 0, 0, 0]} />
+              <Bar dataKey="total" stackId="a" fill={`var(--chart-1)`} radius={[2, 2, 0, 0]} />
             </BarChart>
           </ChartContainer>
         )}

@@ -116,9 +116,16 @@ export type CommitsPerWeek = Record<
  * @example
  * { '2023-01-02': { byType: { open: 4, closed: 2 }, byAuthor: { user1: 3, user2: 3 } }, ... }
  */
+export type PullStatus = 'open' | 'merged' | 'closed';
+
 export type PullsPerWeek = Record<
   string,
-  { total: number; byType: Record<string, number>; byAuthor: Record<string, number> }
+  {
+    total: number;
+    byType: Record<string, number>;
+    byStatus: Record<PullStatus, number>;
+    byAuthor: Record<string, number>;
+  }
 >;
 
 export interface DecoratedCommit {
@@ -133,6 +140,9 @@ export interface DecoratedPullRequest {
   author: string | null;
   title: PullRequestTitleAnalysis;
   date: DateAnalysis;
+  status: PullStatus;
+  mergedAt: string | null;
+  closedAt: string | null;
 }
 
 export interface PullRequestTitleAnalysis extends CommitMessageAnalysis {}

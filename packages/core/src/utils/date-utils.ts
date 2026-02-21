@@ -20,20 +20,6 @@ export function formatDate(date: string): string {
   return format(parseISO(date), 'PP');
 }
 
-// export function convertToLocalTimezone(
-//   origDate: Date,
-//   timezone: string | null | undefined,
-// ): string {
-//   if (!timezone) return origDate.toISOString();
-//   try {
-//     const utcDate = origDate;
-//     const localDate = new TZDate(utcDate.getTime(), timezone);
-//     return formatWithTimezone(localDate, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: timezone });
-//   } catch {
-//     return origDate.toISOString();
-//   }
-// }
-
 export function parseDate(orig: string, timezone: string | null | undefined): DateAnalysis {
   const local = orig && timezone ? new TZDate(orig, timezone) : null;
   const date = local ?? parseISO(orig);
