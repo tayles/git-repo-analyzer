@@ -77,16 +77,18 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
   }, [contributor, report.pullRequests.pulls]);
 
   const toolsByCategory = Object.entries(
-    report.tooling.tools.reduce(
-      (acc, tool) => {
-        if (!acc[tool.category]) {
-          acc[tool.category] = [];
-        }
-        acc[tool.category].push(tool);
-        return acc;
-      },
-      {} as Record<string, ToolMetaWithFileMatches[]>,
-    ),
+    report.tooling.tools
+      .filter(t => t.category !== 'Community')
+      .reduce(
+        (acc, tool) => {
+          if (!acc[tool.category]) {
+            acc[tool.category] = [];
+          }
+          acc[tool.category].push(tool);
+          return acc;
+        },
+        {} as Record<string, ToolMetaWithFileMatches[]>,
+      ),
   );
 
   return (
