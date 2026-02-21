@@ -1,11 +1,12 @@
 import type { Contributor, ContributorAnalysis, UserProfile } from '@git-repo-analyzer/core';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import { cn } from '../lib/utils';
 import { GitHubUserAvatar } from './GitHubUserAvatar';
 import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 
 const TEAM_SIZE_LABELS = {
   solo: 'Solo Developer',
@@ -31,6 +32,8 @@ export function ContributorsSection({
   onSelectContributor,
   onHoverContributor,
 }: ContributorsSectionProps) {
+  const [tab, setTab] = useState<'recent' | 'top'>('recent');
+
   const handleSelectContributor = useCallback(
     (contributor: Contributor | null) => {
       onSelectContributor(contributor);
@@ -41,7 +44,10 @@ export function ContributorsSection({
     [onSelectContributor, onHoverContributor],
   );
 
-  const decoratedContributors = contributors.topContributors.slice(0, 10).map(contributor => {
+  const activeContributors =
+    tab === 'recent' ? contributors.recentContributors : contributors.topContributors;
+
+  const decoratedContributors = activeContributors.slice(0, 10).map(contributor => {
     const profile = userProfiles.find(p => p.login === contributor.login);
     return {
       contributor,
@@ -56,11 +62,15 @@ export function ContributorsSection({
         <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>
           <Badge variant="secondary">{TEAM_SIZE_LABELS[contributors.teamSize]}</Badge>
-          <span className="text-muted-foreground text-sm font-normal">
+          <span className="text-muted-foreground flex-1 text-sm font-normal">
             {contributors.totalContributors} total / bus factor: {contributors.busFactor}
           </span>
-        </CardTitle>
-        <CardAction>
+          <Tabs value={tab} onValueChange={v => setTab(v as 'recent' | 'top')}>
+            <TabsList>
+              <TabsTrigger value="recent">Recent</TabsTrigger>
+              <TabsTrigger value="top">All Time</TabsTrigger>
+            </TabsList>
+          </Tabs>
           <InfoButton title="Contributors">
             <p className="text-muted-foreground mt-1">
               Shows top contributors by commit count. Bus factor indicates how many key developers
@@ -68,7 +78,7 @@ export function ContributorsSection({
               the team.
             </p>
           </InfoButton>
-        </CardAction>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
