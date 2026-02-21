@@ -1,7 +1,6 @@
 import { formatWeekLabel, type CommitsPerWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import { HorizontalBarChart } from './HorizontalBarChart';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
@@ -15,16 +14,6 @@ export function CommitChart({ data }: CommitChartProps) {
 
   const displayData = entries.map(([week, v]) => ({ week: formatWeekLabel(week), total: v.total }));
 
-  const typeBreakdown = Object.values(data).reduce(
-    (acc, { byType }) => {
-      for (const [type, count] of Object.entries(byType)) {
-        acc[type] = (acc[type] ?? 0) + count;
-      }
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
   const chartConfig = {} satisfies ChartConfig;
 
   return (
@@ -36,29 +25,25 @@ export function CommitChart({ data }: CommitChartProps) {
       </CardHeader>
       <CardContent className="overflow-auto">
         {displayData.length < 1 ? (
-          <div className="text-muted-foreground flex h-72 items-center justify-center text-sm select-text">
+          <div className="text-muted-foreground flex h-64 items-center justify-center text-sm select-text">
             No commits during this period
           </div>
         ) : (
-          <>
-            <HorizontalBarChart data={typeBreakdown} className="pb-3" />
-
-            <ChartContainer config={chartConfig} className="h-64 w-full">
-              <BarChart data={displayData}>
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="week"
-                  tickLine={false}
-                  axisLine={false}
-                  fontSize={10}
-                  interval="preserveStartEnd"
-                />
-                <YAxis tickLine={false} axisLine={false} fontSize={10} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="total" stackId="a" fill={`var(--chart-1)`} radius={[2, 2, 0, 0]} />
-              </BarChart>
-            </ChartContainer>
-          </>
+          <ChartContainer config={chartConfig} className="h-64 w-full">
+            <BarChart data={displayData}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="week"
+                tickLine={false}
+                axisLine={false}
+                fontSize={10}
+                interval="preserveStartEnd"
+              />
+              <YAxis tickLine={false} axisLine={false} fontSize={10} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Bar dataKey="total" stackId="a" fill={`var(--chart-1)`} radius={[2, 2, 0, 0]} />
+            </BarChart>
+          </ChartContainer>
         )}
       </CardContent>
     </Card>

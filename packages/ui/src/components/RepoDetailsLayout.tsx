@@ -24,6 +24,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
+import { CommitsByTypeChart } from './CommitsByTypeChart';
 import { ContributorsSection } from './ContributorsSection';
 import { HealthScoreCard } from './HealthScoreCard';
 import { LanguageChart } from './LanguageChart';
@@ -160,6 +161,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         />
 
         <CommitChart data={commitsPerWeek} />
+
+        <CommitsByTypeChart commits={report.commits} selectedContributor={contributor} />
 
         <PullRequestChart pulls={report.pullRequests} data={pullsPerWeek} />
 

@@ -1,7 +1,6 @@
 import { formatWeekLabel, type PullAnalysis, type PullsPerWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import { HorizontalBarChart } from './HorizontalBarChart';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import {
   ChartContainer,
@@ -25,16 +24,6 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
       ...v.byStatus,
     }));
 
-  const typeBreakdown = Object.values(data).reduce(
-    (acc, { byType }) => {
-      for (const [type, count] of Object.entries(byType)) {
-        acc[type] = (acc[type] ?? 0) + count;
-      }
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
   const STATUS_KEYS = ['open', 'merged', 'closed'] as const;
 
   const chartConfig = {
@@ -55,38 +44,34 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
       </CardHeader>
       <CardContent className="overflow-hidden">
         {displayData.length === 0 ? (
-          <div className="text-muted-foreground flex h-72 items-center justify-center text-sm select-text">
+          <div className="text-muted-foreground flex h-64 items-center justify-center text-sm select-text">
             No pull requests during this period
           </div>
         ) : (
-          <>
-            <HorizontalBarChart data={typeBreakdown} className="pb-3" />
-
-            <ChartContainer config={chartConfig} className="h-64 w-full">
-              <BarChart data={displayData}>
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="week"
-                  tickLine={false}
-                  axisLine={false}
-                  fontSize={10}
-                  interval="preserveStartEnd"
+          <ChartContainer config={chartConfig} className="h-64 w-full">
+            <BarChart data={displayData}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="week"
+                tickLine={false}
+                axisLine={false}
+                fontSize={10}
+                interval="preserveStartEnd"
+              />
+              <YAxis tickLine={false} axisLine={false} fontSize={10} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartLegend content={<ChartLegendContent />} />
+              {STATUS_KEYS.map((status, i) => (
+                <Bar
+                  key={status}
+                  dataKey={status}
+                  stackId="a"
+                  fill={`var(--chart-${i + 1})`}
+                  radius={i === STATUS_KEYS.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
                 />
-                <YAxis tickLine={false} axisLine={false} fontSize={10} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <ChartLegend content={<ChartLegendContent />} />
-                {STATUS_KEYS.map((status, i) => (
-                  <Bar
-                    key={status}
-                    dataKey={status}
-                    stackId="a"
-                    fill={`var(--chart-${i + 1})`}
-                    radius={i === STATUS_KEYS.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
-                  />
-                ))}
-              </BarChart>
-            </ChartContainer>
-          </>
+              ))}
+            </BarChart>
+          </ChartContainer>
         )}
       </CardContent>
     </Card>

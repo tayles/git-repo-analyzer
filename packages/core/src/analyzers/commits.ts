@@ -92,7 +92,11 @@ export function detectConventions(arr: CommitMessageAnalysis[]): CommitConventio
     },
     {} as Record<string, number>,
   );
-  return { conventionalCommits, gitmoji, prefixes };
+
+  // sort prefixes by count desc
+  const sortedPrefixes = Object.fromEntries(Object.entries(prefixes).sort(([, a], [, b]) => b - a));
+
+  return { conventionalCommits, gitmoji, prefixes: sortedPrefixes };
 }
 
 export function decorateCommits(

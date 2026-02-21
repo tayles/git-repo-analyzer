@@ -2,22 +2,22 @@
   "generator": {
     "name": "git-repo-analyzer",
     "version": "1.0.0",
-    "analyzedAt": "2026-02-21T17:23:29.133Z",
-    "durationMs": 1848
+    "analyzedAt": "2026-02-21T18:17:09.122Z",
+    "durationMs": 1554
   },
   "basicStats": {
     "name": "docusaurus",
     "fullName": "facebook/docusaurus",
     "htmlUrl": "https://github.com/facebook/docusaurus",
     "description": "Easy to maintain open source documentation websites.",
-    "stars": 63855,
+    "stars": 63856,
     "forks": 9748,
     "openIssues": 352,
     "watchers": 433,
     "language": "TypeScript",
     "license": "MIT",
     "createdAt": "2017-06-20T16:13:53Z",
-    "updatedAt": "2026-02-21T12:33:50Z",
+    "updatedAt": "2026-02-21T17:54:38Z",
     "pushedAt": "2026-02-20T17:38:45Z",
     "defaultBranch": "main",
     "size": 1016667,
@@ -824,13 +824,13 @@
       "conventionalCommits": true,
       "gitmoji": false,
       "prefixes": {
-        "refactor": 15,
-        "feat": 40,
         "fix": 95,
         "chore": 90,
+        "feat": 40,
         "docs": 39,
-        "test": 6,
+        "refactor": 15,
         "perf": 12,
+        "test": 6,
         "meta": 1,
         "misc": 1
       }
@@ -6255,12 +6255,12 @@
       "conventionalCommits": true,
       "gitmoji": false,
       "prefixes": {
+        "fix": 22,
         "chore": 20,
         "feat": 17,
-        "fix": 22,
         "docs": 17,
-        "test": 3,
-        "refactor": 6
+        "refactor": 6,
+        "test": 3
       }
     },
     "pulls": [
@@ -8581,7 +8581,7 @@
         "maxScore": 25,
         "details": [
           {
-            "message": "63,855 stars",
+            "message": "63,856 stars",
             "delta": 8
           },
           {
