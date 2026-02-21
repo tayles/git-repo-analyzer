@@ -36,18 +36,23 @@ export interface BasicStats {
   };
 }
 
-export interface Contributor {
+export interface UserProfile {
   id: number;
   name: string | null;
   login: string;
   avatarUrl: string;
-  contributions: number;
   htmlUrl: string;
   location: string | null;
+
+  // Derived fields from location string
   country: string | null;
   countryCode: string | null;
   flag: string | null;
   timezone: string | null;
+}
+export interface Contributor {
+  login: string;
+  contributions: number;
 }
 
 export type TeamSize = 'solo' | 'small' | 'medium' | 'large';
@@ -56,10 +61,19 @@ export interface ContributorAnalysis {
   totalContributors: number;
   teamSize: TeamSize;
   busFactor: number;
+  topContributors: Contributor[];
+  recentContributors: Contributor[];
+
+  /**
+   * Denormalised data based on recent contributors
+   */
   primaryCountry: string | null;
   primaryCountryCode: string | null;
   primaryTimezone: string | null;
-  topContributors: Contributor[];
+}
+
+export interface UserProfileAnalysis {
+  users: UserProfile[];
 }
 
 /**
@@ -78,6 +92,8 @@ export interface CommitConventionsAnalysis {
   prefixes: Record<string, number>;
 }
 
+export type TimeOfDay = 'weekend' | 'workday' | 'offHours';
+
 export type WorkPatternClassification = 'professional' | 'mixed' | 'hobbyist';
 
 export interface WorkPatterns {
@@ -87,24 +103,74 @@ export interface WorkPatterns {
   weekendsPercent: number;
 }
 
-export type BucketByWeek = Record<string, number>; // e.g. { '2023-01-02': 5, '2023-01-09': 8 }
+/**
+ * @example
+ * { '2023-01-02': { user1: 5, user2: 3 }, '2023-01-09': { user3: 1 } }
+ */
+export type CommitsPerWeek = Record<string, { total: number; byAuthor: Record<string, number> }>;
 
+/**
+ * @example
+ * { '2023-01-02': { byType: { open: 4, closed: 2 }, byAuthor: { user1: 3, user2: 3 } }, ... }
+ */
+export type PullsPerWeek = Record<
+  string,
+  { total: number; byType: Record<string, number>; byAuthor: Record<string, number> }
+>;
+
+export interface DecoratedCommit {
+  sha: string;
+  author: string | null;
+  message: CommitMessageAnalysis;
+  date: DateAnalysis;
+}
+
+export interface DecoratedPullRequest {
+  number: number;
+  author: string | null;
+  title: PullRequestTitleAnalysis;
+  date: DateAnalysis;
+}
+
+export interface PullRequestTitleAnalysis extends CommitMessageAnalysis {}
+
+export interface DateAnalysis {
+  orig: string;
+  local: string | null;
+  weekStart: string;
+  dayOfWeek: number;
+  hourOfDay: number;
+  timeOfDay: TimeOfDay;
+}
+
+export type CommitConvention = 'conventional' | 'gitmoji' | null;
+
+export interface CommitMessageAnalysis {
+  raw: string;
+  type: string | null;
+  scope: string | null;
+  convention: CommitConvention;
+}
 export interface CommitAnalysis {
   totalCommits: number;
   firstCommitDate: string | null;
   lastCommitDate: string | null;
   conventions: CommitConventionsAnalysis;
   workPatterns: WorkPatterns;
-  activityHeatmap: ActivityHeatmap;
-  byWeek: BucketByWeek;
+  commits: DecoratedCommit[];
+}
+
+export interface PullAnalysisCounts {
+  total: number;
+  open: number;
+  closed: number;
+  merged: number;
 }
 
 export interface PullAnalysis {
-  totalOpen: number;
-  totalClosed: number;
-  totalMerged: number;
-  avgMergeTimeHours: number | null;
-  byWeek: BucketByWeek;
+  counts: PullAnalysisCounts;
+  conventions: CommitConventionsAnalysis;
+  pulls: DecoratedPullRequest[];
 }
 
 export interface LanguageAnalysis {
@@ -156,12 +222,12 @@ export interface AnalysisResult {
   languages: LanguageAnalysis;
   tooling: ToolAnalysis;
   healthScore: HealthScoreAnalysis;
-  /** Raw GitHub API data, only present when `includeRawData: true` is passed */
-  raw?: GitHubRawData;
+  userProfiles: UserProfile[];
 }
 
-/** Analysis result that is guaranteed to include raw GitHub API data */
-export interface AnalysisResultWithRaw extends AnalysisResult {
+/** Wrapper for Analysis result and the original raw GitHub API data */
+export interface AnalysisResultWithRaw {
+  result: AnalysisResult;
   raw: GitHubRawData;
 }
 

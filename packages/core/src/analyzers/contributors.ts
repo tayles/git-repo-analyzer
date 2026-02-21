@@ -1,50 +1,57 @@
-import type { GitHubContributor, GitHubUserProfile } from '../client/github-types';
-import type { ContributorAnalysis, TeamSize } from '../types';
-import { countryCodeToEmojiFlag, parseLocation } from '../utils/location-utils';
+import type { GitHubCommit, GitHubContributor } from '../client/github-types';
+import type { Contributor, ContributorAnalysis, TeamSize, UserProfile } from '../types';
 
 export function processContributors(
   contributors: GitHubContributor[],
-  userProfiles: GitHubUserProfile[],
+  userProfiles: UserProfile[],
+  commits: GitHubCommit[],
 ): ContributorAnalysis {
-  const processedContributors = userProfiles.map((u, idx) => {
-    const contributions = contributors[idx]?.contributions ?? 0;
-    const location = parseLocation(u.location);
-    const country = location?.country ?? null;
-    const countryCode = location?.iso2 ?? null;
-    const flag = countryCode ? countryCodeToEmojiFlag(countryCode) : null;
-    const timezone = location?.timezone ?? null;
+  const topContributors: Contributor[] = contributors.map(c => ({
+    login: c.login,
+    contributions: c.contributions,
+  }));
 
-    return {
-      id: u.id,
-      name: u.name ?? null,
-      login: u.login,
-      avatarUrl: u.avatar_url,
-      contributions,
-      htmlUrl: u.html_url,
-      location: u.location ?? null,
-      country,
-      countryCode,
-      flag,
-      timezone,
-    };
-  });
+  const recentContributors: Contributor[] = Object.entries(
+    commits.reduce(
+      (acc, commit) => {
+        const login = commit.author?.login;
+        if (login) {
+          acc[login] = (acc[login] ?? 0) + 1;
+        }
+        return acc;
+      },
+      {} as Record<string, number>,
+    ),
+  )
+    .sort((a, b) => b[1] - a[1])
+    .map(([login, contributions]) => ({ login, contributions }));
 
-  const contribsPerCountry = processedContributors.reduce(
-    (acc, c) => {
-      if (c.country) {
-        acc[c.country] = (acc[c.country] ?? 0) + c.contributions;
+  const timezoneMap = new Map<string, number>();
+  const countryMap = new Map<string, number>();
+  const countryCodeMap = new Map<string, number>();
+
+  for (const commit of commits) {
+    const login = commit.author?.login;
+    const profile = login ? userProfiles.find(u => u.login === login) : null;
+    if (profile) {
+      if (profile.timezone) {
+        timezoneMap.set(profile.timezone, (timezoneMap.get(profile.timezone) ?? 0) + 1);
       }
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
+      if (profile.country) {
+        countryMap.set(profile.country, (countryMap.get(profile.country) ?? 0) + 1);
+      }
+      if (profile.countryCode) {
+        countryCodeMap.set(profile.countryCode, (countryCodeMap.get(profile.countryCode) ?? 0) + 1);
+      }
+    }
+  }
 
-  const primaryCountry =
-    Object.entries(contribsPerCountry).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
-  const primaryCountryCode =
-    processedContributors.find(c => c.country === primaryCountry)?.countryCode ?? null;
   const primaryTimezone =
-    processedContributors.find(c => c.country === primaryCountry)?.timezone ?? null;
+    Array.from(timezoneMap.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  const primaryCountry =
+    Array.from(countryMap.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  const primaryCountryCode =
+    Array.from(countryCodeMap.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 
   return {
     totalContributors: contributors.length,
@@ -53,7 +60,8 @@ export function processContributors(
     primaryCountry,
     primaryCountryCode,
     primaryTimezone,
-    topContributors: processedContributors,
+    topContributors,
+    recentContributors,
   };
 }
 

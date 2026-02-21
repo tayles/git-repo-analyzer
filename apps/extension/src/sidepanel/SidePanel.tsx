@@ -42,7 +42,6 @@ export default function SidePanel() {
           token,
           signal: controller.signal,
           onProgress: updateProgress,
-          includeRawData: true,
         });
         completeAnalysis(result);
       } catch (err) {

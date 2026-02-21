@@ -1,4 +1,5 @@
-import { createMockAnalysisResult, mockContributors } from '@git-repo-analyzer/mocks';
+import { computeActivityHeatmap } from '@git-repo-analyzer/core';
+import { createMockAnalysisResult } from '@git-repo-analyzer/mocks';
 import { ActivityHeatmapChart } from '@git-repo-analyzer/ui';
 import type { Story } from '@ladle/react';
 
@@ -8,14 +9,18 @@ export default {
 
 const report = createMockAnalysisResult('facebook/docusaurus');
 
-const selectedContributor = mockContributors[0];
+const activityHeatmap = computeActivityHeatmap(report.commits.commits);
+const contributors = report.contributors;
+const userProfiles = report.userProfiles;
+const selectedContributor = contributors.recentContributors[0] ?? null;
 
 export const AllVariants: Story = () => (
   <div className="max-w-2xl space-y-4 p-4">
     <h3 className="text-sm font-medium">Default (all contributors)</h3>
     <ActivityHeatmapChart
-      data={report.commits.activityHeatmap}
-      contributors={mockContributors}
+      data={activityHeatmap}
+      contributors={contributors}
+      userProfiles={userProfiles}
       selectedContributor={null}
       onContributorChange={() => {}}
       primaryTimezone={null}
@@ -23,17 +28,19 @@ export const AllVariants: Story = () => (
 
     <h3 className="text-sm font-medium">Filtered by contributor (with timezone)</h3>
     <ActivityHeatmapChart
-      data={report.commits.activityHeatmap}
-      contributors={mockContributors}
+      data={activityHeatmap}
+      contributors={contributors}
+      userProfiles={userProfiles}
       selectedContributor={selectedContributor}
-      primaryTimezone={selectedContributor.timezone}
+      primaryTimezone={null}
       onContributorChange={() => {}}
     />
 
     <h3 className="text-sm font-medium">Filtered by contributor (UTC fallback)</h3>
     <ActivityHeatmapChart
-      data={report.commits.activityHeatmap}
-      contributors={mockContributors}
+      data={activityHeatmap}
+      contributors={contributors}
+      userProfiles={userProfiles}
       selectedContributor={selectedContributor}
       onContributorChange={() => {}}
       primaryTimezone={null}

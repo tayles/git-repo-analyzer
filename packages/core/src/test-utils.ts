@@ -1,12 +1,9 @@
 import { mock } from 'bun:test';
 
-import MockResultFacebookDocusaurusJson from '../../mocks/data/facebook__docusaurus.json';
+import MockRawDataFacebookDocusaurusJson from '../../mocks/data/facebook__docusaurus.raw.json';
 import type { GitHubRawData } from './client/github-types';
-import type { AnalysisResultWithRaw } from './types';
 
-const mockRawData: GitHubRawData = (
-  MockResultFacebookDocusaurusJson as unknown as AnalysisResultWithRaw
-).raw;
+const mockRawData: GitHubRawData = MockRawDataFacebookDocusaurusJson as unknown as GitHubRawData;
 
 const RATE_LIMIT_HEADERS: Record<string, string> = {
   'x-ratelimit-remaining': '4999',

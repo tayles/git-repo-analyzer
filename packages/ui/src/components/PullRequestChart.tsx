@@ -1,4 +1,4 @@
-import { formatWeekLabel, type PullAnalysis } from '@git-repo-analyzer/core';
+import { formatWeekLabel, type PullsPerWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -19,24 +19,21 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-function formatDuration(hours: number): string {
-  if (hours < 1) return `${Math.round(hours * 60)}m`;
-  if (hours < 24) return `${Math.round(hours)}h`;
-  const days = Math.round(hours / 24);
-  return `${days}d`;
-}
-
 interface PullRequestChartProps {
-  data: PullAnalysis;
+  data: PullsPerWeek;
 }
 
 export function PullRequestChart({ data }: PullRequestChartProps) {
-  const displayData = Object.entries(data.byWeek)
+  const displayData = Object.entries(data)
     .slice(-12)
-    .map(([week, count]) => ({
+    .map(([week, v]) => ({
       week: formatWeekLabel(week),
-      count,
+      count: v.byType['open'] ?? 0,
     }));
+
+  const totalOpen = Object.values(data).reduce((sum, v) => sum + (v.byType['open'] ?? 0), 0);
+  const totalMerged = Object.values(data).reduce((sum, v) => sum + (v.byType['merged'] ?? 0), 0);
+  const totalClosed = Object.values(data).reduce((sum, v) => sum + (v.byType['closed'] ?? 0), 0);
 
   return (
     <Card>
@@ -44,14 +41,12 @@ export function PullRequestChart({ data }: PullRequestChartProps) {
         <CardTitle className="flex items-center gap-2 select-text">
           <span>Pull Requests</span>
           <span className="text-muted-foreground ml-2 text-sm font-normal">
-            {data.totalOpen} open / {data.totalMerged} merged
-            {data.avgMergeTimeHours != null &&
-              ` / avg merge: ${formatDuration(data.avgMergeTimeHours)}`}
+            {totalOpen} open / {totalMerged} merged / {totalClosed} closed
           </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="overflow-hidden">
-        {Object.keys(data.byWeek).length === 0 ? (
+        {Object.keys(displayData).length === 0 ? (
           <div className="text-muted-foreground flex h-64 items-center justify-center text-sm select-text">
             No pull requests during this period
           </div>

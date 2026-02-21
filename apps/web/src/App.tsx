@@ -47,7 +47,6 @@ function App() {
           token: token || undefined,
           signal: controller.signal,
           onProgress: updateProgress,
-          includeRawData: true,
         });
         completeAnalysis(analysisResult);
       } catch (err) {

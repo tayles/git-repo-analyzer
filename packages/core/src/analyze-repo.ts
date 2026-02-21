@@ -2,6 +2,7 @@ export type { ProgressUpdate, Contributor, AnalysisResult } from './types';
 export { TOOL_REGISTRY } from './tool-registry';
 export { LANGUAGE_COLORS } from './utils/language-utils';
 
+// import RawJson from '../../mocks/data/facebook__docusaurus.raw.json';
 import { processBasicStats } from './analyzers/basic-stats';
 import { processCommits } from './analyzers/commits';
 import { processContributors } from './analyzers/contributors';
@@ -9,6 +10,7 @@ import { processHealthScore } from './analyzers/health-score';
 import { processLanguages } from './analyzers/languages';
 import { processPullRequests } from './analyzers/pull-requests';
 import { processTooling } from './analyzers/tooling-detection';
+import { processUserProfiles } from './analyzers/user-profiles';
 import { GitHubAPI } from './client/github-api';
 import type {
   GitHubCommit,
@@ -60,7 +62,7 @@ export async function analyzeGitRepository(
 export async function analyzeGitRepository(
   repoNameOrUrl: string,
   options?: AnalyzeOptions,
-): Promise<AnalysisResult> {
+): Promise<AnalysisResult | AnalysisResultWithRaw> {
   const { token, signal, verbose, onProgress, includeRawData } = options ?? {};
   const startTime = Date.now();
   const repo = parseRepository(repoNameOrUrl);
@@ -73,6 +75,8 @@ export async function analyzeGitRepository(
   });
 
   const rawData = await fetchRepositoryData(repo, { token, signal, verbose, onProgress });
+  // await Bun.write('./packages/mocks/data/debug.raw.json', JSON.stringify(rawData, null, 2));
+  // const rawData = RawJson as GitHubRawData;
 
   onProgress?.({
     phase: 'analyzing',
@@ -82,9 +86,10 @@ export async function analyzeGitRepository(
 
   // Process raw data to compute analysis result
   const basicStats = processBasicStats(rawData.repoDetails);
-  const contributors = processContributors(rawData.contributors, rawData.userProfiles);
-  const commits = processCommits(rawData.commits, contributors);
-  const pullRequests = processPullRequests(rawData.pullRequests);
+  const userProfiles = processUserProfiles(rawData.userProfiles);
+  const commits = processCommits(rawData.commits, userProfiles);
+  const contributors = processContributors(rawData.contributors, userProfiles, rawData.commits);
+  const pullRequests = processPullRequests(rawData.pullRequests, userProfiles);
   const languages = processLanguages(rawData.languages);
 
   onProgress?.({
@@ -103,6 +108,7 @@ export async function analyzeGitRepository(
     pullRequests,
     languages,
     tooling,
+    userProfiles,
   });
 
   const durationMs = Date.now() - startTime;
@@ -121,7 +127,7 @@ export async function analyzeGitRepository(
     languages,
     tooling,
     healthScore,
-    ...(includeRawData ? { raw: rawData } : {}),
+    userProfiles,
   };
 
   // Report completion
@@ -133,7 +139,11 @@ export async function analyzeGitRepository(
 
   await delay(1); // Yield to allow progress update to render
 
-  return result;
+  if (includeRawData) {
+    return { result, raw: rawData };
+  } else {
+    return result;
+  }
 }
 
 export async function fetchRepositoryData(
@@ -158,15 +168,38 @@ export async function fetchRepositoryData(
     };
   }
 
-  const [repoDetails, { contributors, userProfiles }, commits, pullRequests, languages, files] =
-    await Promise.all([
-      fetchRepoDetails(api, repo).then(trackCompletion('Repository details')),
-      fetchContributors(api, repo).then(trackCompletion('Contributors & profiles')),
-      fetchCommits(api, repo).then(trackCompletion('Commits')),
-      fetchPullRequests(api, repo).then(trackCompletion('Pull requests')),
-      fetchLanguages(api, repo).then(trackCompletion('Languages')),
-      fetchRepoFiles(api, repo).then(trackCompletion('File tree')),
-    ]);
+  const [repoDetails, contributors, commits, pullRequests, languages, files] = await Promise.all([
+    fetchRepoDetails(api, repo).then(trackCompletion('Repository details')),
+    fetchContributors(api, repo).then(trackCompletion('Contributors & profiles')),
+    fetchCommits(api, repo).then(trackCompletion('Commits')),
+    fetchPullRequests(api, repo).then(trackCompletion('Pull requests')),
+    fetchLanguages(api, repo).then(trackCompletion('Languages')),
+    fetchRepoFiles(api, repo).then(trackCompletion('File tree')),
+  ]);
+
+  onProgress?.({
+    phase: 'fetching',
+    progress: 90,
+    message: `Fetching user profiles...`,
+  });
+
+  const top10AuthorLogins = Object.entries(
+    commits.reduce(
+      (acc, commit) => {
+        const login = commit.author?.login;
+        if (login) {
+          acc[login] = (acc[login] ?? 0) + 1;
+        }
+        return acc;
+      },
+      {} as Record<string, number>,
+    ),
+  )
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([login]) => login);
+
+  const userProfiles = await fetchUserProfiles(api, top10AuthorLogins);
 
   return {
     repoDetails,
@@ -186,27 +219,22 @@ export async function fetchRepoDetails(api: GitHubAPI, repo: string): Promise<Gi
 export async function fetchContributors(
   api: GitHubAPI,
   repo: string,
-): Promise<{ contributors: GitHubContributor[]; userProfiles: GitHubUserProfile[] }> {
-  const contributors = await api.fetchPaginated<GitHubContributor>(
-    `/repos/${repo}/contributors`,
-    1,
-  );
+): Promise<GitHubContributor[]> {
+  return await api.fetchPaginated<GitHubContributor>(`/repos/${repo}/contributors`, 1);
+}
 
-  const top10 = contributors
-    // Filter out bots
-    .filter(c => !c.login.toLowerCase().includes('[bot]'))
-    // Sort by contributions
-    .sort((a, b) => b.contributions - a.contributions)
-    // Take top 10
-    .slice(0, 10);
-
-  const userProfiles = await Promise.all(
-    top10.map(async c => {
-      return await api.fetch<GitHubUserProfile>(`/users/${c.login}`);
+/**
+ * Fetch user profiles for a list of logins
+ */
+export async function fetchUserProfiles(
+  api: GitHubAPI,
+  logins: string[],
+): Promise<GitHubUserProfile[]> {
+  return await Promise.all(
+    logins.map(async login => {
+      return await api.fetch<GitHubUserProfile>(`/users/${login}`);
     }),
   );
-
-  return { contributors, userProfiles };
 }
 
 export async function fetchCommits(api: GitHubAPI, repo: string): Promise<GitHubCommit[]> {
@@ -219,7 +247,7 @@ export async function fetchPullRequests(
 ): Promise<GitHubPullRequest[]> {
   return await api.fetchPaginated<GitHubPullRequest>(
     `/repos/${repo}/pulls?state=all&sort=created&direction=desc`,
-    3,
+    1,
   );
 }
 

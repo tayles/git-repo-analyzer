@@ -17,7 +17,8 @@ export const Contributors: Story = () => {
     <div className="max-w-2xl space-y-4 p-4">
       <h3 className="text-sm font-medium">Without selection (default)</h3>
       <ContributorsSection
-        data={report.contributors}
+        contributors={report.contributors}
+        userProfiles={report.userProfiles}
         selectedContributor={null}
         onSelectContributor={() => {}}
         onHoverContributor={() => {}}
@@ -25,7 +26,8 @@ export const Contributors: Story = () => {
 
       <h3 className="text-sm font-medium">With click-to-select</h3>
       <ContributorsSection
-        data={report.contributors}
+        contributors={report.contributors}
+        userProfiles={report.userProfiles}
         selectedContributor={selected}
         onSelectContributor={setSelected}
         onHoverContributor={() => {}}

@@ -1,9 +1,9 @@
 import type { AnalysisResult, Contributor, ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
 import {
   analyzeWorkPatterns,
-  computeByWeekForContributor,
-  computeHeatmapForContributor,
-  computePullsForContributor,
+  computeActivityHeatmap,
+  computeCommitsPerWeek,
+  computePullsPerWeek,
   formatDate,
   relativeDateLabel,
 } from '@git-repo-analyzer/core';
@@ -57,36 +57,23 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
   const contributor = hoveredContributor || selectedContributor;
 
   const heatmapData = useMemo(() => {
-    if (!contributor || !report.raw) {
-      return report.commits.activityHeatmap;
-    }
-    return computeHeatmapForContributor(
-      report.raw.commits,
-      contributor.login,
-      contributor.timezone,
-    );
-  }, [contributor, report.raw, report.commits.activityHeatmap]);
+    return computeActivityHeatmap(report.commits.commits, contributor?.login);
+  }, [contributor, report.commits.commits]);
 
   const workPatternsData = useMemo(() => {
-    if (!contributor || !report.raw) {
+    if (!contributor) {
       return report.commits.workPatterns;
     }
-    return analyzeWorkPatterns(heatmapData);
-  }, [contributor, report.raw, report.commits.workPatterns, heatmapData]);
+    return analyzeWorkPatterns(report.commits.commits, contributor?.login);
+  }, [contributor, report.commits]);
 
-  const commitByWeekData = useMemo(() => {
-    if (!contributor || !report.raw) {
-      return report.commits.byWeek;
-    }
-    return computeByWeekForContributor(report.raw.commits, contributor.login);
-  }, [contributor, report.raw, report.commits.byWeek]);
+  const commitsPerWeek = useMemo(() => {
+    return computeCommitsPerWeek(report.commits.commits, contributor?.login);
+  }, [contributor, report.commits.commits]);
 
-  const pullRequestsData = useMemo(() => {
-    if (!contributor || !report.raw) {
-      return report.pullRequests;
-    }
-    return computePullsForContributor(report.raw.pullRequests, contributor.login);
-  }, [contributor, report.raw, report.pullRequests]);
+  const pullsPerWeek = useMemo(() => {
+    return computePullsPerWeek(report.pullRequests.pulls, contributor?.login);
+  }, [contributor, report.pullRequests.pulls]);
 
   const toolsByCategory = Object.entries(
     report.tooling.tools.reduce(
@@ -155,7 +142,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
       <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
         <ActivityHeatmapChart
           data={heatmapData}
-          contributors={report.contributors.topContributors}
+          contributors={report.contributors}
+          userProfiles={report.userProfiles}
           selectedContributor={contributor}
           onContributorChange={handleSelectContributor}
           primaryTimezone={report.contributors.primaryTimezone}
@@ -164,15 +152,16 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         <WorkPatternsCard data={workPatternsData} />
 
         <ContributorsSection
-          data={report.contributors}
+          contributors={report.contributors}
+          userProfiles={report.userProfiles}
           selectedContributor={selectedContributor}
           onSelectContributor={handleSelectContributor}
           onHoverContributor={handleHoverContributor}
         />
 
-        <CommitChart data={commitByWeekData} />
+        <CommitChart data={commitsPerWeek} />
 
-        <PullRequestChart data={pullRequestsData} />
+        <PullRequestChart data={pullsPerWeek} />
 
         <LanguageChart data={report.languages} />
       </section>
@@ -300,18 +289,20 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
               href={`${baseUrl}/watchers`}
             />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 5 * 0.03 }}
-          >
-            <StatCard
-              label="License"
-              value={report.basicStats.license}
-              icon={<Scale className="size-4" />}
-              href={`${baseUrl}/blob/${report.basicStats.defaultBranch}/LICENSE`}
-            />
-          </motion.div>
+          {report.basicStats.license && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: 5 * 0.03 }}
+            >
+              <StatCard
+                label="License"
+                value={report.basicStats.license}
+                icon={<Scale className="size-4" />}
+                href={`${baseUrl}/blob/${report.basicStats.defaultBranch}/LICENSE`}
+              />
+            </motion.div>
+          )}
         </div>
       </section>
     </div>

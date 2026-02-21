@@ -1,4 +1,7 @@
 import {
+  computeActivityHeatmap,
+  computeCommitsPerWeek,
+  computePullsPerWeek,
   countryCodeToEmojiFlag,
   formatNumber,
   relativeDateLabel,
@@ -7,15 +10,7 @@ import {
 } from '@git-repo-analyzer/core';
 import pc from 'picocolors';
 
-import {
-  badge,
-  barChart,
-  formatDuration,
-  heading,
-  heatmapRow,
-  metric,
-  progressBar,
-} from './cli-formatter';
+import { badge, barChart, heading, heatmapRow, metric, progressBar } from './cli-formatter';
 
 export function printReport(result: AnalysisResult): void {
   const { basicStats: s } = result;
@@ -63,11 +58,12 @@ export function printReport(result: AnalysisResult): void {
       ),
     );
   }
-  if (result.contributors.topContributors.length > 0) {
+  if (result.contributors.recentContributors.length > 0) {
     console.log();
-    for (const c of result.contributors.topContributors.slice(0, 5)) {
-      const flag = c.flag ? `${c.flag} ` : '';
-      const location = c.location ? ` ${pc.dim(`${flag}(${c.location})`)}` : '';
+    for (const c of result.contributors.recentContributors.slice(0, 5)) {
+      const profile = result.userProfiles.find(p => p.login === c.login);
+      const flag = profile?.flag ? `${profile.flag} ` : '';
+      const location = profile?.location ? ` ${pc.dim(`${flag}(${profile.location})`)}` : '';
       console.log(
         `  ${c.login.padEnd(20)} ${pc.dim(String(c.contributions) + ' commits')}${location}`,
       );
@@ -76,15 +72,10 @@ export function printReport(result: AnalysisResult): void {
 
   // Activity Heatmap
   console.log(heading('Activity Heatmap'));
+  const activityHeatmap = computeActivityHeatmap(result.commits.commits);
   console.log(pc.dim('       0   2   4   6   8   10  12  14  16  18  20  22   '));
   for (let day = 0; day < 7; day++) {
-    console.log(
-      heatmapRow(
-        day,
-        result.commits.activityHeatmap.grid[day]!,
-        result.commits.activityHeatmap.maxValue,
-      ),
-    );
+    console.log(heatmapRow(day, activityHeatmap.grid[day]!, activityHeatmap.maxValue));
   }
   console.log(pc.dim('      ╰──── morning ────╯╰──── daytime ───╯╰─ evening ─╯'));
 
@@ -108,9 +99,10 @@ export function printReport(result: AnalysisResult): void {
   // Commits
   console.log(heading('Commit Activity'));
   console.log(metric('Total', result.commits.totalCommits));
-  const recentCommitBuckets = Object.entries(result.commits.byWeek)
+
+  const recentCommitBuckets = Object.entries(computeCommitsPerWeek(result.commits.commits))
     .slice(-12)
-    .map(b => ({ label: b[0], value: b[1] }));
+    .map(b => ({ label: b[0], value: b[1].total }));
   if (recentCommitBuckets.length > 0) {
     console.log(barChart(recentCommitBuckets));
   }
@@ -156,16 +148,13 @@ export function printReport(result: AnalysisResult): void {
 
   // Pull Requests
   console.log(heading('Pull Requests'));
-  console.log(metric('Open', result.pullRequests.totalOpen));
-  console.log(metric('Merged', result.pullRequests.totalMerged));
-  console.log(metric('Closed (unmerged)', result.pullRequests.totalClosed));
-  if (result.pullRequests.avgMergeTimeHours != null) {
-    console.log(metric('Avg Merge Time', formatDuration(result.pullRequests.avgMergeTimeHours)));
-  }
+  console.log(metric('Open', result.pullRequests.counts.open));
+  console.log(metric('Merged', result.pullRequests.counts.merged));
+  console.log(metric('Closed (unmerged)', result.pullRequests.counts.closed));
 
-  const recentPullBuckets = Object.entries(result.pullRequests.byWeek)
+  const recentPullBuckets = Object.entries(computePullsPerWeek(result.pullRequests.pulls))
     .slice(-12)
-    .map(b => ({ label: b[0], value: b[1] }));
+    .map(b => ({ label: b[0], value: b[1].total }));
   if (recentPullBuckets.length > 0) {
     console.log(barChart(recentPullBuckets));
   }

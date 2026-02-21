@@ -5,13 +5,15 @@ export type {
   AnalysisResult,
   AnalysisResultWithRaw,
   ActivityHeatmap,
-  BucketByWeek,
+  UserProfile,
   LanguageAnalysis,
   PullAnalysis,
   WorkPatterns,
   HealthScoreAnalysis,
   HealthScore,
   AnalyzeOptions,
+  CommitsPerWeek,
+  PullsPerWeek,
 } from './types';
 export type { GitHubRawData, GitHubCommit, GitHubPullRequest } from './client/github-types';
 export { TOOL_REGISTRY, type ToolMeta, type ToolMetaWithFileMatches } from './tool-registry';
@@ -21,9 +23,8 @@ export { relativeDateLabel, formatWeekLabel, formatDate } from './utils/date-uti
 export { analyzeGitRepository } from './analyze-repo';
 export { formatNumber } from './utils/format-utils';
 export {
-  computeHeatmapForContributor,
-  formatTimezoneOffset,
-  computeByWeekForContributor,
+  computeActivityHeatmap,
   analyzeWorkPatterns,
+  computeCommitsPerWeek,
 } from './analyzers/commits';
-export { computePullsForContributor } from './analyzers/pull-requests';
+export { computePullsPerWeek } from './analyzers/pull-requests';

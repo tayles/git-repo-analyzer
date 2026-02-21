@@ -28,6 +28,7 @@ export interface GitHubRepoDetails {
 }
 
 export interface GitHubCommit {
+  sha: string;
   commit: {
     author: {
       name: string;
@@ -61,6 +62,7 @@ export interface GitHubCommit {
 }
 
 export interface GitHubPullRequest {
+  number: number;
   state: string;
   merged_at: string | null;
   created_at: string;

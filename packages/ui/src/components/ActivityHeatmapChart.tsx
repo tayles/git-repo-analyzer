@@ -1,7 +1,8 @@
 import {
-  formatTimezoneOffset,
   type ActivityHeatmap,
   type Contributor,
+  type ContributorAnalysis,
+  type UserProfile,
 } from '@git-repo-analyzer/core';
 import { Fragment } from 'react';
 
@@ -42,8 +43,9 @@ function getIntensityColor(value: number, max: number, theme: 'light' | 'dark'):
 
 interface ActivityHeatmapChartProps {
   data: ActivityHeatmap;
+  contributors: ContributorAnalysis;
+  userProfiles: UserProfile[];
   primaryTimezone: string | null;
-  contributors: Contributor[];
   /** When set, indicates the heatmap is filtered for a specific contributor */
   selectedContributor: Contributor | null;
   onContributorChange: (contributor: Contributor | null) => void;
@@ -52,22 +54,26 @@ interface ActivityHeatmapChartProps {
 export function ActivityHeatmapChart({
   data,
   contributors,
+  userProfiles,
   selectedContributor,
-  primaryTimezone,
+  primaryTimezone: _primaryTimezone,
   onContributorChange,
 }: ActivityHeatmapChartProps) {
   const theme = useTheme();
 
-  const timezoneLabel = formatTimezoneOffset(selectedContributor?.timezone ?? primaryTimezone);
+  const profile = selectedContributor
+    ? (userProfiles.find(p => p.login === selectedContributor.login) ?? null)
+    : null;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-2 select-text">
           <span className="flex-1">Activity Heatmap</span>
-          {contributors.length > 1 && (
+          {contributors.recentContributors.length > 1 && (
             <ContributorCombobox
-              contributors={contributors}
+              contributors={contributors.recentContributors}
+              userProfiles={userProfiles}
               selectedContributor={selectedContributor}
               onContributorChange={onContributorChange}
             />
@@ -161,9 +167,11 @@ export function ActivityHeatmapChart({
               ))}
               <span className="text-muted-foreground">More</span>
 
-              <span className="text-muted-foreground flex-1 text-right text-xs">
-                All times in {timezoneLabel}
-              </span>
+              {profile?.timezone && (
+                <span className="text-muted-foreground flex-1 text-right text-xs">
+                  Timezone: {profile.timezone}
+                </span>
+              )}
             </div>
           </div>
         </TooltipProvider>

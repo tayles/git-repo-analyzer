@@ -1,4 +1,4 @@
-import type { Contributor, ContributorAnalysis } from '@git-repo-analyzer/core';
+import type { Contributor, ContributorAnalysis, UserProfile } from '@git-repo-analyzer/core';
 import { useCallback } from 'react';
 
 import { cn } from '../lib/utils';
@@ -15,7 +15,8 @@ const TEAM_SIZE_LABELS = {
 } as const;
 
 interface ContributorsSectionProps {
-  data: ContributorAnalysis;
+  contributors: ContributorAnalysis;
+  userProfiles: UserProfile[];
   /** The currently selected contributor (null = none selected) */
   selectedContributor: Contributor | null;
   /** Called when a contributor is clicked. Pass the contributor to select, or null to deselect. */
@@ -24,7 +25,8 @@ interface ContributorsSectionProps {
 }
 
 export function ContributorsSection({
-  data,
+  contributors,
+  userProfiles,
   selectedContributor,
   onSelectContributor,
   onHoverContributor,
@@ -39,14 +41,23 @@ export function ContributorsSection({
     [onSelectContributor, onHoverContributor],
   );
 
+  const decoratedContributors = contributors.topContributors.slice(0, 10).map(contributor => {
+    const profile = userProfiles.find(p => p.login === contributor.login);
+    return {
+      contributor,
+      profile,
+      url: profile ? profile.htmlUrl : `https://github.com/${contributor.login}`,
+    };
+  });
+
   return (
     <Card className="col-span-2">
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>
-          <Badge variant="secondary">{TEAM_SIZE_LABELS[data.teamSize]}</Badge>
+          <Badge variant="secondary">{TEAM_SIZE_LABELS[contributors.teamSize]}</Badge>
           <span className="text-muted-foreground text-sm font-normal">
-            {data.totalContributors} total / bus factor: {data.busFactor}
+            {contributors.totalContributors} total / bus factor: {contributors.busFactor}
           </span>
         </CardTitle>
         <CardAction>
@@ -61,39 +72,42 @@ export function ContributorsSection({
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
-          {data.topContributors.map(c => {
-            const isSelected = selectedContributor?.login === c.login;
+          {decoratedContributors.map(c => {
+            const isSelected = selectedContributor?.login === c.contributor.login;
             return (
               <a
-                key={c.login}
-                href={c.htmlUrl}
+                key={c.contributor.login}
+                href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
                   'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
                   isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
                 )}
-                onClick={() => handleSelectContributor(isSelected ? null : c)}
-                onMouseEnter={() => onHoverContributor(c)}
+                onClick={() => handleSelectContributor(isSelected ? null : c.contributor)}
+                onMouseEnter={() => onHoverContributor(c.contributor)}
                 onMouseLeave={() => onHoverContributor(null)}
               >
-                <GitHubUserAvatar uid={c.id} />
+                <GitHubUserAvatar uid={c.profile?.id} />
 
                 <div className="min-w-0 flex-1 select-text">
                   <div className="flex items-center gap-1.5">
-                    <p className="truncate text-sm font-medium">{c.login}</p>
-                    {c.flag && (
-                      <span className="text-base leading-none" title={c.country ?? undefined}>
-                        {c.flag}
+                    <p className="truncate text-sm font-medium">{c.contributor.login}</p>
+                    {c.profile?.flag && (
+                      <span
+                        className="text-base leading-none"
+                        title={c.profile.country ?? undefined}
+                      >
+                        {c.profile.flag}
                       </span>
                     )}
                   </div>
                   <p className="text-muted-foreground text-xs">
-                    {c.contributions.toLocaleString()} commits
-                    {c.location && (
+                    {c.contributor.contributions.toLocaleString()} commits
+                    {c.profile?.location && (
                       <>
                         {' · '}
-                        <span title={c.timezone ?? undefined}>{c.location}</span>
+                        <span title={c.profile?.timezone ?? undefined}>{c.profile?.location}</span>
                       </>
                     )}
                   </p>

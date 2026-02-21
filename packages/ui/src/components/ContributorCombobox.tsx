@@ -1,4 +1,4 @@
-import { type Contributor } from '@git-repo-analyzer/core';
+import { type Contributor, type UserProfile } from '@git-repo-analyzer/core';
 import { GlobeIcon } from 'lucide-react';
 
 import { GitHubUserAvatar } from './GitHubUserAvatar';
@@ -14,16 +14,28 @@ import { InputGroupAddon } from './ui/input-group';
 
 interface ContributorComboboxProps {
   contributors: Contributor[];
+  userProfiles: UserProfile[];
   selectedContributor: Contributor | null;
   onContributorChange: (contributor: Contributor | null) => void;
 }
 
 export function ContributorCombobox({
   contributors,
+  userProfiles,
   selectedContributor,
   onContributorChange,
 }: ContributorComboboxProps) {
-  const items = [null, ...contributors];
+  const items = [
+    null,
+    ...contributors.map(contributor => {
+      const profile = userProfiles.find(p => p.login === contributor.login);
+      return { contributor, profile };
+    }),
+  ];
+
+  const profile = selectedContributor
+    ? (userProfiles.find(p => p.login === selectedContributor.login) ?? null)
+    : null;
 
   return (
     <Combobox
@@ -34,22 +46,22 @@ export function ContributorCombobox({
     >
       <ComboboxInput placeholder="All contributors" showClear>
         <InputGroupAddon>
-          {selectedContributor ? (
-            <GitHubUserAvatar uid={selectedContributor.id} className="size-4" />
-          ) : (
-            <GlobeIcon />
-          )}
+          {profile ? <GitHubUserAvatar uid={profile.id} className="size-4" /> : <GlobeIcon />}
         </InputGroupAddon>
       </ComboboxInput>
       <ComboboxContent alignOffset={-28} className="w-60">
         <ComboboxEmpty>No contributors found</ComboboxEmpty>
         <ComboboxList>
           {c => (
-            <ComboboxItem key={c?.id ?? 'all'} value={c}>
+            <ComboboxItem
+              key={c?.contributor.login ?? 'all'}
+              value={c?.contributor ?? null}
+              onMouseEnter={() => onContributorChange(c.contributor ?? null)}
+            >
               {c ? (
                 <>
-                  <GitHubUserAvatar uid={c.id} className="size-4" />
-                  <span>{c.login}</span>
+                  <GitHubUserAvatar uid={c.profile?.id} className="size-4" />
+                  <span>{c.contributor.login}</span>
                 </>
               ) : (
                 <>

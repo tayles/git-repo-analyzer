@@ -1,45 +1,30 @@
-import type {
-  AnalysisResult,
-  AnalysisResultWithRaw,
-  Contributor,
-  GitHubRawData,
-} from '@git-repo-analyzer/core';
+import type { AnalysisResult, Contributor, GitHubRawData } from '@git-repo-analyzer/core';
 
-import MockResultFacebookDocusaurusJson from '../data/facebook__docusaurus.json';
+import MockRawDataFacebookDocusaurusJson from '../data/facebook__docusaurus.raw.json';
+import MockResultFacebookDocusaurusJson from '../data/facebook__docusaurus.report.json';
 
 /**
  * Mock contributors for testing
  */
 export const mockContributors: Contributor[] = [
   {
-    id: 123,
-    name: 'Alice Smith',
     login: 'alice',
-    avatarUrl: 'https://avatars.githubusercontent.com/u/1?v=4',
     contributions: 150,
-    htmlUrl: 'https://github.com/alice',
-    location: 'San Francisco, CA',
-    country: 'United States',
-    countryCode: 'US',
-    flag: '🇺🇸',
-    timezone: 'America/Los_Angeles',
   },
 ];
 
-export const mockResultWithRawData: AnalysisResultWithRaw =
-  MockResultFacebookDocusaurusJson as unknown as AnalysisResultWithRaw;
+export const mockResult: AnalysisResult =
+  MockResultFacebookDocusaurusJson as unknown as AnalysisResult;
 
-const { raw: rawData, ...rest } = mockResultWithRawData;
-
-export const mockRawData: GitHubRawData = rawData;
-export const mockResult: AnalysisResult = rest;
+export const mockRawData: GitHubRawData =
+  MockRawDataFacebookDocusaurusJson as unknown as GitHubRawData;
 
 /**
  * Create a mock analysis result
  */
 export function createMockAnalysisResult(
   _repository: string = 'test-org/test-repo',
-  overrides: Partial<AnalysisResultWithRaw> = {},
-): AnalysisResultWithRaw {
-  return { ...mockResultWithRawData, ...overrides };
+  overrides: Partial<AnalysisResult> = {},
+): AnalysisResult {
+  return { ...mockResult, ...overrides };
 }

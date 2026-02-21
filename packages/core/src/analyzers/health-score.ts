@@ -173,10 +173,10 @@ function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
   }
 
   // PR workflow
-  if (data.pullRequests.totalMerged > 10) {
+  if (data.pullRequests.counts.merged > 10) {
     score += 5;
     details.push({ message: 'Active PR workflow', delta: 5 });
-  } else if (data.pullRequests.totalMerged > 0) {
+  } else if (data.pullRequests.counts.merged > 0) {
     score += 2;
     details.push({ message: 'Some PR activity', delta: 2 });
   } else {

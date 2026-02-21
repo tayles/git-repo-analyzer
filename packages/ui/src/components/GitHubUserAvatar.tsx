@@ -2,11 +2,13 @@ import { cn } from '../lib/utils';
 import { IconWithFallback } from './IconWithFallback';
 
 interface GitHubUserAvatarProps {
-  uid: number;
+  uid: number | null | undefined;
   className?: string;
 }
 
 export function GitHubUserAvatar({ uid, className }: GitHubUserAvatarProps) {
+  if (!uid) return null;
+
   const url = `https://avatars.githubusercontent.com/u/${uid}?s=48&v=4`;
 
   return (
