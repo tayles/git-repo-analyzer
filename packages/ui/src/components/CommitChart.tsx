@@ -2,14 +2,7 @@ import { formatWeekLabel, type CommitsPerWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import {
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from './ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 const CHART_COLORS = [
   'var(--chart-1)',
@@ -30,13 +23,7 @@ export function CommitChart({ data }: CommitChartProps) {
   // Collect all unique commit types across visible weeks
   const allTypes = Array.from(new Set(entries.flatMap(([, v]) => Object.keys(v.byType)))).sort();
 
-  const displayData = entries.map(([week, v]) => {
-    const row: Record<string, string | number> = { week: formatWeekLabel(week) };
-    for (const type of allTypes) {
-      row[type] = v.byType[type] ?? 0;
-    }
-    return row;
-  });
+  const displayData = entries.map(([week, v]) => ({ week: formatWeekLabel(week), total: v.total }));
 
   const chartConfig = Object.fromEntries(
     allTypes.map((type, i) => [
@@ -70,16 +57,7 @@ export function CommitChart({ data }: CommitChartProps) {
               />
               <YAxis tickLine={false} axisLine={false} fontSize={10} />
               <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              {allTypes.map((type, i) => (
-                <Bar
-                  key={type}
-                  dataKey={type}
-                  stackId="a"
-                  fill={`var(--color-${type})`}
-                  radius={i === allTypes.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
-                />
-              ))}
+              <Bar dataKey="total" stackId="a" fill={`var(--chart-1)`} radius={[0, 0, 0, 0]} />
             </BarChart>
           </ChartContainer>
         )}
