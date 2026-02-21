@@ -2,6 +2,7 @@ import type { GitHubPullRequest } from '../client/github-types';
 import type {
   DecoratedPullRequest,
   PullAnalysis,
+  PullAnalysisCounts,
   PullsPerWeek,
   PullStatus,
   UserProfile,
@@ -26,7 +27,7 @@ export function processPullRequests(
   };
 }
 
-export function calculateCounts(pullRequests: GitHubPullRequest[]) {
+export function calculateCounts(pullRequests: GitHubPullRequest[]): PullAnalysisCounts {
   return pullRequests.reduce(
     (acc, pr) => {
       acc.total += 1;
