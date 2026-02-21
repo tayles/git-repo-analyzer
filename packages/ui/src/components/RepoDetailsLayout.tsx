@@ -161,7 +161,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
         <CommitChart data={commitsPerWeek} />
 
-        <PullRequestChart data={pullsPerWeek} />
+        <PullRequestChart pulls={report.pullRequests} data={pullsPerWeek} />
 
         <LanguageChart data={report.languages} />
       </section>

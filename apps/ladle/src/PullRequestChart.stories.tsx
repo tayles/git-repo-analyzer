@@ -13,6 +13,6 @@ const data = computePullsPerWeek(report.pullRequests.pulls);
 
 export const PullRequestCharts: Story = () => (
   <div className="max-w-2xl p-4">
-    <PullRequestChart data={data} />
+    <PullRequestChart pulls={report.pullRequests} data={data} />
   </div>
 );

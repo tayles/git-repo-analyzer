@@ -173,11 +173,13 @@ export function computeCommitsPerWeek(
     if (!filterByLogin || commit.author === filterByLogin) {
       const bucket = commit.date.weekStart;
       const author = commit.author ?? 'unknown';
+      const type = commit.message.type ?? 'other';
       if (!acc[bucket]) {
-        acc[bucket] = { total: 0, byAuthor: {} };
+        acc[bucket] = { total: 0, byAuthor: {}, byType: {} };
       }
       acc[bucket].total++;
       acc[bucket].byAuthor[author] = (acc[bucket].byAuthor[author] ?? 0) + 1;
+      acc[bucket].byType[type] = (acc[bucket].byType[type] ?? 0) + 1;
     }
     return acc;
   }, {} as CommitsPerWeek);

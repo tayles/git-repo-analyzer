@@ -107,7 +107,10 @@ export interface WorkPatterns {
  * @example
  * { '2023-01-02': { user1: 5, user2: 3 }, '2023-01-09': { user3: 1 } }
  */
-export type CommitsPerWeek = Record<string, { total: number; byAuthor: Record<string, number> }>;
+export type CommitsPerWeek = Record<
+  string,
+  { total: number; byType: Record<string, number>; byAuthor: Record<string, number> }
+>;
 
 /**
  * @example

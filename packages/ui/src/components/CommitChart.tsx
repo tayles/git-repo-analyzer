@@ -2,14 +2,22 @@ import { formatWeekLabel, type CommitsPerWeek } from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from './ui/chart';
 
-const chartConfig = {
-  count: {
-    label: 'Commits',
-    color: 'var(--chart-1)',
-  },
-} satisfies ChartConfig;
+const CHART_COLORS = [
+  'var(--chart-1)',
+  'var(--chart-2)',
+  'var(--chart-3)',
+  'var(--chart-4)',
+  'var(--chart-5)',
+];
 
 interface CommitChartProps {
   data: CommitsPerWeek;
@@ -17,23 +25,31 @@ interface CommitChartProps {
 
 export function CommitChart({ data }: CommitChartProps) {
   // Show last 12 weeks for readability
-  const displayData = Object.entries(data)
-    .slice(-12)
-    .map(([week, v]) => ({
-      week: formatWeekLabel(week),
-      count: Object.values(v),
-    }));
+  const entries = Object.entries(data).slice(-12);
+
+  // Collect all unique commit types across visible weeks
+  const allTypes = Array.from(new Set(entries.flatMap(([, v]) => Object.keys(v.byType)))).sort();
+
+  const displayData = entries.map(([week, v]) => {
+    const row: Record<string, string | number> = { week: formatWeekLabel(week) };
+    for (const type of allTypes) {
+      row[type] = v.byType[type] ?? 0;
+    }
+    return row;
+  });
+
+  const chartConfig = Object.fromEntries(
+    allTypes.map((type, i) => [
+      type,
+      { label: type, color: CHART_COLORS[i % CHART_COLORS.length] },
+    ]),
+  ) satisfies ChartConfig;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 select-text">
           <span>Commit Activity</span>
-          {/* {displayData.length > 0 && (
-            <span className="text-muted-foreground text-sm font-normal">
-              {data.totalCommits} total
-            </span>
-          )} */}
         </CardTitle>
       </CardHeader>
       <CardContent className="overflow-auto">
@@ -54,7 +70,16 @@ export function CommitChart({ data }: CommitChartProps) {
               />
               <YAxis tickLine={false} axisLine={false} fontSize={10} />
               <ChartTooltip content={<ChartTooltipContent />} />
-              <Bar dataKey="count" fill="var(--color-count)" radius={[2, 2, 0, 0]} />
+              <ChartLegend content={<ChartLegendContent />} />
+              {allTypes.map((type, i) => (
+                <Bar
+                  key={type}
+                  dataKey={type}
+                  stackId="a"
+                  fill={`var(--color-${type})`}
+                  radius={i === allTypes.length - 1 ? [2, 2, 0, 0] : [0, 0, 0, 0]}
+                />
+              ))}
             </BarChart>
           </ChartContainer>
         )}
