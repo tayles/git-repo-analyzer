@@ -27,7 +27,7 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
       <PopoverContent side="bottom" align="center" className="w-auto max-w-md p-2 text-sm">
         <p className="p-2">Files associated with this tool:</p>
         <ul className="flex list-inside list-disc flex-col p-2">
-          {tool.paths.map(path => (
+          {tool.paths.slice(0, 5).map(path => (
             <li key={path}>
               <Button variant="link" size="sm" asChild>
                 <a
@@ -41,18 +41,22 @@ export function ToolCard({ repo, tool }: ToolCardProps) {
             </li>
           ))}
         </ul>
-        <hr />
-        <Button variant="link" size="sm" asChild className="mt-2">
-          <a
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-          >
-            Read the docs
-            <ExternalLink className="size-3.5" />
-          </a>
-        </Button>
+        {tool.url && (
+          <>
+            <hr />
+            <Button variant="link" size="sm" asChild className="mt-2">
+              <a
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+              >
+                Read the docs
+                <ExternalLink className="size-3.5" />
+              </a>
+            </Button>
+          </>
+        )}
       </PopoverContent>
     </Popover>
   );
