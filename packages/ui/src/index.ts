@@ -37,6 +37,7 @@ export { SidePanelHomePage } from './components/sidepanel/SidePanelHomePage';
 export { SidePanelLoadingPage } from './components/sidepanel/SidePanelLoadingPage';
 export { SidePanelRepoDetailsPage } from './components/sidepanel/SidePanelRepoDetailsPage';
 export { StatCard } from './components/StatCard';
+export { TechStackSection } from './components/TechStackSection';
 export { ThemeToggle } from './components/ThemeToggle';
 export { ToolCard } from './components/ToolCard';
 export { ToolLogo } from './components/ToolLogo';

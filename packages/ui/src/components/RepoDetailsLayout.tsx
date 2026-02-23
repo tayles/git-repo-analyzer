@@ -1,4 +1,4 @@
-import type { AnalysisResult, Contributor, ToolMetaWithFileMatches } from '@git-repo-analyzer/core';
+import type { AnalysisResult, Contributor } from '@git-repo-analyzer/core';
 import {
   analyzeWorkPatterns,
   computeActivityHeatmap,
@@ -32,7 +32,7 @@ import { LanguageLogo } from './LanguageLogo';
 import { PullRequestChart } from './PullRequestChart';
 import { RepoName } from './RepoName';
 import { StatCard } from './StatCard';
-import { ToolCard } from './ToolCard';
+import { TechStackSection } from './TechStackSection';
 import { Button } from './ui/button';
 import { WorkPatternsCard } from './WorkPatternsCard';
 
@@ -76,21 +76,6 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
     return computePullsPerWeek(report.pullRequests.pulls, contributor?.login);
   }, [contributor, report.pullRequests.pulls]);
 
-  const toolsByCategory = Object.entries(
-    report.tooling.tools
-      .filter(t => t.category !== 'Community')
-      .reduce(
-        (acc, tool) => {
-          if (!acc[tool.category]) {
-            acc[tool.category] = [];
-          }
-          acc[tool.category].push(tool);
-          return acc;
-        },
-        {} as Record<string, ToolMetaWithFileMatches[]>,
-      ),
-  );
-
   return (
     <div className="flex h-full flex-col justify-start gap-2">
       <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-2 md:py-4">
@@ -121,26 +106,10 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         </Button>
       </div>
 
-      {/* Tools */}
-      <section>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] items-end gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
-          {toolsByCategory.map(([category, tools], categoryIndex) =>
-            tools.map((tool, toolIndex) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, delay: (categoryIndex + toolIndex) * 0.03 }}
-              >
-                {toolIndex === 0 && (
-                  <h3 className="text-muted-foreground mb-3 text-sm font-semibold">{category}</h3>
-                )}
-                <ToolCard repo={report.basicStats.fullName} tool={tool} />
-              </motion.div>
-            )),
-          )}
-        </div>
-      </section>
+      {/* <p className="text-muted-foreground text-sm">{report.basicStats.description}</p> */}
+
+      {/* Tech Stack */}
+      <TechStackSection repo={report.basicStats.fullName} tools={report.tooling.tools} />
 
       <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
         <ActivityHeatmapChart

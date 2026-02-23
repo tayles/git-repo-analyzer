@@ -27,7 +27,6 @@ export function WorkPatternsCard({ data }: WorkPatternsCardProps) {
         </CardTitle>
         <CardAction>
           <InfoButton title="Work Patterns">
-            <p className="font-medium"></p>
             <p className="text-muted-foreground mt-1">
               Analyzes commit times to classify the project as Professional (mostly 9-5), Hobbyist
               (evenings/weekends), or Mixed. Helps understand the development culture of a project.

@@ -14,7 +14,7 @@ const contributors = report.contributors;
 const userProfiles = report.userProfiles;
 const selectedContributor = contributors.recentContributors[0] ?? null;
 
-export const AllVariants: Story = () => (
+export const ActivityHeatmapCharts: Story = () => (
   <div className="max-w-2xl space-y-4 p-4">
     <h3 className="text-sm font-medium">Default (all contributors)</h3>
     <ActivityHeatmapChart
