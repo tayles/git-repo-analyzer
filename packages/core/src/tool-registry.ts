@@ -56,6 +56,16 @@ const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://github.com/features/copilot',
     globs: ['.github/copilot-instructions.md', '.copilot-instructions.md'],
   },
+  'OpenAI Codex': {
+    logo: 'openai',
+    url: 'https://openai.com/blog/openai-codex',
+    globs: ['.codex', '.codex/config.toml'],
+  },
+  'Google Gemini': {
+    logo: 'google',
+    url: 'https://geminicli.com/',
+    globs: ['.gemini'],
+  },
   Cursor: {
     logo: 'cursor',
     url: 'https://cursor.com',
@@ -212,6 +222,16 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://www.rust-lang.org',
     globs: ['rust-toolchain', 'rust-toolchain.toml'],
   },
+  Storybook: {
+    logo: 'storybook',
+    url: 'https://storybook.js.org',
+    globs: ['.storybook'],
+  },
+  Ladle: {
+    logo: null,
+    url: 'https://ladle.dev',
+    globs: ['.ladle'],
+  },
 };
 
 const TESTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -279,7 +299,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     globs: ['.cpplint'],
   },
   EditorConfig: {
-    logo: 'editorconfig',
+    logo: null,
     url: 'https://editorconfig.org',
     globs: ['.editorconfig'],
   },
@@ -379,6 +399,11 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
 };
 
 const MONOREPO_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  Bazel: {
+    logo: 'bazel',
+    url: 'https://bazel.build',
+    globs: ['WORKSPACE', 'BUILD', 'BUILD.bazel'],
+  },
   Lerna: {
     logo: 'lerna',
     url: 'https://lerna.js.org',
@@ -516,7 +541,7 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
 
 const IDES: Record<ToolName, ToolMetaBasic> = {
   'VS Code': {
-    logo: 'https://upload.wiimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg',
+    logo: null,
     url: 'https://code.visualstudio.com',
     globs: ['.vscode'],
   },
