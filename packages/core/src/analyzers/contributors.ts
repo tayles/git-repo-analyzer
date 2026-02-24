@@ -1,5 +1,6 @@
 import type { GitHubCommit, GitHubContributor } from '../client/github-types';
 import type { Contributor, ContributorAnalysis, TeamSize, UserProfile } from '../types';
+import { calculateBusFactor } from '../utils/bus-factor';
 
 export function processContributors(
   contributors: GitHubContributor[],
@@ -56,7 +57,7 @@ export function processContributors(
   return {
     totalContributors: contributors.length,
     teamSize: classifyTeamSize(contributors.length),
-    busFactor: 1,
+    busFactor: calculateBusFactor(topContributors),
     primaryCountry,
     primaryCountryCode,
     primaryTimezone,
@@ -71,19 +72,3 @@ export function classifyTeamSize(count: number): TeamSize {
   if (count <= 20) return 'medium';
   return 'large';
 }
-
-// function calculateBusFactor(contributors: Contributor[]): number {
-//   if (contributors.length === 0) return 0;
-
-//   const total = contributors.reduce((sum, c) => sum + c.contributions, 0);
-//   if (total === 0) return 0;
-
-//   let accumulated = 0;
-//   for (let i = 0; i < contributors.length; i++) {
-//     accumulated += contributors[i]!.contributions;
-//     if (accumulated / total >= 0.5) {
-//       return i + 1;
-//     }
-//   }
-//   return contributors.length;
-// }
