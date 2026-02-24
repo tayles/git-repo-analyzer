@@ -41,6 +41,29 @@ export function printReport(result: AnalysisResult): void {
   if (s.archived) console.log(metric('Status', pc.yellow('ARCHIVED')));
   if (s.topics.length > 0) console.log(metric('Topics', s.topics.join(', ')));
 
+  // Tooling
+  if (result.tooling.tools.length > 0) {
+    console.log(heading('Tech Stack'));
+    const byCategory: Record<string, ToolMetaWithFileMatches[]> = result.tooling.tools.reduce(
+      (acc, tool) => {
+        acc[tool.category] = acc[tool.category] || [];
+        acc[tool.category].push(tool);
+        return acc;
+      },
+      {} as Record<string, ToolMetaWithFileMatches[]>,
+    );
+
+    // for (const tool of result.tooling.tools) {
+    //   console.log(`  ${pc.bold(tool.category)}: ${tool.name}`);
+    // }
+    for (const [category, tools] of Object.entries(byCategory)) {
+      console.log(`  ${pc.dim(category)}`);
+      for (const tool of tools) {
+        console.log(`   ${pc.dim('-')} ${tool.name}`);
+      }
+    }
+  }
+
   // Languages
   if (result.languages.langs.length > 0) {
     console.log(heading('Languages'));
@@ -51,7 +74,10 @@ export function printReport(result: AnalysisResult): void {
 
   // Contributors
   console.log(heading('Contributors'));
-  console.log(metric('Total', result.contributors.totalContributors));
+  const totalContributors = warnings.contributorsCapped
+    ? `${result.contributors.totalContributors}+`
+    : result.contributors.totalContributors;
+  console.log(metric('Total', totalContributors));
   console.log(metric('Team Size', result.contributors.teamSize));
   console.log(metric('Bus Factor', result.contributors.busFactor));
   if (result.contributors.primaryCountry) {
@@ -83,9 +109,12 @@ export function printReport(result: AnalysisResult): void {
   }
   console.log(pc.dim('      ╰──── morning ────╯╰──── daytime ───╯╰─ evening ─╯'));
   if (warnings.contributorsMissingTimezone > 0) {
+    console.log('');
     console.log(
-      pc.dim(
-        `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — activity times shown as UTC`,
+      pc.yellow(
+        pc.dim(
+          `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — activity times shown as UTC`,
+        ),
       ),
     );
   }
@@ -107,16 +136,22 @@ export function printReport(result: AnalysisResult): void {
   );
   console.log(metric('Weekends', `${result.commits.workPatterns.weekendsPercent}%`));
   if (warnings.contributorsMissingTimezone > 0) {
+    console.log('');
     console.log(
-      pc.dim(
-        `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — patterns may be approximate`,
+      pc.yellow(
+        pc.dim(
+          `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — patterns may be approximate`,
+        ),
       ),
     );
   }
 
   // Commits
   console.log(heading('Commit Activity'));
-  console.log(metric('Total', result.commits.totalCommits));
+  const commitTotal = warnings.commitsCapped
+    ? `${result.commits.totalCommits}+`
+    : result.commits.totalCommits;
+  console.log(metric('Total', commitTotal));
 
   const recentCommitBuckets = Object.entries(computeCommitsPerWeek(result.commits.commits))
     .slice(-12)
@@ -125,7 +160,8 @@ export function printReport(result: AnalysisResult): void {
     console.log(barChart(recentCommitBuckets));
   }
   if (warnings.commitsCapped) {
-    console.log(pc.dim(`  ⚠︎ Showing last ${COMMIT_FETCH_LIMIT} commits only`));
+    console.log('');
+    console.log(pc.yellow(pc.dim(`  ⚠︎ Showing last ${COMMIT_FETCH_LIMIT} commits only`)));
   }
 
   // // Commit Conventions
@@ -169,6 +205,10 @@ export function printReport(result: AnalysisResult): void {
 
   // Pull Requests
   console.log(heading('Pull Requests'));
+  const prTotal = warnings.pullRequestsCapped
+    ? `${result.pullRequests.counts.total}+`
+    : result.pullRequests.counts.total;
+  console.log(metric('Total', prTotal));
   console.log(metric('Open', result.pullRequests.counts.open));
   console.log(metric('Merged', result.pullRequests.counts.merged));
   console.log(metric('Closed (unmerged)', result.pullRequests.counts.closed));
@@ -180,7 +220,8 @@ export function printReport(result: AnalysisResult): void {
     console.log(barChart(recentPullBuckets));
   }
   if (warnings.pullRequestsCapped) {
-    console.log(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests only`));
+    console.log('');
+    console.log(pc.yellow(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests only`)));
   }
 
   // // Bot Activity
@@ -204,29 +245,6 @@ export function printReport(result: AnalysisResult): void {
   //     console.log();
   //   }
   // }
-
-  // Tooling
-  if (result.tooling.tools.length > 0) {
-    console.log(heading('Tooling'));
-    const byCategory: Record<string, ToolMetaWithFileMatches[]> = result.tooling.tools.reduce(
-      (acc, tool) => {
-        acc[tool.category] = acc[tool.category] || [];
-        acc[tool.category].push(tool);
-        return acc;
-      },
-      {} as Record<string, ToolMetaWithFileMatches[]>,
-    );
-
-    // for (const tool of result.tooling.tools) {
-    //   console.log(`  ${pc.bold(tool.category)}: ${tool.name}`);
-    // }
-    for (const [category, tools] of Object.entries(byCategory)) {
-      console.log(`  ${pc.dim(category)}`);
-      for (const tool of tools) {
-        console.log(`   ${pc.dim('-')} ${tool.name}`);
-      }
-    }
-  }
 
   // Health Score
   console.log(heading('Health Score'));

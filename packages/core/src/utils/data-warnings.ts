@@ -11,6 +11,8 @@ export interface DataWarnings {
   commitsCapped: boolean;
   /** True when the pull-request dataset appears to be capped at the pagination limit */
   pullRequestsCapped: boolean;
+  /** True when the contributor dataset appears to be capped at the pagination limit */
+  contributorsCapped: boolean;
   /** Number of recent contributors whose timezone could not be determined */
   contributorsMissingTimezone: number;
   /** Total number of recent contributors */
@@ -27,6 +29,7 @@ export interface DataWarnings {
 export function computeDataWarnings(result: AnalysisResult): DataWarnings {
   const commitsCapped = result.commits.commits.length >= COMMIT_FETCH_LIMIT;
   const pullRequestsCapped = result.pullRequests.pulls.length >= PR_FETCH_LIMIT;
+  const contributorsCapped = result.contributors.topContributors.length >= CONTRIBUTORS_FETCH_LIMIT;
 
   const recentLogins = new Set(result.contributors.recentContributors.map(c => c.login));
   const profilesForRecent = result.userProfiles.filter(p => recentLogins.has(p.login));
@@ -35,6 +38,7 @@ export function computeDataWarnings(result: AnalysisResult): DataWarnings {
   return {
     commitsCapped,
     pullRequestsCapped,
+    contributorsCapped,
     contributorsMissingTimezone,
     totalRecentContributors: result.contributors.recentContributors.length,
   };
