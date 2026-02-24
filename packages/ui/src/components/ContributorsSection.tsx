@@ -1,4 +1,9 @@
-import type { Contributor, ContributorAnalysis, UserProfile } from '@git-repo-analyzer/core';
+import {
+  COMMIT_FETCH_LIMIT,
+  CONTRIBUTORS_FETCH_LIMIT,
+  type ContributorAnalysis,
+  type UserProfile,
+} from '@git-repo-analyzer/core';
 import { useCallback, useState } from 'react';
 
 import { cn } from '../lib/utils';
@@ -19,23 +24,23 @@ interface ContributorsSectionProps {
   contributors: ContributorAnalysis;
   userProfiles: UserProfile[];
   /** The currently selected contributor (null = none selected) */
-  selectedContributor: Contributor | null;
+  selectedUserProfile: UserProfile | null;
   /** Called when a contributor is clicked. Pass the contributor to select, or null to deselect. */
-  onSelectContributor: (contributor: Contributor | null) => void;
-  onHoverContributor: (contributor: Contributor | null) => void;
+  onSelectContributor: (contributor: UserProfile | null) => void;
+  onHoverContributor: (contributor: UserProfile | null) => void;
 }
 
 export function ContributorsSection({
   contributors,
   userProfiles,
-  selectedContributor,
+  selectedUserProfile,
   onSelectContributor,
   onHoverContributor,
 }: ContributorsSectionProps) {
   const [tab, setTab] = useState<'recent' | 'top'>('recent');
 
   const handleSelectContributor = useCallback(
-    (contributor: Contributor | null) => {
+    (contributor: UserProfile | null) => {
       onSelectContributor(contributor);
       if (!contributor) {
         onHoverContributor(null);
@@ -56,6 +61,14 @@ export function ContributorsSection({
     };
   });
 
+  const numContributors =
+    contributors.totalContributors >= CONTRIBUTORS_FETCH_LIMIT
+      ? `${CONTRIBUTORS_FETCH_LIMIT}+`
+      : contributors.totalContributors.toString();
+
+  const showTabs =
+    contributors.recentContributors.length > 0 && contributors.topContributors.length > 0;
+
   return (
     <Card className="md:col-span-2">
       <CardHeader>
@@ -63,16 +76,18 @@ export function ContributorsSection({
           <span>Contributors</span>
           <Badge variant="secondary">{TEAM_SIZE_LABELS[contributors.teamSize]}</Badge>
           <span className="text-muted-foreground flex-1 text-sm font-normal">
-            {contributors.totalContributors} total / bus factor: {contributors.busFactor}
+            {numContributors} total / bus factor: {contributors.busFactor}
           </span>
-          <Tabs value={tab} onValueChange={v => setTab(v as 'recent' | 'top')}>
-            <TabsList>
-              <TabsTrigger value="recent">Recent</TabsTrigger>
-              <TabsTrigger value="top">All Time</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          {showTabs && (
+            <Tabs value={tab} onValueChange={v => setTab(v as 'recent' | 'top')}>
+              <TabsList>
+                <TabsTrigger value="recent">Recent</TabsTrigger>
+                <TabsTrigger value="top">All Time</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          )}
           <InfoButton title="Contributors">
-            <p className="text-muted-foreground mt-1">
+            <p className="text-muted-foreground">
               Shows top contributors by commit count. Bus factor indicates how many key developers
               the project depends on — a higher number means knowledge is better distributed across
               the team.
@@ -83,7 +98,7 @@ export function ContributorsSection({
       <CardContent>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
           {decoratedContributors.map(c => {
-            const isSelected = selectedContributor?.login === c.contributor.login;
+            const isSelected = selectedUserProfile?.login === c.contributor.login;
             return (
               <a
                 key={c.contributor.login}
@@ -94,8 +109,8 @@ export function ContributorsSection({
                   'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
                   isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
                 )}
-                onClick={() => handleSelectContributor(isSelected ? null : c.contributor)}
-                onMouseEnter={() => onHoverContributor(c.contributor)}
+                onClick={() => handleSelectContributor(isSelected ? null : (c.profile ?? null))}
+                onMouseEnter={() => onHoverContributor(c.profile ?? null)}
                 onMouseLeave={() => onHoverContributor(null)}
               >
                 <GitHubUserAvatar uid={c.profile?.id} />

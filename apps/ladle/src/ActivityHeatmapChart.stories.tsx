@@ -24,6 +24,7 @@ export const ActivityHeatmapCharts: Story = () => (
       selectedContributor={null}
       onContributorChange={() => {}}
       primaryTimezone={null}
+      contributorsMissingTimezone={4}
     />
 
     <h3 className="text-sm font-medium">Filtered by contributor (with timezone)</h3>
@@ -36,7 +37,7 @@ export const ActivityHeatmapCharts: Story = () => (
       onContributorChange={() => {}}
     />
 
-    <h3 className="text-sm font-medium">Filtered by contributor (UTC fallback)</h3>
+    <h3 className="text-sm font-medium">Filtered by contributor (UTC fallback, no warning)</h3>
     <ActivityHeatmapChart
       data={activityHeatmap}
       contributors={contributors}
@@ -44,6 +45,7 @@ export const ActivityHeatmapCharts: Story = () => (
       selectedContributor={selectedContributor}
       onContributorChange={() => {}}
       primaryTimezone={null}
+      contributorsMissingTimezone={0}
     />
   </div>
 );

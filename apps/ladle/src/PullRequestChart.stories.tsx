@@ -12,7 +12,14 @@ const report = createMockAnalysisResult('facebook/docusaurus');
 const data = computePullsPerWeek(report.pullRequests.pulls);
 
 export const PullRequestCharts: Story = () => (
-  <div className="max-w-2xl p-4">
+  <div className="max-w-2xl space-y-4 p-4">
+    <h3 className="text-sm font-medium">Default (at pagination limit)</h3>
     <PullRequestChart pulls={report.pullRequests} data={data} />
+
+    <h3 className="text-sm font-medium">Under limit (no warning)</h3>
+    <PullRequestChart
+      pulls={{ ...report.pullRequests, pulls: report.pullRequests.pulls.slice(0, 10) }}
+      data={data}
+    />
   </div>
 );

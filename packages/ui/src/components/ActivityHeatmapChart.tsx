@@ -1,6 +1,5 @@
 import {
   type ActivityHeatmap,
-  type Contributor,
   type ContributorAnalysis,
   type UserProfile,
 } from '@git-repo-analyzer/core';
@@ -9,6 +8,7 @@ import { Fragment } from 'react';
 import { useTheme } from '../hooks/use-theme';
 import { cn } from '../lib/utils';
 import { ContributorCombobox } from './ContributorCombobox';
+import { DataLimitNotice } from './DataLimitNotice';
 import { InfoButton } from './InfoButton';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
@@ -46,24 +46,25 @@ interface ActivityHeatmapChartProps {
   contributors: ContributorAnalysis;
   userProfiles: UserProfile[];
   primaryTimezone: string | null;
-  /** When set, indicates the heatmap is filtered for a specific contributor */
-  selectedContributor: Contributor | null;
-  onContributorChange: (contributor: Contributor | null) => void;
+  /** When set, indicates the heatmap is filtered for a specific user profile */
+  selectedUserProfile: UserProfile | null;
+  onUserProfileChange: (userProfile: UserProfile | null) => void;
+  /** Number of recent contributors missing timezone data */
+  contributorsMissingTimezone?: number;
 }
 
 export function ActivityHeatmapChart({
   data,
   contributors,
   userProfiles,
-  selectedContributor,
+  selectedUserProfile,
   primaryTimezone: _primaryTimezone,
-  onContributorChange,
+  onUserProfileChange,
+  contributorsMissingTimezone = 0,
 }: ActivityHeatmapChartProps) {
   const theme = useTheme();
 
-  const profile = selectedContributor
-    ? (userProfiles.find(p => p.login === selectedContributor.login) ?? null)
-    : null;
+  const showTimezoneWarning = contributorsMissingTimezone > 0 && !selectedUserProfile?.timezone;
 
   return (
     <Card>
@@ -74,16 +75,23 @@ export function ActivityHeatmapChart({
             <ContributorCombobox
               contributors={contributors.recentContributors}
               userProfiles={userProfiles}
-              selectedContributor={selectedContributor}
-              onContributorChange={onContributorChange}
+              selectedUserProfile={selectedUserProfile}
+              onUserProfileChange={onUserProfileChange}
             />
           )}
 
-          <InfoButton title="Activity Heatmap">
-            <p className="text-muted-foreground mt-1">
+          <InfoButton title="Activity Heatmap" warning={showTimezoneWarning}>
+            <p className="text-muted-foreground">
               Shows when commits happen throughout the week. Each cell represents an hour of a day,
               with darker colors indicating more commit activity during that time.
             </p>
+            {showTimezoneWarning && (
+              <DataLimitNotice>
+                {contributorsMissingTimezone} contributor
+                {contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data - some activity
+                times shown as UTC
+              </DataLimitNotice>
+            )}
           </InfoButton>
         </CardTitle>
       </CardHeader>
@@ -167,9 +175,9 @@ export function ActivityHeatmapChart({
               ))}
               <span className="text-muted-foreground">More</span>
 
-              {profile?.timezone && (
+              {selectedUserProfile?.timezone && (
                 <span className="text-muted-foreground flex-1 text-right text-xs">
-                  Timezone: {profile.timezone}
+                  Timezone: {selectedUserProfile.timezone}
                 </span>
               )}
             </div>

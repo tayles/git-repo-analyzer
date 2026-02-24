@@ -19,6 +19,7 @@ export { AppHomePage } from './components/app/AppHomePage';
 export { AppLoadingPage } from './components/app/AppLoadingPage';
 export { AppRepoDetailsPage } from './components/app/AppRepoDetailsPage';
 export { CommitChart } from './components/CommitChart';
+export { DataLimitNotice } from './components/DataLimitNotice';
 export { CommitsByTypeChart } from './components/CommitsByTypeChart';
 export { HorizontalBarChart } from './components/HorizontalBarChart';
 export { ContributorsSection } from './components/ContributorsSection';

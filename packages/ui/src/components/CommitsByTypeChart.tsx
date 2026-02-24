@@ -1,36 +1,38 @@
-import { detectConventions, type CommitAnalysis, type Contributor } from '@git-repo-analyzer/core';
+import { detectConventions, type CommitAnalysis, type UserProfile } from '@git-repo-analyzer/core';
 import { useMemo } from 'react';
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 
 import { HorizontalBarChart } from './HorizontalBarChart';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { InfoButton } from './InfoButton';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 interface CommitsByTypeChartProps {
   commits: CommitAnalysis;
-  selectedContributor: Contributor | null;
+  selectedUserProfile: UserProfile | null;
 }
 
 const chartConfig = {
   count: { label: 'Commits', color: 'var(--chart-1)' },
 } satisfies ChartConfig;
 
-export function CommitsByTypeChart({ commits, selectedContributor }: CommitsByTypeChartProps) {
+export function CommitsByTypeChart({ commits, selectedUserProfile }: CommitsByTypeChartProps) {
   if (Object.keys(commits.conventions.prefixes).length === 0) return null;
 
   const data = useMemo(
     () =>
-      selectedContributor
+      selectedUserProfile
         ? detectConventions(
-            commits.commits.filter(c => c.author === selectedContributor.login).map(c => c.message),
+            commits.commits.filter(c => c.author === selectedUserProfile.login).map(c => c.message),
           )
         : commits.conventions,
-    [selectedContributor, commits],
+    [selectedUserProfile, commits],
   );
 
   const entries = Object.entries(data.prefixes)
     .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1]);
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
   const typeBreakdown = Object.fromEntries(entries);
 
   const chartData = Object.entries(commits.conventions.prefixes).map(([type]) => ({
@@ -42,6 +44,14 @@ export function CommitsByTypeChart({ commits, selectedContributor }: CommitsByTy
     <Card>
       <CardHeader>
         <CardTitle className="select-text">Commit Types</CardTitle>
+        <CardAction>
+          <InfoButton title="Commit Types">
+            <p className="text-muted-foreground mt-1">
+              Breakdown by conventional commits, i.e. commits with common prefixes (e.g. "fix:",
+              "feat:"). Helps understand the focus of development efforts.
+            </p>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-3">
         <HorizontalBarChart data={typeBreakdown} className="w-full" />

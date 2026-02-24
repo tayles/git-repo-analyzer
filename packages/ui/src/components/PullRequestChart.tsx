@@ -1,7 +1,14 @@
-import { formatWeekLabel, type PullAnalysis, type PullsPerWeek } from '@git-repo-analyzer/core';
+import {
+  formatWeekLabel,
+  PR_FETCH_LIMIT,
+  type PullAnalysis,
+  type PullsPerWeek,
+} from '@git-repo-analyzer/core';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { DataLimitNotice } from './DataLimitNotice';
+import { InfoButton } from './InfoButton';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import {
   ChartContainer,
   ChartLegend,
@@ -17,6 +24,7 @@ interface PullRequestChartProps {
 }
 
 export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
+  const isCapped = pulls.pulls.length >= PR_FETCH_LIMIT;
   const displayData = Object.entries(data)
     .slice(-12)
     .map(([week, v]) => ({
@@ -41,6 +49,14 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
             {pulls.counts.open} open / {pulls.counts.merged} merged / {pulls.counts.closed} closed
           </span>
         </CardTitle>
+        <CardAction>
+          <InfoButton warning={isCapped} title="Pull Requests">
+            <p className="text-muted-foreground">
+              Shows the number of pull requests opened, merged, and closed each week.
+            </p>
+            <DataLimitNotice>Showing last {PR_FETCH_LIMIT} pull requests only</DataLimitNotice>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
       <CardContent className="overflow-hidden">
         {displayData.length === 0 ? (

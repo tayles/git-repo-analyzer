@@ -1,5 +1,6 @@
-import type { WorkPatterns } from '@git-repo-analyzer/core';
+import type { UserProfile, WorkPatterns } from '@git-repo-analyzer/core';
 
+import { DataLimitNotice } from './DataLimitNotice';
 import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -13,10 +14,19 @@ const CLASSIFICATION_LABELS = {
 
 interface WorkPatternsCardProps {
   data: WorkPatterns;
+  selectedUserProfile?: UserProfile | null;
+  /** Number of recent contributors missing timezone data */
+  contributorsMissingTimezone?: number;
 }
 
-export function WorkPatternsCard({ data }: WorkPatternsCardProps) {
+export function WorkPatternsCard({
+  data,
+  selectedUserProfile = null,
+  contributorsMissingTimezone = 0,
+}: WorkPatternsCardProps) {
   const config = CLASSIFICATION_LABELS[data.classification];
+
+  const showTimezoneWarning = contributorsMissingTimezone > 0 && !selectedUserProfile?.timezone;
 
   return (
     <Card>
@@ -26,11 +36,18 @@ export function WorkPatternsCard({ data }: WorkPatternsCardProps) {
           <Badge variant={config.variant}>{config.label}</Badge>
         </CardTitle>
         <CardAction>
-          <InfoButton title="Work Patterns">
-            <p className="text-muted-foreground mt-1">
+          <InfoButton title="Work Patterns" warning={showTimezoneWarning}>
+            <p className="text-muted-foreground">
               Analyzes commit times to classify the project as Professional (mostly 9-5), Hobbyist
               (evenings/weekends), or Mixed. Helps understand the development culture of a project.
             </p>
+            {showTimezoneWarning && (
+              <DataLimitNotice>
+                {contributorsMissingTimezone} contributor
+                {contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — patterns may
+                be approximate
+              </DataLimitNotice>
+            )}
           </InfoButton>
         </CardAction>
       </CardHeader>

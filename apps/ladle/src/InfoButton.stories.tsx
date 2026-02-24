@@ -1,4 +1,4 @@
-import { InfoButton } from '@git-repo-analyzer/ui';
+import { DataLimitNotice, InfoButton } from '@git-repo-analyzer/ui';
 import type { Story } from '@ladle/react';
 
 export default {
@@ -13,13 +13,22 @@ export const InfoButtons: Story = () => (
     </div>
 
     <div>
-      <h3 className="mb-4 text-sm font-medium">With Rich Content</h3>
-      <InfoButton>
-        <p className="font-medium">Activity Heatmap</p>
-        <p className="text-muted-foreground mt-1">
+      <h3 className="mb-4 text-sm font-medium">Warning InfoButton</h3>
+      <InfoButton warning title="Data Limit">
+        <DataLimitNotice>Showing last 300 commits only</DataLimitNotice>
+      </InfoButton>
+    </div>
+
+    <div>
+      <h3 className="mb-4 text-sm font-medium">With Rich Content + Warning</h3>
+      <InfoButton title="Activity Heatmap" warning>
+        <p className="text-muted-foreground">
           Shows when commits happen throughout the week. Each cell represents an hour of a day, with
           darker colors indicating more commit activity during that time.
         </p>
+        <DataLimitNotice>
+          4 contributors without timezone data — activity times shown as UTC
+        </DataLimitNotice>
       </InfoButton>
     </div>
 

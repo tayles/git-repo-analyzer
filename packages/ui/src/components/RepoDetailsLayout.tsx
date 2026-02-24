@@ -1,8 +1,9 @@
-import type { AnalysisResult, Contributor } from '@git-repo-analyzer/core';
+import type { AnalysisResult, UserProfile } from '@git-repo-analyzer/core';
 import {
   analyzeWorkPatterns,
   computeActivityHeatmap,
   computeCommitsPerWeek,
+  computeDataWarnings,
   computePullsPerWeek,
   formatDate,
   relativeDateLabel,
@@ -44,37 +45,39 @@ interface RepoDetailsLayoutProps {
 
 export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
   const baseUrl = report.basicStats.htmlUrl;
-  const [selectedContributor, setSelectedContributor] = useState<Contributor | null>(null);
-  const [hoveredContributor, setHoveredContributor] = useState<Contributor | null>(null);
+  const [selectedUserProfile, setSelectedUserProfile] = useState<UserProfile | null>(null);
+  const [hoveredUserProfile, setHoveredUserProfile] = useState<UserProfile | null>(null);
 
-  const handleSelectContributor = useCallback((contributor: Contributor | null) => {
-    setSelectedContributor(contributor);
+  const handleSelectUserProfile = useCallback((userProfile: UserProfile | null) => {
+    setSelectedUserProfile(userProfile);
   }, []);
 
-  const handleHoverContributor = useCallback((contributor: Contributor | null) => {
-    setHoveredContributor(contributor);
+  const handleHoverUserProfile = useCallback((userProfile: UserProfile | null) => {
+    setHoveredUserProfile(userProfile);
   }, []);
 
-  const contributor = hoveredContributor || selectedContributor;
+  const userProfile = hoveredUserProfile || selectedUserProfile;
 
   const heatmapData = useMemo(() => {
-    return computeActivityHeatmap(report.commits.commits, contributor?.login);
-  }, [contributor, report.commits.commits]);
+    return computeActivityHeatmap(report.commits.commits, userProfile?.login);
+  }, [userProfile, report.commits.commits]);
 
   const workPatternsData = useMemo(() => {
-    if (!contributor) {
+    if (!userProfile) {
       return report.commits.workPatterns;
     }
-    return analyzeWorkPatterns(report.commits.commits, contributor?.login);
-  }, [contributor, report.commits]);
+    return analyzeWorkPatterns(report.commits.commits, userProfile?.login);
+  }, [userProfile, report.commits]);
 
   const commitsPerWeek = useMemo(() => {
-    return computeCommitsPerWeek(report.commits.commits, contributor?.login);
-  }, [contributor, report.commits.commits]);
+    return computeCommitsPerWeek(report.commits.commits, userProfile?.login);
+  }, [userProfile, report.commits.commits]);
 
   const pullsPerWeek = useMemo(() => {
-    return computePullsPerWeek(report.pullRequests.pulls, contributor?.login);
-  }, [contributor, report.pullRequests.pulls]);
+    return computePullsPerWeek(report.pullRequests.pulls, userProfile?.login);
+  }, [userProfile, report.pullRequests.pulls]);
+
+  const dataWarnings = useMemo(() => computeDataWarnings(report), [report]);
 
   return (
     <div className="flex h-full flex-col justify-start gap-2">
@@ -116,24 +119,29 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           data={heatmapData}
           contributors={report.contributors}
           userProfiles={report.userProfiles}
-          selectedContributor={contributor}
-          onContributorChange={handleSelectContributor}
+          selectedUserProfile={selectedUserProfile}
+          onUserProfileChange={handleSelectUserProfile}
           primaryTimezone={report.contributors.primaryTimezone}
+          contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
         />
 
-        <WorkPatternsCard data={workPatternsData} />
+        <WorkPatternsCard
+          data={workPatternsData}
+          selectedUserProfile={selectedUserProfile}
+          contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
+        />
 
         <ContributorsSection
           contributors={report.contributors}
           userProfiles={report.userProfiles}
-          selectedContributor={selectedContributor}
-          onSelectContributor={handleSelectContributor}
-          onHoverContributor={handleHoverContributor}
+          selectedUserProfile={selectedUserProfile}
+          onSelectContributor={handleSelectUserProfile}
+          onHoverContributor={handleHoverUserProfile}
         />
 
-        <CommitChart data={commitsPerWeek} />
+        <CommitChart data={commitsPerWeek} totalCommits={report.commits.commits.length} />
 
-        <CommitsByTypeChart commits={report.commits} selectedContributor={contributor} />
+        <CommitsByTypeChart commits={report.commits} selectedUserProfile={selectedUserProfile} />
 
         <PullRequestChart pulls={report.pullRequests} data={pullsPerWeek} />
 

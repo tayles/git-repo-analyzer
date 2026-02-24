@@ -15,15 +15,15 @@ import { InputGroupAddon } from './ui/input-group';
 interface ContributorComboboxProps {
   contributors: Contributor[];
   userProfiles: UserProfile[];
-  selectedContributor: Contributor | null;
-  onContributorChange: (contributor: Contributor | null) => void;
+  selectedUserProfile: UserProfile | null;
+  onUserProfileChange: (userProfile: UserProfile | null) => void;
 }
 
 export function ContributorCombobox({
   contributors,
   userProfiles,
-  selectedContributor,
-  onContributorChange,
+  selectedUserProfile,
+  onUserProfileChange,
 }: ContributorComboboxProps) {
   const items = [
     null,
@@ -33,16 +33,18 @@ export function ContributorCombobox({
     }),
   ];
 
-  const profile = selectedContributor
-    ? (userProfiles.find(p => p.login === selectedContributor.login) ?? null)
+  const profile = selectedUserProfile
+    ? (userProfiles.find(p => p.login === selectedUserProfile.login) ?? null)
     : null;
 
   return (
     <Combobox
       items={items}
-      itemToStringLabel={c => c?.login ?? ''}
-      itemToStringValue={(c: Contributor | null) => c?.login ?? ''}
-      onValueChange={onContributorChange}
+      itemToStringLabel={c => c?.profile?.login ?? ''}
+      itemToStringValue={(c: { contributor: Contributor; profile: UserProfile } | null) =>
+        c?.profile?.login ?? ''
+      }
+      onValueChange={onUserProfileChange}
     >
       <ComboboxInput placeholder="Recent contributors" showClear>
         <InputGroupAddon>
@@ -54,14 +56,14 @@ export function ContributorCombobox({
         <ComboboxList>
           {c => (
             <ComboboxItem
-              key={c?.contributor.login ?? 'all'}
-              value={c?.contributor ?? null}
-              onMouseEnter={() => onContributorChange(c.contributor ?? null)}
+              key={c?.profile?.login ?? 'all'}
+              value={c?.profile ?? null}
+              onMouseEnter={() => onUserProfileChange(c?.profile ?? null)}
             >
               {c ? (
                 <>
                   <GitHubUserAvatar uid={c.profile?.id} className="size-4" />
-                  <span>{c.contributor.login}</span>
+                  <span>{c.profile?.login}</span>
                 </>
               ) : (
                 <>

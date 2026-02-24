@@ -33,7 +33,7 @@ export function TechStackSection({ repo, tools }: TechStackSectionProps) {
         <CardTitle>Tech Stack</CardTitle>
         <CardAction>
           <InfoButton title="Tech Stack Detection">
-            <p className="text-muted-foreground mt-1">
+            <p className="text-muted-foreground">
               Detects the technologies used in the repository by analyzing file names and directory
               structures. Provides insights into the project's development ecosystem.
             </p>

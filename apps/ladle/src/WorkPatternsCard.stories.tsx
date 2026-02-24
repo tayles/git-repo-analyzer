@@ -9,7 +9,11 @@ export default {
 const report = createMockAnalysisResult('facebook/docusaurus');
 
 export const WorkPatterns: Story = () => (
-  <div className="max-w-2xl p-4">
+  <div className="max-w-2xl space-y-4 p-4">
+    <h3 className="text-sm font-medium">With timezone warning</h3>
+    <WorkPatternsCard data={report.commits.workPatterns} contributorsMissingTimezone={4} />
+
+    <h3 className="text-sm font-medium">No warning</h3>
     <WorkPatternsCard data={report.commits.workPatterns} />
   </div>
 );

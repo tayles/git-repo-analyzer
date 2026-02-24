@@ -1,9 +1,12 @@
 import {
+  COMMIT_FETCH_LIMIT,
   computeActivityHeatmap,
   computeCommitsPerWeek,
+  computeDataWarnings,
   computePullsPerWeek,
   countryCodeToEmojiFlag,
   formatNumber,
+  PR_FETCH_LIMIT,
   relativeDateLabel,
   type AnalysisResult,
   type ToolMetaWithFileMatches,
@@ -14,6 +17,7 @@ import { badge, barChart, heading, heatmapRow, metric, progressBar } from './cli
 
 export function printReport(result: AnalysisResult): void {
   const { basicStats: s } = result;
+  const warnings = computeDataWarnings(result);
 
   // Header
   console.log(pc.bold(pc.white(`\n🔍 Analysis: ${s.fullName}`)));
@@ -78,6 +82,13 @@ export function printReport(result: AnalysisResult): void {
     console.log(heatmapRow(day, activityHeatmap.grid[day]!, activityHeatmap.maxValue));
   }
   console.log(pc.dim('      ╰──── morning ────╯╰──── daytime ───╯╰─ evening ─╯'));
+  if (warnings.contributorsMissingTimezone > 0) {
+    console.log(
+      pc.dim(
+        `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — activity times shown as UTC`,
+      ),
+    );
+  }
 
   // Work Patterns (recalculate with timezone-adjusted heatmap)
   console.log(heading(`Work Patterns`));
@@ -95,6 +106,13 @@ export function printReport(result: AnalysisResult): void {
     metric('Evenings (weekday off-hours)', `${result.commits.workPatterns.eveningsPercent}%`),
   );
   console.log(metric('Weekends', `${result.commits.workPatterns.weekendsPercent}%`));
+  if (warnings.contributorsMissingTimezone > 0) {
+    console.log(
+      pc.dim(
+        `  ⚠︎ ${warnings.contributorsMissingTimezone} contributor${warnings.contributorsMissingTimezone !== 1 ? 's' : ''} without timezone data — patterns may be approximate`,
+      ),
+    );
+  }
 
   // Commits
   console.log(heading('Commit Activity'));
@@ -105,6 +123,9 @@ export function printReport(result: AnalysisResult): void {
     .map(b => ({ label: b[0], value: b[1].total }));
   if (recentCommitBuckets.length > 0) {
     console.log(barChart(recentCommitBuckets));
+  }
+  if (warnings.commitsCapped) {
+    console.log(pc.dim(`  ⚠︎ Showing last ${COMMIT_FETCH_LIMIT} commits only`));
   }
 
   // // Commit Conventions
@@ -157,6 +178,9 @@ export function printReport(result: AnalysisResult): void {
     .map(b => ({ label: b[0], value: b[1].total }));
   if (recentPullBuckets.length > 0) {
     console.log(barChart(recentPullBuckets));
+  }
+  if (warnings.pullRequestsCapped) {
+    console.log(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests only`));
   }
 
   // // Bot Activity
