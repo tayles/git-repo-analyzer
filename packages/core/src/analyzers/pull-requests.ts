@@ -96,7 +96,7 @@ export function computePullsPerWeek(
   pulls: DecoratedPullRequest[],
   filterByLogin?: string,
 ): PullsPerWeek {
-  return pulls.reduce((acc, pull) => {
+  const buckets = pulls.reduce((acc, pull) => {
     if (filterByLogin && pull.author?.toLowerCase() !== filterByLogin.toLowerCase()) {
       return acc; // Skip if filtering by login and this pull doesn't match
     }
@@ -124,4 +124,8 @@ export function computePullsPerWeek(
 
     return acc;
   }, {} as PullsPerWeek);
+
+  return Object.fromEntries(
+    Object.entries(buckets).sort(([a], [b]) => a.localeCompare(b)),
+  ) as PullsPerWeek;
 }

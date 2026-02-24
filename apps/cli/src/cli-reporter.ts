@@ -154,14 +154,17 @@ export function printReport(result: AnalysisResult): void {
   console.log(metric('Total', commitTotal));
 
   const recentCommitBuckets = Object.entries(computeCommitsPerWeek(result.commits.commits))
-    .slice(-12)
+    .slice(0, 12)
+    .toReversed()
     .map(b => ({ label: b[0], value: b[1].total }));
   if (recentCommitBuckets.length > 0) {
     console.log(barChart(recentCommitBuckets));
   }
   if (warnings.commitsCapped) {
     console.log('');
-    console.log(pc.yellow(pc.dim(`  ⚠︎ Showing last ${COMMIT_FETCH_LIMIT} commits only`)));
+    console.log(
+      pc.yellow(pc.dim(`  ⚠︎ Showing last ${COMMIT_FETCH_LIMIT} commits / 12 weeks only`)),
+    );
   }
 
   // // Commit Conventions
@@ -221,7 +224,9 @@ export function printReport(result: AnalysisResult): void {
   }
   if (warnings.pullRequestsCapped) {
     console.log('');
-    console.log(pc.yellow(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests only`)));
+    console.log(
+      pc.yellow(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests / 12 weeks only`)),
+    );
   }
 
   // // Bot Activity
