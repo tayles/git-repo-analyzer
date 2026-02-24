@@ -119,7 +119,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           data={heatmapData}
           contributors={report.contributors}
           userProfiles={report.userProfiles}
-          selectedUserProfile={selectedUserProfile}
+          selectedUserProfile={userProfile}
           onUserProfileChange={handleSelectUserProfile}
           primaryTimezone={report.contributors.primaryTimezone}
           contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
@@ -127,16 +127,16 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
         <WorkPatternsCard
           data={workPatternsData}
-          selectedUserProfile={selectedUserProfile}
+          selectedUserProfile={userProfile}
           contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
         />
 
         <ContributorsSection
           contributors={report.contributors}
           userProfiles={report.userProfiles}
-          selectedUserProfile={selectedUserProfile}
-          onSelectContributor={handleSelectUserProfile}
-          onHoverContributor={handleHoverUserProfile}
+          selectedUserProfile={userProfile}
+          onSelectUserProfile={handleSelectUserProfile}
+          onHoverUserProfile={handleHoverUserProfile}
         />
 
         <CommitChart data={commitsPerWeek} totalCommits={report.commits.commits.length} />

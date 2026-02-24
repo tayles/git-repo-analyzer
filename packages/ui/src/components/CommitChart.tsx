@@ -9,7 +9,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } f
 interface CommitChartProps {
   data: CommitsPerWeek;
   /** Total number of commits fetched (used to detect pagination limit) */
-  totalCommits?: number;
+  totalCommits: number;
 }
 
 export function CommitChart({ data, totalCommits }: CommitChartProps) {

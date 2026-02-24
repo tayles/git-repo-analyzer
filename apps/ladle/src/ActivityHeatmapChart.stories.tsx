@@ -12,7 +12,7 @@ const report = createMockAnalysisResult('facebook/docusaurus');
 const activityHeatmap = computeActivityHeatmap(report.commits.commits);
 const contributors = report.contributors;
 const userProfiles = report.userProfiles;
-const selectedContributor = contributors.recentContributors[0] ?? null;
+const selectedUserProfile = userProfiles[0] ?? null;
 
 export const ActivityHeatmapCharts: Story = () => (
   <div className="max-w-2xl space-y-4 p-4">
@@ -21,8 +21,8 @@ export const ActivityHeatmapCharts: Story = () => (
       data={activityHeatmap}
       contributors={contributors}
       userProfiles={userProfiles}
-      selectedContributor={null}
-      onContributorChange={() => {}}
+      selectedUserProfile={null}
+      onUserProfileChange={() => {}}
       primaryTimezone={null}
       contributorsMissingTimezone={4}
     />
@@ -32,9 +32,10 @@ export const ActivityHeatmapCharts: Story = () => (
       data={activityHeatmap}
       contributors={contributors}
       userProfiles={userProfiles}
-      selectedContributor={selectedContributor}
+      selectedUserProfile={null}
+      onUserProfileChange={() => {}}
       primaryTimezone={null}
-      onContributorChange={() => {}}
+      contributorsMissingTimezone={0}
     />
 
     <h3 className="text-sm font-medium">Filtered by contributor (UTC fallback, no warning)</h3>
@@ -42,8 +43,8 @@ export const ActivityHeatmapCharts: Story = () => (
       data={activityHeatmap}
       contributors={contributors}
       userProfiles={userProfiles}
-      selectedContributor={selectedContributor}
-      onContributorChange={() => {}}
+      selectedUserProfile={selectedUserProfile}
+      onUserProfileChange={() => {}}
       primaryTimezone={null}
       contributorsMissingTimezone={0}
     />

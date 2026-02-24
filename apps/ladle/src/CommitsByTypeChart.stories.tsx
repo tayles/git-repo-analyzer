@@ -7,7 +7,7 @@ export default {
 };
 
 const report = createMockAnalysisResult('facebook/docusaurus');
-const topContributor = report.contributors.topContributors[0] ?? null;
+const topContributor = report.userProfiles[0] ?? null;
 
 const emptyCommits = {
   ...report.commits,
@@ -17,7 +17,7 @@ const emptyCommits = {
 
 export const CommitsByType: Story = () => (
   <div className="max-w-sm p-4">
-    <CommitsByTypeChart commits={report.commits} selectedContributor={null} />
+    <CommitsByTypeChart commits={report.commits} selectedUserProfile={null} />
   </div>
 );
 
@@ -26,13 +26,13 @@ export const CommitsByTypeFiltered: Story = () => (
     <p className="text-muted-foreground mb-2 text-xs">
       Filtered to: {topContributor?.login ?? 'n/a'}
     </p>
-    <CommitsByTypeChart commits={report.commits} selectedContributor={topContributor} />
+    <CommitsByTypeChart commits={report.commits} selectedUserProfile={topContributor} />
   </div>
 );
 
 export const CommitsByTypeEmpty: Story = () => (
   <div className="max-w-sm p-4">
     <p className="text-muted-foreground mb-2 text-xs">(nothing rendered — no commits)</p>
-    <CommitsByTypeChart commits={emptyCommits} selectedContributor={null} />
+    <CommitsByTypeChart commits={emptyCommits} selectedUserProfile={null} />
   </div>
 );

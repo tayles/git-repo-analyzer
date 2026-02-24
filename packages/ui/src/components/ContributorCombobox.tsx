@@ -40,10 +40,8 @@ export function ContributorCombobox({
   return (
     <Combobox
       items={items}
-      itemToStringLabel={c => c?.profile?.login ?? ''}
-      itemToStringValue={(c: { contributor: Contributor; profile: UserProfile } | null) =>
-        c?.profile?.login ?? ''
-      }
+      itemToStringLabel={c => c?.login ?? ''}
+      itemToStringValue={(c: UserProfile | null) => c?.login ?? ''}
       onValueChange={onUserProfileChange}
     >
       <ComboboxInput placeholder="Recent contributors" showClear>

@@ -14,15 +14,15 @@ const CLASSIFICATION_LABELS = {
 
 interface WorkPatternsCardProps {
   data: WorkPatterns;
-  selectedUserProfile?: UserProfile | null;
+  selectedUserProfile: UserProfile | null;
   /** Number of recent contributors missing timezone data */
-  contributorsMissingTimezone?: number;
+  contributorsMissingTimezone: number;
 }
 
 export function WorkPatternsCard({
   data,
-  selectedUserProfile = null,
-  contributorsMissingTimezone = 0,
+  selectedUserProfile,
+  contributorsMissingTimezone,
 }: WorkPatternsCardProps) {
   const config = CLASSIFICATION_LABELS[data.classification];
 

@@ -50,7 +50,7 @@ interface ActivityHeatmapChartProps {
   selectedUserProfile: UserProfile | null;
   onUserProfileChange: (userProfile: UserProfile | null) => void;
   /** Number of recent contributors missing timezone data */
-  contributorsMissingTimezone?: number;
+  contributorsMissingTimezone: number;
 }
 
 export function ActivityHeatmapChart({
@@ -60,7 +60,7 @@ export function ActivityHeatmapChart({
   selectedUserProfile,
   primaryTimezone: _primaryTimezone,
   onUserProfileChange,
-  contributorsMissingTimezone = 0,
+  contributorsMissingTimezone,
 }: ActivityHeatmapChartProps) {
   const theme = useTheme();
 

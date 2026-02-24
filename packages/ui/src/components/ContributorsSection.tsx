@@ -1,5 +1,4 @@
 import {
-  COMMIT_FETCH_LIMIT,
   CONTRIBUTORS_FETCH_LIMIT,
   type ContributorAnalysis,
   type UserProfile,
@@ -26,27 +25,27 @@ interface ContributorsSectionProps {
   /** The currently selected contributor (null = none selected) */
   selectedUserProfile: UserProfile | null;
   /** Called when a contributor is clicked. Pass the contributor to select, or null to deselect. */
-  onSelectContributor: (contributor: UserProfile | null) => void;
-  onHoverContributor: (contributor: UserProfile | null) => void;
+  onSelectUserProfile: (contributor: UserProfile | null) => void;
+  onHoverUserProfile: (contributor: UserProfile | null) => void;
 }
 
 export function ContributorsSection({
   contributors,
   userProfiles,
   selectedUserProfile,
-  onSelectContributor,
-  onHoverContributor,
+  onSelectUserProfile,
+  onHoverUserProfile,
 }: ContributorsSectionProps) {
   const [tab, setTab] = useState<'recent' | 'top'>('recent');
 
-  const handleSelectContributor = useCallback(
-    (contributor: UserProfile | null) => {
-      onSelectContributor(contributor);
-      if (!contributor) {
-        onHoverContributor(null);
+  const handleSelectUserProfile = useCallback(
+    (userProfile: UserProfile | null) => {
+      onSelectUserProfile(userProfile);
+      if (!userProfile) {
+        onHoverUserProfile(null);
       }
     },
-    [onSelectContributor, onHoverContributor],
+    [onSelectUserProfile, onHoverUserProfile],
   );
 
   const activeContributors =
@@ -109,9 +108,9 @@ export function ContributorsSection({
                   'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
                   isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
                 )}
-                onClick={() => handleSelectContributor(isSelected ? null : (c.profile ?? null))}
-                onMouseEnter={() => onHoverContributor(c.profile ?? null)}
-                onMouseLeave={() => onHoverContributor(null)}
+                onClick={() => handleSelectUserProfile(isSelected ? null : (c.profile ?? null))}
+                onMouseEnter={() => onHoverUserProfile(c.profile ?? null)}
+                onMouseLeave={() => onHoverUserProfile(null)}
               >
                 <GitHubUserAvatar uid={c.profile?.id} />
 
