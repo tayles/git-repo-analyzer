@@ -14,7 +14,7 @@ export function processFileTree(files: GitHubFileTree): FileTreeAnalysis {
     const size = file.size ?? 0;
     const topLevelSegment = file.path.split('/')[0] ?? '.';
     const directoryPath = file.path.includes('/') ? topLevelSegment : '.';
-    const directoryName = file.path.includes('/') ? topLevelSegment : 'Root';
+    const directoryName = file.path.includes('/') ? topLevelSegment : 'Root files';
 
     const current = byDirectory.get(directoryPath) ?? {
       name: directoryName,

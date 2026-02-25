@@ -5,6 +5,7 @@ import {
   computeDataWarnings,
   computePullsPerWeek,
   countryCodeToEmojiFlag,
+  formatBytes,
   formatNumber,
   PR_FETCH_LIMIT,
   relativeDateLabel,
@@ -224,6 +225,25 @@ export function printReport(result: AnalysisResult): void {
     console.log(
       pc.yellow(pc.dim(`  ⚠︎ Showing last ${PR_FETCH_LIMIT} pull requests / 12 weeks only`)),
     );
+  }
+
+  // Files & Folders
+  console.log(heading('Project Structure'));
+  // Show top 10 directories by size
+  const topDirectories = result.fileTree.directories
+    .filter(d => d.bytes > 0)
+    .slice(0, 10)
+    .sort((a, b) => a.name.localeCompare(b.name));
+  if (topDirectories.length > 0) {
+    console.log(result.basicStats.fullName);
+    for (const [idx, d] of topDirectories.entries()) {
+      const prefix = idx === topDirectories.length - 1 ? '└── ' : '├── ';
+      console.log(
+        ` ${pc.dim(prefix)}${d.name} ${pc.dim(`(${formatBytes(d.bytes)}, ${formatNumber(d.fileCount)} files)`)}`,
+      );
+    }
+  } else {
+    console.log(pc.dim('  No file tree data available'));
   }
 
   // // Bot Activity
