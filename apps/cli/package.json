@@ -18,6 +18,10 @@
     "tech-stack",
     "typescript"
   ],
+  "homepage": "https://github.com/tayles/git-repo-analyzer",
+  "bugs": {
+    "url": "https://github.com/tayles/git-repo-analyzer/issues"
+  },
   "license": "MIT",
   "author": "tayles",
   "repository": {
