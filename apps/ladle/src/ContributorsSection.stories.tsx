@@ -20,6 +20,7 @@ export const Contributors: Story = () => {
         contributors={report.contributors}
         userProfiles={report.userProfiles}
         selectedUserProfile={null}
+        hoveredUserProfile={null}
         onSelectUserProfile={() => {}}
         onHoverUserProfile={() => {}}
       />
@@ -29,6 +30,7 @@ export const Contributors: Story = () => {
         contributors={report.contributors}
         userProfiles={report.userProfiles}
         selectedUserProfile={selected}
+        hoveredUserProfile={null}
         onSelectUserProfile={setSelected}
         onHoverUserProfile={() => {}}
       />

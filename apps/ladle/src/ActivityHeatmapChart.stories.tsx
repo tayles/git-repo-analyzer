@@ -22,7 +22,8 @@ export const ActivityHeatmapCharts: Story = () => (
       contributors={contributors}
       userProfiles={userProfiles}
       selectedUserProfile={null}
-      onUserProfileChange={() => {}}
+      onSelectUserProfile={() => {}}
+      onHoverUserProfile={() => {}}
       primaryTimezone={null}
       contributorsMissingTimezone={4}
     />
@@ -33,7 +34,8 @@ export const ActivityHeatmapCharts: Story = () => (
       contributors={contributors}
       userProfiles={userProfiles}
       selectedUserProfile={null}
-      onUserProfileChange={() => {}}
+      onSelectUserProfile={() => {}}
+      onHoverUserProfile={() => {}}
       primaryTimezone={null}
       contributorsMissingTimezone={0}
     />
@@ -44,7 +46,8 @@ export const ActivityHeatmapCharts: Story = () => (
       contributors={contributors}
       userProfiles={userProfiles}
       selectedUserProfile={selectedUserProfile}
-      onUserProfileChange={() => {}}
+      onSelectUserProfile={() => {}}
+      onHoverUserProfile={() => {}}
       primaryTimezone={null}
       contributorsMissingTimezone={0}
     />

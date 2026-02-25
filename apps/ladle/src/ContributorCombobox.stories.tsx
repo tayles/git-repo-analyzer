@@ -17,7 +17,8 @@ export const ContributorComboboxs: Story = () => {
         contributors={mockResult.contributors.recentContributors}
         userProfiles={mockResult.userProfiles}
         selectedUserProfile={selected}
-        onUserProfileChange={setSelected}
+        onSelectUserProfile={setSelected}
+        onHoverUserProfile={() => {}}
       />
     </div>
   );
