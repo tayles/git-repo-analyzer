@@ -63,5 +63,5 @@ This is a **Turborepo monorepo** using **bun** as the package manager and test r
 - Always use `bun` instead of `npm` or `pnpm`, and `bunx` instead of `npx`.
 - Always use `bun fix` to autofix formatting + lint issues at the end of a task.
 - Use `bun fix` to run type checking instead of `tsx --noEmit` or `bun typecheck`.
-- All UI components require stories in `apps/ladle/[ComponentName].stories.tsx`. Combine into a single `AllVariants` story where applicable
+- All UI components require stories in `apps/ladle/[ComponentName].stories.tsx`. Combine into a single `[ComponentName]s` story where applicable
 - Never run the dev servers with `bun dev` - assume it is running elsewhere

@@ -89,10 +89,6 @@ export class GitHubAPI {
       this.logRateLimit();
 
       if (!response.ok) {
-        this.handleErrorResponse(response);
-      }
-
-      if (!response.ok) {
         if (response.status === 409) return items; // empty repo
 
         this.handleErrorResponse(response);
