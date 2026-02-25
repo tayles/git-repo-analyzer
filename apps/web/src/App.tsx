@@ -5,6 +5,7 @@ import {
   AppLoadingPage,
   AppRepoDetailsPage,
   ThemeToggle,
+  TooltipProvider,
 } from '@git-repo-analyzer/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useRef, useState } from 'react';
@@ -87,59 +88,61 @@ function App() {
   useUrlSync({ currentRepository, onAnalyze: handleAnalyze });
 
   return (
-    <main className="bg-background min-h-screen">
-      <AnimatePresence mode="wait">
-        {isLoading ? (
-          <motion.div
-            key="loading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <AppLoadingPage
-              repo={currentRepository || ''}
-              progressMessage={progress?.message || 'Starting analysis...'}
-              progressValue={progress?.progress ?? 0}
-              onCancel={handleCancel}
-            />
-          </motion.div>
-        ) : result ? (
-          <motion.div
-            key="details"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <AppRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="home"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <AppHomePage
-              repo={currentRepository || ''}
-              errorMsg={error}
-              history={history}
-              token={token}
-              isTokenSectionOpen={isTokenSectionOpen}
-              onAnalyze={handleAnalyze}
-              onDeleteReport={handleDeleteReport}
-              onDeleteAllReports={clearHistory}
-              onCancel={handleCancel}
-              onTokenChange={setToken}
-              onTokenSectionOpenChange={setIsTokenSectionOpen}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <ThemeToggle />
-    </main>
+    <TooltipProvider>
+      <main className="bg-background min-h-screen">
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <motion.div
+              key="loading"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <AppLoadingPage
+                repo={currentRepository || ''}
+                progressMessage={progress?.message || 'Starting analysis...'}
+                progressValue={progress?.progress ?? 0}
+                onCancel={handleCancel}
+              />
+            </motion.div>
+          ) : result ? (
+            <motion.div
+              key="details"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <AppRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <AppHomePage
+                repo={currentRepository || ''}
+                errorMsg={error}
+                history={history}
+                token={token}
+                isTokenSectionOpen={isTokenSectionOpen}
+                onAnalyze={handleAnalyze}
+                onDeleteReport={handleDeleteReport}
+                onDeleteAllReports={clearHistory}
+                onCancel={handleCancel}
+                onTokenChange={setToken}
+                onTokenSectionOpenChange={setIsTokenSectionOpen}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <ThemeToggle />
+      </main>
+    </TooltipProvider>
   );
 }
 

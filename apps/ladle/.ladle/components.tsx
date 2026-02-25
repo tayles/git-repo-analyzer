@@ -1,6 +1,7 @@
-import type { GlobalProvider } from '@ladle/react';
+import { TooltipProvider } from '@git-repo-analyzer/ui';
 
 import './ladle.css';
+import type { GlobalProvider } from '@ladle/react';
 import { useEffect } from 'react';
 
 /**
@@ -16,5 +17,5 @@ export const Provider: GlobalProvider = ({ children, globalState }) => {
     }
   }, [globalState.theme]);
 
-  return children;
+  return <TooltipProvider>{children}</TooltipProvider>;
 };

@@ -14,6 +14,7 @@ export { Input } from './components/ui/input';
 export { Label } from './components/ui/label';
 export { Progress } from './components/ui/progress';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
+export { TooltipProvider } from './components/ui/tooltip';
 
 // Custom Components
 export { ActivityHeatmapChart } from './components/ActivityHeatmapChart';

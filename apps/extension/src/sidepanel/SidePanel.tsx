@@ -5,6 +5,7 @@ import {
   SidePanelLoadingPage,
   SidePanelRepoDetailsPage,
   ThemeToggle,
+  TooltipProvider,
 } from '@git-repo-analyzer/ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -127,39 +128,35 @@ export default function SidePanel() {
     );
   }
 
-  if (result && !error) {
-    return (
-      <SidePanelRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
-    );
-  }
-
   return (
-    <main className="bg-background min-h-screen">
-      {isLoading ? (
-        <SidePanelLoadingPage
-          repo={currentRepository || ''}
-          progressMessage={progress?.message || 'Starting analysis...'}
-          progressValue={progress?.progress ?? 0}
-          onCancel={handleCancel}
-        />
-      ) : result ? (
-        <SidePanelRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
-      ) : (
-        <SidePanelHomePage
-          repo={currentRepository || ''}
-          errorMsg={error}
-          history={history}
-          token={token}
-          isTokenSectionOpen={isTokenSectionOpen}
-          onAnalyze={handleAnalyze}
-          onDeleteReport={handleDeleteReport}
-          onDeleteAllReports={handleClearHistory}
-          onTokenChange={setToken}
-          onTokenSectionOpenChange={setIsTokenSectionOpen}
-        />
-      )}
+    <TooltipProvider>
+      <main className="bg-background min-h-screen">
+        {isLoading ? (
+          <SidePanelLoadingPage
+            repo={currentRepository || ''}
+            progressMessage={progress?.message || 'Starting analysis...'}
+            progressValue={progress?.progress ?? 0}
+            onCancel={handleCancel}
+          />
+        ) : result && !error ? (
+          <SidePanelRepoDetailsPage report={result} onBack={handleBack} onRefresh={handleRefresh} />
+        ) : (
+          <SidePanelHomePage
+            repo={currentRepository || ''}
+            errorMsg={error}
+            history={history}
+            token={token}
+            isTokenSectionOpen={isTokenSectionOpen}
+            onAnalyze={handleAnalyze}
+            onDeleteReport={handleDeleteReport}
+            onDeleteAllReports={handleClearHistory}
+            onTokenChange={setToken}
+            onTokenSectionOpenChange={setIsTokenSectionOpen}
+          />
+        )}
 
-      <ThemeToggle />
-    </main>
+        <ThemeToggle />
+      </main>
+    </TooltipProvider>
   );
 }
