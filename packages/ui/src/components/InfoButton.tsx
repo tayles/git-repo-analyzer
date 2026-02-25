@@ -13,7 +13,7 @@ interface InfoButtonProps {
 
 export function InfoButton({ title, className, warning, children }: InfoButtonProps) {
   return (
-    <HoverCard openDelay={50} closeDelay={200}>
+    <HoverCard openDelay={50}>
       <HoverCardTrigger asChild>
         <button
           type="button"

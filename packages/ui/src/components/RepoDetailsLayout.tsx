@@ -10,9 +10,12 @@ import {
 } from '@git-repo-analyzer/core';
 import {
   Calendar,
+  Check,
   ChevronLeft,
   CircleDot,
   Code,
+  Copy,
+  ExternalLink,
   Eye,
   HardDrive,
   RefreshCw,
@@ -23,6 +26,7 @@ import {
 import { motion } from 'motion/react';
 import { useCallback, useMemo, useState } from 'react';
 
+import { useCopyToClipboard } from '../hooks/use-copy-to-clipboard';
 import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
 import { CommitsByTypeChart } from './CommitsByTypeChart';
@@ -36,6 +40,7 @@ import { RepoName } from './RepoName';
 import { StatCard } from './StatCard';
 import { TechStackSection } from './TechStackSection';
 import { Button } from './ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { WorkPatternsCard } from './WorkPatternsCard';
 
 interface RepoDetailsLayoutProps {
@@ -45,9 +50,10 @@ interface RepoDetailsLayoutProps {
 }
 
 export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
-  const baseUrl = report.basicStats.htmlUrl;
   const [selectedUserProfile, setSelectedUserProfile] = useState<UserProfile | null>(null);
   const [hoveredUserProfile, setHoveredUserProfile] = useState<UserProfile | null>(null);
+
+  const [copy, isCopied] = useCopyToClipboard();
 
   const handleSelectUserProfile = useCallback((userProfile: UserProfile | null) => {
     setSelectedUserProfile(userProfile);
@@ -80,15 +86,18 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
 
   const dataWarnings = useMemo(() => computeDataWarnings(report), [report]);
 
+  const baseUrl = report.basicStats.htmlUrl;
+  const reportUrl = `https://tayles.github.io/git-repo-analyzer/?repo=${encodeURIComponent(report.basicStats.fullName)}`;
+
   return (
     <div className="flex h-full flex-col justify-start gap-2">
       <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-2 md:py-4">
-        <Button variant="ghost" onClick={onBack} className="order-1" title="Go back">
+        <Button variant="ghost" onClick={onBack} className="order-1">
           <ChevronLeft />
           <span className="inline sm:hidden sm:inline">Back</span>
         </Button>
 
-        <h2 className="order-3 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
+        <h2 className="order-5 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
           <a
             href={report.basicStats.htmlUrl}
             target="_blank"
@@ -99,15 +108,43 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           </a>
         </h2>
 
-        <Button
-          variant="ghost"
-          onClick={onRefresh}
-          className="order-2 ml-auto sm:order-3"
-          title="Refresh data"
-        >
-          <RefreshCw />
-          <span className="inline sm:hidden sm:inline">Refresh</span>
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              onClick={() => copy(reportUrl)}
+              className="order-2 ml-auto sm:order-3"
+            >
+              {isCopied ? <Check /> : <Copy />}
+              <span className="hidden sm:inline">Copy</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            {isCopied ? 'Copied!' : 'Copy link to this report'}
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" className="order-3 sm:order-4" asChild>
+              <a href={reportUrl} target="_blank">
+                <ExternalLink />
+                <span className="hidden sm:inline">New Tab</span>
+              </a>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">Open report in new tab</TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" onClick={onRefresh} className="order-4 sm:order-5">
+              <RefreshCw />
+              <span className="inline sm:hidden sm:inline">Refresh</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">Refresh report</TooltipContent>
+        </Tooltip>
       </div>
 
       {/* <p className="text-muted-foreground text-sm">{report.basicStats.description}</p> */}

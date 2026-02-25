@@ -1,5 +1,5 @@
 import { cn } from '../lib/utils';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 const CHART_COLORS = [
   'var(--chart-1)',
@@ -32,37 +32,35 @@ export function HorizontalBarChart({ data, className }: HorizontalBarChartProps)
   const total = entries.reduce((sum, [, v]) => sum + v, 0);
 
   return (
-    <TooltipProvider>
-      <div className={cn(className)}>
-        <div className="flex h-5 w-full overflow-hidden rounded-full">
-          {entries.map(([key, value], i) => {
-            const pct = (value / total) * 100;
-            const showLabel = pct >= LABEL_MIN_PCT;
-            return (
-              <Tooltip key={key}>
-                <TooltipTrigger asChild>
-                  <div
-                    className="relative flex h-full cursor-default items-center justify-center overflow-hidden"
-                    style={{
-                      width: `${pct}%`,
-                      backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
-                    }}
-                  >
-                    {showLabel && (
-                      <span className="truncate px-1.5 text-[10px] leading-none font-medium text-white mix-blend-plus-lighter select-none">
-                        {key}
-                      </span>
-                    )}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  {key}: {Math.round(pct)}%
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
-        </div>
+    <div className={cn(className)}>
+      <div className="flex h-5 w-full overflow-hidden rounded-full">
+        {entries.map(([key, value], i) => {
+          const pct = (value / total) * 100;
+          const showLabel = pct >= LABEL_MIN_PCT;
+          return (
+            <Tooltip key={key}>
+              <TooltipTrigger asChild>
+                <div
+                  className="relative flex h-full cursor-default items-center justify-center overflow-hidden"
+                  style={{
+                    width: `${pct}%`,
+                    backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
+                  }}
+                >
+                  {showLabel && (
+                    <span className="truncate px-1.5 text-[10px] leading-none font-medium text-white mix-blend-plus-lighter select-none">
+                      {key}
+                    </span>
+                  )}
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                {key}: {Math.round(pct)}%
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
       </div>
-    </TooltipProvider>
+    </div>
   );
 }

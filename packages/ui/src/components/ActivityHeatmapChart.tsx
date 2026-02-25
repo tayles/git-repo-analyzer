@@ -11,7 +11,7 @@ import { ContributorCombobox } from './ContributorCombobox';
 import { DataLimitNotice } from './DataLimitNotice';
 import { InfoButton } from './InfoButton';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -96,93 +96,91 @@ export function ActivityHeatmapChart({
         </CardTitle>
       </CardHeader>
       <CardContent className="overflow-auto">
-        <TooltipProvider>
-          <div>
-            <div
-              className="inline-grid gap-[2px]"
-              style={{ gridTemplateColumns: `auto repeat(24, 1fr)` }}
-            >
-              {/* Hour labels */}
-              <div />
-              {Array.from({ length: 24 }, (_, h) => (
-                <div key={h} className="text-muted-foreground text-center text-[10px]">
-                  {h % 3 === 0 ? h : ''}
+        <div>
+          <div
+            className="inline-grid gap-[2px]"
+            style={{ gridTemplateColumns: `auto repeat(24, 1fr)` }}
+          >
+            {/* Hour labels */}
+            <div />
+            {Array.from({ length: 24 }, (_, h) => (
+              <div key={h} className="text-muted-foreground text-center text-[10px]">
+                {h % 3 === 0 ? h : ''}
+              </div>
+            ))}
+
+            {/* Grid rows */}
+            {DAYS.map((day, dayIdx) => (
+              <Fragment key={day}>
+                <div className="text-muted-foreground pr-2 text-right text-xs leading-none">
+                  {day}
                 </div>
-              ))}
+                {Array.from({ length: 24 }, (_, hour) => {
+                  const value = data.grid[dayIdx]![hour]!;
+                  return (
+                    <Tooltip key={`${dayIdx}-${hour}`}>
+                      <TooltipTrigger asChild>
+                        <div
+                          className="h-4 w-4 rounded-sm"
+                          style={{
+                            backgroundColor: getIntensityColor(value, data.maxValue, theme),
+                          }}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>
+                          {day} {hour}:00 — {value} commit{value !== 1 ? 's' : ''}
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  );
+                })}
+              </Fragment>
+            ))}
 
-              {/* Grid rows */}
-              {DAYS.map((day, dayIdx) => (
-                <Fragment key={day}>
-                  <div className="text-muted-foreground pr-2 text-right text-xs leading-none">
-                    {day}
-                  </div>
-                  {Array.from({ length: 24 }, (_, hour) => {
-                    const value = data.grid[dayIdx]![hour]!;
-                    return (
-                      <Tooltip key={`${dayIdx}-${hour}`}>
-                        <TooltipTrigger asChild>
-                          <div
-                            className="h-4 w-4 rounded-sm"
-                            style={{
-                              backgroundColor: getIntensityColor(value, data.maxValue, theme),
-                            }}
-                          />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>
-                            {day} {hour}:00 — {value} commit{value !== 1 ? 's' : ''}
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    );
-                  })}
-                </Fragment>
-              ))}
-
-              <div />
-              {TIME_PERIODS.map(period => (
-                <div
-                  key={period.label}
-                  className={cn(
-                    'text-muted-foreground text-center text-[10px]',
-                    period.label === 'Daytime' && 'border-x',
-                  )}
-                  role="note"
-                  style={{
-                    gridColumn: `${period.start + 2} / span ${period.end - period.start + 1}`,
-                  }}
-                >
-                  {period.label}
-                </div>
-              ))}
-            </div>
-
-            {/* Legend */}
-            <div className="mt-3 flex items-center gap-2 text-xs">
-              <span className="text-muted-foreground">Less</span>
-              {[0, 0.25, 0.5, 0.75, 1].map(ratio => (
-                <div
-                  key={ratio}
-                  className="h-3 w-3 rounded-sm"
-                  style={{
-                    backgroundColor: getIntensityColor(
-                      ratio * (data.maxValue || 1),
-                      data.maxValue || 1,
-                      theme,
-                    ),
-                  }}
-                />
-              ))}
-              <span className="text-muted-foreground">More</span>
-
-              {selectedUserProfile?.timezone && (
-                <span className="text-muted-foreground flex-1 text-right text-xs">
-                  Timezone: {selectedUserProfile.timezone}
-                </span>
-              )}
-            </div>
+            <div />
+            {TIME_PERIODS.map(period => (
+              <div
+                key={period.label}
+                className={cn(
+                  'text-muted-foreground text-center text-[10px]',
+                  period.label === 'Daytime' && 'border-x',
+                )}
+                role="note"
+                style={{
+                  gridColumn: `${period.start + 2} / span ${period.end - period.start + 1}`,
+                }}
+              >
+                {period.label}
+              </div>
+            ))}
           </div>
-        </TooltipProvider>
+
+          {/* Legend */}
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+            <span className="text-muted-foreground">Less</span>
+            {[0, 0.25, 0.5, 0.75, 1].map(ratio => (
+              <div
+                key={ratio}
+                className="h-3 w-3 rounded-sm"
+                style={{
+                  backgroundColor: getIntensityColor(
+                    ratio * (data.maxValue || 1),
+                    data.maxValue || 1,
+                    theme,
+                  ),
+                }}
+              />
+            ))}
+            <span className="text-muted-foreground">More</span>
+
+            {selectedUserProfile?.timezone && (
+              <span className="text-muted-foreground flex-1 text-right text-xs text-nowrap">
+                Timezone: {selectedUserProfile.timezone}
+              </span>
+            )}
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
