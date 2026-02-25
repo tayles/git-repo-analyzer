@@ -1,11 +1,13 @@
 export const TOOL_CATEGORIES = [
+  'Languages',
+  'Frameworks',
   'AI Tools',
   'Package Managers',
-  'Frameworks',
-  'Testing',
-  'Linting & Formatting',
-  'Monorepo',
+  'Build Tools',
   'CI/CD & Deployment',
+  'Monorepo',
+  'Linting & Formatting',
+  'Testing',
   'IDEs',
   'Documentation',
   'Community',
@@ -29,15 +31,6 @@ export interface ToolMeta extends ToolMetaBasic {
 
 export interface ToolMetaWithFileMatches extends Omit<ToolMeta, 'globs'> {
   paths: string[];
-}
-
-function flattenToolMeta(
-  category: ToolCategory,
-  tools: Record<ToolName, ToolMetaBasic>,
-): Record<ToolName, ToolMeta> {
-  return Object.fromEntries(
-    Object.entries(tools).map(([name, meta]) => [name, { name, category, ...meta }]),
-  );
 }
 
 const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
@@ -482,16 +475,6 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://kubernetes.io',
     globs: ['.k8s', '.kubernetes', 'k8s.yaml', 'k8s.yml', 'kubernetes.*', 'kustomization.yaml'],
   },
-  Make: {
-    logo: null,
-    url: 'https://www.gnu.org/software/make/',
-    globs: ['Makefile'],
-  },
-  Just: {
-    logo: 'just',
-    url: 'https://just.systems',
-    globs: ['justfile'],
-  },
   Vercel: {
     logo: 'vercel',
     url: 'https://vercel.com',
@@ -536,6 +519,19 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
     logo: null,
     url: 'https://getsops.io',
     globs: ['.sops.yaml'],
+  },
+};
+
+const BUILD_TOOLS: Record<ToolName, ToolMetaBasic> = {
+  Make: {
+    logo: null,
+    url: 'https://www.gnu.org/software/make/',
+    globs: ['Makefile'],
+  },
+  Just: {
+    logo: 'just',
+    url: 'https://just.systems',
+    globs: ['justfile'],
   },
 };
 
@@ -619,26 +615,44 @@ const COMMUNITY_TOOLS: Record<ToolName, ToolMetaBasic> = {
 };
 
 /**
+ * Combine tool metadata from all categories into a single registry for easy lookup.
+ * Throw an error if there are duplicate tool names across categories to ensure uniqueness.
+ */
+export function buildToolRegistry(
+  categories: Record<ToolCategory, Record<ToolName, ToolMetaBasic>>,
+): Record<ToolName, ToolMeta> {
+  const registry: Record<ToolName, ToolMeta> = {};
+
+  for (const [key, tools] of Object.entries(categories)) {
+    const category = key as ToolCategory;
+    for (const [name, meta] of Object.entries(tools)) {
+      if (registry[name]) {
+        throw new Error(
+          `Duplicate tool name "${name}" found in category "${category}". Tool names must be unique across all categories.`,
+        );
+      }
+      registry[name] = { name, category, ...meta };
+    }
+  }
+
+  return registry;
+}
+
+/**
  * Static mapping of detected tool names to metadata.
  * Logos from cdn.simpleicons.org (SVG, no bundling needed).
  */
-export const TOOL_REGISTRY: Record<ToolName, ToolMeta> = {
-  ...flattenToolMeta('AI Tools', AI_TOOLS),
-  ...flattenToolMeta('IDEs', IDES),
-  ...flattenToolMeta('Monorepo', MONOREPO_TOOLS),
-  ...flattenToolMeta('Package Managers', PACKAGE_MANAGERS),
-  ...flattenToolMeta('Frameworks', FRAMEWORKS),
-  ...flattenToolMeta('Linting & Formatting', LINTING_AND_FORMATTING_TOOLS),
-  ...flattenToolMeta('CI/CD & Deployment', CICD_TOOLS),
-  ...flattenToolMeta('Testing', TESTING_TOOLS),
-  ...flattenToolMeta('Documentation', DOCUMENTATION_TOOLS),
-  ...flattenToolMeta('Community', COMMUNITY_TOOLS),
-};
-
-export function getToolMeta(name: string): ToolMeta | null {
-  const meta = TOOL_REGISTRY[name];
-  if (meta) {
-    return meta;
-  }
-  return null;
-}
+export const TOOL_REGISTRY: Record<ToolName, ToolMeta> = buildToolRegistry({
+  Languages: {}, // placeholder to satisfy type, actual languages are added dynamically in processTechStack
+  Frameworks: FRAMEWORKS,
+  'AI Tools': AI_TOOLS,
+  'Package Managers': PACKAGE_MANAGERS,
+  'Build Tools': BUILD_TOOLS,
+  'CI/CD & Deployment': CICD_TOOLS,
+  Monorepo: MONOREPO_TOOLS,
+  'Linting & Formatting': LINTING_AND_FORMATTING_TOOLS,
+  Testing: TESTING_TOOLS,
+  IDEs: IDES,
+  Documentation: DOCUMENTATION_TOOLS,
+  Community: COMMUNITY_TOOLS,
+});

@@ -102,7 +102,7 @@ export async function analyzeGitRepository(
 
   await delay(1); // Yield to allow progress update to render
 
-  const techStack = processTechStack(rawData.files);
+  const techStack = processTechStack(rawData.files, basicStats.language);
   const healthScore = processHealthScore({
     basicStats,
     contributors,

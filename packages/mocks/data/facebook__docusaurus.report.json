@@ -2,22 +2,22 @@
   "generator": {
     "name": "git-repo-analyzer",
     "version": "1.0.0",
-    "analyzedAt": "2026-02-25T00:36:02.544Z",
-    "durationMs": 2178
+    "analyzedAt": "2026-02-25T01:48:09.426Z",
+    "durationMs": 1403
   },
   "basicStats": {
     "name": "docusaurus",
     "fullName": "facebook/docusaurus",
     "htmlUrl": "https://github.com/facebook/docusaurus",
     "description": "Easy to maintain open source documentation websites.",
-    "stars": 63898,
+    "stars": 63899,
     "forks": 9750,
     "openIssues": 353,
     "watchers": 433,
     "language": "TypeScript",
     "license": "MIT",
     "createdAt": "2017-06-20T16:13:53Z",
-    "updatedAt": "2026-02-24T20:52:03Z",
+    "updatedAt": "2026-02-25T01:37:08Z",
     "pushedAt": "2026-02-23T22:05:09Z",
     "defaultBranch": "main",
     "size": 1015290,
@@ -8410,25 +8410,32 @@
   "techStack": {
     "tools": [
       {
+        "name": "TypeScript",
+        "category": "Languages",
+        "logo": "typescript",
+        "url": "",
+        "paths": []
+      },
+      {
+        "name": "AGENTS.md",
+        "category": "AI Tools",
+        "logo": null,
+        "url": "https://agents.md",
+        "paths": ["AGENTS.md"]
+      },
+      {
+        "name": "Yarn",
+        "category": "Package Managers",
+        "logo": "yarn",
+        "url": "https://yarnpkg.com",
+        "paths": ["yarn.lock"]
+      },
+      {
         "name": "DevContainer",
         "category": "CI/CD & Deployment",
         "logo": "developmentcontainers",
         "url": "https://containers.dev",
         "paths": [".devcontainer"]
-      },
-      {
-        "name": "EditorConfig",
-        "category": "Linting & Formatting",
-        "logo": null,
-        "url": "https://editorconfig.org",
-        "paths": [".editorconfig"]
-      },
-      {
-        "name": "ESLint",
-        "category": "Linting & Formatting",
-        "logo": "eslint",
-        "url": "https://eslint.org",
-        "paths": [".eslintignore", ".eslintrc.js"]
       },
       {
         "name": "GitHub Actions",
@@ -8443,6 +8450,27 @@
         "logo": "gitpod",
         "url": "https://ona.io",
         "paths": [".gitpod.yml"]
+      },
+      {
+        "name": "Lerna",
+        "category": "Monorepo",
+        "logo": "lerna",
+        "url": "https://lerna.js.org",
+        "paths": ["lerna.json"]
+      },
+      {
+        "name": "EditorConfig",
+        "category": "Linting & Formatting",
+        "logo": null,
+        "url": "https://editorconfig.org",
+        "paths": [".editorconfig"]
+      },
+      {
+        "name": "ESLint",
+        "category": "Linting & Formatting",
+        "logo": "eslint",
+        "url": "https://eslint.org",
+        "paths": [".eslintignore", ".eslintrc.js"]
       },
       {
         "name": "Husky",
@@ -8473,11 +8501,11 @@
         "paths": [".vscode"]
       },
       {
-        "name": "AGENTS.md",
-        "category": "AI Tools",
-        "logo": null,
-        "url": "https://agents.md",
-        "paths": ["AGENTS.md"]
+        "name": "README",
+        "category": "Documentation",
+        "logo": "markdown",
+        "url": "",
+        "paths": ["README.md"]
       },
       {
         "name": "CODE_OF_CONDUCT",
@@ -8499,38 +8527,18 @@
         "logo": "markdown",
         "url": "",
         "paths": ["LICENSE"]
-      },
-      {
-        "name": "README",
-        "category": "Documentation",
-        "logo": "markdown",
-        "url": "",
-        "paths": ["README.md"]
-      },
-      {
-        "name": "Lerna",
-        "category": "Monorepo",
-        "logo": "lerna",
-        "url": "https://lerna.js.org",
-        "paths": ["lerna.json"]
-      },
-      {
-        "name": "Yarn",
-        "category": "Package Managers",
-        "logo": "yarn",
-        "url": "https://yarnpkg.com",
-        "paths": ["yarn.lock"]
       }
     ],
     "categories": [
+      "Languages",
+      "AI Tools",
+      "Package Managers",
       "CI/CD & Deployment",
+      "Monorepo",
       "Linting & Formatting",
       "IDEs",
-      "AI Tools",
-      "Community",
       "Documentation",
-      "Monorepo",
-      "Package Managers"
+      "Community"
     ]
   },
   "fileTree": {
@@ -8659,7 +8667,7 @@
         "maxScore": 25,
         "details": [
           {
-            "message": "63,898 stars",
+            "message": "63,899 stars",
             "delta": 8
           },
           {

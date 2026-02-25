@@ -1,11 +1,23 @@
 import picomatch from 'picomatch';
 
 import type { GitHubFile, GitHubFileTree } from '../client/github-types';
-import { type ToolMetaWithFileMatches, TOOL_REGISTRY } from '../tool-registry';
+import { type ToolMetaWithFileMatches, TOOL_CATEGORIES, TOOL_REGISTRY } from '../tool-registry';
 import type { ToolAnalysis } from '../types';
 
-export function processTechStack(files: GitHubFileTree): ToolAnalysis {
+export function processTechStack(files: GitHubFileTree, mainLanguage: string | null): ToolAnalysis {
   const tools = detectFromTree(files.tree);
+
+  if (mainLanguage) {
+    // append primary language
+    tools.unshift({
+      name: mainLanguage,
+      category: 'Languages',
+      logo: mainLanguage.toLowerCase(),
+      url: '',
+      paths: [],
+    });
+  }
+
   const categories = Array.from(new Set(tools.map(t => t.category)));
 
   return {
@@ -46,5 +58,11 @@ function detectFromTree(files: GitHubFile[]): ToolMetaWithFileMatches[] {
   for (const [i, paths] of matchesByTool) {
     results.push({ ...COMPILED_TOOLS[i]!.meta, paths });
   }
-  return results;
+
+  return results // sort by index in TOOL_CATEGORIES
+    .sort((a, b) => {
+      const aIndex = TOOL_CATEGORIES.indexOf(a.category);
+      const bIndex = TOOL_CATEGORIES.indexOf(b.category);
+      return aIndex - bIndex;
+    });
 }

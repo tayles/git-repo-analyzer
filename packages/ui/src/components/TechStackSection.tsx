@@ -63,44 +63,46 @@ export function TechStackSection({ repo, tools }: TechStackSectionProps) {
                           <span className="text-md font-medium">{tool.name}</span>
                         </div>
                       </PopoverTrigger>
-                      <PopoverContent
-                        side="bottom"
-                        align="center"
-                        className="w-auto max-w-md p-2 text-sm"
-                      >
-                        <p className="p-2">Files associated with this tool:</p>
-                        <ul className="flex list-inside list-disc flex-col p-2">
-                          {tool.paths.slice(0, 5).map(path => (
-                            <li key={path}>
-                              <Button variant="link" size="sm" asChild>
+                      {tool.paths.length > 0 && (
+                        <PopoverContent
+                          side="bottom"
+                          align="center"
+                          className="w-auto max-w-md p-2 text-sm"
+                        >
+                          <p className="p-2">Files associated with this tool:</p>
+                          <ul className="flex list-inside list-disc flex-col p-2">
+                            {tool.paths.slice(0, 5).map(path => (
+                              <li key={path}>
+                                <Button variant="link" size="sm" asChild>
+                                  <a
+                                    href={`https://github.com/${repo}/blob/main/${path}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {path}
+                                  </a>
+                                </Button>
+                              </li>
+                            ))}
+                          </ul>
+                          {tool.url && (
+                            <>
+                              <hr />
+                              <Button variant="link" size="sm" asChild className="mt-2">
                                 <a
-                                  href={`https://github.com/${repo}/blob/main/${path}`}
+                                  href={tool.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  onClick={e => e.stopPropagation()}
                                 >
-                                  {path}
+                                  Read the docs
+                                  <ExternalLink className="size-3.5" />
                                 </a>
                               </Button>
-                            </li>
-                          ))}
-                        </ul>
-                        {tool.url && (
-                          <>
-                            <hr />
-                            <Button variant="link" size="sm" asChild className="mt-2">
-                              <a
-                                href={tool.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={e => e.stopPropagation()}
-                              >
-                                Read the docs
-                                <ExternalLink className="size-3.5" />
-                              </a>
-                            </Button>
-                          </>
-                        )}
-                      </PopoverContent>
+                            </>
+                          )}
+                        </PopoverContent>
+                      )}
                     </Popover>
                   </li>
                 ))}
