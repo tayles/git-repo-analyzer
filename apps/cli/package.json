@@ -50,14 +50,16 @@
     "dev": "bunup --watch",
     "build": "bunup",
     "test": "bun test",
+    "prepack": "cp ../../README.md .",
+    "postpack": "rm -f README.md",
     "release": "bumpp --commit --push --tag",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@git-repo-analyzer/core": "workspace:*",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
+    "@git-repo-analyzer/core": "workspace:*",
     "@git-repo-analyzer/mocks": "workspace:*",
     "@git-repo-analyzer/typescript-config": "workspace:*",
     "@types/bun": "^1.3.9",
