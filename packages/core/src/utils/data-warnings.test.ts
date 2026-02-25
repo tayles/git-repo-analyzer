@@ -85,6 +85,7 @@ function buildResult(overrides: Partial<AnalysisResult> = {}): AnalysisResult {
       { login: 'bob', timezone: null },
       { login: 'someone-else', timezone: null },
     ] as AnalysisResult['userProfiles'],
+    fileTree: {} as AnalysisResult['fileTree'],
     ...overrides,
   };
 }

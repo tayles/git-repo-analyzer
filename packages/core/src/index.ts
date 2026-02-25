@@ -1,23 +1,25 @@
 export type {
-  ProgressUpdate,
-  Contributor,
-  ContributorAnalysis,
+  ActivityHeatmap,
   AnalysisResult,
   AnalysisResultWithRaw,
-  ActivityHeatmap,
-  UserProfile,
-  LanguageAnalysis,
-  PullAnalysis,
-  WorkPatterns,
-  HealthScoreAnalysis,
-  HealthScore,
   AnalyzeOptions,
+  CommitAnalysis,
+  CommitConventionsAnalysis,
   CommitsPerWeek,
+  Contributor,
+  ContributorAnalysis,
+  DecoratedCommit,
+  DirectorySize,
+  FileTreeAnalysis,
+  HealthScore,
+  HealthScoreAnalysis,
+  LanguageAnalysis,
+  ProgressUpdate,
+  PullAnalysis,
   PullsPerWeek,
   PullStatus,
-  CommitConventionsAnalysis,
-  DecoratedCommit,
-  CommitAnalysis,
+  UserProfile,
+  WorkPatterns,
 } from './types';
 export type { GitHubRawData, GitHubCommit, GitHubPullRequest } from './client/github-types';
 export { TOOL_REGISTRY, type ToolMeta, type ToolMetaWithFileMatches } from './tool-registry';
@@ -26,7 +28,7 @@ export { countryCodeToEmojiFlag } from './utils/location-utils';
 export { relativeDateLabel, formatWeekLabel, formatDate } from './utils/date-utils';
 export { calculateBusFactor } from './utils/bus-factor';
 export { analyzeGitRepository } from './analyze-repo';
-export { formatNumber } from './utils/format-utils';
+export { formatBytes, formatNumber } from './utils/format-utils';
 export {
   computeActivityHeatmap,
   analyzeWorkPatterns,
@@ -34,6 +36,7 @@ export {
   detectConventions,
 } from './analyzers/commits';
 export { computePullsPerWeek } from './analyzers/pull-requests';
+export { processFileTree } from './analyzers/file-tree';
 export {
   computeDataWarnings,
   COMMIT_FETCH_LIMIT,

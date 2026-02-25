@@ -27,6 +27,7 @@ import { ActivityHeatmapChart } from './ActivityHeatmapChart';
 import { CommitChart } from './CommitChart';
 import { CommitsByTypeChart } from './CommitsByTypeChart';
 import { ContributorsSection } from './ContributorsSection';
+import { FilesTreemapCard } from './FilesTreemapCard';
 import { HealthScoreCard } from './HealthScoreCard';
 import { LanguageChart } from './LanguageChart';
 import { LanguageLogo } from './LanguageLogo';
@@ -146,6 +147,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         <PullRequestChart pulls={report.pullRequests} data={pullsPerWeek} />
 
         <LanguageChart data={report.languages} />
+
+        <FilesTreemapCard data={report.fileTree} />
       </section>
 
       <HealthScoreCard health={report.healthScore} />

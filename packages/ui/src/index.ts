@@ -31,6 +31,7 @@ export { ContributorsSection } from './components/ContributorsSection';
 export { DataLimitNotice } from './components/DataLimitNotice';
 export { EmptyStatePlaceholder } from './components/EmptyStatePlaceholder';
 export { ErrorAlert } from './components/ErrorAlert';
+export { FilesTreemapCard } from './components/FilesTreemapCard';
 export { GettingStartedPlaceholder } from './components/GettingStartedPlaceholder';
 export { GitHubUserAvatar } from './components/GitHubUserAvatar';
 export { HealthScoreCard } from './components/HealthScoreCard';

@@ -6,6 +6,7 @@ export { LANGUAGE_COLORS } from './utils/language-utils';
 import { processBasicStats } from './analyzers/basic-stats';
 import { processCommits } from './analyzers/commits';
 import { processContributors } from './analyzers/contributors';
+import { processFileTree } from './analyzers/file-tree';
 import { processHealthScore } from './analyzers/health-score';
 import { processLanguages } from './analyzers/languages';
 import { processPullRequests } from './analyzers/pull-requests';
@@ -91,6 +92,7 @@ export async function analyzeGitRepository(
   const contributors = processContributors(rawData.contributors, userProfiles, rawData.commits);
   const pullRequests = processPullRequests(rawData.pullRequests, userProfiles);
   const languages = processLanguages(rawData.languages);
+  const fileTree = processFileTree(rawData.files);
 
   onProgress?.({
     phase: 'analyzing',
@@ -109,6 +111,7 @@ export async function analyzeGitRepository(
     languages,
     tooling,
     userProfiles,
+    fileTree,
   });
 
   const durationMs = Date.now() - startTime;
@@ -126,6 +129,7 @@ export async function analyzeGitRepository(
     pullRequests,
     languages,
     tooling,
+    fileTree,
     healthScore,
     userProfiles,
   };

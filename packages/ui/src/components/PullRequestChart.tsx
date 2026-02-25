@@ -45,7 +45,7 @@ export function PullRequestChart({ pulls, data }: PullRequestChartProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 select-text">
           <span>Pull Requests</span>
-          <span className="text-muted-foreground ml-2 text-sm font-normal">
+          <span className="text-muted-foreground ml-2 text-xs font-normal">
             {pulls.counts.open} open / {pulls.counts.merged} merged / {pulls.counts.closed} closed
           </span>
         </CardTitle>

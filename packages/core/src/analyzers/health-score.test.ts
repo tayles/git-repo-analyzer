@@ -87,6 +87,11 @@ function createInput(overrides: Partial<PartialAnalysis> = {}): PartialAnalysis 
       categories: ['Testing', 'Linting & Formatting', 'CI/CD & Deployment', 'Frameworks'],
     },
     userProfiles: [],
+    fileTree: {
+      totalBytes: 0,
+      totalFiles: 0,
+      directories: [],
+    },
     ...overrides,
   };
 }

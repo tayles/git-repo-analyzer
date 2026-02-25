@@ -203,6 +203,21 @@ export interface ToolAnalysis {
   categories: ToolCategory[];
 }
 
+export interface DirectorySize {
+  /** Top-level directory name (or "." for repository root files) */
+  name: string;
+  /** Directory path relative to repository root */
+  path: string;
+  bytes: number;
+  fileCount: number;
+}
+
+export interface FileTreeAnalysis {
+  totalBytes: number;
+  totalFiles: number;
+  directories: DirectorySize[];
+}
+
 export type HealthCategory =
   | 'Maintenance'
   | 'Documentation'
@@ -234,6 +249,7 @@ export interface AnalysisResult {
   pullRequests: PullAnalysis;
   languages: LanguageAnalysis;
   tooling: ToolAnalysis;
+  fileTree: FileTreeAnalysis;
   healthScore: HealthScoreAnalysis;
   userProfiles: UserProfile[];
 }
