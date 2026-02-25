@@ -4,7 +4,7 @@ import type { GitHubFile, GitHubFileTree } from '../client/github-types';
 import { type ToolMetaWithFileMatches, TOOL_REGISTRY } from '../tool-registry';
 import type { ToolAnalysis } from '../types';
 
-export function processTooling(files: GitHubFileTree): ToolAnalysis {
+export function processTechStack(files: GitHubFileTree): ToolAnalysis {
   const tools = detectFromTree(files.tree);
   const categories = Array.from(new Set(tools.map(t => t.category)));
 

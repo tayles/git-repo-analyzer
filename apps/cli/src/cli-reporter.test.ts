@@ -28,7 +28,7 @@ describe('printReport', () => {
     expect(output).toContain('Health Score');
   });
 
-  it('handles minimal/no-tooling-like data without crashing', () => {
+  it('handles minimal/no-tech-stack-like data without crashing', () => {
     const lines: string[] = [];
     console.log = (...args: unknown[]) => {
       lines.push(args.map(String).join(' '));
@@ -41,8 +41,8 @@ describe('printReport', () => {
         description: null,
         topics: [],
       },
-      tooling: {
-        ...mockResult.tooling,
+      techStack: {
+        ...mockResult.techStack,
         tools: [],
         categories: [],
       },

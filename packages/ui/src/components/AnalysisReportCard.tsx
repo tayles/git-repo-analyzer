@@ -49,7 +49,7 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
       </CardHeader>
       <CardContent className="p-2">
         <div className="flex flex-wrap gap-2">
-          {report.tooling.tools
+          {report.techStack.tools
             .filter(tool => tool.category !== 'Documentation')
             .map(tool => (
               <div key={tool.name} className="flex items-center gap-2 text-xs">

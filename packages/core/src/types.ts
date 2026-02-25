@@ -248,7 +248,7 @@ export interface AnalysisResult {
   commits: CommitAnalysis;
   pullRequests: PullAnalysis;
   languages: LanguageAnalysis;
-  tooling: ToolAnalysis;
+  techStack: ToolAnalysis;
   fileTree: FileTreeAnalysis;
   healthScore: HealthScoreAnalysis;
   userProfiles: UserProfile[];

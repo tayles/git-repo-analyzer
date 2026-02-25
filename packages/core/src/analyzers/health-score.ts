@@ -46,7 +46,7 @@ function scoreMaintenance(data: PartialAnalysisResult): HealthScore {
   }
 
   // Has CI/CD
-  if (data.tooling.categories.includes('CI/CD & Deployment')) {
+  if (data.techStack.categories.includes('CI/CD & Deployment')) {
     score += 3;
     details.push({ message: 'CI/CD configured', delta: 3 });
   }
@@ -150,9 +150,9 @@ function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
   let score = 0;
   const maxScore = 15;
 
-  if (data.tooling.categories.includes('Testing')) {
+  if (data.techStack.categories.includes('Testing')) {
     score += 5;
-    const testingTools = data.tooling.tools
+    const testingTools = data.techStack.tools
       .filter(t => t.category === 'Testing')
       .map(t => t.name)
       .join(', ');
@@ -161,9 +161,9 @@ function scoreCodeQuality(data: PartialAnalysisResult): HealthScore {
     details.push({ message: 'No testing framework detected', delta: 0 });
   }
 
-  if (data.tooling.categories.includes('Linting & Formatting')) {
+  if (data.techStack.categories.includes('Linting & Formatting')) {
     score += 5;
-    const lintingTools = data.tooling.tools
+    const lintingTools = data.techStack.tools
       .filter(t => t.category === 'Linting & Formatting')
       .map(t => t.name)
       .join(', ');
@@ -196,17 +196,17 @@ function scoreSecurity(data: PartialAnalysisResult): HealthScore {
     details.push({ message: 'Has license', delta: 5 });
   }
 
-  if (data.tooling.categories.includes('CI/CD & Deployment')) {
+  if (data.techStack.categories.includes('CI/CD & Deployment')) {
     score += 5;
     details.push({ message: 'Automated CI pipeline', delta: 5 });
   }
 
-  if (data.tooling.categories.includes('Linting & Formatting')) {
+  if (data.techStack.categories.includes('Linting & Formatting')) {
     score += 3;
     details.push({ message: 'Code quality checks', delta: 3 });
   }
 
-  if (data.tooling.tools.some(t => t.name === 'Docker' || t.name === 'Docker Compose')) {
+  if (data.techStack.tools.some(t => t.name === 'Docker' || t.name === 'Docker Compose')) {
     score += 2;
     details.push({ message: 'Containerized', delta: 2 });
   }

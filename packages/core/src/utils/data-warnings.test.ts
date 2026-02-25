@@ -78,7 +78,7 @@ function buildResult(overrides: Partial<AnalysisResult> = {}): AnalysisResult {
       ],
     },
     languages: {} as AnalysisResult['languages'],
-    tooling: {} as AnalysisResult['tooling'],
+    techStack: {} as AnalysisResult['techStack'],
     healthScore: {} as AnalysisResult['healthScore'],
     userProfiles: [
       { login: 'alice', timezone: 'America/New_York' },

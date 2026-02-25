@@ -113,7 +113,7 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
       {/* <p className="text-muted-foreground text-sm">{report.basicStats.description}</p> */}
 
       {/* Tech Stack */}
-      <TechStackSection repo={report.basicStats.fullName} tools={report.tooling.tools} />
+      <TechStackSection repo={report.basicStats.fullName} tools={report.techStack.tools} />
 
       <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
         <ActivityHeatmapChart

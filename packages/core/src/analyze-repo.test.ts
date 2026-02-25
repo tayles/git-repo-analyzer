@@ -93,17 +93,17 @@ describe('analyzeGitRepository', () => {
     }
   });
 
-  it('should detect tooling from the file tree', async () => {
+  it('should detect tech stack from the file tree', async () => {
     const result = await analyzeGitRepository('facebook/docusaurus');
 
-    expect(result.tooling).toBeDefined();
-    expect(result.tooling.tools).toBeInstanceOf(Array);
-    expect(result.tooling.tools.length).toBeGreaterThan(0);
-    expect(result.tooling.categories).toBeInstanceOf(Array);
-    expect(result.tooling.categories.length).toBeGreaterThan(0);
+    expect(result.techStack).toBeDefined();
+    expect(result.techStack.tools).toBeInstanceOf(Array);
+    expect(result.techStack.tools.length).toBeGreaterThan(0);
+    expect(result.techStack.categories).toBeInstanceOf(Array);
+    expect(result.techStack.categories.length).toBeGreaterThan(0);
 
     // Each tool should have expected properties
-    for (const tool of result.tooling.tools) {
+    for (const tool of result.techStack.tools) {
       expect(tool.name).toBeDefined();
       expect(typeof tool.name).toBe('string');
     }

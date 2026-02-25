@@ -8407,7 +8407,7 @@
       }
     ]
   },
-  "tooling": {
+  "techStack": {
     "tools": [
       {
         "name": "DevContainer",

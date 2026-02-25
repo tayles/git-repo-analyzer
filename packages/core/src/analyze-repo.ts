@@ -10,7 +10,7 @@ import { processFileTree } from './analyzers/file-tree';
 import { processHealthScore } from './analyzers/health-score';
 import { processLanguages } from './analyzers/languages';
 import { processPullRequests } from './analyzers/pull-requests';
-import { processTooling } from './analyzers/tooling-detection';
+import { processTechStack } from './analyzers/tech-stack-detection';
 import { processUserProfiles } from './analyzers/user-profiles';
 import { GitHubAPI } from './client/github-api';
 import type {
@@ -97,19 +97,19 @@ export async function analyzeGitRepository(
   onProgress?.({
     phase: 'analyzing',
     progress: 90,
-    message: 'Detecting tooling...',
+    message: 'Detecting tech stack...',
   });
 
   await delay(1); // Yield to allow progress update to render
 
-  const tooling = processTooling(rawData.files);
+  const techStack = processTechStack(rawData.files);
   const healthScore = processHealthScore({
     basicStats,
     contributors,
     commits,
     pullRequests,
     languages,
-    tooling,
+    techStack,
     userProfiles,
     fileTree,
   });
@@ -128,7 +128,7 @@ export async function analyzeGitRepository(
     commits,
     pullRequests,
     languages,
-    tooling,
+    techStack,
     fileTree,
     healthScore,
     userProfiles,

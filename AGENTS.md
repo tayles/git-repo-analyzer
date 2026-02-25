@@ -45,7 +45,7 @@ This is a **Turborepo monorepo** using **bun** as the package manager and test r
 
 ### Data Flow
 
-1. **`packages/core`** — `analyzeGitRepository(repo, options)` is the main entry point. It calls `GitHubAPI` to fetch raw data in parallel (repo details, contributors, commits, PRs, languages, file tree), then passes results through individual analyzers (`processBasicStats`, `processCommits`, `processContributors`, `processPullRequests`, `processLanguages`, `processTooling`, `processHealthScore`).
+1. **`packages/core`** — `analyzeGitRepository(repo, options)` is the main entry point. It calls `GitHubAPI` to fetch raw data in parallel (repo details, contributors, commits, PRs, languages, file tree), then passes results through individual analyzers (`processBasicStats`, `processCommits`, etc).
 
 2. **`packages/store`** — Zustand store (`useAnalysisStore`) manages analysis state (loading, progress, result, error, history with caching) and persists history to localStorage.
 

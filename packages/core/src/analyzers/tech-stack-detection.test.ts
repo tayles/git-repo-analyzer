@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'bun:test';
 
 import type { GitHubFileTree } from '../client/github-types';
-import { processTooling } from './tooling-detection';
+import { processTechStack } from './tech-stack-detection';
 
 function makeFileTree(paths: string[]): GitHubFileTree {
   return {
@@ -16,10 +16,10 @@ function makeFileTree(paths: string[]): GitHubFileTree {
   };
 }
 
-describe('processTooling', () => {
+describe('processTechStack', () => {
   it('should detect package-lock.json as npm', () => {
     const files = makeFileTree(['package-lock.json']);
-    const result = processTooling(files);
+    const result = processTechStack(files);
 
     const npm = result.tools.find(t => t.name === 'npm');
     expect(npm).toBeDefined();
@@ -33,7 +33,7 @@ describe('processTooling', () => {
       'jest.config.ts',
       'tsconfig.json',
     ]);
-    const result = processTooling(files);
+    const result = processTechStack(files);
 
     expect(result.tools.length).toBeGreaterThanOrEqual(2);
     expect(result.categories.length).toBeGreaterThanOrEqual(1);
@@ -41,7 +41,7 @@ describe('processTooling', () => {
 
   it('should return empty when no tools match', () => {
     const files = makeFileTree(['random-file.xyz', 'another-unknown.abc']);
-    const result = processTooling(files);
+    const result = processTechStack(files);
 
     expect(result.tools).toEqual([]);
     expect(result.categories).toEqual([]);
@@ -49,7 +49,7 @@ describe('processTooling', () => {
 
   it('should include matched file paths per tool', () => {
     const files = makeFileTree(['package-lock.json']);
-    const result = processTooling(files);
+    const result = processTechStack(files);
 
     const npm = result.tools.find(t => t.name === 'npm');
     expect(npm).toBeDefined();

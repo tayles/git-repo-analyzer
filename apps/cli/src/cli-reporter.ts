@@ -41,10 +41,10 @@ export function printReport(result: AnalysisResult): void {
   if (s.archived) console.log(metric('Status', pc.yellow('ARCHIVED')));
   if (s.topics.length > 0) console.log(metric('Topics', s.topics.join(', ')));
 
-  // Tooling
-  if (result.tooling.tools.length > 0) {
+  // Tech stack
+  if (result.techStack.tools.length > 0) {
     console.log(heading('Tech Stack'));
-    const byCategory: Record<string, ToolMetaWithFileMatches[]> = result.tooling.tools.reduce(
+    const byCategory: Record<string, ToolMetaWithFileMatches[]> = result.techStack.tools.reduce(
       (acc, tool) => {
         acc[tool.category] = acc[tool.category] || [];
         acc[tool.category].push(tool);
@@ -53,9 +53,6 @@ export function printReport(result: AnalysisResult): void {
       {} as Record<string, ToolMetaWithFileMatches[]>,
     );
 
-    // for (const tool of result.tooling.tools) {
-    //   console.log(`  ${pc.bold(tool.category)}: ${tool.name}`);
-    // }
     for (const [category, tools] of Object.entries(byCategory)) {
       console.log(`  ${pc.dim(category)}`);
       for (const tool of tools) {

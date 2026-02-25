@@ -59,7 +59,7 @@ function createInput(overrides: Partial<PartialAnalysis> = {}): PartialAnalysis 
       pulls: [],
     },
     languages: { primaryLanguage: 'TypeScript', langs: [] },
-    tooling: {
+    techStack: {
       tools: [
         { name: 'Jest', category: 'Testing', logo: null, url: 'https://jestjs.io', paths: [] },
         {
@@ -135,7 +135,7 @@ describe('processHealthScore', () => {
           ...createInput().pullRequests,
           counts: { total: 0, open: 0, merged: 0, closed: 0 },
         },
-        tooling: { tools: [], categories: [] },
+        techStack: { tools: [], categories: [] },
       }),
     );
 
