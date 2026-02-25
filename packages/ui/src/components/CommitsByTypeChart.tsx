@@ -35,10 +35,12 @@ export function CommitsByTypeChart({ commits, selectedUserProfile }: CommitsByTy
     .slice(0, 10);
   const typeBreakdown = Object.fromEntries(entries);
 
-  const chartData = Object.entries(commits.conventions.prefixes).map(([type]) => ({
-    type,
-    count: data.prefixes[type] ?? 0,
-  }));
+  const chartData = Object.entries(commits.conventions.prefixes)
+    .slice(0, 10)
+    .map(([type]) => ({
+      type,
+      count: data.prefixes[type] ?? 0,
+    }));
 
   return (
     <Card>

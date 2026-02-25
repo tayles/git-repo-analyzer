@@ -24,6 +24,7 @@ interface ContributorsSectionProps {
   userProfiles: UserProfile[];
   /** The currently selected contributor (null = none selected) */
   selectedUserProfile: UserProfile | null;
+  hoveredUserProfile: UserProfile | null;
   /** Called when a contributor is clicked. Pass the contributor to select, or null to deselect. */
   onSelectUserProfile: (contributor: UserProfile | null) => void;
   onHoverUserProfile: (contributor: UserProfile | null) => void;
@@ -33,6 +34,7 @@ export function ContributorsSection({
   contributors,
   userProfiles,
   selectedUserProfile,
+  hoveredUserProfile,
   onSelectUserProfile,
   onHoverUserProfile,
 }: ContributorsSectionProps) {
@@ -106,6 +108,7 @@ export function ContributorsSection({
                 rel="noopener noreferrer"
                 className={cn(
                   'cursor-pointer flex items-center gap-3 rounded-lg p-2 transition-colors',
+                  hoveredUserProfile?.login === c.contributor.login && 'bg-muted',
                   isSelected ? 'bg-primary/10 ring-primary ring-2' : 'hover:bg-muted',
                 )}
                 onClick={() => handleSelectUserProfile(isSelected ? null : (c.profile ?? null))}

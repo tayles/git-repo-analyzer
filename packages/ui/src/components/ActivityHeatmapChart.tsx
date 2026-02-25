@@ -48,7 +48,8 @@ interface ActivityHeatmapChartProps {
   primaryTimezone: string | null;
   /** When set, indicates the heatmap is filtered for a specific user profile */
   selectedUserProfile: UserProfile | null;
-  onUserProfileChange: (userProfile: UserProfile | null) => void;
+  onSelectUserProfile: (contributor: UserProfile | null) => void;
+  onHoverUserProfile: (contributor: UserProfile | null) => void;
   /** Number of recent contributors missing timezone data */
   contributorsMissingTimezone: number;
 }
@@ -59,7 +60,8 @@ export function ActivityHeatmapChart({
   userProfiles,
   selectedUserProfile,
   primaryTimezone: _primaryTimezone,
-  onUserProfileChange,
+  onSelectUserProfile,
+  onHoverUserProfile,
   contributorsMissingTimezone,
 }: ActivityHeatmapChartProps) {
   const theme = useTheme();
@@ -76,7 +78,8 @@ export function ActivityHeatmapChart({
               contributors={contributors.recentContributors}
               userProfiles={userProfiles}
               selectedUserProfile={selectedUserProfile}
-              onUserProfileChange={onUserProfileChange}
+              onSelectUserProfile={onSelectUserProfile}
+              onHoverUserProfile={onHoverUserProfile}
             />
           )}
 

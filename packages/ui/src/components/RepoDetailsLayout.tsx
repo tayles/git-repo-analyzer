@@ -158,7 +158,8 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           contributors={report.contributors}
           userProfiles={report.userProfiles}
           selectedUserProfile={userProfile}
-          onUserProfileChange={handleSelectUserProfile}
+          onSelectUserProfile={handleSelectUserProfile}
+          onHoverUserProfile={handleHoverUserProfile}
           primaryTimezone={report.contributors.primaryTimezone}
           contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
         />
@@ -172,14 +173,15 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
         <ContributorsSection
           contributors={report.contributors}
           userProfiles={report.userProfiles}
-          selectedUserProfile={userProfile}
+          selectedUserProfile={selectedUserProfile}
+          hoveredUserProfile={hoveredUserProfile}
           onSelectUserProfile={handleSelectUserProfile}
           onHoverUserProfile={handleHoverUserProfile}
         />
 
         <CommitChart data={commitsPerWeek} totalCommits={report.commits.commits.length} />
 
-        <CommitsByTypeChart commits={report.commits} selectedUserProfile={selectedUserProfile} />
+        <CommitsByTypeChart commits={report.commits} selectedUserProfile={userProfile} />
 
         <PullRequestChart pulls={report.pullRequests} data={pullsPerWeek} />
 

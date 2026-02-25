@@ -16,18 +16,20 @@ interface ContributorComboboxProps {
   contributors: Contributor[];
   userProfiles: UserProfile[];
   selectedUserProfile: UserProfile | null;
-  onUserProfileChange: (userProfile: UserProfile | null) => void;
+  onSelectUserProfile: (contributor: UserProfile | null) => void;
+  onHoverUserProfile: (contributor: UserProfile | null) => void;
 }
 
 export function ContributorCombobox({
   contributors,
   userProfiles,
   selectedUserProfile,
-  onUserProfileChange,
+  onSelectUserProfile,
+  onHoverUserProfile,
 }: ContributorComboboxProps) {
   const items = [
     null,
-    ...contributors.map(contributor => {
+    ...contributors.slice(0, 10).map(contributor => {
       const profile = userProfiles.find(p => p.login === contributor.login);
       return { contributor, profile };
     }),
@@ -42,7 +44,7 @@ export function ContributorCombobox({
       items={items}
       itemToStringLabel={c => c?.login ?? ''}
       itemToStringValue={(c: UserProfile | null) => c?.login ?? ''}
-      onValueChange={onUserProfileChange}
+      onValueChange={onSelectUserProfile}
     >
       <ComboboxInput placeholder="Contributors" showClear className="w-45 sm:w-auto">
         <InputGroupAddon>
@@ -56,7 +58,7 @@ export function ContributorCombobox({
             <ComboboxItem
               key={c?.profile?.login ?? 'all'}
               value={c?.profile ?? null}
-              onMouseEnter={() => onUserProfileChange(c?.profile ?? null)}
+              onMouseEnter={() => onHoverUserProfile(c?.profile ?? null)}
             >
               {c ? (
                 <>
