@@ -22,10 +22,10 @@
   "author": "tayles",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tayles/git-repo-analyzer.git"
+    "url": "git+https://github.com/tayles/git-repo-analyzer.git"
   },
   "bin": {
-    "git-repo-analyzer": "./dist/cli.js"
+    "git-repo-analyzer": "dist/cli.js"
   },
   "files": [
     "dist"
