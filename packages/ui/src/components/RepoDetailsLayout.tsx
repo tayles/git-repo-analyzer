@@ -47,9 +47,15 @@ interface RepoDetailsLayoutProps {
   report: AnalysisResult;
   onBack: () => void;
   onRefresh: () => void;
+  showReportLink: boolean;
 }
 
-export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayoutProps) {
+export function RepoDetailsLayout({
+  report,
+  onBack,
+  onRefresh,
+  showReportLink = true,
+}: RepoDetailsLayoutProps) {
   const [selectedUserProfile, setSelectedUserProfile] = useState<UserProfile | null>(null);
   const [hoveredUserProfile, setHoveredUserProfile] = useState<UserProfile | null>(null);
 
@@ -124,17 +130,19 @@ export function RepoDetailsLayout({ report, onBack, onRefresh }: RepoDetailsLayo
           </TooltipContent>
         </Tooltip>
 
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" className="order-3 sm:order-4" asChild>
-              <a href={reportUrl} target="_blank">
-                <ExternalLink />
-                <span className="hidden sm:inline">New Tab</span>
-              </a>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">Open report in new tab</TooltipContent>
-        </Tooltip>
+        {showReportLink && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" className="order-3 sm:order-4" asChild>
+                <a href={reportUrl} target="_blank">
+                  <ExternalLink />
+                  <span className="hidden sm:inline">New Tab</span>
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Open report in new tab</TooltipContent>
+          </Tooltip>
+        )}
 
         <Tooltip>
           <TooltipTrigger asChild>

@@ -13,7 +13,12 @@ export function AppRepoDetailsPage({ report, onBack, onRefresh }: AppRepoDetails
   return (
     <div className="container mx-auto flex h-full flex-col justify-start gap-2 p-2">
       <AppHeader onClick={onBack} />
-      <RepoDetailsLayout report={report} onBack={onBack} onRefresh={onRefresh} />
+      <RepoDetailsLayout
+        report={report}
+        onBack={onBack}
+        onRefresh={onRefresh}
+        showReportLink={false}
+      />
     </div>
   );
 }

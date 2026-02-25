@@ -15,7 +15,7 @@ export function SidePanelRepoDetailsPage({
 }: SidePanelRepoDetailsPageProps) {
   return (
     <div className="flex h-full flex-col justify-start gap-2 p-2">
-      <RepoDetailsLayout report={report} onBack={onBack} onRefresh={onRefresh} />
+      <RepoDetailsLayout report={report} onBack={onBack} onRefresh={onRefresh} showReportLink />
     </div>
   );
 }

@@ -9,5 +9,5 @@ export default {
 const report = createMockAnalysisResult('facebook/docusaurus');
 
 export const RepoDetailsLayouts: Story = () => (
-  <RepoDetailsLayout report={report} onBack={() => {}} onRefresh={() => {}} />
+  <RepoDetailsLayout report={report} onBack={() => {}} onRefresh={() => {}} showReportLink={true} />
 );
