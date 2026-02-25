@@ -2,6 +2,7 @@ import cityTimezones, { type CityData } from 'city-timezones';
 
 const specialCases: Record<string, string> = {
   la: 'los angeles',
+  us: 'united states',
   usa: 'united states',
   quebec: 'québec',
   uk: 'united kingdom',
@@ -19,6 +20,7 @@ export function parseLocation(location: string | null): CityData | null {
 
   let normalizedLocation = location
     .toLowerCase()
+    .replaceAll(/\s*\(.*\)$/g, '')
     .normalize('NFD')
     .replaceAll(/[\u0300-\u036f]/g, '')
     .replaceAll(/[^\w\s]+/g, '')
@@ -27,13 +29,28 @@ export function parseLocation(location: string | null): CityData | null {
 
   // console.log(`Normalized location: "${normalizedLocation}"`);
 
-  if (specialCases[normalizedLocation]) {
-    normalizedLocation = specialCases[normalizedLocation]!;
+  let place = lookupLocation(normalizedLocation);
+
+  if (place) return place;
+
+  // If no match, try splitting by comma
+  if (normalizedLocation.includes(',')) {
+    const parts = normalizedLocation.split(',');
+    for (let part of parts) {
+      place = lookupLocation(part);
+      if (place) return place;
+    }
   }
 
-  const res = cityTimezones.findFromCityStateProvince(normalizedLocation);
+  return null;
+}
 
-  // console.log(res?.slice(0, 3));
+export function lookupLocation(location: string): CityData | null {
+  if (specialCases[location]) {
+    location = specialCases[location]!;
+  }
+
+  const res = cityTimezones.findFromCityStateProvince(location);
 
   if (res?.length) {
     // sort by population, descending
