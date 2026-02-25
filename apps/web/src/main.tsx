@@ -4,7 +4,13 @@ import { createRoot } from 'react-dom/client';
 import './app.css';
 import App from './App';
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root')!, {
+  onUncaughtError: (error: unknown) => {
+    console.error('Uncaught error:', error);
+    window.localStorage.clear(); // Clear localStorage to reset app state
+    window.location.reload(); // Reload the page to recover from the error
+  },
+}).render(
   <StrictMode>
     <App />
   </StrictMode>,
