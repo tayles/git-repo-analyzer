@@ -10,8 +10,6 @@ bun dev              # Start all dev servers (via turbo)
 bun run build        # Build all packages (via turbo)
 bun run test         # Run all tests (via turbo, uses bun test)
 bun fix              # Format, lint and type check all files (and autofix where possible)
-bun run lint:fix     # Lint with oxlint
-bun run fmtfix       # Check formatting with oxfmt
 ```
 
 Run tests for a single package:
