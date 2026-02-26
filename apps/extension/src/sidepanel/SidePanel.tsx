@@ -116,6 +116,12 @@ export default function SidePanel() {
     clearHistory();
   }, [clearHistory]);
 
+  // Scroll to top on page change
+  const currentPage = isLoading ? 'loading' : result && !error ? 'details' : 'home';
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentPage]);
+
   // View routing based on store state
   if (isLoading) {
     return (

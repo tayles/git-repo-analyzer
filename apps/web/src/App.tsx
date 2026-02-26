@@ -8,7 +8,7 @@ import {
   TooltipProvider,
 } from '@git-repo-analyzer/ui';
 import { AnimatePresence, motion } from 'motion/react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useUrlSync } from './hooks';
 
@@ -83,6 +83,12 @@ function App() {
     },
     [result, handleBack, removeFromHistory],
   );
+
+  // Scroll to top on page change
+  const currentPage = isLoading ? 'loading' : result ? 'details' : 'home';
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentPage]);
 
   // Sync URL with state
   useUrlSync({ currentRepository, onAnalyze: handleAnalyze });
