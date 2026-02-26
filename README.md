@@ -98,7 +98,7 @@ git-repo-analyzer/
 
 ## Key Features
 
-- **Tech Stack** — Uncover the technologies, libraries and build tools used in the repository
+- **Tech Stack** - Uncover the technologies, libraries and build tools used in the repository
 - **Activity Heatmap** - View commit activity by day of week and hour of day
 - **Work Patterns** - Is this built by a professional team working 9-5, or by hobbyists coding at night and on weekends?
 - **Bus Factor** - How much development is concentrated in a core set of maintainers vs distributed across many contributors?
@@ -108,11 +108,11 @@ git-repo-analyzer/
 ## Notes
 
 - **Runs locally** - All analysis is performed client-side in the browser or via the CLI. No repository data is sent to external servers. The tool fetches data directly from the GitHub API.
-- **GitHub only** — Only public GitHub repositories are supported out of the box. Private repos require a [Personal Access Token](https://github.com/settings/tokens). GitLab, Bitbucket and other hosts are not supported.
-- **API rate limits** — GitHub rate limits are 60/hr unauthenticated, 5k/hr with token
-- **Sampled data** — To keep requests fast, the tool fetches a limited window of data: up to 300 commits, 100 pull requests and 100 contributors. Metrics are therefore representative rather than exhaustive for very large repositories.
-- **Health score is heuristic** — The overall score (out of 100) is computed from five weighted categories (Maintenance, Documentation, Community, Code Quality, Security) using simple heuristics. It is a useful indicator, not a definitive quality measure.
-- **No code analysis** — The tool inspects metadata, file names and config files via the GitHub API. It does not clone the repository or perform static analysis on source code.
+- **GitHub only** - Only public GitHub repositories are supported out of the box. Private repos require a [Personal Access Token](https://github.com/settings/tokens). GitLab, Bitbucket and other hosts are not supported.
+- **API rate limits** - GitHub rate limits are 60/hr unauthenticated, 5k/hr with token
+- **Sampled data** - To keep requests fast, the tool fetches a limited window of data: up to 300 commits, 100 pull requests and 100 contributors. Metrics are therefore representative rather than exhaustive for very large repositories.
+- **Health score is heuristic** - The overall score (out of 100) is computed from five weighted categories (Maintenance, Documentation, Community, Code Quality, Security) using simple heuristics. It is a useful indicator, not a definitive quality measure.
+- **No code analysis** - The tool inspects metadata, file names and config files via the GitHub API. It does not clone the repository or perform static analysis on source code.
 
 ## Tech Stack
 
