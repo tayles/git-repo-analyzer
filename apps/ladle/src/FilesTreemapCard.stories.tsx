@@ -8,6 +8,10 @@ export default {
 
 export const FilesTreemapCards: Story = () => (
   <div className="max-w-2xl p-4">
-    <FilesTreemapCard data={mockResult.fileTree} />
+    <FilesTreemapCard
+      data={mockResult.fileTree}
+      repoUrl={mockResult.basicStats.htmlUrl}
+      defaultBranch={mockResult.basicStats.defaultBranch}
+    />
   </div>
 );

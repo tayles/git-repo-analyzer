@@ -1,4 +1,5 @@
 import { formatBytes, formatNumber, type FileTreeAnalysis } from '@git-repo-analyzer/core';
+import { useCallback } from 'react';
 import { Treemap } from 'recharts';
 
 import { InfoButton } from './InfoButton';
@@ -7,6 +8,8 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } f
 
 interface FilesTreemapCardProps {
   data: FileTreeAnalysis;
+  repoUrl: string;
+  defaultBranch: string;
 }
 
 interface TreemapDatum {
@@ -14,9 +17,10 @@ interface TreemapDatum {
   size: number;
   fileCount: number;
   fill: string;
+  path: string;
 }
 
-export function FilesTreemapCard({ data }: FilesTreemapCardProps) {
+export function FilesTreemapCard({ data, repoUrl, defaultBranch }: FilesTreemapCardProps) {
   const chartData: TreemapDatum[] =
     data.directories
       .filter(directory => directory.bytes > 0)
@@ -26,7 +30,19 @@ export function FilesTreemapCard({ data }: FilesTreemapCardProps) {
         size: directory.bytes,
         fileCount: directory.fileCount,
         fill: `var(--chart-${(index % 5) + 1})`,
+        path: directory.path,
       })) ?? [];
+
+  const handleClick = useCallback(
+    (node: { path?: string }) => {
+      if (!repoUrl) return;
+      const path = node.path;
+      if (!path) return;
+      const url = path === '.' ? repoUrl : `${repoUrl}/tree/${defaultBranch}/${path}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    },
+    [repoUrl, defaultBranch],
+  );
 
   const chartConfig: ChartConfig = Object.fromEntries(
     chartData.map(directory => [directory.name, { label: directory.name, color: directory.fill }]),
@@ -63,6 +79,8 @@ export function FilesTreemapCard({ data }: FilesTreemapCardProps) {
               aspectRatio={4 / 3}
               fill="#fff"
               animationDuration={100}
+              onClick={node => handleClick(node as { path?: string })}
+              className="cursor-pointer"
             >
               <ChartTooltip
                 content={

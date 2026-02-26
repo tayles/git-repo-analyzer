@@ -219,7 +219,11 @@ export function RepoDetailsLayout({
         <LanguageChart data={report.languages} />
 
         <section id="toc-files" className="scroll-mt-34 md:col-span-2 md:scroll-mt-28">
-          <FilesTreemapCard data={report.fileTree} />
+          <FilesTreemapCard
+            data={report.fileTree}
+            repoUrl={report.basicStats.htmlUrl}
+            defaultBranch={report.basicStats.defaultBranch}
+          />
         </section>
       </section>
 
