@@ -8,6 +8,6 @@ describe('TypeScript library', () => {
   });
 
   it('should throw an error when no repository is provided', async () => {
-    await expect(analyzeGitRepository(null as any)).rejects.toThrow('No repository provided');
+    expect(analyzeGitRepository(null as any)).rejects.toThrow('No repository provided');
   });
 });
