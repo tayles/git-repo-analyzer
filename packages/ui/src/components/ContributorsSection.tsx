@@ -67,8 +67,18 @@ export function ContributorsSection({
       ? `${CONTRIBUTORS_FETCH_LIMIT}+`
       : contributors.totalContributors.toString();
 
+  // show tabs if top contributors !== recent contributors
   const showTabs =
-    contributors.recentContributors.length > 0 && contributors.topContributors.length > 0;
+    contributors.topContributors
+      .slice(0, 10)
+      .map(c => c.login)
+      .sort()
+      .join(',') !==
+    contributors.recentContributors
+      .slice(0, 10)
+      .map(c => c.login)
+      .sort()
+      .join(',');
 
   return (
     <Card className="md:col-span-2">
@@ -76,9 +86,15 @@ export function ContributorsSection({
         <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>
           <Badge variant="secondary">{TEAM_SIZE_LABELS[contributors.teamSize]}</Badge>
-          <span className="text-muted-foreground flex-1 text-sm font-normal">
-            {numContributors} total / bus factor: {contributors.busFactor}
-          </span>
+          <Badge variant={contributors.busFactor < 3 ? 'destructive' : 'secondary'}>
+            Bus factor: {contributors.busFactor}
+          </Badge>
+          {contributors.totalContributors > 1 && (
+            <span className="text-muted-foreground text-sm font-normal">
+              {numContributors} total
+            </span>
+          )}
+          <span className="flex-1"></span>
           {showTabs && (
             <Tabs value={tab} onValueChange={v => setTab(v as 'recent' | 'top')}>
               <TabsList>
