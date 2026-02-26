@@ -2,8 +2,9 @@ import type { HealthScore, HealthScoreAnalysis } from '@git-repo-analyzer/core';
 import { Cell, Pie, PieChart } from 'recharts';
 
 import { cn } from '../lib/utils';
+import { InfoButton } from './InfoButton';
 import { Badge } from './ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 function getScoreColor(score: number, max: number): string {
@@ -141,6 +142,15 @@ export function HealthScoreCard({ health }: HealthScoreCardProps) {
       <Card className="select-text">
         <CardHeader>
           <CardTitle className="text-center">Overall Health Score</CardTitle>
+          <CardAction>
+            <InfoButton title="Health Score">
+              <p className="text-muted-foreground">
+                Evaluates the overall health of the repository based on various factors such as
+                commit activity, code quality, and more. A higher score indicates a healthier
+                repository.
+              </p>
+            </InfoButton>
+          </CardAction>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-4">
           <ChartContainer config={config} className="h-48 w-48">
