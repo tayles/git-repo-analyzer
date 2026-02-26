@@ -51,6 +51,7 @@ export { SidePanelHomePage } from './components/sidepanel/SidePanelHomePage';
 export { SidePanelLoadingPage } from './components/sidepanel/SidePanelLoadingPage';
 export { SidePanelRepoDetailsPage } from './components/sidepanel/SidePanelRepoDetailsPage';
 export { StatCard } from './components/StatCard';
+export { TableOfContents, type TocItem } from './components/TableOfContents';
 export { TechStackSection } from './components/TechStackSection';
 export { ThemeToggle } from './components/ThemeToggle';
 export { ToolCard } from './components/ToolCard';

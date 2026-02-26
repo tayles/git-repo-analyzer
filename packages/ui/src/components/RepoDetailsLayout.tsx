@@ -38,6 +38,7 @@ import { LanguageLogo } from './LanguageLogo';
 import { PullRequestChart } from './PullRequestChart';
 import { RepoName } from './RepoName';
 import { StatCard } from './StatCard';
+import { TableOfContents, type TocItem } from './TableOfContents';
 import { TechStackSection } from './TechStackSection';
 import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
@@ -92,75 +93,95 @@ export function RepoDetailsLayout({
 
   const dataWarnings = useMemo(() => computeDataWarnings(report), [report]);
 
+  const tocItems = useMemo<TocItem[]>(
+    () => [
+      { id: 'toc-tech-stack', label: 'Tech Stack' },
+      { id: 'toc-activity', label: 'Activity' },
+      { id: 'toc-files', label: 'Files' },
+      { id: 'toc-health', label: 'Health' },
+      { id: 'toc-stats', label: 'Stats' },
+    ],
+    [],
+  );
+
   const baseUrl = report.basicStats.htmlUrl;
   const reportUrl = `https://tayles.github.io/git-repo-analyzer/?repo=${encodeURIComponent(report.basicStats.fullName)}`;
 
   return (
     <div className="flex h-full flex-col justify-start gap-2">
-      <div className="bg-background absolute sticky top-0 z-10 flex min-w-0 flex-wrap items-center gap-1 p-1 py-2 md:py-4">
-        <Button variant="ghost" onClick={onBack} className="order-1">
-          <ChevronLeft />
-          <span className="inline sm:hidden sm:inline">Back</span>
-        </Button>
+      <div className="bg-background absolute sticky top-0 z-10 flex flex-col gap-1 p-1 py-2 md:py-4">
+        <div className="flex min-w-0 flex-wrap items-center gap-1">
+          <Button variant="ghost" onClick={onBack} className="order-1">
+            <ChevronLeft />
+            <span className="inline sm:hidden sm:inline">Back</span>
+          </Button>
 
-        <h2 className="order-5 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
-          <a
-            href={report.basicStats.htmlUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary transition-colors hover:underline"
-          >
-            <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
-          </a>
-        </h2>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              onClick={() => copy(reportUrl)}
-              className="order-2 ml-auto sm:order-3"
+          <h2 className="order-5 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
+            <a
+              href={report.basicStats.htmlUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors hover:underline"
             >
-              {isCopied ? <Check /> : <Copy />}
-              <span className="hidden sm:inline">Copy</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">
-            {isCopied ? 'Copied!' : 'Copy link to this report'}
-          </TooltipContent>
-        </Tooltip>
+              <RepoName fullName={report.basicStats.fullName} uid={report.basicStats.owner.id} />
+            </a>
+          </h2>
 
-        {showReportLink && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" className="order-3 sm:order-4" asChild>
-                <a href={reportUrl} target="_blank">
-                  <ExternalLink />
-                  <span className="hidden sm:inline">New Tab</span>
-                </a>
+              <Button
+                variant="ghost"
+                onClick={() => copy(reportUrl)}
+                className="order-2 ml-auto sm:order-3"
+              >
+                {isCopied ? <Check /> : <Copy />}
+                <span className="hidden md:inline">Copy</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">Open report in new tab</TooltipContent>
+            <TooltipContent side="bottom">
+              {isCopied ? 'Copied!' : 'Copy link to this report'}
+            </TooltipContent>
           </Tooltip>
-        )}
 
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" onClick={onRefresh} className="order-4 sm:order-5">
-              <RefreshCw />
-              <span className="inline sm:hidden sm:inline">Refresh</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">Refresh report</TooltipContent>
-        </Tooltip>
+          {showReportLink && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" className="order-3 sm:order-4" asChild>
+                  <a href={reportUrl} target="_blank">
+                    <ExternalLink />
+                    <span className="hidden md:inline">New Tab</span>
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Open report in a new tab</TooltipContent>
+            </Tooltip>
+          )}
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" onClick={onRefresh} className="order-4 sm:order-5">
+                <RefreshCw />
+                <span className="inline sm:hidden sm:inline">Refresh</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Refresh report</TooltipContent>
+          </Tooltip>
+        </div>
+
+        <TableOfContents items={tocItems} />
       </div>
 
       {/* <p className="text-muted-foreground text-sm">{report.basicStats.description}</p> */}
 
       {/* Tech Stack */}
-      <TechStackSection repo={report.basicStats.fullName} tools={report.techStack.tools} />
+      <section id="toc-tech-stack" className="mb-2 scroll-mt-34 md:scroll-mt-28">
+        <TechStackSection repo={report.basicStats.fullName} tools={report.techStack.tools} />
+      </section>
 
-      <section className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid grid-cols-1 gap-4 p-2 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
+      <section
+        id="toc-activity"
+        className="xs:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid scroll-mt-34 grid-cols-1 gap-4 sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))] md:scroll-mt-28"
+      >
         <ActivityHeatmapChart
           data={heatmapData}
           contributors={report.contributors}
@@ -178,14 +199,16 @@ export function RepoDetailsLayout({
           contributorsMissingTimezone={dataWarnings.contributorsMissingTimezone}
         />
 
-        <ContributorsSection
-          contributors={report.contributors}
-          userProfiles={report.userProfiles}
-          selectedUserProfile={selectedUserProfile}
-          hoveredUserProfile={hoveredUserProfile}
-          onSelectUserProfile={handleSelectUserProfile}
-          onHoverUserProfile={handleHoverUserProfile}
-        />
+        <section className="md:col-span-2">
+          <ContributorsSection
+            contributors={report.contributors}
+            userProfiles={report.userProfiles}
+            selectedUserProfile={selectedUserProfile}
+            hoveredUserProfile={hoveredUserProfile}
+            onSelectUserProfile={handleSelectUserProfile}
+            onHoverUserProfile={handleHoverUserProfile}
+          />
+        </section>
 
         <CommitChart data={commitsPerWeek} totalCommits={report.commits.commits.length} />
 
@@ -195,13 +218,17 @@ export function RepoDetailsLayout({
 
         <LanguageChart data={report.languages} />
 
-        <FilesTreemapCard data={report.fileTree} />
+        <section id="toc-files" className="scroll-mt-34 md:col-span-2 md:scroll-mt-28">
+          <FilesTreemapCard data={report.fileTree} />
+        </section>
       </section>
 
-      <HealthScoreCard health={report.healthScore} />
+      <section id="toc-health" className="scroll-mt-34 md:scroll-mt-28">
+        <HealthScoreCard health={report.healthScore} />
+      </section>
 
       {/* Stats */}
-      <section>
+      <section id="toc-stats" className="scroll-mt-34 md:scroll-mt-28">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4 p-2 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
