@@ -11,12 +11,12 @@ A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git re
 
 ## Screenshots
 
-|                                                                                                                                                                   |                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Chrome Extension (Light Theme)                                                                                                                                    | Chrome Extension (Dark Theme)                                                                                                                                   |
-| ![Report (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-light.png) | ![Report (Dark)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-dark.png) |
-| Web App                                                                                                                                                           | CLI Output                                                                                                                                                      |
-| ![Web App](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-web-screenshot.png)                                 | ![Home (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-cli-screenshot.png)                          |
+|                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Chrome Extension                                                                                                                                                                                                                                                                                          | Chrome Extension (Dark Theme)                                                                                                                                                                                                                                                                          |
+| [![Report (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-light.png)](https://github.com/tayles/git-repo-analyzer/blob/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-light.png) | [![Report (Dark)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-dark.png)](https://github.com/tayles/git-repo-analyzer/blob/main/docs/screenshots/git-repo-analyzer-chrome-extension-sidepanel-report-dark.png) |
+| Web App                                                                                                                                                                                                                                                                                                   | CLI Output                                                                                                                                                                                                                                                                                             |
+| [![Web App](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-web-screenshot.png)](https://github.com/tayles/git-repo-analyzer/blob/main/docs/screenshots/git-repo-analyzer-web-screenshot.png)                                                          | [![Home (Light)](https://raw.githubusercontent.com/tayles/git-repo-analyzer/main/docs/screenshots/git-repo-analyzer-cli-screenshot.png)](https://github.com/tayles/git-repo-analyzer/blob/main/docs/screenshots/git-repo-analyzer-cli-screenshot.png)                                                  |
 
 ## Online Tool
 
@@ -98,15 +98,12 @@ git-repo-analyzer/
 
 ## Key Features
 
-- **Turborepo** for monorepo orchestration with task caching
-- **Bun** as package manager and test runner
-- **Tailwind CSS v4** with `@tailwindcss/vite` plugin (CSS-first config)
-- **shadcn/ui** base components
-- **Zustand** with persist middleware for state management
-- **CRXJS** for Chrome extension with hot reload support
-- **Bunup** for building the CLI/library package
-- **Ladle** for component documentation/stories
-- **oxfmt + oxlint** for formatting and linting
+- **Tech Stack** — Uncover the technologies, libraries and build tools used in the repository
+- **Activity Heatmap** - View commit activity by day of week and hour of day
+- **Work Patterns** - Is this built by a professional team working 9-5, or by hobbyists coding at night and on weekends?
+- **Bus Factor** - How much development is concentrated in a core set of maintainers vs distributed across many contributors?
+- **Project Structure** - See where the code lives and how the project is organized
+- **Health Score** - Evaluate the overall health of the repository based on maintenance, documentation, community engagement, code quality and security indicators
 
 ## Notes
 
@@ -117,6 +114,18 @@ git-repo-analyzer/
 - **Health score is heuristic** — The overall score (out of 100) is computed from five weighted categories (Maintenance, Documentation, Community, Code Quality, Security) using simple heuristics. It is a useful indicator, not a definitive quality measure.
 - **No code analysis** — The tool inspects metadata, file names and config files via the GitHub API. It does not clone the repository or perform static analysis on source code.
 
+## Tech Stack
+
+- **[Turborepo](https://turborepo.dev)** for monorepo orchestration with task caching
+- **[Bun](https://bun.sh)** as package manager and test runner
+- **[Tailwind CSS v4](https://tailwindcss.com)** with `@tailwindcss/vite` plugin (CSS-first config)
+- **[shadcn/ui](https://ui.shadcn.com)** base components
+- **[Zustand](https://zustand-demo.pmnd.rs/)** with persist middleware for state management
+- **[CRXJS](https://crxjs.dev)** for Chrome extension with hot reload support
+- **[Bunup](https://bunup.dev)** for building the CLI/library package
+- **[Ladle](https://ladle.dev)** for component documentation/stories
+- **[oxfmt and oxlint](https://oxc.rs)** for formatting and linting
+
 ## Contributing
 
 - `bun install` - Install dependencies
@@ -126,14 +135,3 @@ git-repo-analyzer/
 - `bun fix` - Format, lint and type check all files (and autofix where possible)
 - `bun lint:fix` - Lint with oxlint
 - `bun fmt:fix` - Format with oxfmt
-
-## Resources
-
-- [Turborepo](https://turborepo.dev)
-- [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4)
-- [CRXJS Vite Plugin](https://crxjs.dev)
-- [Oxlint](https://oxc.rs/docs/guide/usage/linter)
-- [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
-- [Bunup](https://bunup.dev)
-- [Ladle](https://ladle.dev)
-- [shadcn/ui Monorepo](https://ui.shadcn.com/docs/monorepo)
