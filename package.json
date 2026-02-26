@@ -10,6 +10,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
+    "release": "cd apps/cli && bun run release",
     "clean": "turbo run clean && rm -rf node_modules",
     "test:coverage": "bun test --coverage",
     "test:ci": "bun test --coverage --coverage-reporter=lcov",
