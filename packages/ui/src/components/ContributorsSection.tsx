@@ -81,7 +81,7 @@ export function ContributorsSection({
       .join(',');
 
   return (
-    <Card className="md:col-span-2">
+    <Card>
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-3 select-text">
           <span>Contributors</span>

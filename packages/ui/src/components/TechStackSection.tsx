@@ -34,14 +34,14 @@ export function TechStackSection({ repo, tools }: TechStackSectionProps) {
         <CardAction>
           <InfoButton title="Tech Stack Detection">
             <p className="text-muted-foreground">
-              Detects the technologies used in the repository by analyzing file names and directory
-              structures. Provides insights into the project's development ecosystem.
+              Detects the technologies used in this repository by analyzing file names and directory
+              structures.
             </p>
           </InfoButton>
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="columns-[180px] gap-4">
+        <div className="xs:columns-[180px] columns-[135px] gap-4">
           {toolsByCategory.map(([category, categoryTools], categoryIndex) => (
             <motion.div
               key={category}

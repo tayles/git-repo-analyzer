@@ -56,8 +56,6 @@ export function CommitsByTypeChart({ commits, selectedUserProfile }: CommitsByTy
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-3">
-        <HorizontalBarChart data={typeBreakdown} className="w-full" />
-
         <ChartContainer config={chartConfig} className="h-64 w-full max-w-xs">
           <RadarChart data={chartData}>
             <PolarGrid />
@@ -71,6 +69,10 @@ export function CommitsByTypeChart({ commits, selectedUserProfile }: CommitsByTy
             />
           </RadarChart>
         </ChartContainer>
+
+        <section className="h-5 w-full">
+          <HorizontalBarChart data={typeBreakdown} />
+        </section>
       </CardContent>
     </Card>
   );

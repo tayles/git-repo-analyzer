@@ -1,7 +1,8 @@
 import type { LanguageAnalysis } from '@git-repo-analyzer/core';
 import { Cell, Pie, PieChart } from 'recharts';
 
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { InfoButton } from './InfoButton';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from './ui/chart';
 
 interface LanguageChartProps {
@@ -36,6 +37,11 @@ export function LanguageChart({ data }: LanguageChartProps) {
     <Card>
       <CardHeader>
         <CardTitle className="select-text">Languages</CardTitle>
+        <CardAction>
+          <InfoButton title="Languages">
+            <p className="text-muted-foreground">Programming languages used in the repository.</p>
+          </InfoButton>
+        </CardAction>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col flex-wrap items-center gap-4 md:flex-row">

@@ -124,7 +124,7 @@ export function ActivityHeatmapChart({
                     <Tooltip key={`${dayIdx}-${hour}`}>
                       <TooltipTrigger asChild>
                         <div
-                          className="h-4 w-4 rounded-sm"
+                          className="size-4 rounded-sm"
                           style={{
                             backgroundColor: getIntensityColor(value, data.maxValue, theme),
                           }}

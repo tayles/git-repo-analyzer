@@ -1,4 +1,3 @@
-import { cn } from '../lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 const CHART_COLORS = [
@@ -32,7 +31,7 @@ export function HorizontalBarChart({ data, className }: HorizontalBarChartProps)
   const total = entries.reduce((sum, [, v]) => sum + v, 0);
 
   return (
-    <div className={cn(className)}>
+    <div className={className}>
       <div className="flex h-5 w-full overflow-hidden rounded-full">
         {entries.map(([key, value], i) => {
           const pct = (value / total) * 100;
