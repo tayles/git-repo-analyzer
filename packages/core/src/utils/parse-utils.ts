@@ -2,6 +2,10 @@
  * Parse a repository string into owner/repo format
  */
 export function parseRepository(repoNameOrUrl: string): string {
+  if (!repoNameOrUrl) {
+    throw new Error('No repository provided');
+  }
+
   // Handle full GitHub URLs
   const urlMatch = repoNameOrUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
   if (urlMatch) {

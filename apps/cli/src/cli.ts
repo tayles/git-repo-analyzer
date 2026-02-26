@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+
 /**
  * Git Repo Analyzer CLI
  *
