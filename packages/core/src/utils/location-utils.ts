@@ -1,16 +1,13 @@
 import cityTimezones, { type CityData } from 'city-timezones';
 
 const specialCases: Record<string, string> = {
-  la: 'los angeles',
-  us: 'united states',
   usa: 'united states',
-  quebec: 'québec',
   uk: 'united kingdom',
   england: 'united kingdom',
   wales: 'united kingdom',
   scotland: 'united kingdom',
+  la: 'los angeles',
   nj: 'new jersey',
-  hk: 'hong kong',
   nsw: 'new south wales',
   nyc: 'new york',
 };
@@ -21,10 +18,11 @@ export function parseLocation(location: string | null): CityData | null {
   let normalizedLocation = location
     .toLowerCase()
     .replaceAll(/\s*\(.*\)$/g, '')
-    .normalize('NFD')
-    .replaceAll(/[\u0300-\u036f]/g, '')
-    .replaceAll(/[^\w\s]+/g, '')
+    // .normalize('NFD')
+    // .replaceAll(/[\u0300-\u036f]/g, '')
+    .replaceAll(/[^A-Za-zÀ-ÖØ-öø-ÿ\s,]+/g, '')
     .replaceAll(/\./g, '')
+    .replaceAll(/\s+\b(city|area)\b/g, '')
     .trim();
 
   // console.log(`Normalized location: "${normalizedLocation}"`);
@@ -50,7 +48,16 @@ export function lookupLocation(location: string): CityData | null {
     location = specialCases[location]!;
   }
 
-  const res = cityTimezones.findFromCityStateProvince(location);
+  let res: CityData[] | null = null;
+
+  if (location.length <= 3) {
+    // If it's a short string, treat it as a country code
+    res = cityTimezones.findFromIsoCode(location);
+  }
+
+  if (!res?.length) {
+    res = cityTimezones.findFromCityStateProvince(location);
+  }
 
   if (res?.length) {
     // sort by population, descending
