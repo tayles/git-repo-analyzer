@@ -14,7 +14,7 @@
     },
     "apps/cli": {
       "name": "git-repo-analyzer",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "bin": {
         "git-repo-analyzer": "dist/cli.js",
       },
