@@ -533,6 +533,16 @@ const BUILD_TOOLS: Record<ToolName, ToolMetaBasic> = {
     url: 'https://just.systems',
     globs: ['justfile'],
   },
+  'Apache Maven': {
+    logo: 'apachemaven',
+    url: 'https://maven.apache.org',
+    globs: ['pom.xml'],
+  },
+  'Apache Gradle': {
+    logo: 'gradle',
+    url: 'https://gradle.org',
+    globs: ['build.gradle', 'build.gradle.kts'],
+  },
 };
 
 const IDES: Record<ToolName, ToolMetaBasic> = {
