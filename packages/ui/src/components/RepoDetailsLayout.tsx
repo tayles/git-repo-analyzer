@@ -368,6 +368,42 @@ export function RepoDetailsLayout({
           )}
         </div>
       </section>
+
+      {/* Footer */}
+      <section className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 py-4 text-sm">
+        <Button variant="link" size="sm" asChild>
+          <a
+            href="https://github.com/tayles/git-repo-analyzer/issues/new"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Report a bug
+          </a>
+        </Button>
+        <Button variant="link" size="sm" asChild>
+          <a
+            href="https://github.com/tayles/git-repo-analyzer"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View source code
+          </a>
+        </Button>
+        <Button variant="link" size="sm" asChild>
+          <a
+            href="https://www.npmjs.com/package/git-repo-analyzer"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on NPM
+          </a>
+        </Button>
+        <Button variant="link" size="sm" asChild>
+          <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer">
+            Chrome Web Store
+          </a>
+        </Button>
+      </section>
     </div>
   );
 }
