@@ -33,7 +33,7 @@ export default defineManifest({
   side_panel: {
     default_path: 'src/sidepanel/index.html',
   },
-  permissions: ['activeTab', 'storage', 'sidePanel', 'contextMenus'],
+  permissions: ['activeTab', 'storage', 'sidePanel'],
   commands: {
     'get-repo-details': {
       suggested_key: {
