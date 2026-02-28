@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 export interface TocItem {
   id: string;
   label: string;
+  className?: string;
 }
 
 interface TableOfContentsProps {
@@ -77,7 +78,11 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           key={item.id}
           variant="ghost"
           onClick={() => handleClick(item.id)}
-          className={cn('transition-all', activeId === item.id ? 'bg-muted text-foreground' : '')}
+          className={cn(
+            'transition-all',
+            item.className,
+            activeId === item.id ? 'bg-muted text-foreground' : '',
+          )}
         >
           {item.label}
         </Button>

@@ -99,7 +99,7 @@ export function RepoDetailsLayout({
       { id: 'toc-activity', label: 'Activity' },
       { id: 'toc-files', label: 'Files' },
       { id: 'toc-health', label: 'Health' },
-      { id: 'toc-stats', label: 'Stats' },
+      { id: 'toc-stats', label: 'Stats', className: 'hidden md:block' },
     ],
     [],
   );
