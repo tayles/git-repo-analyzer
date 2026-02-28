@@ -15,7 +15,7 @@ export function GitHubUserAvatar({ uid, className }: GitHubUserAvatarProps) {
     <IconWithFallback
       url={url}
       alt="GitHub user avatar"
-      className={cn('rounded-full overflow-hidden', className)}
+      className={cn('size-6 rounded-full overflow-hidden', className)}
     />
   );
 }

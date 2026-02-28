@@ -26,8 +26,8 @@ export function IconWithFallback({
   return (
     <div className={cn('size-8 shrink-0 text-sm font-bold', className)}>
       {!imageLoaded && (
-        <div className="bg-primary/10 flex h-full w-full items-center justify-center rounded">
-          <Image className="text-muted-foreground h-[80%] w-[80%]" />
+        <div className="flex h-full w-full items-center justify-center rounded">
+          <Image className="text-muted-foreground/30 h-[80%] w-[80%]" />
         </div>
       )}
       {url && (

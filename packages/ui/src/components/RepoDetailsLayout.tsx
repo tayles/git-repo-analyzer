@@ -109,14 +109,14 @@ export function RepoDetailsLayout({
 
   return (
     <div className="flex h-full flex-col justify-start gap-2">
-      <div className="bg-background absolute sticky top-0 z-10 flex flex-col gap-1 p-1 py-2 md:py-4">
+      <div className="bg-background absolute sticky top-0 z-10 flex flex-col gap-1 p-1 py-2">
         <div className="flex min-w-0 flex-wrap items-center gap-1">
           <Button variant="ghost" onClick={onBack} className="order-1">
             <ChevronLeft />
             <span className="inline sm:hidden sm:inline">Back</span>
           </Button>
 
-          <h2 className="order-5 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:w-auto sm:flex-1 sm:text-xl">
+          <h2 className="order-5 mb-1 w-full truncate overflow-hidden text-lg font-semibold whitespace-nowrap sm:order-2 sm:mb-0 sm:w-auto sm:flex-1 sm:text-xl">
             <a
               href={report.basicStats.htmlUrl}
               target="_blank"
@@ -174,7 +174,7 @@ export function RepoDetailsLayout({
       {/* <p className="text-muted-foreground text-sm">{report.basicStats.description}</p> */}
 
       {/* Tech Stack */}
-      <section id="toc-tech-stack" className="mb-2 scroll-mt-34 md:scroll-mt-28">
+      <section id="toc-tech-stack" className="mb-2 scroll-mt-34 border-t pt-4 md:scroll-mt-28">
         <TechStackSection repo={report.basicStats.fullName} tools={report.techStack.tools} />
       </section>
 
@@ -218,7 +218,7 @@ export function RepoDetailsLayout({
 
         <LanguageChart data={report.languages} />
 
-        <section id="toc-files" className="scroll-mt-34 md:col-span-2 md:scroll-mt-28">
+        <section id="toc-files" className="scroll-mt-34 md:col-span-2 md:scroll-mt-26">
           <FilesTreemapCard
             data={report.fileTree}
             repoUrl={report.basicStats.htmlUrl}
@@ -227,7 +227,7 @@ export function RepoDetailsLayout({
         </section>
       </section>
 
-      <section id="toc-health" className="scroll-mt-34 md:scroll-mt-28">
+      <section id="toc-health" className="scroll-mt-32 md:scroll-mt-28">
         <HealthScoreCard health={report.healthScore} />
       </section>
 

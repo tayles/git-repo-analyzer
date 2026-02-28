@@ -68,7 +68,10 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   }, []);
 
   return (
-    <nav aria-label="Table of contents" className="mx-auto flex items-center gap-1">
+    <nav
+      aria-label="Table of contents"
+      className="sm:text-md mx-auto flex items-center gap-1 text-xs"
+    >
       {items.map(item => (
         <Button
           key={item.id}
