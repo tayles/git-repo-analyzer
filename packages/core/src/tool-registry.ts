@@ -19,6 +19,7 @@ export type ToolName = string;
 
 export interface ToolMetaBasic {
   logo: string | null;
+  silhouette?: boolean; // denotes the logo is black & white - invert the logo color for better visibility on dark mode
   url: string;
   /** Glob patterns to match against file paths. Patterns ending with / match directories. */
   globs: string[];
@@ -41,11 +42,13 @@ const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   'Claude Code': {
     logo: 'anthropic',
+    silhouette: true,
     url: 'https://docs.anthropic.com/en/docs/claude-code',
     globs: ['.claude', '.claudeignore', 'CLAUDE.md'],
   },
   'GitHub Copilot': {
     logo: 'githubcopilot',
+    silhouette: true,
     url: 'https://github.com/features/copilot',
     globs: ['.github/copilot-instructions.md', '.copilot-instructions.md'],
   },
@@ -61,6 +64,7 @@ const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   Cursor: {
     logo: 'cursor',
+    silhouette: true,
     url: 'https://cursor.com',
     globs: ['.cursorrules', '.cursorignore', '.cursor'],
   },
@@ -89,6 +93,7 @@ const AI_TOOLS: Record<ToolName, ToolMetaBasic> = {
 const PACKAGE_MANAGERS: Record<ToolName, ToolMetaBasic> = {
   Bun: {
     logo: 'bun',
+    silhouette: true,
     url: 'https://bun.sh',
     globs: ['bun.lockb', 'bun.lock', 'bunfig.toml'],
   },
@@ -109,6 +114,7 @@ const PACKAGE_MANAGERS: Record<ToolName, ToolMetaBasic> = {
   },
   Cargo: {
     logo: 'rust',
+    silhouette: true,
     url: 'https://doc.rust-lang.org/cargo/',
     globs: ['Cargo.toml'],
   },
@@ -152,6 +158,7 @@ const PACKAGE_MANAGERS: Record<ToolName, ToolMetaBasic> = {
 const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
   'Next.js': {
     logo: 'nextdotjs',
+    silhouette: true,
     url: 'https://nextjs.org',
     globs: ['next.config.js', 'next.config.ts', 'next.config.mjs'],
   },
@@ -172,11 +179,13 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
   },
   Angular: {
     logo: 'angular',
+    silhouette: true,
     url: 'https://angular.dev',
     globs: ['angular.json'],
   },
   Remix: {
     logo: 'remix',
+    silhouette: true,
     url: 'https://remix.run',
     globs: ['remix.config.js'],
   },
@@ -212,6 +221,7 @@ const FRAMEWORKS: Record<ToolName, ToolMetaBasic> = {
   },
   Rust: {
     logo: 'rust',
+    silhouette: true,
     url: 'https://www.rust-lang.org',
     globs: ['rust-toolchain', 'rust-toolchain.toml'],
   },
@@ -292,7 +302,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
     globs: ['.cpplint'],
   },
   EditorConfig: {
-    logo: null,
+    logo: 'editorconfig',
     url: 'https://editorconfig.org',
     globs: ['.editorconfig'],
   },
@@ -336,6 +346,7 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   rustfmt: {
     logo: 'rust',
+    silhouette: true,
     url: 'https://github.com/rust-lang/rustfmt',
     globs: ['rustfmt.toml'],
   },
@@ -351,11 +362,13 @@ const LINTING_AND_FORMATTING_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   Black: {
     logo: 'black',
+    silhouette: true,
     url: 'https://black.readthedocs.io',
     globs: ['pyproject.toml'],
   },
   RuboCop: {
     logo: 'rubocop',
+    silhouette: true,
     url: 'https://rubocop.org',
     globs: ['.rubocop.yml'],
   },
@@ -477,6 +490,7 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   Vercel: {
     logo: 'vercel',
+    silhouette: true,
     url: 'https://vercel.com',
     globs: ['vercel.json'],
   },
@@ -492,6 +506,7 @@ const CICD_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   Render: {
     logo: 'render',
+    silhouette: true,
     url: 'https://render.com',
     globs: ['render.yaml'],
   },
@@ -530,6 +545,7 @@ const BUILD_TOOLS: Record<ToolName, ToolMetaBasic> = {
   },
   Just: {
     logo: 'just',
+    silhouette: true,
     url: 'https://just.systems',
     globs: ['justfile'],
   },
@@ -553,6 +569,7 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
   },
   'JetBrains IDEs': {
     logo: 'jetbrains',
+    silhouette: true,
     url: 'https://www.jetbrains.com',
     globs: ['.idea'],
   },
@@ -591,11 +608,13 @@ const IDES: Record<ToolName, ToolMetaBasic> = {
 const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
   README: {
     logo: 'markdown',
+    silhouette: true,
     url: '',
     globs: ['README.md', 'README'],
   },
   'Read the Docs': {
     logo: 'readthedocs',
+    silhouette: true,
     url: 'https://readthedocs.org',
     globs: ['.readthedocs.yml'],
   },
@@ -604,21 +623,25 @@ const DOCUMENTATION_TOOLS: Record<ToolName, ToolMetaBasic> = {
 const COMMUNITY_TOOLS: Record<ToolName, ToolMetaBasic> = {
   SECURITY: {
     logo: 'markdown',
+    silhouette: true,
     url: '',
     globs: ['SECURITY.md', 'SECURITY'],
   },
   CONTRIBUTING: {
     logo: 'markdown',
+    silhouette: true,
     url: '',
     globs: ['CONTRIBUTING.md', 'CONTRIBUTING'],
   },
   LICENSE: {
     logo: 'markdown',
+    silhouette: true,
     url: '',
     globs: ['LICENSE', 'LICENSE.md'],
   },
   CODE_OF_CONDUCT: {
     logo: 'markdown',
+    silhouette: true,
     url: '',
     globs: ['CODE_OF_CONDUCT.md', 'CODE_OF_CONDUCT'],
   },

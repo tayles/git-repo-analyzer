@@ -38,7 +38,11 @@ export function TechStackSection({ repo, tools }: TechStackSectionProps) {
             <Popover>
               <PopoverTrigger asChild>
                 <div className="hover:bg-accent flex min-w-20 cursor-pointer break-inside-avoid flex-col items-center justify-end gap-2 rounded-md p-2 transition-colors">
-                  <ToolLogo logo={tool.logo} className="size-6 shrink-0" />
+                  <ToolLogo
+                    logo={tool.logo}
+                    invertColor={tool.silhouette}
+                    className="size-6 shrink-0"
+                  />
                   <span className="text-sm font-medium">{tool.name}</span>
                 </div>
               </PopoverTrigger>

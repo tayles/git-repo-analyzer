@@ -25,7 +25,7 @@ export const ToolLogos: Story = () => (
         <div className="flex flex-wrap gap-4">
           {tools.map(tool => (
             <div key={tool.name} className="flex items-center gap-2">
-              <ToolLogo logo={tool.logo} />
+              <ToolLogo logo={tool.logo} invertColor={tool.silhouette} />
               <span>{tool.name}</span>
             </div>
           ))}
