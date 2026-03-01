@@ -1,6 +1,6 @@
 {
   "name": "@git-repo-analyzer/extension",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "description": "Chrome extension for git-repo-analyzer to view the tech stack, health and other insights of any GitHub repository",
   "type": "module",

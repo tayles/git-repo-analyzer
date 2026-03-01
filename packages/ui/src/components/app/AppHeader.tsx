@@ -49,7 +49,11 @@ export function AppHeader({ onClick }: AppHeaderProps) {
         </Button>
 
         <Button variant="ghost" size="lg" asChild title="View on Chrome Web Store">
-          <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://chromewebstore.google.com/detail/git-repo-analyzer/alijgbeigmpnmhbbnemaololhfdlcbdj"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 223" className="size-6">
               <defs>
                 <linearGradient id="SVGHPFpg7JP" x1="0%" x2="100%" y1="50%" y2="50%">

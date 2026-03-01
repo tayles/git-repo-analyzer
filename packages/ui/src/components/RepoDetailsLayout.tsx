@@ -399,7 +399,11 @@ export function RepoDetailsLayout({
           </a>
         </Button>
         <Button variant="link" size="sm" asChild>
-          <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://chromewebstore.google.com/detail/git-repo-analyzer/alijgbeigmpnmhbbnemaololhfdlcbdj"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Chrome Web Store
           </a>
         </Button>

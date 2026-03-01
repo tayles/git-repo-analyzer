@@ -28,7 +28,7 @@ Try it now at **[tayles.github.io/git-repo-analyzer](https://tayles.github.io/gi
 
 View details for any GitHub repo in a side panel.
 
-Get it now on the **[Chrome Web Store](https://chromewebstore.google.com/detail/git-repo-analyzer/lohfeibjkcdoadkbdooliabaafagbfek)**
+Get it now on the **[Chrome Web Store](https://chromewebstore.google.com/detail/git-repo-analyzer/alijgbeigmpnmhbbnemaololhfdlcbdj)**
 
 ## CLI
 
