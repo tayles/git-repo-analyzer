@@ -137,7 +137,7 @@ export function HealthScoreCard({ health }: HealthScoreCardProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Overall Score */}
       <Card className="select-text">
         <CardHeader>

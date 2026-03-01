@@ -227,7 +227,7 @@ export function RepoDetailsLayout({
         </section>
       </section>
 
-      <section id="toc-health" className="scroll-mt-32 md:scroll-mt-28">
+      <section id="toc-health" className="mt-2 scroll-mt-32 md:scroll-mt-26">
         <HealthScoreCard health={report.healthScore} />
       </section>
 
