@@ -46,7 +46,7 @@ export function ContributorCombobox({
       itemToStringValue={(c: UserProfile | null) => c?.login ?? ''}
       onValueChange={onSelectUserProfile}
     >
-      <ComboboxInput placeholder="Contributors" showClear className="w-45 sm:w-auto">
+      <ComboboxInput placeholder="Contributors" showClear className="w-45 font-normal sm:w-auto">
         <InputGroupAddon>
           {profile ? <GitHubUserAvatar uid={profile.id} className="size-4" /> : <GlobeIcon />}
         </InputGroupAddon>
