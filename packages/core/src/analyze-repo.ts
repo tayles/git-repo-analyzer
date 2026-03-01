@@ -224,7 +224,11 @@ export async function fetchContributors(
   api: GitHubAPI,
   repo: string,
 ): Promise<GitHubContributor[]> {
-  return await api.fetchPaginated<GitHubContributor>(`/repos/${repo}/contributors`, 1);
+  try {
+    return await api.fetchPaginated<GitHubContributor>(`/repos/${repo}/contributors`, 3);
+  } catch {
+    return [];
+  }
 }
 
 /**
@@ -249,10 +253,14 @@ export async function fetchPullRequests(
   api: GitHubAPI,
   repo: string,
 ): Promise<GitHubPullRequest[]> {
-  return await api.fetchPaginated<GitHubPullRequest>(
-    `/repos/${repo}/pulls?state=all&sort=created&direction=desc`,
-    1,
-  );
+  try {
+    return await api.fetchPaginated<GitHubPullRequest>(
+      `/repos/${repo}/pulls?state=all&sort=created&direction=desc`,
+      3,
+    );
+  } catch {
+    return [];
+  }
 }
 
 export async function fetchLanguages(api: GitHubAPI, repo: string): Promise<GitHubLanguage> {
