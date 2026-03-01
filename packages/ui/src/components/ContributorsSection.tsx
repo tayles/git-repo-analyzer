@@ -146,7 +146,8 @@ export function ContributorsSection({
                     )}
                   </div>
                   <p className="text-muted-foreground text-xs">
-                    {c.contributor.contributions.toLocaleString()} commits
+                    {c.contributor.contributions.toLocaleString()} commit
+                    {c.contributor.contributions !== 1 ? 's' : ''}
                     {c.profile?.location && (
                       <>
                         {' · '}
