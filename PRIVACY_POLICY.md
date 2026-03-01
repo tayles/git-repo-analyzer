@@ -4,7 +4,7 @@
 
 ## Overview
 
-Git Repo Analyzer is a Chrome Extension, CLI tool, and web application that analyzes public GitHub repositories. Your privacy is important to us. This policy explains what data we collect (very little) and how it is handled.
+Git Repo Analyzer is a Chrome Extension, CLI tool, TypeScript library and web application that analyzes public GitHub repositories. Your privacy is important to us. This policy explains what data we collect (very little) and how it is handled.
 
 ## Data Collection
 
