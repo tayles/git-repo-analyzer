@@ -22,6 +22,10 @@ interface AnalysisReportCardProps {
 export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReportCardProps) {
   const healthPercent = Math.round(report.healthScore.overall);
 
+  const tools = report.techStack.tools.filter(
+    tool => !['Documentation', 'Community'].includes(tool.category),
+  );
+
   return (
     <Card
       onClick={onClick}
@@ -49,14 +53,12 @@ export function AnalysisReportCard({ report, onClick, onDelete }: AnalysisReport
       </CardHeader>
       <CardContent className="p-2">
         <div className="flex flex-wrap gap-2">
-          {report.techStack.tools
-            .filter(tool => tool.category !== 'Documentation')
-            .map(tool => (
-              <div key={tool.name} className="flex items-center gap-2 text-xs">
-                <ToolLogo logo={tool.logo} className="size-4" />
-                {tool.name}
-              </div>
-            ))}
+          {tools.map(tool => (
+            <div key={tool.name} className="flex items-center gap-2 text-xs">
+              <ToolLogo logo={tool.logo} className="size-4" />
+              {tool.name}
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
