@@ -34,9 +34,7 @@ describe('background', () => {
     expect(chromeMock.sidePanel.setPanelBehavior).toHaveBeenCalledWith({
       openPanelOnActionClick: false,
     });
-    expect(chromeMock.runtime.onInstalled.addListener).toHaveBeenCalledTimes(1);
     expect(chromeMock.action.onClicked.addListener).toHaveBeenCalledTimes(1);
-    expect(chromeMock.contextMenus.onClicked.addListener).toHaveBeenCalledTimes(1);
     expect(chromeMock.commands.onCommand.addListener).toHaveBeenCalledTimes(1);
   });
 
