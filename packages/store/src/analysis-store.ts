@@ -2,6 +2,8 @@ import type { AnalysisResult, ProgressUpdate } from '@git-repo-analyzer/core';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
+export const MAX_HISTORY_ITEMS = 21; // Maximum number of items to keep in history
+
 /**
  * State for the analysis store
  */
@@ -74,7 +76,7 @@ export const useAnalysisStore = create<AnalysisStore>()(
               isLoading: false,
               progress: null,
               error: null,
-              history: [cached, ...filteredHistory].slice(0, 10),
+              history: [cached, ...filteredHistory].slice(0, MAX_HISTORY_ITEMS),
             });
             return true;
           }
@@ -105,7 +107,7 @@ export const useAnalysisStore = create<AnalysisStore>()(
           result,
           isLoading: false,
           progress: null,
-          history: [result, ...filteredHistory].slice(0, 10), // Keep last 10
+          history: [result, ...filteredHistory].slice(0, MAX_HISTORY_ITEMS),
         });
       },
 
