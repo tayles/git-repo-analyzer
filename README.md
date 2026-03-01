@@ -4,6 +4,8 @@
 
 A Chrome Extension, CLI, TypeScript library and online tool for analyzing Git repositories.
 
+Discover the tech stack, activity patterns, bus factor, project structure and overall health of any GitHub repository. All analysis runs locally in the browser or via the CLI with no data sent to external servers.
+
 - 🌐 **[Online Tool](https://tayles.github.io/git-repo-analyzer)** _(Try it now!)_
 - 🧩 **[Chrome Extension](#chrome-extension)**
 - 💻 **[CLI Tool](#cli)**
