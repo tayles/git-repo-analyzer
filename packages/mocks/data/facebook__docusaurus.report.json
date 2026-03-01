@@ -2,25 +2,25 @@
   "generator": {
     "name": "git-repo-analyzer",
     "version": "1.0.0",
-    "analyzedAt": "2026-02-25T01:48:09.426Z",
-    "durationMs": 1403
+    "analyzedAt": "2026-03-01T17:19:49.981Z",
+    "durationMs": 4322
   },
   "basicStats": {
     "name": "docusaurus",
     "fullName": "facebook/docusaurus",
     "htmlUrl": "https://github.com/facebook/docusaurus",
     "description": "Easy to maintain open source documentation websites.",
-    "stars": 63899,
-    "forks": 9750,
+    "stars": 63950,
+    "forks": 9749,
     "openIssues": 353,
     "watchers": 433,
     "language": "TypeScript",
     "license": "MIT",
     "createdAt": "2017-06-20T16:13:53Z",
-    "updatedAt": "2026-02-25T01:37:08Z",
-    "pushedAt": "2026-02-23T22:05:09Z",
+    "updatedAt": "2026-03-01T17:17:24Z",
+    "pushedAt": "2026-02-27T18:18:59Z",
     "defaultBranch": "main",
-    "size": 1015290,
+    "size": 1017326,
     "hasWiki": false,
     "hasPages": true,
     "archived": false,
@@ -33,7 +33,7 @@
     }
   },
   "contributors": {
-    "totalContributors": 100,
+    "totalContributors": 300,
     "teamSize": "large",
     "busFactor": 4,
     "primaryCountry": "France",
@@ -42,7 +42,7 @@
     "topContributors": [
       {
         "login": "slorber",
-        "contributions": 1120
+        "contributions": 1122
       },
       {
         "login": "lex111",
@@ -66,7 +66,7 @@
       },
       {
         "login": "dependabot[bot]",
-        "contributions": 255
+        "contributions": 257
       },
       {
         "login": "deltice",
@@ -439,16 +439,816 @@
       {
         "login": "Pierre-Gilles",
         "contributions": 3
+      },
+      {
+        "login": "Mysterious-Dev",
+        "contributions": 3
+      },
+      {
+        "login": "attaradev",
+        "contributions": 3
+      },
+      {
+        "login": "manzinello",
+        "contributions": 3
+      },
+      {
+        "login": "longlho",
+        "contributions": 3
+      },
+      {
+        "login": "ilg-ul",
+        "contributions": 3
+      },
+      {
+        "login": "TomBrien",
+        "contributions": 3
+      },
+      {
+        "login": "vandreleal",
+        "contributions": 3
+      },
+      {
+        "login": "waldyrious",
+        "contributions": 3
+      },
+      {
+        "login": "noomorph",
+        "contributions": 3
+      },
+      {
+        "login": "artiebits",
+        "contributions": 3
+      },
+      {
+        "login": "azu",
+        "contributions": 3
+      },
+      {
+        "login": "bravo-kernel",
+        "contributions": 3
+      },
+      {
+        "login": "neilsutcliffe",
+        "contributions": 3
+      },
+      {
+        "login": "tsmrachel",
+        "contributions": 3
+      },
+      {
+        "login": "kane50613",
+        "contributions": 3
+      },
+      {
+        "login": "biplavmz",
+        "contributions": 3
+      },
+      {
+        "login": "christian-bromann",
+        "contributions": 3
+      },
+      {
+        "login": "shortcuts",
+        "contributions": 3
+      },
+      {
+        "login": "Olexandr88",
+        "contributions": 3
+      },
+      {
+        "login": "akshatsinha0",
+        "contributions": 3
+      },
+      {
+        "login": "andrewnicols",
+        "contributions": 3
+      },
+      {
+        "login": "aadsm",
+        "contributions": 3
+      },
+      {
+        "login": "gedeagas",
+        "contributions": 3
+      },
+      {
+        "login": "arifszn",
+        "contributions": 3
+      },
+      {
+        "login": "artemkovalyov",
+        "contributions": 3
+      },
+      {
+        "login": "ArtFlag",
+        "contributions": 3
+      },
+      {
+        "login": "billy1624",
+        "contributions": 3
+      },
+      {
+        "login": "willingc",
+        "contributions": 3
+      },
+      {
+        "login": "chenglou",
+        "contributions": 3
+      },
+      {
+        "login": "dandv",
+        "contributions": 3
+      },
+      {
+        "login": "DanRoscigno",
+        "contributions": 3
+      },
+      {
+        "login": "dhurlburtusa",
+        "contributions": 3
+      },
+      {
+        "login": "fishmandev",
+        "contributions": 3
+      },
+      {
+        "login": "kaycebasques",
+        "contributions": 3
+      },
+      {
+        "login": "kumaraditya303",
+        "contributions": 3
+      },
+      {
+        "login": "lisa761",
+        "contributions": 3
+      },
+      {
+        "login": "jknoxville",
+        "contributions": 3
+      },
+      {
+        "login": "jaril",
+        "contributions": 3
+      },
+      {
+        "login": "kassens",
+        "contributions": 3
+      },
+      {
+        "login": "jakebolam",
+        "contributions": 3
+      },
+      {
+        "login": "clicktodev",
+        "contributions": 3
+      },
+      {
+        "login": "hamzahamidi",
+        "contributions": 3
+      },
+      {
+        "login": "gregberge",
+        "contributions": 3
+      },
+      {
+        "login": "gabrielcsapo",
+        "contributions": 3
+      },
+      {
+        "login": "erickzhao",
+        "contributions": 3
+      },
+      {
+        "login": "EricPonvelle",
+        "contributions": 3
+      },
+      {
+        "login": "Dr-Electron",
+        "contributions": 3
+      },
+      {
+        "login": "SethFalco",
+        "contributions": 2
+      },
+      {
+        "login": "shirshendubhowmick",
+        "contributions": 2
+      },
+      {
+        "login": "shreedharbhat98",
+        "contributions": 2
+      },
+      {
+        "login": "imskr",
+        "contributions": 2
+      },
+      {
+        "login": "shwaka",
+        "contributions": 2
+      },
+      {
+        "login": "sohamsshah",
+        "contributions": 2
+      },
+      {
+        "login": "stnor",
+        "contributions": 2
+      },
+      {
+        "login": "heysujal",
+        "contributions": 2
+      },
+      {
+        "login": "suravshrestha",
+        "contributions": 2
+      },
+      {
+        "login": "tannerdolby",
+        "contributions": 2
+      },
+      {
+        "login": "tarunrajput",
+        "contributions": 2
+      },
+      {
+        "login": "ThakurKarthik",
+        "contributions": 2
+      },
+      {
+        "login": "TheodoreChu",
+        "contributions": 2
+      },
+      {
+        "login": "tienvx",
+        "contributions": 2
+      },
+      {
+        "login": "HunteRoi",
+        "contributions": 2
+      },
+      {
+        "login": "tirthbodawala",
+        "contributions": 2
+      },
+      {
+        "login": "mrazauskas",
+        "contributions": 2
+      },
+      {
+        "login": "ryzokuken",
+        "contributions": 2
+      },
+      {
+        "login": "adampatterson",
+        "contributions": 2
+      },
+      {
+        "login": "oriooctopus",
+        "contributions": 2
+      },
+      {
+        "login": "ori-shalom",
+        "contributions": 2
+      },
+      {
+        "login": "parkas2018",
+        "contributions": 2
+      },
+      {
+        "login": "limkinZero",
+        "contributions": 2
+      },
+      {
+        "login": "BattleOfPlassey",
+        "contributions": 2
+      },
+      {
+        "login": "parthpp",
+        "contributions": 2
+      },
+      {
+        "login": "moozzyk",
+        "contributions": 2
+      },
+      {
+        "login": "radekmie",
+        "contributions": 2
+      },
+      {
+        "login": "iamrajiv",
+        "contributions": 2
+      },
+      {
+        "login": "rbarbazz",
+        "contributions": 2
+      },
+      {
+        "login": "redcamel",
+        "contributions": 2
+      },
+      {
+        "login": "xtellurian",
+        "contributions": 2
+      },
+      {
+        "login": "3v0k4",
+        "contributions": 2
+      },
+      {
+        "login": "kingo55",
+        "contributions": 2
+      },
+      {
+        "login": "sadikkuzu",
+        "contributions": 2
+      },
+      {
+        "login": "saintmalik",
+        "contributions": 2
+      },
+      {
+        "login": "scottilee",
+        "contributions": 2
+      },
+      {
+        "login": "vaibhavshn",
+        "contributions": 2
+      },
+      {
+        "login": "mohrash92",
+        "contributions": 2
+      },
+      {
+        "login": "nirtamir2",
+        "contributions": 2
+      },
+      {
+        "login": "jdhines",
+        "contributions": 2
+      },
+      {
+        "login": "palashgdev",
+        "contributions": 2
+      },
+      {
+        "login": "philipp985",
+        "contributions": 2
+      },
+      {
+        "login": "qwerzl",
+        "contributions": 2
+      },
+      {
+        "login": "reece-white",
+        "contributions": 2
+      },
+      {
+        "login": "sammychinedu2ky",
+        "contributions": 2
+      },
+      {
+        "login": "silva-nick",
+        "contributions": 2
+      },
+      {
+        "login": "Suenaga-Ryuya",
+        "contributions": 2
+      },
+      {
+        "login": "sykp241095",
+        "contributions": 2
+      },
+      {
+        "login": "taejs",
+        "contributions": 2
+      },
+      {
+        "login": "thedevwonder",
+        "contributions": 2
+      },
+      {
+        "login": "yujonglee",
+        "contributions": 2
+      },
+      {
+        "login": "turaling",
+        "contributions": 2
+      },
+      {
+        "login": "omeraplak",
+        "contributions": 2
+      },
+      {
+        "login": "anru",
+        "contributions": 2
+      },
+      {
+        "login": "CodeDoctorDE",
+        "contributions": 2
+      },
+      {
+        "login": "vamsi3",
+        "contributions": 2
+      },
+      {
+        "login": "sivapalan",
+        "contributions": 2
+      },
+      {
+        "login": "Vinnl",
+        "contributions": 2
+      },
+      {
+        "login": "webbertakken",
+        "contributions": 2
+      },
+      {
+        "login": "ghostsquad",
+        "contributions": 2
+      },
+      {
+        "login": "WillBrock",
+        "contributions": 2
+      },
+      {
+        "login": "zxuqian",
+        "contributions": 2
+      },
+      {
+        "login": "GingerGeek",
+        "contributions": 2
+      },
+      {
+        "login": "effozen",
+        "contributions": 2
+      },
+      {
+        "login": "loozhengyuan",
+        "contributions": 2
+      },
+      {
+        "login": "aakhtar3",
+        "contributions": 2
+      },
+      {
+        "login": "cheercroaker",
+        "contributions": 2
+      },
+      {
+        "login": "dawei-wang",
+        "contributions": 2
+      },
+      {
+        "login": "forgeRW",
+        "contributions": 2
+      },
+      {
+        "login": "wszgxa",
+        "contributions": 2
+      },
+      {
+        "login": "matthewbub",
+        "contributions": 2
+      },
+      {
+        "login": "maxaggedon",
+        "contributions": 2
+      },
+      {
+        "login": "mcallisto",
+        "contributions": 2
+      },
+      {
+        "login": "ohkimur",
+        "contributions": 2
+      },
+      {
+        "login": "d4nyll",
+        "contributions": 2
+      },
+      {
+        "login": "danon",
+        "contributions": 2
+      },
+      {
+        "login": "dbrrt",
+        "contributions": 2
+      },
+      {
+        "login": "NamanGarg2075",
+        "contributions": 2
+      },
+      {
+        "login": "dickwyn",
+        "contributions": 2
+      },
+      {
+        "login": "dmitryvinn",
+        "contributions": 2
+      },
+      {
+        "login": "dmitryvinn-fb",
+        "contributions": 2
+      },
+      {
+        "login": "dsmmcken",
+        "contributions": 2
+      },
+      {
+        "login": "Djunnni",
+        "contributions": 2
+      },
+      {
+        "login": "ericbuss",
+        "contributions": 2
+      },
+      {
+        "login": "eric-hc",
+        "contributions": 2
+      },
+      {
+        "login": "ericvicenti",
+        "contributions": 2
+      },
+      {
+        "login": "fakela",
+        "contributions": 2
+      },
+      {
+        "login": "ForbesLindesay",
+        "contributions": 2
+      },
+      {
+        "login": "Foxeye-Rinx",
+        "contributions": 2
+      },
+      {
+        "login": "edno",
+        "contributions": 2
+      },
+      {
+        "login": "gustavohenke",
+        "contributions": 2
+      },
+      {
+        "login": "ikrydev",
+        "contributions": 2
+      },
+      {
+        "login": "noraj",
+        "contributions": 2
+      },
+      {
+        "login": "3alisaki",
+        "contributions": 2
+      },
+      {
+        "login": "amilajack",
+        "contributions": 2
+      },
+      {
+        "login": "andrewShillito",
+        "contributions": 2
+      },
+      {
+        "login": "ataft",
+        "contributions": 2
+      },
+      {
+        "login": "bildungsroman",
+        "contributions": 2
+      },
+      {
+        "login": "Oreoxmt",
+        "contributions": 2
+      },
+      {
+        "login": "arnaudjnn",
+        "contributions": 2
+      },
+      {
+        "login": "ayan-b",
+        "contributions": 2
+      },
+      {
+        "login": "benmccann",
+        "contributions": 2
+      },
+      {
+        "login": "bcabanes",
+        "contributions": 2
+      },
+      {
+        "login": "bennobuilder",
+        "contributions": 2
+      },
+      {
+        "login": "recallwei",
+        "contributions": 2
+      },
+      {
+        "login": "charleskorn",
+        "contributions": 2
+      },
+      {
+        "login": "coliff",
+        "contributions": 2
+      },
+      {
+        "login": "christopherklint97",
+        "contributions": 2
+      },
+      {
+        "login": "JeremyDolle",
+        "contributions": 2
+      },
+      {
+        "login": "trustyoo86",
+        "contributions": 2
+      },
+      {
+        "login": "kripod",
+        "contributions": 2
+      },
+      {
+        "login": "kyletsang",
+        "contributions": 2
+      },
+      {
+        "login": "leedom92",
+        "contributions": 2
+      },
+      {
+        "login": "leo",
+        "contributions": 2
+      },
+      {
+        "login": "lukasbach",
+        "contributions": 2
+      },
+      {
+        "login": "maazadeeb",
+        "contributions": 2
+      },
+      {
+        "login": "palmiak",
+        "contributions": 2
+      },
+      {
+        "login": "ybiquitous",
+        "contributions": 2
+      },
+      {
+        "login": "MatanBobi",
+        "contributions": 2
+      },
+      {
+        "login": "matkoch",
+        "contributions": 2
+      },
+      {
+        "login": "olistic",
+        "contributions": 2
+      },
+      {
+        "login": "miralemd",
+        "contributions": 2
+      },
+      {
+        "login": "MorookaKotaro",
+        "contributions": 2
+      },
+      {
+        "login": "ntucker",
+        "contributions": 2
+      },
+      {
+        "login": "nisarhassan12",
+        "contributions": 2
+      },
+      {
+        "login": "nitya",
+        "contributions": 2
+      },
+      {
+        "login": "Noah-Silvera",
+        "contributions": 2
+      },
+      {
+        "login": "noritaka1166",
+        "contributions": 2
+      },
+      {
+        "login": "thehanimo",
+        "contributions": 2
+      },
+      {
+        "login": "hbulens",
+        "contributions": 2
+      },
+      {
+        "login": "hidde",
+        "contributions": 2
+      },
+      {
+        "login": "jakeboone02",
+        "contributions": 2
+      },
+      {
+        "login": "jmcshane",
+        "contributions": 2
+      },
+      {
+        "login": "JPeer264",
+        "contributions": 2
+      },
+      {
+        "login": "jeffersonlicet",
+        "contributions": 2
+      },
+      {
+        "login": "favna",
+        "contributions": 2
+      },
+      {
+        "login": "9oelM",
+        "contributions": 2
+      },
+      {
+        "login": "JoshuaKGoldberg",
+        "contributions": 2
+      },
+      {
+        "login": "jsamr",
+        "contributions": 2
+      },
+      {
+        "login": "JDMathew",
+        "contributions": 2
+      },
+      {
+        "login": "FeynmanDNA",
+        "contributions": 2
+      },
+      {
+        "login": "kamilkisiela",
+        "contributions": 2
+      },
+      {
+        "login": "moskalakamil",
+        "contributions": 2
+      },
+      {
+        "login": "githubsaturn",
+        "contributions": 2
+      },
+      {
+        "login": "InternetExplorer7",
+        "contributions": 2
+      },
+      {
+        "login": "kgajera",
+        "contributions": 2
+      },
+      {
+        "login": "BigDataWriter",
+        "contributions": 1
+      },
+      {
+        "login": "Bhoomi070",
+        "contributions": 1
+      },
+      {
+        "login": "imbhargav5",
+        "contributions": 1
+      },
+      {
+        "login": "bharateshwq",
+        "contributions": 1
+      },
+      {
+        "login": "bmiddha",
+        "contributions": 1
+      },
+      {
+        "login": "belemaire",
+        "contributions": 1
+      },
+      {
+        "login": "BenDz",
+        "contributions": 1
       }
     ],
     "recentContributors": [
       {
         "login": "slorber",
-        "contributions": 151
+        "contributions": 152
       },
       {
         "login": "dependabot[bot]",
-        "contributions": 46
+        "contributions": 48
       },
       {
         "login": "akshatsinha0",
@@ -801,41 +1601,101 @@
       {
         "login": "ramazansancar",
         "contributions": 1
-      },
-      {
-        "login": "waldyrious",
-        "contributions": 1
-      },
-      {
-        "login": "stephenglass",
-        "contributions": 1
-      },
-      {
-        "login": "clicktodev",
-        "contributions": 1
       }
     ]
   },
   "commits": {
     "totalCommits": 300,
-    "firstCommitDate": "2025-01-31T14:25:10Z",
-    "lastCommitDate": "2026-02-20T14:37:56Z",
+    "firstCommitDate": "2025-02-03T12:02:20Z",
+    "lastCommitDate": "2026-02-27T18:15:42Z",
     "conventions": {
       "conventionalCommits": true,
       "gitmoji": false,
       "prefixes": {
         "fix": 95,
-        "chore": 90,
-        "feat": 40,
-        "docs": 39,
+        "chore": 92,
+        "feat": 41,
+        "docs": 37,
         "refactor": 15,
-        "perf": 12,
+        "perf": 11,
         "test": 6,
         "meta": 1,
         "misc": 1
       }
     },
     "commits": [
+      {
+        "sha": "ea921cbf800038566dd304d5a7d788030d0ca078",
+        "author": "slorber",
+        "message": {
+          "raw": "fix(cli): fix `write-heading-ids` CLI when no files provided (#11763)",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-27T18:15:42Z",
+          "local": "Fri Feb 27 2026 19:15:42 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        }
+      },
+      {
+        "sha": "3dbd395983a57bdfe35835618332b2d4bcd19013",
+        "author": "slorber",
+        "message": {
+          "raw": "feat(mdx-loader): add support for explicit `headingId` based on MD/MDX comments (#11755)",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-27T17:52:20Z",
+          "local": "Fri Feb 27 2026 18:52:20 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        }
+      },
+      {
+        "sha": "00ee8a4e6b7f443381da802480c9de03126c0965",
+        "author": "dependabot[bot]",
+        "message": {
+          "raw": "chore(deps): bump rollup from 2.79.2 to 2.80.0 (#11762)",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-26T15:50:44Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        }
+      },
+      {
+        "sha": "83bcd0c0a82c9c4d669e9eff2105bd37eacc1ccc",
+        "author": "dependabot[bot]",
+        "message": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.8.2 to 4.8.3 (#11756)",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-26T15:18:16Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        }
+      },
       {
         "sha": "d5509e329d090ca3ab1da94d41834ddd51f11937",
         "author": "slorber",
@@ -1639,11 +2499,11 @@
         },
         "date": {
           "orig": "2025-12-22T09:18:14Z",
-          "local": null,
+          "local": "Mon Dec 22 2025 09:18:14 GMT+0000 (Greenwich Mean Time)",
           "weekStart": "2025-12-21",
           "dayOfWeek": 1,
-          "hourOfDay": 4,
-          "timeOfDay": "offHours"
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
         }
       },
       {
@@ -1657,10 +2517,10 @@
         },
         "date": {
           "orig": "2025-12-17T15:45:43Z",
-          "local": null,
+          "local": "Wed Dec 17 2025 15:45:43 GMT+0000 (Greenwich Mean Time)",
           "weekStart": "2025-12-14",
           "dayOfWeek": 3,
-          "hourOfDay": 10,
+          "hourOfDay": 15,
           "timeOfDay": "workday"
         }
       },
@@ -6163,107 +7023,4111 @@
           "hourOfDay": 7,
           "timeOfDay": "offHours"
         }
-      },
-      {
-        "sha": "3198de8c45b7e97e4466b3e35c34032fc2c935ff",
-        "author": "waldyrious",
-        "message": {
-          "raw": "docs: Clarify how to enable math equations (#10894)",
-          "type": "docs",
-          "scope": null,
-          "convention": "conventional"
-        },
-        "date": {
-          "orig": "2025-02-03T11:58:05Z",
-          "local": null,
-          "weekStart": "2025-02-02",
-          "dayOfWeek": 1,
-          "hourOfDay": 6,
-          "timeOfDay": "offHours"
-        }
-      },
-      {
-        "sha": "dee39835a1cf5e4d1d1c75b86d6d8384f20488d7",
-        "author": "stephenglass",
-        "message": {
-          "raw": "docs: fix grammar for installation docs (#10889)",
-          "type": "docs",
-          "scope": null,
-          "convention": "conventional"
-        },
-        "date": {
-          "orig": "2025-02-03T11:56:56Z",
-          "local": null,
-          "weekStart": "2025-02-02",
-          "dayOfWeek": 1,
-          "hourOfDay": 6,
-          "timeOfDay": "offHours"
-        }
-      },
-      {
-        "sha": "7ca3aa51449fdf753f71b4da88976c77d646cdcb",
-        "author": "slorber",
-        "message": {
-          "raw": "perf(theme): use SVG sprite for IconExternalLink (#10885)",
-          "type": "perf",
-          "scope": null,
-          "convention": "conventional"
-        },
-        "date": {
-          "orig": "2025-01-31T16:28:04Z",
-          "local": "Fri Jan 31 2025 17:28:04 GMT+0100 (Central European Standard Time)",
-          "weekStart": "2025-01-26",
-          "dayOfWeek": 5,
-          "hourOfDay": 17,
-          "timeOfDay": "offHours"
-        }
-      },
-      {
-        "sha": "884f93eea88f1bed223366fc1564c196083e8697",
-        "author": "clicktodev",
-        "message": {
-          "raw": "fix(theme): fix `<DocCard>` height inconsistency (#10849)",
-          "type": "fix",
-          "scope": null,
-          "convention": "conventional"
-        },
-        "date": {
-          "orig": "2025-01-31T14:25:10Z",
-          "local": null,
-          "weekStart": "2025-01-26",
-          "dayOfWeek": 5,
-          "hourOfDay": 9,
-          "timeOfDay": "workday"
-        }
       }
     ],
     "workPatterns": {
       "classification": "mixed",
-      "workHoursPercent": 46,
-      "eveningsPercent": 52,
+      "workHoursPercent": 47,
+      "eveningsPercent": 51,
       "weekendsPercent": 2
     }
   },
   "pullRequests": {
     "counts": {
-      "total": 100,
-      "open": 10,
-      "closed": 44,
-      "merged": 46
+      "total": 300,
+      "open": 12,
+      "closed": 130,
+      "merged": 158
     },
     "conventions": {
       "conventionalCommits": true,
       "gitmoji": false,
       "prefixes": {
-        "fix": 22,
-        "chore": 20,
-        "feat": 17,
-        "docs": 17,
-        "refactor": 6,
-        "test": 3
+        "fix": 75,
+        "chore": 70,
+        "feat": 43,
+        "docs": 34,
+        "refactor": 8,
+        "test": 6,
+        "meta": 1,
+        "perf": 1
       }
     },
     "pulls": [
+      {
+        "number": 11292,
+        "author": "Vladyslav0602",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-06-25T20:38:55Z",
+          "local": null,
+          "weekStart": "2025-06-22",
+          "dayOfWeek": 3,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-06-22"
+      },
+      {
+        "number": 11293,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(create-docusaurus): use respectPrefersColorScheme in init template",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-06-26T08:57:34Z",
+          "local": "Thu Jun 26 2025 10:57:34 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-06-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-06-22",
+        "closedAt": null
+      },
+      {
+        "number": 11294,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(faster): Upgrade to Rspack 1.4",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-06-26T14:50:13Z",
+          "local": "Thu Jun 26 2025 16:50:13 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-06-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-06-22",
+        "closedAt": null
+      },
+      {
+        "number": 11297,
+        "author": "Newread23",
+        "title": {
+          "raw": "Rename users.tsx to users1.tsx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-06-28T18:59:24Z",
+          "local": null,
+          "weekStart": "2025-06-22",
+          "dayOfWeek": 6,
+          "hourOfDay": 14,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-06-22"
+      },
+      {
+        "number": 11302,
+        "author": "Saicharan018-temenos",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-01T15:33:22Z",
+          "local": null,
+          "weekStart": "2025-06-29",
+          "dayOfWeek": 2,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-06-29"
+      },
+      {
+        "number": 11304,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(core): add `i18n.localeConfigs.translate` + skip translation process if `i18n/<locale>` dir doesn't exist",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-03T15:16:54Z",
+          "local": "Thu Jul 03 2025 17:16:54 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-06-29",
+          "dayOfWeek": 4,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-06",
+        "closedAt": null
+      },
+      {
+        "number": 11305,
+        "author": "maluke",
+        "title": {
+          "raw": "fix(translations): Add missing Ukrainian translations",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-03T17:57:34Z",
+          "local": null,
+          "weekStart": "2025-06-29",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-06-29",
+        "closedAt": null
+      },
+      {
+        "number": 11306,
+        "author": "michel-young",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-03T19:08:31Z",
+          "local": null,
+          "weekStart": "2025-06-29",
+          "dayOfWeek": 4,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-06-29"
+      },
+      {
+        "number": 11307,
+        "author": "slorber",
+        "title": {
+          "raw": "test(docs): fix docs tests issues",
+          "type": "test",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-04T12:30:22Z",
+          "local": "Fri Jul 04 2025 14:30:22 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-06-29",
+          "dayOfWeek": 5,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-06-29",
+        "closedAt": null
+      },
+      {
+        "number": 11309,
+        "author": "Mhwd9-9",
+        "title": {
+          "raw": "Update introduction.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-06T14:32:01Z",
+          "local": null,
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 0,
+          "hourOfDay": 10,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-06"
+      },
+      {
+        "number": 11310,
+        "author": "Mhwd9-9",
+        "title": {
+          "raw": "Update migration-translated-sites.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-06T14:55:42Z",
+          "local": null,
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 0,
+          "hourOfDay": 10,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-06"
+      },
+      {
+        "number": 11311,
+        "author": "slorber",
+        "title": {
+          "raw": "docs(website): fix duplicate anchor id typo",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-07T10:01:34Z",
+          "local": "Mon Jul 07 2025 12:01:34 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 1,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-06",
+        "closedAt": null
+      },
+      {
+        "number": 11312,
+        "author": "slorber",
+        "title": {
+          "raw": "test: fix site test infinite loop in Jest --watch mode + simplify test",
+          "type": "test",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-07T13:26:52Z",
+          "local": "Mon Jul 07 2025 15:26:52 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-06",
+        "closedAt": null
+      },
+      {
+        "number": 11315,
+        "author": "marcelocell",
+        "title": {
+          "raw": "fix(theme-translations): Add missing Portuguese (pt-BR) theme translations and improve some of it.",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-09T21:57:29Z",
+          "local": null,
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 3,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-06",
+        "closedAt": null
+      },
+      {
+        "number": 11316,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(core): Add `i18n.localeConfigs[locale].{url,baseUrl}` config options, fix multi-domain deployments",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-10T14:11:25Z",
+          "local": "Thu Jul 10 2025 16:11:25 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 4,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-27",
+        "closedAt": null
+      },
+      {
+        "number": 11317,
+        "author": "SethFalco",
+        "title": {
+          "raw": "chore: minor reduction to inline svg/js code",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-10T15:19:49Z",
+          "local": null,
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 4,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-13",
+        "closedAt": null
+      },
+      {
+        "number": 11322,
+        "author": "shanti2530",
+        "title": {
+          "raw": "docs: Update website/docs/guides/docs/docs-create-doc.mdx",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-12T13:34:52Z",
+          "local": null,
+          "weekStart": "2025-07-06",
+          "dayOfWeek": 6,
+          "hourOfDay": 9,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-06"
+      },
+      {
+        "number": 11327,
+        "author": "dylantientcheu",
+        "title": {
+          "raw": "feat(search): add runtime support for DocSearch v4",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-15T10:28:44Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 2,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-14",
+        "closedAt": null
+      },
+      {
+        "number": 11329,
+        "author": "slorber",
+        "title": {
+          "raw": "docs: fix release notes link",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-15T13:07:53Z",
+          "local": "Tue Jul 15 2025 15:07:53 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 2,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-13",
+        "closedAt": null
+      },
+      {
+        "number": 11331,
+        "author": "WestonThayer",
+        "title": {
+          "raw": "fix(theme): Add `aria-label` to `IconExternalLink` with value `'(opens in new tab)'`",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-16T17:50:44Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 3,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-27",
+        "closedAt": null
+      },
+      {
+        "number": 11335,
+        "author": "hey-august",
+        "title": {
+          "raw": "Update introduction.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-17T17:25:19Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-13"
+      },
+      {
+        "number": 11337,
+        "author": "guoci",
+        "title": {
+          "raw": "docs: fix npm command typos in deployment.mdx",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-19T15:28:59Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 6,
+          "hourOfDay": 11,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-20",
+        "closedAt": null
+      },
+      {
+        "number": 11338,
+        "author": "qqq614",
+        "title": {
+          "raw": "fix(theme-classic): fix collapsed sidebar category expansion when navigating to another link within that category",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-19T16:16:57Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 6,
+          "hourOfDay": 12,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-20",
+        "closedAt": null
+      },
+      {
+        "number": 11339,
+        "author": "shanti2530",
+        "title": {
+          "raw": "docs: clarify impact of document ID on the URL",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-19T17:12:58Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 6,
+          "hourOfDay": 13,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-27",
+        "closedAt": null
+      },
+      {
+        "number": 11340,
+        "author": "los8won",
+        "title": {
+          "raw": "Update create-a-page.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-20T03:23:01Z",
+          "local": null,
+          "weekStart": "2025-07-13",
+          "dayOfWeek": 6,
+          "hourOfDay": 23,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-20"
+      },
+      {
+        "number": 11341,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump marocchino/sticky-pull-request-comment from 2.9.3 to 2.9.4",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-21T22:55:07Z",
+          "local": null,
+          "weekStart": "2025-07-20",
+          "dayOfWeek": 1,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-20",
+        "closedAt": null
+      },
+      {
+        "number": 11342,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump form-data from 4.0.1 to 4.0.4",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-22T09:30:51Z",
+          "local": null,
+          "weekStart": "2025-07-20",
+          "dayOfWeek": 2,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-20",
+        "closedAt": null
+      },
+      {
+        "number": 11346,
+        "author": "kaiserztv",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-24T07:46:13Z",
+          "local": null,
+          "weekStart": "2025-07-20",
+          "dayOfWeek": 4,
+          "hourOfDay": 3,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-20"
+      },
+      {
+        "number": 11347,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): Fix docusaurus start on macOS when exec throws a synchronous error",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-24T08:51:25Z",
+          "local": "Thu Jul 24 2025 10:51:25 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-20",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-20",
+        "closedAt": null
+      },
+      {
+        "number": 11349,
+        "author": "Soumyak1602",
+        "title": {
+          "raw": "Update README.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-27T15:18:58Z",
+          "local": null,
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 0,
+          "hourOfDay": 11,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-27"
+      },
+      {
+        "number": 11350,
+        "author": "Soumyak1602",
+        "title": {
+          "raw": "Update README.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-27T15:27:39Z",
+          "local": null,
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 0,
+          "hourOfDay": 11,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-27"
+      },
+      {
+        "number": 11354,
+        "author": "mpavlikcz",
+        "title": {
+          "raw": "Update playground.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-30T15:41:30Z",
+          "local": null,
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 3,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-27"
+      },
+      {
+        "number": 11355,
+        "author": "Soumyak1602",
+        "title": {
+          "raw": "Update build-hash-router.yml",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-07-30T15:49:56Z",
+          "local": null,
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 3,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-07-27"
+      },
+      {
+        "number": 11356,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): Doc sidebar links/categories with long labels should display properly",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-31T10:41:18Z",
+          "local": "Thu Jul 31 2025 12:41:18 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 4,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-07-27",
+        "closedAt": null
+      },
+      {
+        "number": 11357,
+        "author": "Feez2403",
+        "title": {
+          "raw": "feat(mermaid): support elk layout",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-07-31T15:21:12Z",
+          "local": null,
+          "weekStart": "2025-07-27",
+          "dayOfWeek": 4,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11360,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): Add translate no to heading anchors and blog authors",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-04T11:03:16Z",
+          "local": "Mon Aug 04 2025 13:03:16 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-08-03",
+          "dayOfWeek": 1,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-03",
+        "closedAt": null
+      },
+      {
+        "number": 11361,
+        "author": "tariqueinsys",
+        "title": {
+          "raw": "my-test-page.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-08-06T11:54:00Z",
+          "local": null,
+          "weekStart": "2025-08-03",
+          "dayOfWeek": 3,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-03"
+      },
+      {
+        "number": 11365,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/checkout from 4 to 5",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-12T05:48:59Z",
+          "local": null,
+          "weekStart": "2025-08-10",
+          "dayOfWeek": 2,
+          "hourOfDay": 1,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-10",
+        "closedAt": null
+      },
+      {
+        "number": 11368,
+        "author": "ya-dvorovenko",
+        "title": {
+          "raw": "docs: remove stray character in plugin overview page",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-15T16:17:20Z",
+          "local": null,
+          "weekStart": "2025-08-10",
+          "dayOfWeek": 5,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11372,
+        "author": "mcjill",
+        "title": {
+          "raw": "fix: show target color mode on toggle",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-18T00:21:08Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 0,
+          "hourOfDay": 20,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11373,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.7.1 to 4.7.2",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-19T07:23:01Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 2,
+          "hourOfDay": 3,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11374,
+        "author": "ChinmayOnGithub",
+        "title": {
+          "raw": "fix(theme-classic): reverse color mode toggle icons to show target state",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-19T12:38:02Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 2,
+          "hourOfDay": 8,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11375,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump mermaid from 11.6.0 to 11.10.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-20T14:33:46Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 3,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-14"
+      },
+      {
+        "number": 11376,
+        "author": "jaimeiniesta",
+        "title": {
+          "raw": "docs: adds link to latest accessibility stats and reports in Rocket Validator",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-21T08:37:04Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 4,
+          "hourOfDay": 4,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11378,
+        "author": "gpl-gowthamchand",
+        "title": {
+          "raw": "fix(theme-classic): reverse color mode toggle icon logic and update",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-22T01:27:21Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 4,
+          "hourOfDay": 21,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11379,
+        "author": "akshatsinha0",
+        "title": {
+          "raw": "feat(core): SSG progress indicator",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-22T11:21:43Z",
+          "local": null,
+          "weekStart": "2025-08-17",
+          "dayOfWeek": 5,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11381,
+        "author": "gpl-gowthamchand",
+        "title": {
+          "raw": "fix(plugin-google-gtag): prevent duplicate Google Analytics initialization",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-25T01:30:44Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 0,
+          "hourOfDay": 21,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11382,
+        "author": "Widget08",
+        "title": {
+          "raw": "Update 2019-05-28-first-blog-post.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-08-25T04:19:34Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 1,
+          "hourOfDay": 0,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11383,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(ssg): HTML minifier should preserve `<head>` for `og:image` crawlers",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-25T12:04:37Z",
+          "local": "Mon Aug 25 2025 14:04:37 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 1,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11384,
+        "author": "PhilGutierre",
+        "title": {
+          "raw": "Add files via upload",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-08-26T17:42:49Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 2,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11385,
+        "author": "akshatsinha0",
+        "title": {
+          "raw": "docs(website): just some animated testimonials marquee, hover lift-to-center, and view‑all overlay",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-27T10:15:41Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 3,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11387,
+        "author": "kuldeepyadav2224",
+        "title": {
+          "raw": "Create pb.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-08-28T05:12:39Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 4,
+          "hourOfDay": 1,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11388,
+        "author": "Josh-Cena",
+        "title": {
+          "raw": "meta: add a section on AI-assisted PRs in CONTRIBUTING guide",
+          "type": "meta",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-28T05:18:09Z",
+          "local": "Thu Aug 28 2025 01:18:09 GMT-0400 (Eastern Daylight Time)",
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 4,
+          "hourOfDay": 1,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11389,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): render sidebar category index with unlisted children as a simple doc/link item",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-28T14:20:01Z",
+          "local": "Thu Aug 28 2025 16:20:01 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 4,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-24",
+        "closedAt": null
+      },
+      {
+        "number": 11392,
+        "author": "vanexymx",
+        "title": {
+          "raw": "feat: Update homepage title for project context",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-08-30T13:26:55Z",
+          "local": null,
+          "weekStart": "2025-08-24",
+          "dayOfWeek": 6,
+          "hourOfDay": 9,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-24"
+      },
+      {
+        "number": 11393,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(ci): Change Lighthouse trigger from pull_request_target to pull_request",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-01T13:07:18Z",
+          "local": "Mon Sep 01 2025 15:07:18 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-08-31",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-31",
+        "closedAt": null
+      },
+      {
+        "number": 11395,
+        "author": "LITHISHWRAN",
+        "title": {
+          "raw": "fix(theme-classic): show target state icon and tooltip in color mode …",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-02T09:48:40Z",
+          "local": null,
+          "weekStart": "2025-08-31",
+          "dayOfWeek": 2,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-08-31"
+      },
+      {
+        "number": 11397,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(mdx): resolve `@site/*` markdown links, fix resolution priority bugs",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-04T11:33:53Z",
+          "local": "Thu Sep 04 2025 13:33:53 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-08-31",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-08-31",
+        "closedAt": null
+      },
+      {
+        "number": 11401,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.7.2 to 4.7.3",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-08T20:17:55Z",
+          "local": null,
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11402,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/github-script from 7.0.1 to 8.0.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-08T20:17:58Z",
+          "local": null,
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11403,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/setup-node from 4.4.0 to 5.0.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-08T20:19:23Z",
+          "local": null,
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11405,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): fix `useColorMode()` visual glitches due to provider unmounts/remounts",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-11T08:37:50Z",
+          "local": "Thu Sep 11 2025 10:37:50 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11407,
+        "author": "Simek",
+        "title": {
+          "raw": "fix(theme): remove hardcoded fill from Bluesky and LinkedIn icons",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-12T09:05:10Z",
+          "local": null,
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 5,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11408,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: drop support for Node 18, that reached End-of-Life",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-12T15:39:55Z",
+          "local": "Fri Sep 12 2025 17:39:55 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 5,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11410,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(deps): upgrade webpack-dev-server to v5, fix security warning",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-12T17:30:47Z",
+          "local": "Fri Sep 12 2025 19:30:47 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-07",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-07",
+        "closedAt": null
+      },
+      {
+        "number": 11413,
+        "author": "AndrewDiMola",
+        "title": {
+          "raw": "Add CI / GH Pages example to Docusaurus deployment documentation",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-09-18T23:27:28Z",
+          "local": null,
+          "weekStart": "2025-09-14",
+          "dayOfWeek": 4,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-14"
+      },
+      {
+        "number": 11415,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(faster): upgrade Rspack to 1.5, use lazyBarrel experiment, remove deprecated option",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-19T09:46:17Z",
+          "local": "Fri Sep 19 2025 11:46:17 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-14",
+          "dayOfWeek": 5,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-14",
+        "closedAt": null
+      },
+      {
+        "number": 11416,
+        "author": "IsmailBinMujeeb",
+        "title": {
+          "raw": "feat(eslint): add prefer-ideal-image rule",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-19T12:05:15Z",
+          "local": null,
+          "weekStart": "2025-09-14",
+          "dayOfWeek": 5,
+          "hourOfDay": 8,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-21"
+      },
+      {
+        "number": 11417,
+        "author": "akshatsinha0",
+        "title": {
+          "raw": "fix(website): showcase spelling mistake of the word docusaurus in user desc",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-21T23:54:36Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 0,
+          "hourOfDay": 19,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11418,
+        "author": "akshatsinha0",
+        "title": {
+          "raw": "fix(cli poll RegEx utils)",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-22T15:10:11Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 1,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-21"
+      },
+      {
+        "number": 11419,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: release v3.9",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-22T15:34:24Z",
+          "local": "Mon Sep 22 2025 17:34:24 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 1,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11420,
+        "author": "guneysol",
+        "title": {
+          "raw": "feat: add @docusaurus/plugin-llms-txt",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-22T23:10:48Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 1,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11421,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(theme-search-algolia): use DocSearch v4.1, optimize integration",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T08:52:18Z",
+          "local": "Tue Sep 23 2025 10:52:18 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11422,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): fix copy of indented code blocks, replace copy-text-to-clipboard by clipboard API",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T10:26:34Z",
+          "local": "Tue Sep 23 2025 12:26:34 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11423,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump mermaid from 11.6.0 to 11.10.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T10:53:32Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-21"
+      },
+      {
+        "number": 11424,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump brace-expansion from 1.1.11 to 1.1.12 in /examples/classic-typescript",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T10:53:37Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-21"
+      },
+      {
+        "number": 11425,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(blog): Add support for email social icon + resize default social icon a bit",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T12:05:57Z",
+          "local": "Tue Sep 23 2025 14:05:57 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11426,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(theme): Add theme-tabs-container stable className",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-23T12:30:12Z",
+          "local": "Tue Sep 23 2025 14:30:12 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 2,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11429,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: update examples for v3.9",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-25T16:14:11Z",
+          "local": "Thu Sep 25 2025 18:14:11 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 4,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11431,
+        "author": "mariuszkrzaczkowski",
+        "title": {
+          "raw": "fix(theme-translation): add missing Polish (pl) theme translations",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T08:02:39Z",
+          "local": null,
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 4,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11432,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(website): Crowdin: downgrade mdx parser to v1.2",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T08:43:38Z",
+          "local": "Fri Sep 26 2025 10:43:38 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11434,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): fix Docusaurus outDir for sites using baseUrl",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T10:48:19Z",
+          "local": "Fri Sep 26 2025 12:48:19 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11436,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: release v3.9.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T13:18:00Z",
+          "local": "Fri Sep 26 2025 15:18:00 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11437,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme-mermaid): Fix Mermaid ELK layout dependency required bug on v3.9",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T14:24:48Z",
+          "local": "Fri Sep 26 2025 16:24:48 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11438,
+        "author": "slorber",
+        "title": {
+          "raw": "perf(theme-mermaid): lazy load the Mermaid library",
+          "type": "perf",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-26T18:13:45Z",
+          "local": "Fri Sep 26 2025 20:13:45 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-09-21",
+          "dayOfWeek": 5,
+          "hourOfDay": 20,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-21",
+        "closedAt": null
+      },
+      {
+        "number": 11443,
+        "author": "DanRoscigno",
+        "title": {
+          "raw": "docs(website): upgrade Node.js version from 18 to 20 in GitHub/Travis workflow examples",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-29T10:01:03Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 1,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-09-28",
+        "closedAt": null
+      },
+      {
+        "number": 11444,
+        "author": "ethanppl",
+        "title": {
+          "raw": "docs(website): fix typo for onBrokenMarkdownImages",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-29T16:08:34Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 1,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11446,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.7.3 to 4.8.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-09-29T23:36:10Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 1,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11450,
+        "author": "UnsettledAverage73",
+        "title": {
+          "raw": "docs: add warning for  globbing in i18n tutorial (#11158)",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-02T17:51:43Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11452,
+        "author": "trofim24",
+        "title": {
+          "raw": "fix(core): allow `i18n.localeConfigs.translate` in validation",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-03T07:33:48Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 5,
+          "hourOfDay": 3,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11453,
+        "author": "meetp90",
+        "title": {
+          "raw": "refactor: improve code quality with component extraction and type safety",
+          "type": "refactor",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-03T17:58:48Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 5,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11454,
+        "author": "LRNZ09",
+        "title": {
+          "raw": "feat: add stricter typings for theme configuration",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-03T22:21:47Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11456,
+        "author": "abhijit9040",
+        "title": {
+          "raw": "fix: improved UI and UX in docs",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-04T13:05:37Z",
+          "local": null,
+          "weekStart": "2025-09-28",
+          "dayOfWeek": 6,
+          "hourOfDay": 9,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-09-28"
+      },
+      {
+        "number": 11457,
+        "author": "trofim24",
+        "title": {
+          "raw": "feat(docs): improve docs translations without key conflicts",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-05T14:26:02Z",
+          "local": null,
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 0,
+          "hourOfDay": 10,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11461,
+        "author": "nishisurti2608",
+        "title": {
+          "raw": "fix/Added custom css to fix clear query button",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-06T22:34:18Z",
+          "local": null,
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 1,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11463,
+        "author": "richk21",
+        "title": {
+          "raw": "fix(theme): remove \"Edit this page\" button from print view",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-07T06:02:34Z",
+          "local": null,
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 2,
+          "hourOfDay": 2,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11466,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): Fix CSS `scroll-margin-top` when clicking footnote items, factorize code",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-09T09:46:23Z",
+          "local": "Thu Oct 09 2025 11:46:23 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 4,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11467,
+        "author": "CrimsonArrow26",
+        "title": {
+          "raw": "Summary",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-09T20:04:19Z",
+          "local": null,
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 4,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-05"
+      },
+      {
+        "number": 11468,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme-search-algolia): Fix Algolia AskAI validation logic",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-10T16:03:59Z",
+          "local": "Fri Oct 10 2025 18:03:59 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11469,
+        "author": "slorber",
+        "title": {
+          "raw": "docs: remove Astro link in v3.9 blog post (nodejs upgrade)",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-10T16:27:23Z",
+          "local": "Fri Oct 10 2025 18:27:23 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-05",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-05",
+        "closedAt": null
+      },
+      {
+        "number": 11471,
+        "author": "aadithyanr",
+        "title": {
+          "raw": "fix: resolve cp commands duplication in i18n tutorial documentation",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-12T06:37:59Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 0,
+          "hourOfDay": 2,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11474,
+        "author": "egrosdou01",
+        "title": {
+          "raw": "fix(docs): Fix deployment docs for v3.9.1 - Node.js version should be v20",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-12T11:30:25Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 0,
+          "hourOfDay": 7,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11476,
+        "author": "cnaples79",
+        "title": {
+          "raw": "fix(dev-server): return 404 status code for non-existent pages",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-12T19:10:51Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 0,
+          "hourOfDay": 15,
+          "timeOfDay": "weekend"
+        },
+        "status": "open",
+        "mergedAt": null,
+        "closedAt": null
+      },
+      {
+        "number": 11477,
+        "author": "Y-Cyan-Zhang",
+        "title": {
+          "raw": "Updated license from Facebook to Meta Platforms",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-12T19:23:09Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 0,
+          "hourOfDay": 15,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11478,
+        "author": "rob-olson",
+        "title": {
+          "raw": "Fix/remove erasable syntax only",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-12T22:53:03Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 0,
+          "hourOfDay": 18,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11479,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump stefanzweifel/git-auto-commit-action from 6 to 7",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-13T20:04:20Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11480,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump github/codeql-action from 3.26.5 to 4.30.8",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-13T20:04:30Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11481,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.8.0 to 4.8.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-13T20:04:33Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11483,
+        "author": "mohammadkaif456",
+        "title": {
+          "raw": "docs.metasol.ai",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-14T12:31:12Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 2,
+          "hourOfDay": 8,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11484,
+        "author": "maysara-elshewehy",
+        "title": {
+          "raw": "fix(translations): improve Arabic theme translations",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-15T06:37:18Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 3,
+          "hourOfDay": 2,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11485,
+        "author": "sairamsharan",
+        "title": {
+          "raw": "Add ESLint rule: no-hardcoded-src with tests and config updates",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-15T13:03:37Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 3,
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11486,
+        "author": "sairamsharan",
+        "title": {
+          "raw": "feat(eslint): Add new `no-hardcoded-src` rule",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-16T05:47:36Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 4,
+          "hourOfDay": 1,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11487,
+        "author": "YDKK",
+        "title": {
+          "raw": "fix(cssnano-preset): disable CSS counter minification",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-16T10:50:48Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 4,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11488,
+        "author": "chrisfuson",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-16T11:32:30Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 4,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11489,
+        "author": "sairamsharan",
+        "title": {
+          "raw": "feat(eslint-plugin): add no-hardcoded-src rule",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-16T18:13:27Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 4,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "open",
+        "mergedAt": null,
+        "closedAt": null
+      },
+      {
+        "number": 11490,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(docs): add support for missing `sidebar_key` front matter attribute",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-17T10:01:24Z",
+          "local": "Fri Oct 17 2025 12:01:24 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 5,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11491,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: release v3.9.2",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-17T14:59:49Z",
+          "local": "Fri Oct 17 2025 16:59:49 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 5,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11494,
+        "author": "slorber",
+        "title": {
+          "raw": "chore: update examples for v3.9.2",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-17T15:35:35Z",
+          "local": "Fri Oct 17 2025 17:35:35 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 5,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11495,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(ci): add nodejs 25 to CI jobs matrix",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-17T15:55:10Z",
+          "local": "Fri Oct 17 2025 17:55:10 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 5,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11496,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(faster): fix server build SWC / browserslist node target",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-17T17:28:49Z",
+          "local": "Fri Oct 17 2025 19:28:49 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-12",
+        "closedAt": null
+      },
+      {
+        "number": 11498,
+        "author": "masonakdev",
+        "title": {
+          "raw": "chore: update LICENSE copyright holder to \"Meta Platforms, Inc.\"",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-18T06:17:24Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 6,
+          "hourOfDay": 2,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-12"
+      },
+      {
+        "number": 11499,
+        "author": "Huzaif-nabi",
+        "title": {
+          "raw": "fix(theme): retain focus-visible on enter with screen reader",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-18T08:01:37Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 6,
+          "hourOfDay": 4,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11500,
+        "author": "ANUKOOL324",
+        "title": {
+          "raw": "fix(website): Correct the site homepage overflows (CTA buttons + new version heading)",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-18T11:34:29Z",
+          "local": null,
+          "weekStart": "2025-10-12",
+          "dayOfWeek": 6,
+          "hourOfDay": 7,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-19",
+        "closedAt": null
+      },
+      {
+        "number": 11502,
+        "author": "carolina-sv",
+        "title": {
+          "raw": "Revise README.md with emojis and improved text",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-20T14:45:24Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 1,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11503,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/setup-node from 5.0.0 to 6.0.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-20T20:08:06Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-19",
+        "closedAt": null
+      },
+      {
+        "number": 11504,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump github/codeql-action from 4.30.8 to 4.30.9",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-20T20:08:15Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-19",
+        "closedAt": null
+      },
+      {
+        "number": 11505,
+        "author": "kalam5623",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-21T16:58:40Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 2,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11507,
+        "author": "YuhanCatherineDong",
+        "title": {
+          "raw": "Update README.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-22T17:17:58Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 3,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11508,
+        "author": "NoxiousTab",
+        "title": {
+          "raw": "fix(theme-classic): make copy/word wrap buttons opaque.",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-22T20:55:22Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 3,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11509,
+        "author": "NoxiousTab",
+        "title": {
+          "raw": "fix(theme-classic): make copy/word wrap buttons opaque.",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-22T21:04:10Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 3,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11510,
+        "author": "ritikaaaa177",
+        "title": {
+          "raw": "Update create-a-page.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-23T10:43:16Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 4,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11511,
+        "author": "ritikaaaa177",
+        "title": {
+          "raw": "Update create-a-blog-post.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-23T11:37:10Z",
+          "local": null,
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 4,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-19"
+      },
+      {
+        "number": 11512,
+        "author": "slorber",
+        "title": {
+          "raw": "feat(core):  New siteConfig `future.experimental_vcs` API + `future.experimental_faster.gitEagerVcs` flag",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-24T16:39:24Z",
+          "local": "Fri Oct 24 2025 18:39:24 GMT+0200 (Central European Summer Time)",
+          "weekStart": "2025-10-19",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-09",
+        "closedAt": null
+      },
+      {
+        "number": 11513,
+        "author": "TheCyperpunk",
+        "title": {
+          "raw": "fix(a11y): add Space key support for navbar dropdowns",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-27T08:35:19Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 1,
+          "hourOfDay": 4,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11514,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/upload-artifact from 4 to 5",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-27T20:28:31Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-26",
+        "closedAt": null
+      },
+      {
+        "number": 11515,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump github/codeql-action from 4.30.9 to 4.31.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-27T20:33:40Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 1,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-26",
+        "closedAt": null
+      },
+      {
+        "number": 11521,
+        "author": "wparad",
+        "title": {
+          "raw": "Update documentation on broken link detection #11520",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-30T10:55:37Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 4,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11523,
+        "author": "sharvandeep",
+        "title": {
+          "raw": "Improve UI: Replace static combo box with searchable field selector in Entry Editor",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-30T16:01:40Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 4,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-10-26"
+      },
+      {
+        "number": 11524,
+        "author": "sunub",
+        "title": {
+          "raw": "feat(eslint-plugin): new no-window-eq-undefined rule",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-31T04:06:36Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 5,
+          "hourOfDay": 0,
+          "timeOfDay": "offHours"
+        },
+        "status": "open",
+        "mergedAt": null,
+        "closedAt": null
+      },
+      {
+        "number": 11525,
+        "author": "Bhoomi070",
+        "title": {
+          "raw": "docs: Remove redundant \"as well\" in README introduction",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-31T09:55:14Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 5,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-10-26",
+        "closedAt": null
+      },
+      {
+        "number": 11526,
+        "author": "Bhoomi070",
+        "title": {
+          "raw": "Extended Description for the Pull Request",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-10-31T11:18:35Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 5,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-02"
+      },
+      {
+        "number": 11527,
+        "author": "taylorreece",
+        "title": {
+          "raw": "docs(theme-mermaid): Document how to style Mermaid tooltips",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-10-31T14:53:29Z",
+          "local": null,
+          "weekStart": "2025-10-26",
+          "dayOfWeek": 5,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-02"
+      },
+      {
+        "number": 11529,
+        "author": "Pijukatel",
+        "title": {
+          "raw": "Update @rspack/core dependency to version 1.6.0",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-03T09:40:20Z",
+          "local": null,
+          "weekStart": "2025-11-02",
+          "dayOfWeek": 1,
+          "hourOfDay": 4,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-02"
+      },
+      {
+        "number": 11530,
+        "author": "kou029w",
+        "title": {
+          "raw": "fix(mdx-loader): fix url.parse deprecation warning on Node 24+",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-04T02:35:50Z",
+          "local": null,
+          "weekStart": "2025-11-02",
+          "dayOfWeek": 1,
+          "hourOfDay": 21,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11533,
+        "author": "luicfrr",
+        "title": {
+          "raw": "fix(translations): complete theme translations for Algolia pt-br",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-05T15:23:22Z",
+          "local": null,
+          "weekStart": "2025-11-02",
+          "dayOfWeek": 3,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-02",
+        "closedAt": null
+      },
+      {
+        "number": 11536,
+        "author": "CommitToday",
+        "title": {
+          "raw": "refactor(md): replace url.parse with URL constructor in image/link transformers",
+          "type": "refactor",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-07T22:43:18Z",
+          "local": null,
+          "weekStart": "2025-11-02",
+          "dayOfWeek": 5,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-02"
+      },
+      {
+        "number": 11538,
+        "author": "Navin5790",
+        "title": {
+          "raw": "navin5790Update README to include user name",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-08T14:05:44Z",
+          "local": null,
+          "weekStart": "2025-11-02",
+          "dayOfWeek": 6,
+          "hourOfDay": 9,
+          "timeOfDay": "weekend"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-02"
+      },
+      {
+        "number": 11539,
+        "author": "MartaKar",
+        "title": {
+          "raw": "docs: add DeployHQ to deployment doc",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-10T11:42:49Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 1,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-09"
+      },
+      {
+        "number": 11541,
+        "author": "NatanTechofNY",
+        "title": {
+          "raw": "feat(theme-search-algolia): add support for DocSearch v4.3.2 and new Suggested Questions",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-10T17:33:50Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 1,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11543,
+        "author": "Itsjimmy-G",
+        "title": {
+          "raw": "docs: Remove stray word (attractive)from Code Conventions",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-11T15:56:47Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 2,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-09"
+      },
+      {
+        "number": 11544,
+        "author": "lethanhdung18070-sketch",
+        "title": {
+          "raw": "Update introduction.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-12T03:04:21Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 2,
+          "hourOfDay": 22,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-09"
+      },
+      {
+        "number": 11549,
+        "author": "peterpeterparker",
+        "title": {
+          "raw": "Add Juno to deployment docs",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-13T12:20:33Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 4,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-09"
+      },
+      {
+        "number": 11550,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): optimize i18n integration for site builds + improve inference of locale config",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-14T11:47:31Z",
+          "local": "Fri Nov 14 2025 12:47:31 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 5,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-09",
+        "closedAt": null
+      },
+      {
+        "number": 11551,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump js-yaml from 4.1.0 to 4.1.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-14T14:55:12Z",
+          "local": null,
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 5,
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-09",
+        "closedAt": null
+      },
+      {
+        "number": 11552,
+        "author": "slorber",
+        "title": {
+          "raw": "TEST - test git command perf in CI",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-14T18:23:14Z",
+          "local": "Fri Nov 14 2025 19:23:14 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-09",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-16"
+      },
+      {
+        "number": 11553,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(ci): upgrade Netlify to Node 24 (LTS) + add `git backfill` command",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-17T08:39:04Z",
+          "local": "Mon Nov 17 2025 09:39:04 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 1,
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11554,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(ci): Improve Netlify cache + Run `git backfill` in parallel",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-17T10:17:55Z",
+          "local": "Mon Nov 17 2025 11:17:55 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 1,
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11555,
+        "author": "mcclowes",
+        "title": {
+          "raw": "docs: resource add plugins glossary & cookie-consentl; fix formatting…",
+          "type": "docs",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-17T15:44:02Z",
+          "local": null,
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 1,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11556,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/checkout from 5.0.0 to 5.0.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-17T20:06:45Z",
+          "local": null,
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11557,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/dependency-review-action from 4.8.1 to 4.8.2",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-17T20:06:49Z",
+          "local": null,
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11559,
+        "author": "pyrytakala",
+        "title": {
+          "raw": "fix(content-blog): filter unlisted posts from author pages",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-18T23:38:20Z",
+          "local": "Tue Nov 18 2025 15:38:20 GMT-0800 (Pacific Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 2,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11560,
+        "author": "pyrytakala",
+        "title": {
+          "raw": "fix(theme-search-algolia): preserve query strings in useSearchResultUrlProcessor",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-19T00:24:36Z",
+          "local": "Tue Nov 18 2025 16:24:36 GMT-0800 (Pacific Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 2,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11562,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(blog): refactor blog Content, remove useless `blogListPaginated` attribute",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-20T11:01:10Z",
+          "local": "Thu Nov 20 2025 12:01:10 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 4,
+          "hourOfDay": 12,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11563,
+        "author": "slorber",
+        "title": {
+          "raw": "chore(docs, blog, pages): refactor/normalize plugin option id types for all content plugins",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-20T12:12:35Z",
+          "local": "Thu Nov 20 2025 13:12:35 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11564,
+        "author": "slorber",
+        "title": {
+          "raw": "test(blog): Add basic tests for blog routes.",
+          "type": "test",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-20T13:49:33Z",
+          "local": "Thu Nov 20 2025 14:49:33 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 4,
+          "hourOfDay": 14,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11565,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(theme): Change code block line from span to div, fix Firefox text selection/copy bug",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-21T17:10:56Z",
+          "local": "Fri Nov 21 2025 18:10:56 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-16",
+          "dayOfWeek": 5,
+          "hourOfDay": 18,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-16",
+        "closedAt": null
+      },
+      {
+        "number": 11568,
+        "author": "cesardaniel18720159-hue",
+        "title": {
+          "raw": "BbvaUpdate sidebar position and slug in plugin docs",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-24T11:53:16Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 1,
+          "hourOfDay": 6,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11569,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/checkout from 5.0.0 to 6.0.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-24T20:10:06Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11571,
+        "author": "lebalz",
+        "title": {
+          "raw": "feat(core): support custom html elements in head tags",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-26T00:07:22Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 2,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11573,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump node-forge from 1.3.1 to 1.3.2 in /examples/classic-typescript",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-26T22:13:37Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 3,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11574,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump node-forge from 1.3.1 to 1.3.2",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-26T22:13:50Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 3,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11575,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump node-forge from 1.3.1 to 1.3.2 in /examples/classic",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-26T22:22:06Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 3,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11576,
+        "author": "slorber",
+        "title": {
+          "raw": "test",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-27T12:00:34Z",
+          "local": "Thu Nov 27 2025 13:00:34 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 4,
+          "hourOfDay": 13,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11577,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(blog): Fix author paginated page url: `/blog/authors/<author>/page/2`",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-27T15:19:36Z",
+          "local": "Thu Nov 27 2025 16:19:36 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 4,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11579,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): in `isInternalUrl()`, URI protocol scheme detection should implement the spec more strictly",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-27T16:22:00Z",
+          "local": "Thu Nov 27 2025 17:22:00 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 4,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-23",
+        "closedAt": null
+      },
+      {
+        "number": 11581,
+        "author": "hugohaggmark",
+        "title": {
+          "raw": "feat(theme-search-algolia): allow overriding transformSearchClient",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-28T10:01:28Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 5,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11584,
+        "author": "pema-s",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-11-29T03:19:36Z",
+          "local": null,
+          "weekStart": "2025-11-23",
+          "dayOfWeek": 5,
+          "hourOfDay": 22,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-23"
+      },
+      {
+        "number": 11586,
+        "author": "JustinBeckwith",
+        "title": {
+          "raw": "chore(deps): remove unused @babel/runtime-corejs3 dependency",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-30T16:54:44Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 0,
+          "hourOfDay": 11,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11587,
+        "author": "andreww2012",
+        "title": {
+          "raw": "fix(eslint-plugin): specify exact type of `no-untranslated-text` rule options",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-11-30T19:15:19Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 0,
+          "hourOfDay": 14,
+          "timeOfDay": "weekend"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11589,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump mdast-util-to-hast from 13.2.0 to 13.2.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T03:33:09Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 1,
+          "hourOfDay": 22,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11590,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump mdast-util-to-hast from 13.2.0 to 13.2.1 in /examples/classic",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T03:59:20Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 1,
+          "hourOfDay": 22,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11591,
+        "author": "HansM92",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-12-02T10:55:18Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11592,
+        "author": "HansM92",
+        "title": {
+          "raw": "Update intro.md",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-12-02T10:57:17Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 5,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11593,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump express from 4.21.2 to 4.22.1 in /examples/classic",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T12:10:37Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11594,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump express from 4.21.2 to 4.22.1 in /examples/classic-typescript",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T12:10:39Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11595,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump express from 4.21.2 to 4.22.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T12:11:15Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 7,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11596,
+        "author": "jliermann",
+        "title": {
+          "raw": "feat(theme): allow custom icons in DocCard component",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-02T15:39:18Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 2,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11600,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump mdast-util-to-hast from 13.2.0 to 13.2.1 in /examples/classic-typescript",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-04T14:10:52Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 4,
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-11-30"
+      },
+      {
+        "number": 11601,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump node-forge from 1.3.1 to 1.3.3 in /examples/classic-typescript",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-04T14:11:01Z",
+          "local": null,
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 4,
+          "hourOfDay": 9,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11603,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): Fix openBrowser AppleScript support for Arc",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-05T15:31:13Z",
+          "local": "Fri Dec 05 2025 16:31:13 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 5,
+          "hourOfDay": 16,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11604,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(core): webpack aliases shouldn't be created for test files and typedefs",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-05T18:04:40Z",
+          "local": "Fri Dec 05 2025 19:04:40 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2025-11-30",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2025-11-30",
+        "closedAt": null
+      },
+      {
+        "number": 11606,
+        "author": "Ahmediosxr",
+        "title": {
+          "raw": "Fix comment formatting in users.tsx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2025-12-08T08:09:46Z",
+          "local": null,
+          "weekStart": "2025-12-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 3,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2025-12-07"
+      },
+      {
+        "number": 11608,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/setup-node from 6.0.0 to 6.1.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-08T20:05:12Z",
+          "local": null,
+          "weekStart": "2025-12-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-12-07",
+        "closedAt": null
+      },
+      {
+        "number": 11609,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump actions/checkout from 6.0.0 to 6.0.1",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2025-12-08T20:05:31Z",
+          "local": null,
+          "weekStart": "2025-12-07",
+          "dayOfWeek": 1,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2025-12-07",
+        "closedAt": null
+      },
       {
         "number": 11611,
         "author": "Mcheung7272",
@@ -6380,11 +11244,11 @@
         },
         "date": {
           "orig": "2025-12-16T11:33:59Z",
-          "local": null,
+          "local": "Tue Dec 16 2025 11:33:59 GMT+0000 (Greenwich Mean Time)",
           "weekStart": "2025-12-14",
           "dayOfWeek": 2,
-          "hourOfDay": 6,
-          "timeOfDay": "offHours"
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
         },
         "status": "merged",
         "mergedAt": "2025-12-21",
@@ -6401,11 +11265,11 @@
         },
         "date": {
           "orig": "2025-12-16T11:34:04Z",
-          "local": null,
+          "local": "Tue Dec 16 2025 11:34:04 GMT+0000 (Greenwich Mean Time)",
           "weekStart": "2025-12-14",
           "dayOfWeek": 2,
-          "hourOfDay": 6,
-          "timeOfDay": "offHours"
+          "hourOfDay": 11,
+          "timeOfDay": "workday"
         },
         "status": "merged",
         "mergedAt": "2025-12-14",
@@ -7982,9 +12846,9 @@
           "hourOfDay": 12,
           "timeOfDay": "weekend"
         },
-        "status": "open",
+        "status": "closed",
         "mergedAt": null,
-        "closedAt": null
+        "closedAt": "2026-02-22"
       },
       {
         "number": 11728,
@@ -8011,7 +12875,7 @@
         "number": 11730,
         "author": "Azurinine",
         "title": {
-          "raw": "feat(eslinter): prefer ideal image",
+          "raw": "feat(eslint): prefer ideal image",
           "type": "feat",
           "scope": null,
           "convention": "conventional"
@@ -8339,8 +13203,8 @@
           "hourOfDay": 18,
           "timeOfDay": "offHours"
         },
-        "status": "open",
-        "mergedAt": null,
+        "status": "merged",
+        "mergedAt": "2026-02-22",
         "closedAt": null
       },
       {
@@ -8360,6 +13224,132 @@
           "hourOfDay": 17,
           "timeOfDay": "offHours"
         },
+        "status": "merged",
+        "mergedAt": "2026-02-22",
+        "closedAt": null
+      },
+      {
+        "number": 11759,
+        "author": "apaWeldon",
+        "title": {
+          "raw": "Add question about APA to playground documentation",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2026-02-25T20:43:48Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 3,
+          "hourOfDay": 15,
+          "timeOfDay": "workday"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2026-02-22"
+      },
+      {
+        "number": 11761,
+        "author": "indragunawan98",
+        "title": {
+          "raw": "Remove unnecessary comment header from users.tsx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2026-02-26T06:22:28Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 1,
+          "timeOfDay": "offHours"
+        },
+        "status": "closed",
+        "mergedAt": null,
+        "closedAt": "2026-02-22"
+      },
+      {
+        "number": 11762,
+        "author": "dependabot[bot]",
+        "title": {
+          "raw": "chore(deps): bump rollup from 2.79.2 to 2.80.0",
+          "type": "chore",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-26T15:31:30Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 4,
+          "hourOfDay": 10,
+          "timeOfDay": "workday"
+        },
+        "status": "merged",
+        "mergedAt": "2026-02-22",
+        "closedAt": null
+      },
+      {
+        "number": 11763,
+        "author": "slorber",
+        "title": {
+          "raw": "fix(cli): fix `write-heading-ids` CLI when no files provided",
+          "type": "fix",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-27T18:08:45Z",
+          "local": "Fri Feb 27 2026 19:08:45 GMT+0100 (Central European Standard Time)",
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 5,
+          "hourOfDay": 19,
+          "timeOfDay": "offHours"
+        },
+        "status": "merged",
+        "mergedAt": "2026-02-22",
+        "closedAt": null
+      },
+      {
+        "number": 11764,
+        "author": "GoyalAshmit",
+        "title": {
+          "raw": "feat: add ESLint rules for Docusaurus best practices",
+          "type": "feat",
+          "scope": null,
+          "convention": "conventional"
+        },
+        "date": {
+          "orig": "2026-02-27T22:17:54Z",
+          "local": null,
+          "weekStart": "2026-02-22",
+          "dayOfWeek": 5,
+          "hourOfDay": 17,
+          "timeOfDay": "offHours"
+        },
+        "status": "open",
+        "mergedAt": null,
+        "closedAt": null
+      },
+      {
+        "number": 11766,
+        "author": "work109677-sudo",
+        "title": {
+          "raw": "Update installation.mdx",
+          "type": null,
+          "scope": null,
+          "convention": null
+        },
+        "date": {
+          "orig": "2026-03-01T15:35:02Z",
+          "local": null,
+          "weekStart": "2026-03-01",
+          "dayOfWeek": 0,
+          "hourOfDay": 10,
+          "timeOfDay": "weekend"
+        },
         "status": "open",
         "mergedAt": null,
         "closedAt": null
@@ -8371,7 +13361,7 @@
     "langs": [
       {
         "name": "TypeScript",
-        "bytes": 2965209,
+        "bytes": 2975276,
         "percent": 95.8,
         "color": "#3178c6"
       },
@@ -8461,7 +13451,7 @@
       {
         "name": "EditorConfig",
         "category": "Linting & Formatting",
-        "logo": null,
+        "logo": "editorconfig",
         "url": "https://editorconfig.org",
         "paths": [".editorconfig"]
       },
@@ -8504,6 +13494,7 @@
         "name": "README",
         "category": "Documentation",
         "logo": "markdown",
+        "silhouette": true,
         "url": "",
         "paths": ["README.md"]
       },
@@ -8511,6 +13502,7 @@
         "name": "CODE_OF_CONDUCT",
         "category": "Community",
         "logo": "markdown",
+        "silhouette": true,
         "url": "",
         "paths": ["CODE_OF_CONDUCT.md"]
       },
@@ -8518,6 +13510,7 @@
         "name": "CONTRIBUTING",
         "category": "Community",
         "logo": "markdown",
+        "silhouette": true,
         "url": "",
         "paths": ["CONTRIBUTING.md"]
       },
@@ -8525,6 +13518,7 @@
         "name": "LICENSE",
         "category": "Community",
         "logo": "markdown",
+        "silhouette": true,
         "url": "",
         "paths": ["LICENSE"]
       }
@@ -8542,19 +13536,19 @@
     ]
   },
   "fileTree": {
-    "totalBytes": 64010777,
+    "totalBytes": 64021855,
     "totalFiles": 4138,
     "directories": [
       {
         "name": "website",
         "path": "website",
-        "bytes": 52924926,
+        "bytes": 52925922,
         "fileCount": 2052
       },
       {
         "name": "packages",
         "path": "packages",
-        "bytes": 5506004,
+        "bytes": 5516071,
         "fileCount": 1892
       },
       {
@@ -8564,9 +13558,9 @@
         "fileCount": 15
       },
       {
-        "name": "Root",
+        "name": "Root files",
         "path": ".",
-        "bytes": 1805156,
+        "bytes": 1805171,
         "fileCount": 30
       },
       {
@@ -8667,7 +13661,7 @@
         "maxScore": 25,
         "details": [
           {
-            "message": "63,899 stars",
+            "message": "63,950 stars",
             "delta": 8
           },
           {
@@ -8679,7 +13673,7 @@
             "delta": 5
           },
           {
-            "message": "9750 forks",
+            "message": "9749 forks",
             "delta": 5
           }
         ]
@@ -8778,10 +13772,10 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/32169182?v=4",
       "htmlUrl": "https://github.com/salmanmkc",
       "location": "London, UK",
-      "country": null,
-      "countryCode": null,
-      "flag": null,
-      "timezone": null
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "flag": "🇬🇧",
+      "timezone": "Europe/London"
     },
     {
       "id": 7336413,
