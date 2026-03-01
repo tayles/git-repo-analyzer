@@ -120,6 +120,8 @@ export function ActivityHeatmapChart({
                 </div>
                 {Array.from({ length: 24 }, (_, hour) => {
                   const value = data.grid[dayIdx]![hour]!;
+                  const twelveHour = hour % 12 === 0 ? 12 : hour % 12;
+                  const amPm = hour < 12 ? 'AM' : 'PM';
                   return (
                     <Tooltip key={`${dayIdx}-${hour}`}>
                       <TooltipTrigger asChild>
@@ -132,7 +134,7 @@ export function ActivityHeatmapChart({
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>
-                          {day} {hour}:00 — {value} commit{value !== 1 ? 's' : ''}
+                          {day} {twelveHour} {amPm} — {value} commit{value !== 1 ? 's' : ''}
                         </p>
                       </TooltipContent>
                     </Tooltip>
