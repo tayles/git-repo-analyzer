@@ -6,18 +6,13 @@
   "arrowParens": "avoid",
   "trailingComma": "all",
   "quoteProps": "as-needed",
-  "experimentalSortImports": {
+  "sortPackageJson": {
     "enabled": true
   },
-  "experimentalTailwindcss": {
+  "sortImports": {
     "enabled": true
   },
-
-  /**
-   * Ignore html files due to bug:
-   *
-   * Failed to format file with external formatter: /Users/dt/dev/git-repo-analyzer/apps/web/index.html
-   * │ JS formatFile promise rejected: GenericFailure, [object Object]
-   */
-  "ignorePatterns": ["*.html"]
+  "tailwindcss": {
+    "enabled": true
+  }
 }
