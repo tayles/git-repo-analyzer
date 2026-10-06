@@ -50,8 +50,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Authenticates via npm trusted publishing (OIDC), provenance is generated automatically
+      # https://docs.npmjs.com/trusted-publishers
       - name: Publish packages to npm
-        run: bun pm pack && npm publish ./*.tgz --provenance --access public
+        run: bun pm pack && npm publish ./*.tgz --access public
         working-directory: apps/cli
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
